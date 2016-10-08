@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DDChooseImageCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kax-Td-znL">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndj-up-aG0">
+                        <rect key="frame" x="8" y="93" width="40" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zev-Gk-R2q">
+                        <rect key="frame" x="86" y="4" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="dWj-rU-QsC"/>
+                            <constraint firstAttribute="width" secondItem="Zev-Gk-R2q" secondAttribute="height" id="vyp-wv-zsY"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Zev-Gk-R2q" firstAttribute="trailing" secondItem="Kax-Td-znL" secondAttribute="trailing" constant="-4" id="1bK-v7-yo0"/>
+                <constraint firstItem="Zev-Gk-R2q" firstAttribute="top" secondItem="Kax-Td-znL" secondAttribute="top" constant="4" id="AeC-Og-SoE"/>
+                <constraint firstAttribute="trailing" secondItem="Kax-Td-znL" secondAttribute="trailing" id="ayj-0j-FBQ"/>
+                <constraint firstItem="Kax-Td-znL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fsZ-h3-Urt"/>
+                <constraint firstAttribute="bottom" secondItem="Kax-Td-znL" secondAttribute="bottom" id="mdn-PM-37w"/>
+                <constraint firstItem="ndj-up-aG0" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" id="p7s-TA-Xmb"/>
+                <constraint firstItem="ndj-up-aG0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="sb0-Xd-XcN"/>
+                <constraint firstItem="Kax-Td-znL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ypC-jw-8X5"/>
+            </constraints>
+            <size key="customSize" width="120" height="120"/>
+            <connections>
+                <outlet property="imageSelect" destination="Zev-Gk-R2q" id="ZkD-d8-ECG"/>
+                <outlet property="imageView" destination="Kax-Td-znL" id="gM9-Xt-sZO"/>
+                <outlet property="labDesc" destination="ndj-up-aG0" id="rxf-o0-OSZ"/>
+            </connections>
+            <point key="canvasLocation" x="379" y="442"/>
+        </collectionViewCell>
+    </objects>
+</document>
