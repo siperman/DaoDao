@@ -52,6 +52,7 @@ static NSString * const kUserKey                                  = @"user";
 static NSString * const kSuccessKey                               = @"success";
 static NSString * const kMsgKey                                   = @"msg";
 static NSString * const kTypeKey                                  = @"type";
+static NSString * const kDemandKey                                = @"demand";
 static NSString * const kObjKey                                   = @"obj";
 static NSString * const kPhoneKey                                 = @"mobilePhone";
 static NSString * const kCodeKey                                  = @"code";

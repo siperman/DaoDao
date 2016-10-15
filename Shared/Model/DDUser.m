@@ -45,4 +45,9 @@
     return [self URLJSONTransformer];
 }
 
+- (NSString *)relation
+{
+    return _meetTimes.integerValue ? @"TA和您见过" : @"";
+}
+
 @end

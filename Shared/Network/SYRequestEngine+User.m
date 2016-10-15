@@ -15,6 +15,7 @@ static NSString * const kUserInfoPath                          = @"/user/{id}";
 static NSString * const kCurrentUserInfoPath                   = @"/token/my";
 static NSString * const kUserLoginPath                         = @"/token";
 static NSString * const kUserUpdatePath                        = @"/user/my?_function=updateInfo";
+static NSString * const kUserInfosPath                         = @"/user";
 
 @implementation SYRequestEngine (User)
 
@@ -29,7 +30,7 @@ static NSString * const kUserUpdatePath                        = @"/user/my?_fun
 
 + (void)requestUserWithIds:(NSString *)uids callback:(AZNetworkResultBlock)callback
 {
-    [SYNetworkManager startRequestWithUrl:RequestUrlFactory(kUserInfoPath)
+    [SYNetworkManager startRequestWithUrl:RequestUrlFactory(kUserInfosPath)
                                    method:SYRequestMethodGet
                                    params:@{@"ids" : uids}
                                      body:nil

@@ -14,8 +14,10 @@
 @property (nonatomic) NSInteger totalPage;
 @end
 
+
 @implementation DDChessboardView
 
+static const NSInteger pageChess = 7;
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -27,15 +29,15 @@
     [[self.scrollView subviews] enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj removeFromSuperview];
     }];
-    if (_chessArray.count % 5 == 0) {
-        _totalPage = _chessArray.count / 5;
+    if (_chessArray.count % pageChess == 0) {
+        _totalPage = _chessArray.count / pageChess;
     } else {
-        _totalPage = (_chessArray.count - _chessArray.count % 5) / 5 + 1;
+        _totalPage = (_chessArray.count - _chessArray.count % pageChess) / pageChess + 1;
     }
 
     self.pageControl.numberOfPages = _totalPage;
     CGFloat width = SCREEN_WIDTH;
-    self.scrollView.contentSize = CGSizeMake(width * _totalPage, 5 * width / 4);
+    self.scrollView.contentSize = CGSizeMake(width * _totalPage, pageChess * width / 4);
     for (NSInteger i = 0; i < _totalPage; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.scrollView.bounds];
         imageView.origin = CGPointMake(width * i, 0);
@@ -76,10 +78,10 @@
 
 - (CGPoint)pointAtIndex:(NSInteger)index
 {
-    NSInteger page = (index - index % 5) / 5;
+    NSInteger page = (index - index % pageChess) / pageChess;
     CGFloat width = SCREEN_WIDTH / 4;
     CGFloat x = page * SCREEN_WIDTH;
-    switch (index % 5) {
+    switch (index % pageChess) {
         case 0:
             return CGPointMake(2 * width + x, 2 * width);
             break;
@@ -87,13 +89,19 @@
             return CGPointMake(2 * width + x, 1 * width);
             break;
         case 2:
-            return CGPointMake(1 * width + x, 3 * width);
+            return CGPointMake(3 * width + x, 2 * width);
             break;
         case 3:
-            return CGPointMake(3 * width + x, 3 * width);
+            return CGPointMake(1 * width + x, 3 * width);
+            break;
+        case 4:
+            return CGPointMake(2 * width + x, 3 * width);
+            break;
+        case 5:
+            return CGPointMake(2 * width + x, 4 * width);
             break;
         default:
-            return CGPointMake(2 * width + x, 4 * width);
+            return CGPointMake(3 * width + x, 4 * width);
             break;
     }
 }

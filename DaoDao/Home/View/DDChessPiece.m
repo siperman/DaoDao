@@ -128,7 +128,7 @@
 
 - (void)click
 {
-    [self.viewController showNotice:_chess.cid];
+//    [self.viewController showNotice:_chess.cid];
     DDChessDetailViewController *vc = [DDChessDetailViewController viewController];
     vc.cid = self.chess.cid;
     [self.viewController.navigationController pushViewController:vc animated:YES];

@@ -12,24 +12,19 @@
 #import "DDAskDetailViewController.h"
 #import "DDChooseFavGoodViewController.h"
 
-@interface DDPostAskTableViewController () <UITextViewDelegate, DDChooseFavGoodViewControllerProtocol>
+@interface DDPostAskTableViewController () <UITextViewDelegate, UITextFieldDelegate, DDChooseFavGoodViewControllerProtocol>
 
 
 @property (weak, nonatomic) IBOutlet UILabel *labPlaceHolder;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *labResidue;
+@property (weak, nonatomic) IBOutlet UITextView *txtDemand;
 
-@property (weak, nonatomic) IBOutlet UIButton *btnType;
-@property (weak, nonatomic) IBOutlet UIButton *btnPost;
-
-@property (weak, nonatomic) IBOutlet UITextField *txtType;
-@property (weak, nonatomic) IBOutlet UITextField *txtDemand;
-@property (weak, nonatomic) IBOutlet UITextView *txtDesc;
 @property (weak, nonatomic) IBOutlet UITextField *txtIndustry;
 @property (weak, nonatomic) IBOutlet UITextField *txtJob;
 @property (weak, nonatomic) IBOutlet UITextField *txtExpert;
 
-@property (nonatomic) BOOL hideType;
+@property (weak, nonatomic) IBOutlet UIButton *btnPost;
+
 @property (nonatomic, strong) DDPostAskViewModel *postAskModel;
 @end
 
@@ -49,48 +44,35 @@
     self.view.backgroundColor = BackgroundColor;
     [self.btnPost actionStyle];
 
+    self.txtDemand.delegate = self;
     self.postAskModel = [[DDPostAskViewModel alloc] init];
-    RAC(self.postAskModel, demand) = self.txtDemand.rac_textSignal;
-    RAC(self.postAskModel, desc) = self.txtDesc.rac_textSignal;
-    RAC(self.btnPost, enabled) = self.postAskModel.enablePostSignal;
+//    RAC(self.btnPost, enabled) = self.postAskModel.enablePostSignal;
 }
 
 #pragma mark Action
-- (IBAction)showType:(UIButton *)sender
-{
-}
-
-- (IBAction)clickType:(UIButton *)sender
-{
-    NSString *text;
-    if (sender.tag == 0) {
-        text = [@"合作" copy];
-    } else if (sender.tag == 1) {
-        text = [@"咨询" copy];
-    } else {
-        text = [@"求助" copy];
-    }
-    self.postAskModel.type = text;
-    self.txtType.text = text;
-}
 
 - (IBAction)clickPush:(UIButton *)sender
 {
-    if (sender.tag == 0) {
+    [self input:sender.tag];
+}
+
+- (void)input:(NSInteger)tag
+{
+    if (tag == 0) {
         // 行业
         DDFillJobIndustryViewController *vc = [DDFillJobIndustryViewController viewController];
         vc.isFillJob = NO;
-        vc.showTopView = YES;
+//        vc.showTopView = YES;
         vc.callback = ^(NSString *str) {
             self.postAskModel.industry = str;
             self.txtIndustry.text = str;
         };
         [self.navigationController pushViewController:vc animated:YES];
-    } else if (sender.tag == 1) {
+    } else if (tag == 1) {
         // 职务
         DDFillJobIndustryViewController *vc = [DDFillJobIndustryViewController viewController];
         vc.isFillJob = YES;
-        vc.showTopView = YES;
+//        vc.showTopView = YES;
         vc.callback = ^(NSString *str) {
             self.postAskModel.job = str;
             self.txtJob.text = str;
@@ -107,10 +89,11 @@
 
 - (IBAction)post:(UIButton *)sender
 {
+    if (![self checkParams]) {
+        return;
+    }
     [self showLoadingHUD];
-    id params = @{ kTypeKey : _postAskModel.type,
-                   @"demand" : _postAskModel.demand,
-                   @"descr" : [NSString validString:_postAskModel.desc],
+    id params = @{ kDemandKey : _postAskModel.demand,
                    kIndustryKey : _postAskModel.industry,
                    kJobKey : _postAskModel.job,
                    kExpertKey : _postAskModel.expert
@@ -126,6 +109,27 @@
                                       [self showRequestNotice:response];
                                   }
                               }];
+}
+
+- (BOOL)checkParams
+{
+    BOOL result = YES;
+
+    if (_postAskModel.demand.length == 0) {
+        [self showNotice:@"需求内容不能为空喔！"];
+        result = NO;
+    } else if (_postAskModel.industry.length == 0) {
+        [self showNotice:@"发布对象的行业不能为空喔！"];
+        result = NO;
+    } else if (_postAskModel.job.length == 0) {
+        [self showNotice:@"发布对象的职务不能为空喔！"];
+        result = NO;
+    } else if (_postAskModel.expert.length == 0) {
+        [self showNotice:@"发布对象的专长不能为空喔！"];
+        result = NO;
+    }
+
+    return result;
 }
 
 #pragma mark DDChooseFavGoodViewControllerProtocol
@@ -147,48 +151,25 @@
     }
 
     NSInteger existTextNum = [textView.text length];
+    _postAskModel.demand = textView.text;
 
     self.labResidue.text = [NSString stringWithFormat:@"%ld/%d",(long)existTextNum, MaxTextNumber];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    return textView.text.length + text.length < MaxTextNumber;
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [super numberOfSectionsInTableView:tableView];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [super tableView:tableView numberOfRowsInSection:section];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
-
-    if (section == 0 && row == 1) {
-        self.hideType = !self.hideType;
-        [self.btnType sy_setImage:self.hideType ? Image(@"btn_shouqi") : Image(@"btn_xiala")];
-        [self.tableView reloadData];
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return YES;
     }
 
+    return textView.text.length + text.length <= MaxTextNumber;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
-
-    if (section == 0 && row == 2 && self.hideType) {
-        return CGFLOAT_MIN;
-    }
-
-    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    [self input:textField.tag];
+    return NO;
 }
 
 @end

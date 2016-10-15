@@ -63,17 +63,20 @@
 - (IBAction)interest:(UIButton *)sender
 {
     [self.viewController showLoadingHUD];
-    [SYRequestEngine interestAskWithId:_askInfo.aid
-                              callback:^(BOOL success, id response) {
-                                  [self.viewController hideAllHUD];
-                                  if (success) {
-                                      if ([self.delegete respondsToSelector:@selector(interest:)]) {
-                                          [self.delegete interest:_askInfo];
-                                      }
-                                  } else {
-                                      [self.viewController showRequestNotice:response];
-                                  }
-                              }];
+    if ([self.delegete respondsToSelector:@selector(interest:)]) {
+        [self.delegete interest:_askInfo];
+    }
+//    [SYRequestEngine interestAskWithId:_askInfo.aid
+//                              callback:^(BOOL success, id response) {
+//                                  [self.viewController hideAllHUD];
+//                                  if (success) {
+//                                      if ([self.delegete respondsToSelector:@selector(interest:)]) {
+//                                          [self.delegete interest:_askInfo];
+//                                      }
+//                                  } else {
+//                                      [self.viewController showRequestNotice:response];
+//                                  }
+//                              }];
 }
 
 + (CGFloat)cellHeight

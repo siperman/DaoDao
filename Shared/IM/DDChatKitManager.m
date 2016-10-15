@@ -504,7 +504,7 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
     }];
 
 
-    [self pushToViewController:conversationViewController];
+    [aNavigationController pushViewController:conversationViewController animated:YES];
 }
 
 + (void)exampleCreateGroupConversationFromViewController:(UIViewController *)fromViewController {

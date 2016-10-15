@@ -39,7 +39,7 @@
 @property (nonatomic, strong) NSNumber *lastMeetTime;//最后一次见面时间
 @property (nonatomic, strong) NSNumber *meetTimes;//见过次数
 @property (nonatomic, strong) NSNumber *integrity;//完整率
-@property (nonatomic, copy) NSString *relation;//关系
+@property (nonatomic, readonly) NSString *relation;//关系
 @end
 
 // 评价
