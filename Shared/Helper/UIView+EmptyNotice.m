@@ -18,19 +18,7 @@ static char kNoticeViewKey;
 {
     return @[
              @"img_network_error",
-             @"img_empty_product",
-             @"img_empty_free_call",
-             @"img_empty_order",
-             @"img_empty_demand",
-             @"img_empty_search_result",
-             @"img_empty_message",
-             @"img_empty_following_stores",
-             @"img_empty_faved_pattern",
-             @"img_empty_product",
-             @"img_product_sold_out",
-             @"img_empty_search_result",
-             @"img_empty_demand",
-             @"img_empty_order"
+             @"img_kong",
              ][type];
 }
 
@@ -38,19 +26,7 @@ static char kNoticeViewKey;
 {
     return @[
              @"哎呀，网络加载失败",
-             @"店主还没有上传商品呢",
-             @"暂无匿名呼叫记录",
-             @"您还没有订单",
-             @"暂无待支付订单",
-             @"抱歉，没有找到符合条件的商品",
-             @"您还没有发过消息",
-             @"您还没有关注店铺",
-             @"您还没有收藏花型",
-             @"您还没有收藏面辅料",
-             @"抱歉，商品已下架",
-             @"抱歉，没有找到符合条件的店铺",
-             @"您还没有相关的采购",
-             @"您还没有相关的订单"
+             @"暂无新的约局邀请",
              ][type];
 }
 
@@ -67,7 +43,7 @@ static char kNoticeViewKey;
         
         // imgNotice
         CGFloat imgWidth = 90.0;
-        CGFloat imgOffset = (type != SYEmptyNoticeTypeEmptyProduct ? -imgWidth : (184.0 - imgWidth) / 2.0);  // 184.0 is preview header cell height
+        CGFloat imgOffset = -imgWidth;
         UIImageView *imgNotice = [[UIImageView alloc] init];
         imgNotice.image = Image([self noticeImageNameForType:type]);
         
@@ -84,7 +60,7 @@ static char kNoticeViewKey;
         labNotice.textAlignment = NSTextAlignmentCenter;
         labNotice.numberOfLines = 0;
         labNotice.textColor = TextColor;
-        labNotice.font = Font(14);
+        labNotice.font = BigTextFont;
         labNotice.text = [self noticeTextForType:type];
         
         [noticeView addSubview:labNotice];
@@ -95,14 +71,9 @@ static char kNoticeViewKey;
             make.top.equalTo(imgNotice.mas_bottom).with.offset(10.0);
         }];
 
+        noticeView.backgroundColor = BackgroundColor;
 
-        if (type != SYEmptyNoticeTypeProductSoldOut) {
-            [self insertSubview:noticeView atIndex:0];
-        } else {
-            noticeView.backgroundColor = BackgroundColor;
-
-            [self addSubview:noticeView];
-        }
+        [self addSubview:noticeView];
     }else{
         //更新文案
         UILabel *labNotice = [noticeView subviews][1];

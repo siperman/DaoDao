@@ -23,8 +23,15 @@
 #import "LCCKExampleConstants.h"
 #import "LCCKContactManager.h"
 
-static NSString *const LCCKAPPID = @"clXLR6QANPtFlU5zjedgdHI5-gzGzoHsz";
-static NSString *const LCCKAPPKEY = @"Gneh0q1te4vtLqt92Ymi5STl";
+#import "DDConversationListCell.h"
+
+#ifdef DEBUG
+static NSString *const LCCKAPPID = @"bcBzimEL1vcQy8qPkdM064mA-gzGzoHsz";
+static NSString *const LCCKAPPKEY = @"aLnJXroXfsO3O2y0TzMeyx0z";
+#else
+static NSString *const LCCKAPPID = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
+static NSString *const LCCKAPPKEY = @"RhI4OeI0gPrOClX4oIoODjQn";
+#endif
 
 @interface DDChatKitManager () <MWPhotoBrowserDelegate>
 
@@ -49,7 +56,8 @@ static NSString *const LCCKAPPKEY = @"Gneh0q1te4vtLqt92Ymi5STl";
     //添加输入框底部插件，如需更换图标标题，可子类化，然后调用 `+registerSubclass`
     [LCCKInputViewPluginTakePhoto registerSubclass];
     [LCCKInputViewPluginPickImage registerSubclass];
-    [LCCKInputViewPluginLocation registerSubclass];
+
+    //    [LCCKInputViewPluginLocation registerSubclass];
 }
 
 + (void)invokeThisMethodInDidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -88,7 +96,7 @@ static NSString *const LCCKAPPKEY = @"Gneh0q1te4vtLqt92Ymi5STl";
 
 + (void)invokeThisMethodAfterLoginSuccessWithClientId:(NSString *)clientId success:(LCCKVoidBlock)success failed:(LCCKErrorBlock)failed  {
     [[self sharedInstance] exampleInit];
-    [[LCChatKit sharedInstance] openWithClientId:clientId callback:^(BOOL succeeded, NSError *error) {
+    [[LCChatKit sharedInstance] openWithClientId:clientId force:YES callback:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             [self saveLocalClientInfo:clientId];
             !success ?: success();
@@ -163,31 +171,24 @@ static NSString *const LCCKAPPKEY = @"Gneh0q1te4vtLqt92Ymi5STl";
             return;
         }
 
-        NSMutableArray *users = [NSMutableArray arrayWithCapacity:userIds.count];
-#warning 注意：以下方法循环模拟了通过 userIds 同步查询 users 信息的过程，这里需要替换为 App 的 API 同步查询
+        NSString *uids = [userIds componentsJoinedByString:@","];
+        [SYRequestEngine requestUserWithIds:uids callback:^(BOOL success, id response) {
+            if (success) {
+                NSArray *users = [LCCKUser parseFromDicts:response[kResultKey]];
 
-        [userIds enumerateObjectsUsingBlock:^(NSString * _Nonnull clientId, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"peerId like %@", clientId ];
-            NSArray *searchedUsers = [LCCKContactProfiles filteredArrayUsingPredicate:predicate];
-            if (searchedUsers.count > 0) {
-                NSDictionary *user = searchedUsers[0];
-                NSURL *avatarURL = [NSURL URLWithString:user[LCCKProfileKeyAvatarURL]];
-                LCCKUser *user_ = [LCCKUser userWithUserId:user[LCCKProfileKeyPeerId]
-                                                      name:user[LCCKProfileKeyName]
-                                                 avatarURL:avatarURL
-                                                  clientId:clientId];
-                [users addObject:user_];
+                !completionHandler ?: completionHandler([users copy], nil);
             } else {
-                //注意：如果网络请求失败，请至少提供 ClientId！
-                LCCKUser *user_ = [LCCKUser userWithClientId:clientId];
-                [users addObject:user_];
+                NSMutableArray *users = [NSMutableArray arrayWithCapacity:userIds.count];
+
+                [userIds enumerateObjectsUsingBlock:^(NSString * _Nonnull clientId, NSUInteger idx, BOOL * _Nonnull stop) {
+                    //注意：如果网络请求失败，请至少提供 ClientId！
+                    LCCKUser *user_ = [LCCKUser userWithClientId:clientId];
+                    [users addObject:user_];
+                }];
+                !completionHandler ?: completionHandler([users copy], nil);
             }
         }];
-        // 模拟网络延时，3秒
-        // sleep(3);
 
-#warning 重要：completionHandler 这个 Bock 必须执行，需要在你**获取到用户信息结束**后，将信息传给该Block！
-        !completionHandler ?: completionHandler([users copy], nil);
     }];
 
     [[LCChatKit sharedInstance] setDidSelectConversationsListCellBlock:^(NSIndexPath *indexPath, AVIMConversation *conversation, LCCKConversationListViewController *controller) {
@@ -265,24 +266,25 @@ static NSString *const LCCKAPPKEY = @"Gneh0q1te4vtLqt92Ymi5STl";
     //        [self examplePreviewImageMessageWithInitialIndex:index allVisibleImages:allVisibleImages allVisibleThumbs:allVisibleThumbs];
     //    }];
 
-    [[LCChatKit sharedInstance] setLongPressMessageBlock:^NSArray<UIMenuItem *> *(LCCKMessage *message, NSDictionary *userInfo) {
-        LCCKMenuItem *copyItem = [[LCCKMenuItem alloc] initWithTitle:LCCKLocalizedStrings(@"copy")
-                                                               block:^{
-                                                                   UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-                                                                   [pasteboard setString:[message text]];
-                                                               }];
-
-        LCCKConversationViewController *conversationViewController = userInfo[LCCKLongPressMessageUserInfoKeyFromController];
-        LCCKMenuItem *transpondItem = [[LCCKMenuItem alloc] initWithTitle:LCCKLocalizedStrings(@"transpond")
-                                                                    block:^{
-                                                                        [self transpondMessage:message toConversationViewController:conversationViewController];
-                                                                    }];
-        NSArray *menuItems = [NSArray array];
-        if (message.mediaType ==  kAVIMMessageMediaTypeText) {
-            menuItems = @[ copyItem, transpondItem ];
-        }
-        return menuItems;
-    }];
+    //    长按菜单
+    //    [[LCChatKit sharedInstance] setLongPressMessageBlock:^NSArray<UIMenuItem *> *(LCCKMessage *message, NSDictionary *userInfo) {
+    //        LCCKMenuItem *copyItem = [[LCCKMenuItem alloc] initWithTitle:LCCKLocalizedStrings(@"copy")
+    //                                                               block:^{
+    //                                                                   UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    //                                                                   [pasteboard setString:[message text]];
+    //                                                               }];
+    //
+    //        LCCKConversationViewController *conversationViewController = userInfo[LCCKLongPressMessageUserInfoKeyFromController];
+    //        LCCKMenuItem *transpondItem = [[LCCKMenuItem alloc] initWithTitle:LCCKLocalizedStrings(@"transpond")
+    //                                                                    block:^{
+    //                                                                        [self transpondMessage:message toConversationViewController:conversationViewController];
+    //                                                                    }];
+    //        NSArray *menuItems = [NSArray array];
+    //        if (message.mediaType ==  kAVIMMessageMediaTypeText) {
+    //            menuItems = @[ copyItem, transpondItem ];
+    //        }
+    //        return menuItems;
+    //    }];
 
     [[LCChatKit sharedInstance] setHUDActionBlock:^(UIViewController *viewController, UIView *view, NSString *title, LCCKMessageHUDActionType type) {
         switch (type) {
@@ -385,35 +387,20 @@ static NSString *const LCCKAPPKEY = @"Gneh0q1te4vtLqt92Ymi5STl";
         !completionHandler ?: completionHandler(NO, error);
     }];
 
-    //    //这里演示群定向消息：
-    //    [[LCChatKit sharedInstance] setFilterMessagesBlock:^(AVIMConversation *conversation, NSArray<AVIMTypedMessage *> *messages, LCCKFilterMessagesCompletionHandler completionHandler) {
-    //        if (conversation.lcck_type == LCCKConversationTypeSingle) {
-    //            completionHandler(messages ,nil);
-    //            return;
-    //        }
-    //        //群聊
-    //        NSMutableArray *filterMessages = [NSMutableArray arrayWithCapacity:messages.count];
-    //        for (AVIMTypedMessage *typedMessage in messages) {
-    //            if ([typedMessage.clientId isEqualToString:[LCChatKit sharedInstance].clientId]) {
-    //                [filterMessages addObject:typedMessage];
-    //                continue;
-    //            }
-    //            NSArray *visiableForPartClientIds = [typedMessage.attributes valueForKey:LCCKCustomMessageOnlyVisiableForPartClientIds];
-    //            if (!visiableForPartClientIds) {
-    //                [filterMessages addObject:typedMessage];
-    //            } else if (visiableForPartClientIds.count > 0) {
-    //                BOOL visiableForCurrentClientId = [visiableForPartClientIds containsObject:[LCChatKit sharedInstance].clientId];
-    //                if (visiableForCurrentClientId) {
-    //                    [filterMessages addObject:typedMessage];
-    //                } else {
-    //                    typedMessage.text = @"这是群定向消息，仅部分群成员可见";
-    //                    typedMessage.mediaType = kAVIMMessageMediaTypeText;
-    //                    [filterMessages addObject:typedMessage];
-    //                }
-    //            }
-    //        }
-    //        completionHandler([filterMessages copy] ,nil);
-    //    }];
+    // 自定义消息列表样式
+    [[LCCKConversationListService sharedInstance] setCellForRowBlock:^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath, AVIMConversation *conversation) {
+        DDConversationListCell *cell = [DDConversationListCell dequeueOrCreateCellByTableView:tableView];
+
+        return cell;
+    }];
+
+    [[LCCKConversationListService sharedInstance] setConfigureCellBlock:^(UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath, AVIMConversation *conversation) {
+
+    }];
+
+    [[LCCKConversationListService sharedInstance] setHeightForRowBlock:^CGFloat(UITableView *tableView, NSIndexPath *indexPath, AVIMConversation *conversation) {
+        return [DDConversationListCell cellHeight];
+    }];
 }
 
 + (void)tryPresentViewControllerViewController:(UIViewController *)viewController {

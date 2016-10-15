@@ -18,6 +18,7 @@
 		2B311C5A1D7EA2FF007CE4DD /* DDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B311C591D7EA2FF007CE4DD /* DDUser.m */; };
 		2B311C5D1D7EA31B007CE4DD /* DDUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B311C5C1D7EA31B007CE4DD /* DDUserManager.m */; };
 		2B311C601D7EA5DF007CE4DD /* DDNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B311C5F1D7EA5DF007CE4DD /* DDNotificationManager.m */; };
+		2B444B831DAB6E4F009FAA61 /* DDAskChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B444B821DAB6E4F009FAA61 /* DDAskChatManager.m */; };
 		2B49A9AF1D893EF800CD14AB /* UITextField+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B49A9AE1D893EF800CD14AB /* UITextField+Addition.m */; };
 		2B49A9B81D894F0300CD14AB /* UILabel+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B49A9B71D894F0300CD14AB /* UILabel+Addition.m */; };
 		2B6D126A1D98B586003433D0 /* DDChessPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D123D1D98B586003433D0 /* DDChessPiece.m */; };
@@ -252,6 +253,20 @@
 		2BB41A241D8153B6000C98F3 /* UIViewController+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB41A231D8153B6000C98F3 /* UIViewController+Analytics.m */; };
 		2BB41C9B1D8167D2000C98F3 /* DDChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB41C9A1D8167D2000C98F3 /* DDChatListViewController.m */; };
 		2BB41C9E1D816879000C98F3 /* DDChatRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB41C9D1D816879000C98F3 /* DDChatRoomViewController.m */; };
+		2BBB7D721DA89280005E90A5 /* DDLoadingMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D701DA89280005E90A5 /* DDLoadingMoreTableViewCell.m */; };
+		2BBB7D731DA89280005E90A5 /* DDLoadingMoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7D711DA89280005E90A5 /* DDLoadingMoreTableViewCell.xib */; };
+		2BBB7D771DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D751DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.m */; };
+		2BBB7D781DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7D761DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.xib */; };
+		2BBB7D7A1DA89C89005E90A5 /* Ask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7D791DA89C89005E90A5 /* Ask.storyboard */; };
+		2BBB7D7D1DA8C73A005E90A5 /* DDPostAskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D7C1DA8C73A005E90A5 /* DDPostAskTableViewController.m */; };
+		2BBB7D801DA8CDA3005E90A5 /* BackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D7F1DA8CDA3005E90A5 /* BackView.m */; };
+		2BBB7D831DA8F513005E90A5 /* DDReloadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D821DA8F513005E90A5 /* DDReloadView.m */; };
+		2BBB7D851DA8F524005E90A5 /* DDReloadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7D841DA8F524005E90A5 /* DDReloadView.xib */; };
+		2BBB7D881DA9E290005E90A5 /* DDPostAskViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D871DA9E290005E90A5 /* DDPostAskViewModel.m */; };
+		2BBB7D901DAA2032005E90A5 /* DDAskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D8F1DAA2032005E90A5 /* DDAskDetailViewController.m */; };
+		2BBB7D931DAA3DD1005E90A5 /* DDConversationListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D921DAA3DD1005E90A5 /* DDConversationListViewModel.m */; };
+		2BBB7D981DAA4443005E90A5 /* DDConversationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D961DAA4443005E90A5 /* DDConversationListCell.m */; };
+		2BBB7D991DAA4443005E90A5 /* DDConversationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7D971DAA4443005E90A5 /* DDConversationListCell.xib */; };
 		2BCDD6911D79597000BADD43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6901D79597000BADD43 /* main.m */; };
 		2BCDD6941D79597000BADD43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6931D79597000BADD43 /* AppDelegate.m */; };
 		2BCDD6971D79597000BADD43 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6961D79597000BADD43 /* ViewController.m */; };
@@ -297,6 +312,8 @@
 		2B311C5C1D7EA31B007CE4DD /* DDUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserManager.m; sourceTree = "<group>"; };
 		2B311C5E1D7EA5DF007CE4DD /* DDNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNotificationManager.h; sourceTree = "<group>"; };
 		2B311C5F1D7EA5DF007CE4DD /* DDNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDNotificationManager.m; sourceTree = "<group>"; };
+		2B444B811DAB6E4F009FAA61 /* DDAskChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskChatManager.h; sourceTree = "<group>"; };
+		2B444B821DAB6E4F009FAA61 /* DDAskChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskChatManager.m; sourceTree = "<group>"; };
 		2B49A9901D87A5B600CD14AB /* CategoryHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryHeaders.h; sourceTree = "<group>"; };
 		2B49A9AD1D893EF800CD14AB /* UITextField+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Addition.h"; sourceTree = "<group>"; };
 		2B49A9AE1D893EF800CD14AB /* UITextField+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Addition.m"; sourceTree = "<group>"; };
@@ -782,6 +799,29 @@
 		2BB41C9A1D8167D2000C98F3 /* DDChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatListViewController.m; sourceTree = "<group>"; };
 		2BB41C9C1D816879000C98F3 /* DDChatRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatRoomViewController.h; sourceTree = "<group>"; };
 		2BB41C9D1D816879000C98F3 /* DDChatRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatRoomViewController.m; sourceTree = "<group>"; };
+		2BBB7D6F1DA89280005E90A5 /* DDLoadingMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLoadingMoreTableViewCell.h; sourceTree = "<group>"; };
+		2BBB7D701DA89280005E90A5 /* DDLoadingMoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLoadingMoreTableViewCell.m; sourceTree = "<group>"; };
+		2BBB7D711DA89280005E90A5 /* DDLoadingMoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDLoadingMoreTableViewCell.xib; sourceTree = "<group>"; };
+		2BBB7D741DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLoadingMoreCollectionViewCell.h; sourceTree = "<group>"; };
+		2BBB7D751DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLoadingMoreCollectionViewCell.m; sourceTree = "<group>"; };
+		2BBB7D761DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDLoadingMoreCollectionViewCell.xib; sourceTree = "<group>"; };
+		2BBB7D791DA89C89005E90A5 /* Ask.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ask.storyboard; sourceTree = "<group>"; };
+		2BBB7D7B1DA8C73A005E90A5 /* DDPostAskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPostAskTableViewController.h; sourceTree = "<group>"; };
+		2BBB7D7C1DA8C73A005E90A5 /* DDPostAskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPostAskTableViewController.m; sourceTree = "<group>"; };
+		2BBB7D7E1DA8CDA3005E90A5 /* BackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackView.h; sourceTree = "<group>"; };
+		2BBB7D7F1DA8CDA3005E90A5 /* BackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackView.m; sourceTree = "<group>"; };
+		2BBB7D811DA8F513005E90A5 /* DDReloadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDReloadView.h; sourceTree = "<group>"; };
+		2BBB7D821DA8F513005E90A5 /* DDReloadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDReloadView.m; sourceTree = "<group>"; };
+		2BBB7D841DA8F524005E90A5 /* DDReloadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDReloadView.xib; sourceTree = "<group>"; };
+		2BBB7D861DA9E290005E90A5 /* DDPostAskViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPostAskViewModel.h; sourceTree = "<group>"; };
+		2BBB7D871DA9E290005E90A5 /* DDPostAskViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPostAskViewModel.m; sourceTree = "<group>"; };
+		2BBB7D8E1DAA2032005E90A5 /* DDAskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskDetailViewController.h; sourceTree = "<group>"; };
+		2BBB7D8F1DAA2032005E90A5 /* DDAskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskDetailViewController.m; sourceTree = "<group>"; };
+		2BBB7D911DAA3DD1005E90A5 /* DDConversationListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDConversationListViewModel.h; sourceTree = "<group>"; };
+		2BBB7D921DAA3DD1005E90A5 /* DDConversationListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDConversationListViewModel.m; sourceTree = "<group>"; };
+		2BBB7D951DAA4443005E90A5 /* DDConversationListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDConversationListCell.h; sourceTree = "<group>"; };
+		2BBB7D961DAA4443005E90A5 /* DDConversationListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDConversationListCell.m; sourceTree = "<group>"; };
+		2BBB7D971DAA4443005E90A5 /* DDConversationListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDConversationListCell.xib; sourceTree = "<group>"; };
 		2BCDD68C1D79597000BADD43 /* DaoDao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaoDao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BCDD6901D79597000BADD43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2BCDD6921D79597000BADD43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -879,6 +919,7 @@
 				2B6D12371D98B586003433D0 /* View */,
 				2B6D12381D98B586003433D0 /* ViewController */,
 				2B6D12391D98B586003433D0 /* ViewModel */,
+				2BBB7D791DA89C89005E90A5 /* Ask.storyboard */,
 			);
 			path = Ask;
 			sourceTree = "<group>";
@@ -893,6 +934,10 @@
 		2B6D12381D98B586003433D0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2BBB7D7B1DA8C73A005E90A5 /* DDPostAskTableViewController.h */,
+				2BBB7D7C1DA8C73A005E90A5 /* DDPostAskTableViewController.m */,
+				2BBB7D8E1DAA2032005E90A5 /* DDAskDetailViewController.h */,
+				2BBB7D8F1DAA2032005E90A5 /* DDAskDetailViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -900,6 +945,8 @@
 		2B6D12391D98B586003433D0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2BBB7D861DA9E290005E90A5 /* DDPostAskViewModel.h */,
+				2BBB7D871DA9E290005E90A5 /* DDPostAskViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1080,6 +1127,7 @@
 		2B75AB111D7FFF4E0074119E /* Customize */ = {
 			isa = PBXGroup;
 			children = (
+				2BBB7D941DAA440D005E90A5 /* CustomizedListCell */,
 				2B75AB121D7FFF4E0074119E /* CustomizedConversationBackground */,
 				2B75AB151D7FFF4E0074119E /* CustomizedMessage */,
 			);
@@ -1313,10 +1361,14 @@
 				2B75AB0C1D7FFF4E0074119E /* Class */,
 				2B75AB091D7FF8F90074119E /* DDChatKitManager.h */,
 				2B75AB0A1D7FF8F90074119E /* DDChatKitManager.m */,
+				2BBB7D911DAA3DD1005E90A5 /* DDConversationListViewModel.h */,
+				2BBB7D921DAA3DD1005E90A5 /* DDConversationListViewModel.m */,
 				2BB41C991D8167D2000C98F3 /* DDChatListViewController.h */,
 				2BB41C9A1D8167D2000C98F3 /* DDChatListViewController.m */,
 				2BB41C9C1D816879000C98F3 /* DDChatRoomViewController.h */,
 				2BB41C9D1D816879000C98F3 /* DDChatRoomViewController.m */,
+				2B444B811DAB6E4F009FAA61 /* DDAskChatManager.h */,
+				2B444B821DAB6E4F009FAA61 /* DDAskChatManager.m */,
 			);
 			path = IM;
 			sourceTree = "<group>";
@@ -2108,6 +2160,17 @@
 			children = (
 				2B311C521D7E6A5E007CE4DD /* SepView.h */,
 				2B311C531D7E6A5E007CE4DD /* SepView.m */,
+				2BBB7D7E1DA8CDA3005E90A5 /* BackView.h */,
+				2BBB7D7F1DA8CDA3005E90A5 /* BackView.m */,
+				2BBB7D6F1DA89280005E90A5 /* DDLoadingMoreTableViewCell.h */,
+				2BBB7D701DA89280005E90A5 /* DDLoadingMoreTableViewCell.m */,
+				2BBB7D711DA89280005E90A5 /* DDLoadingMoreTableViewCell.xib */,
+				2BBB7D741DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.h */,
+				2BBB7D751DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.m */,
+				2BBB7D761DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.xib */,
+				2BBB7D811DA8F513005E90A5 /* DDReloadView.h */,
+				2BBB7D821DA8F513005E90A5 /* DDReloadView.m */,
+				2BBB7D841DA8F524005E90A5 /* DDReloadView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2186,6 +2249,16 @@
 				2BB41A231D8153B6000C98F3 /* UIViewController+Analytics.m */,
 			);
 			path = Analytics;
+			sourceTree = "<group>";
+		};
+		2BBB7D941DAA440D005E90A5 /* CustomizedListCell */ = {
+			isa = PBXGroup;
+			children = (
+				2BBB7D951DAA4443005E90A5 /* DDConversationListCell.h */,
+				2BBB7D961DAA4443005E90A5 /* DDConversationListCell.m */,
+				2BBB7D971DAA4443005E90A5 /* DDConversationListCell.xib */,
+			);
+			path = CustomizedListCell;
 			sourceTree = "<group>";
 		};
 		2BCDD6831D79596F00BADD43 = {
@@ -2366,15 +2439,20 @@
 				2BB3D7A61D7D6F8C00FFDC0E /* lookup.png in Resources */,
 				2BF86C801D9511B700E06BF8 /* Shared.storyboard in Resources */,
 				2BA3F2E31D911A4A00094E0A /* CityData.plist in Resources */,
+				2BBB7D7A1DA89C89005E90A5 /* Ask.storyboard in Resources */,
+				2BBB7D851DA8F524005E90A5 /* DDReloadView.xib in Resources */,
 				2BB3D7D91D7D6F8D00FFDC0E /* TOCropViewControllerLocalizable.strings in Resources */,
 				2B75AB521D7FFF4E0074119E /* LCCKLoginViewController.xib in Resources */,
 				2BB3D7A81D7D6F8C00FFDC0E /* lookup_miss_etikate.png in Resources */,
 				2BDB10271D9BBC9500F2C27C /* DDFillJobIndustryViewController.xib in Resources */,
+				2BBB7D731DA89280005E90A5 /* DDLoadingMoreTableViewCell.xib in Resources */,
 				2BB3D7AE1D7D6F8C00FFDC0E /* HZAreaPickerView.xib in Resources */,
+				2BBB7D991DAA4443005E90A5 /* DDConversationListCell.xib in Resources */,
 				2B75AB591D7FFF4E0074119E /* Assets.xcassets in Resources */,
 				2BB3D7AC1D7D6F8C00FFDC0E /* city.plist in Resources */,
 				2BCDD69A1D79597000BADD43 /* Main.storyboard in Resources */,
 				2BB3D78E1D7D6F8C00FFDC0E /* DBCamera.strings in Resources */,
+				2BBB7D781DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.xib in Resources */,
 				2BB3D7EC1D7D6F8D00FFDC0E /* UMSCommentInputControlleriPad.xib in Resources */,
 				2BB3D7EE1D7D6F8D00FFDC0E /* UMShareEditViewControlleriPad.xib in Resources */,
 				2B6D126E1D98B586003433D0 /* DDChooseImageCollectionViewCell.xib in Resources */,
@@ -2439,10 +2517,12 @@
 				2BB3D7B31D7D6F8C00FFDC0E /* MGSwipeButton.m in Sources */,
 				2BB3D7791D7D6F8C00FFDC0E /* CTAssetsGroupViewCell.m in Sources */,
 				2BB3D7A31D7D6F8C00FFDC0E /* FSImageView.m in Sources */,
+				2BBB7D931DAA3DD1005E90A5 /* DDConversationListViewModel.m in Sources */,
 				2BB3D77B1D7D6F8C00FFDC0E /* CTAssetsPageViewController.m in Sources */,
 				2BF86C8B1D95179600E06BF8 /* NSString+NSCalendarExtension.m in Sources */,
 				2BB3D7921D7D6F8C00FFDC0E /* DBCollectionViewCell.m in Sources */,
 				2BB3D7881D7D6F8C00FFDC0E /* DBCameraBaseCropViewController.m in Sources */,
+				2BBB7D7D1DA8C73A005E90A5 /* DDPostAskTableViewController.m in Sources */,
 				2BB3D7991D7D6F8C00FFDC0E /* DBCameraLoadingView.m in Sources */,
 				2BB3D77F1D7D6F8C00FFDC0E /* CTAssetsViewController.m in Sources */,
 				2BB3D7E01D7D6F8D00FFDC0E /* TOCropScrollView.m in Sources */,
@@ -2530,7 +2610,9 @@
 				2BB3D75D1D7D6F8C00FFDC0E /* UITableView+Addition.m in Sources */,
 				2B6D127C1D98B586003433D0 /* LoginViewModel.m in Sources */,
 				2BB3D7CB1D7D6F8D00FFDC0E /* NSObject+PerformBlockAfterDelay.m in Sources */,
+				2BBB7D831DA8F513005E90A5 /* DDReloadView.m in Sources */,
 				2BB3D7781D7D6F8C00FFDC0E /* CTAssetScrollView.m in Sources */,
+				2BBB7D981DAA4443005E90A5 /* DDConversationListCell.m in Sources */,
 				2BB3D74E1D7D6F8C00FFDC0E /* SYScrollViewDelegateWrapper.m in Sources */,
 				2BB3D7801D7D6F8C00FFDC0E /* CTAssetsViewControllerTransition.m in Sources */,
 				2BB3D7441D7D6F8C00FFDC0E /* NSObject+Addition.m in Sources */,
@@ -2553,6 +2635,7 @@
 				2B75AB541D7FFF4E0074119E /* DEMODataSource.m in Sources */,
 				2BB3D7671D7D6F8C00FFDC0E /* CoreFoundationDataSource.m in Sources */,
 				2BB3D76E1D7D6F8C00FFDC0E /* UIImage+ImageEffects.m in Sources */,
+				2BBB7D881DA9E290005E90A5 /* DDPostAskViewModel.m in Sources */,
 				2BA3F2E71D911A4A00094E0A /* GYZCityHeaderView.m in Sources */,
 				2B311C541D7E6A5E007CE4DD /* SepView.m in Sources */,
 				2BCDD6941D79597000BADD43 /* AppDelegate.m in Sources */,
@@ -2560,7 +2643,9 @@
 				2BB3D7871D7D6F8C00FFDC0E /* UIViewController+UIViewController_FullScreen.m in Sources */,
 				2BB3D76F1D7D6F8C00FFDC0E /* UIImage+ImageWithColor.m in Sources */,
 				2BB3D7AD1D7D6F8C00FFDC0E /* HZAreaPickerView.m in Sources */,
+				2BBB7D901DAA2032005E90A5 /* DDAskDetailViewController.m in Sources */,
 				2BB3D7981D7D6F8C00FFDC0E /* DBCameraGridView.m in Sources */,
+				2BBB7D801DA8CDA3005E90A5 /* BackView.m in Sources */,
 				2BB3D7B41D7D6F8C00FFDC0E /* MGSwipeTableCell.m in Sources */,
 				2BB3D7CE1D7D6F8D00FFDC0E /* SSApplicationInfo.m in Sources */,
 				2B311C601D7EA5DF007CE4DD /* DDNotificationManager.m in Sources */,
@@ -2582,6 +2667,7 @@
 				2B75AB491D7FFF4E0074119E /* LCCKUser.m in Sources */,
 				2BB3D7D61D7D6F8D00FFDC0E /* SSProcessInfo.m in Sources */,
 				2BF86C7B1D9510A500E06BF8 /* DDCalendarViewController.m in Sources */,
+				2BBB7D771DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.m in Sources */,
 				2BB3D7631D7D6F8C00FFDC0E /* UIViewController+EmptyNotice.m in Sources */,
 				2B75AB4F1D7FFF4E0074119E /* LCCKVCardView.m in Sources */,
 				2BB3D7831D7D6F8C00FFDC0E /* UIImage+CTAssetsPickerController.m in Sources */,
@@ -2647,6 +2733,8 @@
 				2BB3D7D01D7D6F8D00FFDC0E /* SSCarrierInfo.m in Sources */,
 				2BB3D7DE1D7D6F8D00FFDC0E /* TOCropViewController.m in Sources */,
 				2BB3D7BD1D7D6F8C00FFDC0E /* SDWebImageManager+MJ.m in Sources */,
+				2B444B831DAB6E4F009FAA61 /* DDAskChatManager.m in Sources */,
+				2BBB7D721DA89280005E90A5 /* DDLoadingMoreTableViewCell.m in Sources */,
 				2B6D126D1D98B586003433D0 /* DDChooseImageCollectionViewCell.m in Sources */,
 				2B311C511D7E631D007CE4DD /* SYRequestEngine+User.m in Sources */,
 				2BB3D7DF1D7D6F8D00FFDC0E /* TOCropOverlayView.m in Sources */,
@@ -2815,6 +2903,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 36XGTJ8RE9;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "DaoDao/DaoDao-Prefix.pch";
 				INFOPLIST_FILE = DaoDao/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2835,6 +2924,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 36XGTJ8RE9;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "DaoDao/DaoDao-Prefix.pch";
 				INFOPLIST_FILE = DaoDao/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

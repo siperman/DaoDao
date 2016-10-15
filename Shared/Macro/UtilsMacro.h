@@ -24,7 +24,7 @@ return; \
 // Color
 #define ColorHex(hex) [UIColor colorFromHexRGB:hex alpha:1]
 #define MainColor ColorHex(@"3f2622")
-#define SecondColor ColorHex(@"c2a05f")
+#define SecondColor ColorHex(@"f87127")
 #define TitleColor ColorHex(@"ffdb8f")
 #define ClickColor ColorHex(@"6b4f4a")
 #define CCCColor ColorHex(@"cccccc")
@@ -33,9 +33,9 @@ return; \
 #define SepColor ColorHex(@"e9e9e9")
 
 // Font
-#define TitleTextFont Font(17)
-#define BigTextFont Font(16)
-#define NormalTextFont Font(14)
+#define TitleTextFont Font(18)
+#define BigTextFont Font(17)
+#define NormalTextFont Font(15)
 #define SmallTextFont Font(12)
 #define MiniFont Font(10)
 

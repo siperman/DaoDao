@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DDAskInfoProtocol <NSObject>
+
+- (void)interest:(DDAsk *)askInfo;
+- (void)disinterest:(DDAsk *)askInfo;
+
+@end
+
 @interface DDAskInfoTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) DDAsk *askInfo;
+@property (nonatomic, weak) id<DDAskInfoProtocol> delegete;
+
++ (CGFloat)cellHeight;
+
 @end

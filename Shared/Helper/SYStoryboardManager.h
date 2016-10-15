@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UIStoryboard *mainSB;
 @property (nonatomic, strong) UIStoryboard *loginSB;
+@property (nonatomic, strong) UIStoryboard *askSB;
 
 + (instancetype)manager;
 

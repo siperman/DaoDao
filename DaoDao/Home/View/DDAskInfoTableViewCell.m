@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labName; // 花名
 @property (weak, nonatomic) IBOutlet UILabel *labGrade; // 届别
 @property (weak, nonatomic) IBOutlet UILabel *labDemand; // 需求
-@property (weak, nonatomic) IBOutlet UILabel *labDesc; // 详细描述
+@property (weak, nonatomic) IBOutlet UILabel *labRelation; // 关系
 @end
 
 @implementation DDAskInfoTableViewCell
@@ -26,6 +26,7 @@
     [super awakeFromNib];
     // Initialization code
     [self.bigView shadowStyle];
+    [self.labDemand normalTextStyle];
 }
 
 - (void)setAskInfo:(DDAsk *)askInfo
@@ -37,16 +38,47 @@
 
         self.labName.text = askInfo.user.nickName;
         self.labGrade.text = MajorGrade(askInfo.user.major, askInfo.user.grade);
-        self.labDemand.text = [NSString stringWithFormat:@"%@ | %@", askInfo.type, askInfo.demand];
-        self.labDesc.text = askInfo.descr;
+        self.labDemand.text = askInfo.demand;
+        self.labRelation.text = askInfo.user.relation;
         [self layoutIfNeeded];
     }
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (IBAction)disinterest:(UIButton *)sender
+{
+    [self.viewController showLoadingHUD];
+    [SYRequestEngine disinterestAskWithId:_askInfo.aid
+                                 callback:^(BOOL success, id response) {
+                                     [self.viewController hideAllHUD];
+                                     if (success) {
+                                         if ([self.delegete respondsToSelector:@selector(disinterestAskWithId:callback:)]) {
+                                             [self.delegete disinterest:_askInfo];
+                                         }
+                                     } else {
+                                         [self.viewController showRequestNotice:response];
+                                     }
+                                 }];
+}
 
-    // Configure the view for the selected state
+- (IBAction)interest:(UIButton *)sender
+{
+    [self.viewController showLoadingHUD];
+    [SYRequestEngine interestAskWithId:_askInfo.aid
+                              callback:^(BOOL success, id response) {
+                                  [self.viewController hideAllHUD];
+                                  if (success) {
+                                      if ([self.delegete respondsToSelector:@selector(interest:)]) {
+                                          [self.delegete interest:_askInfo];
+                                      }
+                                  } else {
+                                      [self.viewController showRequestNotice:response];
+                                  }
+                              }];
+}
+
++ (CGFloat)cellHeight
+{
+    return 186.0;
 }
 
 @end

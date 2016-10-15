@@ -11,4 +11,5 @@
 @interface DDChessDetailViewController : UITableViewController
 
 @property (nonatomic, strong) NSString *cid; // 棋子id
++ (instancetype)viewController;
 @end

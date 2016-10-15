@@ -55,26 +55,24 @@
 - (IBAction)requestAuthCode:(id)sender
 {
     if (self.leftTime <= 1) {
-        [self startCoundDown];
-    }
+        if ([self checkInput:self.txtPhone.text valueForType:kPhoneKey]) {
 
-//    if ([self checkInput:self.txtPhone.text valueForType:kUserName]) {
-//
-//        [self.navigationController showLoadingHUD];
-//
-//        [SYRequestEngine requestVerifyCodeWithParams:@{
-//                                                       @"mobilePhone" : self.txtPhone.text,
-//                                                       @"key" : [self.txtPhone.text stringFromMD5],
-//                                                       @"type" : @"sms",
-//                                                       }
-//                                            callback:^(BOOL success, NSInteger httpCode, id response) {
-//                                                if (success) {
-//                                                    [self startCoundDown];
-//                                                }
-//
-//                                                [self.navigationController showRequestNotice:response];
-//                                            }];
-//    }
+            [self.navigationController showLoadingHUD];
+
+            [SYRequestEngine requestVerifyCodeWithParams:@{
+                                                           @"mobilePhone" : self.txtPhone.text,
+                                                           @"key" : [self.txtPhone.text stringFromMD5],
+                                                           @"type" : @"sms",
+                                                           }
+                                                callback:^(BOOL success, id response) {
+                                                    if (success) {
+                                                        [self startCoundDown];
+                                                    }
+
+                                                    [self.navigationController showRequestNotice:response];
+                                                }];
+        }
+    }
 }
 
 #pragma mark - SMS verify
@@ -121,16 +119,19 @@
 
 - (IBAction)login:(UIButton *)sender
 {
-    NSLog(@"login");
-//    [self showLoadingHUD];
-//
-//    sleep(1000);
-//    [self hideAllHUD];
-//    DDUser *user = [[DDUser alloc] init];
-//    user.nickname = @"nickname";
-//    user.uid = @"123456";
-//    [DDUserManager manager].user = user;
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self showLoadingHUD];
+
+    [SYRequestEngine userLoginWithPhone:self.viewModel.phone code:self.viewModel.code callback:^(BOOL success, id response) {
+        if (success) {
+            [DDUserManager manager].user = [DDUser fromDict:response[kObjKey]];
+            [self showNotice:kLoginSuccessNotice];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDefaultHideNoticeIntervel * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            });
+        } else {
+            [self showRequestNotice:response];
+        }
+    }];
 }
 
 

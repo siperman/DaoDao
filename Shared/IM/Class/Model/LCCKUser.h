@@ -14,7 +14,7 @@
     #import "LCChatKit.h"
 #endif
 
-@interface LCCKUser : NSObject <LCCKUserDelegate>
+@interface LCCKUser : MTLModel <MTLJSONSerializing, LCCKUserDelegate>
 
 /**
  *  检查与 aPerson 是否表示同一对象

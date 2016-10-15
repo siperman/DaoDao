@@ -82,26 +82,26 @@
 - (IBAction)next:(UIButton *)sender
 {
 
-    DDRegisterStepThreeViewController *vc = [DDRegisterStepThreeViewController viewController];
-    vc.inviteCode = self.inviteCode;
-    vc.user = self.user;
-    vc.authCode = self.txtAuthCode.text;
-    [self.navigationController pushViewController:vc animated:YES];
-//    [self.view endEditing:YES];
-//
-//    [self.navigationController showLoadingHUD];
-//    [SYRequestEngine checkVerifyCode:self.txtPhone.text code:self.txtAuthCode.text callback:^(BOOL success, id response) {
-//        [self.navigationController hideAllHUD];
-//        if (success) {
-//            DDRegisterStepThreeViewController *vc = [DDRegisterStepThreeViewController viewController];
-//            vc.inviteCode = self.inviteCode;
-//            vc.user = self.user;
-//            vc.authCode = self.txtAuthCode.text;
-//            [self.navigationController pushViewController:vc animated:YES];
-//        } else {
-//            [self.navigationController showRequestNotice:response];
-//        }
-//    }];
+//    DDRegisterStepThreeViewController *vc = [DDRegisterStepThreeViewController viewController];
+//    vc.inviteCode = self.inviteCode;
+//    vc.user = self.user;
+//    vc.authCode = self.txtAuthCode.text;
+//    [self.navigationController pushViewController:vc animated:YES];
+    [self.view endEditing:YES];
+
+    [self.navigationController showLoadingHUD];
+    [SYRequestEngine checkVerifyCode:self.txtPhone.text code:self.txtAuthCode.text callback:^(BOOL success, id response) {
+        [self.navigationController hideAllHUD];
+        if (success) {
+            DDRegisterStepThreeViewController *vc = [DDRegisterStepThreeViewController viewController];
+            vc.inviteCode = self.inviteCode;
+            vc.user = self.user;
+            vc.authCode = self.txtAuthCode.text;
+            [self.navigationController pushViewController:vc animated:YES];
+        } else {
+            [self.navigationController showRequestNotice:response];
+        }
+    }];
 }
 
 #pragma mark - Data

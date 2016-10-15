@@ -10,19 +10,7 @@
 
 typedef NS_ENUM(NSUInteger, SYEmptyNoticeType) {
     SYEmptyNoticeTypeNetworkError,
-    SYEmptyNoticeTypeEmptyProduct,
-    SYEmptyNoticeTypeEmptyFreeCall,
-    SYEmptyNoticeTypeEmptyOrder,
-    SYEmptyNoticeTypeEmptyDemand,
-    SYEmptyNoticeTypeEmptySearchResult,
-    SYEmptyNoticeTypeEmptyMessage,
-    SYEmptyNoticeTypeEmptyFollowingStores,
-    SYEmptyNoticeTypeEmptyFavedPattern,
-    SYEmptyNoticeTypeEmptyFavedCommodities,
-    SYEmptyNoticeTypeProductSoldOut,
-    SYEmptyNoticeTypeEmptySearchStore,
-    SYEmptyNoticeTypeEmptyTypeDemand,
-    SYEmptyNoticeTypeEmptyTypeOrder
+    SYEmptyNoticeTypeEmptyAsk,
 };
 
 @interface UIView (EmptyNotice)

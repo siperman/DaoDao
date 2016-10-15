@@ -20,6 +20,21 @@
 @synthesize avatarURL = _avatarURL;
 @synthesize clientId = _clientId;
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{
+             @"userId" : @"id",
+             @"userId" : @"id",
+             @"clientId" : @"title",
+             @"avatarURL" : @"headUrl",
+             };
+}
+
++ (NSValueTransformer *)avatarURLJSONTransformer
+{
+    return [self URLJSONTransformer];
+}
+
 - (instancetype)initWithUserId:(NSString *)userId name:(NSString *)name avatarURL:(NSURL *)avatarURL clientId:(NSString *)clientId {
     self = [super init];
     if (!self) {

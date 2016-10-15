@@ -10,7 +10,7 @@
 
 @interface DDRegisterStepThreeViewController : UIViewController
 
-@property (nonatomic, strong) DDUser *user;
+@property (nonatomic, copy) DDUser *user;
 @property (nonatomic, strong) NSString *authCode; // 短信验证码
 @property (nonatomic, strong) NSString *inviteCode; // 邀请码
 

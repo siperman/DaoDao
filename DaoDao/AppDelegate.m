@@ -11,6 +11,7 @@
 #import "SYImageCache.h"
 #import "SYPrefManager.h"
 #import "DDConfig.h"
+#import "DDChatKitManager.h"
 
 @interface AppDelegate ()
 
@@ -27,23 +28,13 @@
     // Setting
     {
         [[SYImageCache sharedInstance] setup];
-
-//        [iVersion sharedInstance].delegate = self;
     }
 
 
-//    // LeanCloud
-//    {
-//#if DEBUG
-//        NSString *LCAppID = @"mbg71pbet86aftm7hkis54e0x195iwgl720otx2mmkqrp97z";
-//        NSString *LCAppKey = @"eakbm5hrpegqkiq7n70v89bvhxa8s8gwckvp4wztjur1b3fr";
-//#else
-//        NSString *LCAppID = @"1uglj479yoah6wh37oftjsiuvw84yr6ceygrvu3pvef0aflq";
-//        NSString *LCAppKey = @"oi4vt7vbezgbwo9cs6j7xrptaeghsqfldk20lpl44hr1rfp8";
-//#endif
-//        [AVOSCloud setApplicationId:LCAppID clientKey:LCAppKey];
-//        [CDChatManager manager].userDelegate = [[CDUserFactory alloc] init];
-//    }
+    // LeanCloud
+    {
+        [DDChatKitManager invokeThisMethodInDidFinishLaunching];
+    }
 
     // Umeng
     {
@@ -86,8 +77,8 @@
     // 导航标题
     if ([UINavigationBar conformsToProtocol:@protocol(UIAppearanceContainer)]) {
         [UINavigationBar appearance].tintColor = [UIColor whiteColor];
-        [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:17], NSForegroundColorAttributeName : TitleColor}];
-        [[UINavigationBar appearance] setBarTintColor:MainColor];
+        [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : TitleTextFont, NSForegroundColorAttributeName : TitleColor}];
+        [[UINavigationBar appearance] setBarTintColor:ColorHex(@"100402")];
         [[UINavigationBar appearance] setTranslucent:YES];
     }
 
@@ -106,9 +97,18 @@
     [[UIPageControl appearance] setCurrentPageIndicatorTintColor:SecondColor];
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [DDChatKitManager invokeThisMethodInDidRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [DDChatKitManager invokeThisMethodInApplication:application didReceiveRemoteNotification:userInfo];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [DDChatKitManager invokeThisMethodInApplicationWillResignActive:application];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -125,7 +125,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [DDChatKitManager invokeThisMethodInApplicationWillTerminate:application];
 }
 
 @end

@@ -107,7 +107,7 @@ static NSString * const kUserVerifySMSPath                     = @"/check/verify
 
 + (void)checkVerifyCode:(NSString *)phone code:(NSString *)code callback:(AZNetworkResultBlock)callback
 {
-    NSDictionary *params = @{ @"name" : phone,
+    NSDictionary *params = @{ kPhoneKey : phone,
                               @"code" : code,
                               };
     [SYNetworkManager startRequestWithUrl:RequestUrlFactory(kUserVerifySMSPath)

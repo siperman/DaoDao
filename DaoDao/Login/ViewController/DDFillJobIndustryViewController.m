@@ -19,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *labOne;
 @property (weak, nonatomic) IBOutlet UILabel *labTwo;
 @property (weak, nonatomic) IBOutlet UILabel *labThree;
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UIView *inputView;
+@property (weak, nonatomic) IBOutlet UIButton *btnChoice;
+@property (weak, nonatomic) IBOutlet UILabel *labTop;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableTop;
 
@@ -51,7 +55,12 @@
         self.labOne.text = @"行业一";
         self.labTwo.text = @"行业二";
         self.labThree.text = @"行业三";
+        self.labTop.text = @"行业不限";
     }
+    [self.btnChoice setImage:Image(@"icon_choice") forState:UIControlStateNormal];
+    [self.btnChoice setImage:Image(@"icon_choiceSure") forState:UIControlStateSelected];
+
+    self.topView.hidden = !self.showTopView;
     self.searchArray = [NSMutableArray array];
     self.tableView.hidden = YES;
     self.tableView.delegate = self;
@@ -81,18 +90,29 @@
 - (void)fillDone
 {
     if (self.callback) {
-        NSMutableString *str = [NSMutableString stringWithString:@""];
-        for (NSString *text in @[self.txtOne.text,
-                                 self.txtTwo.text,
-                                 self.txtThree.text]) {
-            if (text.length > 0) {
-                [str appendFormat:@"%@,", text];
+        if (self.btnChoice.selected) {
+            self.callback([self.labTop.text copy]);
+        } else {
+            NSMutableString *str = [NSMutableString stringWithString:@""];
+            for (NSString *text in @[self.txtOne.text,
+                                     self.txtTwo.text,
+                                     self.txtThree.text]) {
+                if (text.length > 0) {
+                    [str appendFormat:@"%@,", text];
+                }
             }
+            !str.length ?: [str deleteCharactersInRange:NSMakeRange(str.length - 1, 1)];
+            self.callback(str);
         }
-        !str.length ?: [str deleteCharactersInRange:NSMakeRange(str.length - 1, 1)];
-        self.callback(str);
     }
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)clickBtn:(UIButton *)sender
+{
+    [self.view endEditing:YES];
+    sender.selected = !sender.selected;
+    self.navigationItem.rightBarButtonItem.enabled = sender.selected;
 }
 
 #pragma mark UITextFieldDelegate

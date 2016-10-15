@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 @property (weak, nonatomic) IBOutlet UIButton *btnNext;
 @property (nonatomic, strong) NSArray <ChooseImageViewModel*> *data;
+@property (nonatomic) NSUInteger selectCount;
 @end
 
 @implementation DDChooseFavGoodViewController
@@ -108,9 +109,14 @@
     ChooseImageViewModel *model = [self.data objectAtIndex:row];
 
     model.selected = !model.selected;
+    model.selected ? _selectCount++ : _selectCount--;
     [collectionView reloadItemsAtIndexPaths:@[indexPath]];
 
-    self.btnNext.enabled = !self.btnNext.enabled;
+    if (self.isChooseFav) {
+        self.btnNext.enabled = (_selectCount >= 3);
+    } else {
+        self.btnNext.enabled = (_selectCount > 0 && _selectCount <= 3);
+    }
 }
 
 @end

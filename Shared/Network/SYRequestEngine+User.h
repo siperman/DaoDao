@@ -14,6 +14,8 @@
 
 + (void)requestUserWithId:(NSString *)uid callback:(AZNetworkResultBlock)callback;
 
++ (void)requestUserWithIds:(NSString *)uids callback:(AZNetworkResultBlock)callback;
+
 + (void)updateUserInfo:(NSDictionary *)params
                 avatar:(UIImage *)avatar
               callback:(AZNetworkResultBlock)callback;

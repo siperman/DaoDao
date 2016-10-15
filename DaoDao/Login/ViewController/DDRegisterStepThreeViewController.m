@@ -44,7 +44,6 @@
     [self.labName normalTextStyle];
     [self.bigView shadowStyle];
     [self.btnNext actionStyle];
-    [self.btnAvatar sy_round];
 
     [@[self.txtName, self.txtJob, self.txtIndustry, self.txtYear] enumerateObjectsUsingBlock:^(UITextField *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj normalStyle];

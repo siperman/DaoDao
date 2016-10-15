@@ -7,10 +7,13 @@
 //
 
 #import "DDChessDetailViewController.h"
-#import "AppMacro.h"
+#import "DDAskInfoTableViewCell.h"
+#import "DDReloadView.h"
+#import "DDChatKitManager.h"
 
-@interface DDChessDetailViewController ()
+@interface DDChessDetailViewController () <DDAskInfoProtocol>
 
+@property (nonatomic, strong) DDReloadView *reloadView;
 @property (nonatomic, strong) NSMutableArray <DDAsk *>* answerList;
 
 @property (nonatomic, assign) NSUInteger currentPage;
@@ -24,6 +27,7 @@
 + (instancetype)viewController
 {
     DDChessDetailViewController *vc = [[DDChessDetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [vc setHidesBottomBarWhenPushed:YES];
     return vc;
 }
 
@@ -32,15 +36,17 @@
     
     self.title = self.cid;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib:[DDAskInfoTableViewCell class]];
+    [self.tableView registerNib:[DDLoadingMoreTableViewCell class]];
 
     _answerList = [NSMutableArray array];
     [self.refreshControl addTarget:self action:@selector(refreshAsk) forControlEvents:UIControlEventValueChanged];
+    [self refreshAsk];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
 }
 
 - (void)refreshAsk
@@ -79,10 +85,19 @@
                                                 [self.answerList removeAllObjects];
                                             }
                                             [self.answerList addObjectsFromArray:[DDAsk parseFromDicts:results]];
-                                            
+
+                                            [self.reloadView removeFromSuperview];
+                                            self.reloadView = nil;
                                             [self.tableView reloadData];
                                         } else {
-                                            [self showRequestNotice:response];
+                                            if (!self.reloadView) {
+                                                WeakSelf;
+                                                self.reloadView = [DDReloadView showReloadViewOnView:self.view reloadAction:^{
+                                                    [weakSelf refreshAsk];
+                                                }];
+                                            } else {
+                                                [self showRequestNotice:response];
+                                            }
                                         }
                                     }];
 }
@@ -96,67 +111,59 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    [self configureEmptyNoticeForDataSource:self.answerList type:SYEmptyNoticeTypeEmptyAsk];
+
+    return self.hasNextPage ? self.answerList.count + 1 : self.answerList.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
+    NSInteger row = indexPath.row;
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+    if (row < self.answerList.count) {
+        DDAskInfoTableViewCell *cell = [tableView dequeueCell:[DDAskInfoTableViewCell class] indexPath:indexPath];
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+        cell.askInfo = self.answerList[row];
+        cell.delegete = self;
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+        return cell;
+    } else {
+        DDLoadingMoreTableViewCell *cell = [tableView dequeueCell:[DDLoadingMoreTableViewCell class] indexPath:indexPath];
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+        [self loadMore];
 
-/*
-#pragma mark - Navigation
+        return cell;
+    }
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.row < self.answerList.count ? [DDAskInfoTableViewCell cellHeight] : [DDLoadingMoreTableViewCell cellHeight];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 5.0;
+}
+
+#pragma mark DDAskInfoProtocol
+
+- (void)interest:(DDAsk *)askInfo
+{
+    [self.answerList removeObject:askInfo];
+    [self.tableView reloadData];
+    // 去聊天室
+    [DDChatKitManager exampleOpenConversationViewControllerWithConversaionId:askInfo.answer.conversionId fromNavigationController:self.navigationController];
+}
+
+- (void)disinterest:(DDAsk *)askInfo
+{
+    [self.answerList removeObject:askInfo];
+    [self.tableView reloadData];
+}
 
 @end

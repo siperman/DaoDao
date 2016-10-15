@@ -27,6 +27,15 @@ static NSString * const kUserUpdatePath                        = @"/user/my?_fun
                                  callback:callback];
 }
 
++ (void)requestUserWithIds:(NSString *)uids callback:(AZNetworkResultBlock)callback
+{
+    [SYNetworkManager startRequestWithUrl:RequestUrlFactory(kUserInfoPath)
+                                   method:SYRequestMethodGet
+                                   params:@{@"ids" : uids}
+                                     body:nil
+                                 callback:callback];
+}
+
 + (void)updateUserInfo:(NSDictionary *)params avatar:(UIImage *)avatar callback:(AZNetworkResultBlock)callback
 {
     if (avatar) {

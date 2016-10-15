@@ -28,6 +28,8 @@
 {
     self.mainSB = Storyboard(@"Main");
     self.loginSB = Storyboard(@"Login");
+    self.askSB = Storyboard(@"Ask");
+
 }
 
 @end

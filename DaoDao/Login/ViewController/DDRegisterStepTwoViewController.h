@@ -10,7 +10,7 @@
 
 @interface DDRegisterStepTwoViewController : UIViewController
 
-@property (nonatomic, strong) DDUser *user;
+@property (nonatomic, copy) DDUser *user;
 @property (nonatomic, strong) NSString *inviteCode;
 
 + (instancetype)viewController;

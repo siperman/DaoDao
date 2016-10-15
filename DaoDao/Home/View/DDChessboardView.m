@@ -32,20 +32,15 @@
     } else {
         _totalPage = (_chessArray.count - _chessArray.count % 5) / 5 + 1;
     }
-//    _totalPage = 4;
+
     self.pageControl.numberOfPages = _totalPage;
     CGFloat width = SCREEN_WIDTH;
     self.scrollView.contentSize = CGSizeMake(width * _totalPage, 5 * width / 4);
     for (NSInteger i = 0; i < _totalPage; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.scrollView.bounds];
         imageView.origin = CGPointMake(width * i, 0);
-        if (i == 0) {
-            [imageView setImage:Image(@"qipan_zuo")];
-        } else if (i == _totalPage - 1) {
-            [imageView setImage:Image(@"qipan_you")];
-        } else {
-            [imageView setImage:Image(@"qipan_zhong")];
-        }
+        [imageView setImage:Image(@"qipan_zhong")];
+
         [self.scrollView addSubview:imageView];
     }
 

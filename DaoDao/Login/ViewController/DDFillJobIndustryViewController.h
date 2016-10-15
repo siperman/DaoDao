@@ -12,6 +12,7 @@ typedef void(^fillBlock)(NSString *);
 @interface DDFillJobIndustryViewController : UIViewController
 
 @property (nonatomic) BOOL isFillJob;
+@property (nonatomic) BOOL showTopView;
 @property (nonatomic, copy) fillBlock callback;
 
 + (instancetype)viewController;

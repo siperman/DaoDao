@@ -87,7 +87,7 @@
 }
 
 + (void)showNotificationWithTitle:(NSString *)title subtitle:(NSString *)subtitle type:(LCCKMessageNotificationType)type {
-    [self showNotificationWithTitle:title subtitle:subtitle type:type duration:1.f];
+//    [self showNotificationWithTitle:title subtitle:subtitle type:type duration:1.f];
 }
 
 + (void)hideNotification {

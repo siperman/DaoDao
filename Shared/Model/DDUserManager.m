@@ -11,6 +11,7 @@
 #import "SYCache.h"
 #import "SYUtils.h"
 #import "SYPrefManager.h"
+#import "DDChatKitManager.h"
 
 #ifdef DEBUG
 #define FILE_NAME @"edf_local_v2.data" // user data
@@ -105,13 +106,11 @@
             [XGPush registerDevice:deviceToken];
         }
 
-        // 登陆 IM, IM userDelegate在AppDelegate中设置
-//        [[CDChatManager manager].userDelegate cacheUser:self.user];
-//        [[CDChatManager manager] openWithClientId:self.user.userId callback:^(BOOL succeeded, NSError *error) {
-//            if (error) {
-//                debugLog(@"%@", error);
-//            }
-//        }];
+        [DDChatKitManager invokeThisMethodAfterLoginSuccessWithClientId:self.user.uid success:^{
+            debugLog(@"登入成功");
+        } failed:^(NSError *error) {
+            debugLog(@"登入失败 %@", error);
+        }];
     }
 }
 
@@ -120,42 +119,14 @@
     //移除文件缓存
     [[SYCache sharedInstance] saveItem:nil forKey:FILE_NAME];
 
-
     self.notificationManager = nil;
     self.userId = nil;
-    // Clear cache
-    {
-//#if SOOUYA
-//        NSArray *keys = @[
-//                          kSYDemandViewControllerMyDemandsCacheKey,
-//                          kSYNotificationTableViewControllerNotificationsCacheKey,
-//                          kLastSysNotificationsCacheKey,
-//                          kRemotePersonalTagsFileName,
-//                          ];
-//
-//        for (NSString *key in keys) {
-//            [[SYCache sharedInstance] saveItem:nil forKey:key];
-//        }
-//#elif SELLER
-//        NSArray *keys = @[
-//                          kSSDemandViewControllerReceivedOrderDemandsCacheKey,
-//                          kSYCommodityManagementViewControllerComoditiesCacheKey,
-//                          kSYNotificationTableViewControllerNotificationsCacheKey,
-//                          kLastSysNotificationsCacheKey,
-//                          kRemotePersonalTagsFileName,
-//                          ];
-//
-//        for (NSString *key in keys) {
-//            [[SYCache sharedInstance] saveItem:nil forKey:key];
-//        }
-//#endif
-//        [CDChatManager manager].hasNewIMMessage = NO;
-//        POST_NOTIFICATION(kUpdateBadgeNotification, nil);
-    }
 
-//    if ([CDChatManager manager].connect) {
-//        [[CDChatManager manager] closeWithCallback:nil];
-//    }
+    [DDChatKitManager invokeThisMethodBeforeLogoutSuccess:^{
+        debugLog(@"登出成功");
+    } failed:^(NSError *error) {
+        debugLog(@"登出失败 %@", error);
+    }];
     // 注销信鸽
     [XGPush unRegisterDevice];
 }

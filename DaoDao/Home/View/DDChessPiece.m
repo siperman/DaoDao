@@ -7,6 +7,7 @@
 //
 
 #import "DDChessPiece.h"
+#import "DDChessDetailViewController.h"
 
 @interface DDChessPiece ()
 
@@ -50,6 +51,7 @@
     _lab = [[UILabel alloc] initWithFrame:CGRectInset(rect, 20, 20)];
     _lab.text = _chess.cid;
     _lab.font = NormalTextFont;
+    _lab.textAlignment = NSTextAlignmentCenter;
     _lab.numberOfLines = 0;
     if (_chess.isWhite) {
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:rect];
@@ -127,7 +129,11 @@
 - (void)click
 {
     [self.viewController showNotice:_chess.cid];
+    DDChessDetailViewController *vc = [DDChessDetailViewController viewController];
+    vc.cid = self.chess.cid;
+    [self.viewController.navigationController pushViewController:vc animated:YES];
 
+    [MobClick event:Home_pieces_click];
 }
 
 @end
