@@ -73,9 +73,11 @@ static NSString * const SYCachedAskInfoFileName = @"conv_ask";
     [SYRequestEngine requestAskInfoWithId:conversationId callback:^(BOOL success, id response) {
         if (success) {
             DDAsk *ask = [DDAsk fromDict:response[kObjKey]];
-            [weakSelf cacheAsk:ask ForConversationId:conversationId];
-            if (callback) {
-                callback(ask);
+            if (ask) {
+                [weakSelf cacheAsk:ask ForConversationId:conversationId];
+                if (callback) {
+                    callback(ask);
+                }
             }
         } else {
             callback(nil);

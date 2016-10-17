@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LCCKBadgeView.h"
 
+@class AVIMConversation;
 @interface DDConversationListCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *askInfoLabel;
@@ -22,6 +23,8 @@
 
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *conversationId;
+
+- (void)configureCell:(AVIMConversation *)conversation;
 
 + (DDConversationListCell *)dequeueOrCreateCellByTableView :(UITableView *)tableView;
 

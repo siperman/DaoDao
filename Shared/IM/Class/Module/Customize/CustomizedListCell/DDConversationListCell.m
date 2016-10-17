@@ -26,7 +26,8 @@
 + (DDConversationListCell *)dequeueOrCreateCellByTableView :(UITableView *)tableView {
     DDConversationListCell *cell = [tableView dequeueReusableCellWithIdentifier:[DDConversationListCell identifier]];
     if (cell == nil) {
-        cell = [[DDConversationListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] identifier]];
+        [tableView registerNib:[self class]];
+        cell = [tableView dequeueReusableCellWithIdentifier:[DDConversationListCell identifier]];
     }
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 

@@ -1,4 +1,4 @@
-platform :ios , '7.0'
+platform :ios , '8.0'
 
 target 'DaoDao' do
     # ignoring warning from pods
@@ -8,7 +8,6 @@ target 'DaoDao' do
     pod 'CYLTabBarController'
     pod 'TWMessageBarManager'
     pod 'MLPAutoCompleteTextField'
-    pod "CYLTableViewRowAction", "1.0.0"
     pod 'FTPopOverMenu'
 
     pod 'Reveal-iOS-SDK', :configurations => ['Debug']

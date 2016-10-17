@@ -311,16 +311,16 @@ static NSString *const LCCKAPPKEY = @"RhI4OeI0gPrOClX4oIoODjQn";
             [LCCKUtil showNotificationWithTitle:@"用户不存在" subtitle:nil type:LCCKMessageNotificationTypeError];
             return;
         }
-        [self exampleOpenProfileForUser:user userId:userId parentController:parentController];
+//        [self exampleOpenProfileForUser:user userId:userId parentController:parentController];
     }];
 
     //    开启圆角可能导致4S等低端机型卡顿，谨慎开启。
-    //    [[LCChatKit sharedInstance] setAvatarImageViewCornerRadiusBlock:^CGFloat(CGSize avatarImageViewSize) {
-    //        if (avatarImageViewSize.height > 0) {
-    //            return avatarImageViewSize.height/2;
-    //        }
-    //        return 5;
-    //    }];
+    [[LCChatKit sharedInstance] setAvatarImageViewCornerRadiusBlock:^CGFloat(CGSize avatarImageViewSize) {
+        if (avatarImageViewSize.height > 0) {
+            return avatarImageViewSize.height/2;
+        }
+        return 5;
+    }];
 
     [[LCChatKit sharedInstance] setShowNotificationBlock:^(UIViewController *viewController, NSString *title, NSString *subtitle, LCCKMessageNotificationType type) {
         [self exampleShowNotificationWithTitle:title subtitle:subtitle type:type];
@@ -395,6 +395,9 @@ static NSString *const LCCKAPPKEY = @"RhI4OeI0gPrOClX4oIoODjQn";
     }];
 
     [[LCCKConversationListService sharedInstance] setConfigureCellBlock:^(UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath, AVIMConversation *conversation) {
+//        DDConversationListCell *cell = (DDConversationListCell *)[tableView cellForRowAtIndexPath:indexPath];
+
+        [(DDConversationListCell *)cell configureCell:conversation];
 
     }];
 
@@ -540,6 +543,12 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
 //                                                             completion:^(__kindof UIViewController *selectedChildTabBarController) {
 //                                                                 [selectedChildTabBarController.navigationController pushViewController:viewController animated:YES];
 //                                                             }];
+
+    id<UIApplicationDelegate> delegate = ((id<UIApplicationDelegate>)[[UIApplication sharedApplication] delegate]);
+    UIWindow *window = delegate.window;
+    if ([window.rootViewController isKindOfClass:[UINavigationController class]]) {
+        [(UINavigationController *)window.rootViewController pushViewController:viewController animated:YES];
+    }
 }
 
 - (void)exampleMarkBadgeWithTotalUnreadCount:(NSInteger)totalUnreadCount controller:(UIViewController *)controller {

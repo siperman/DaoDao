@@ -40,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"新的约局";
+    self.title = @"新的需求";
     self.view.backgroundColor = BackgroundColor;
     [self.btnPost actionStyle];
 

@@ -251,7 +251,6 @@
 		2BB3D7F51D7D6F8D00FFDC0E /* YIInnerShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D73C1D7D6F8C00FFDC0E /* YIInnerShadowView.m */; };
 		2BB3D7F61D7D6F8D00FFDC0E /* ZJSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D73F1D7D6F8C00FFDC0E /* ZJSwitch.m */; };
 		2BB41A241D8153B6000C98F3 /* UIViewController+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB41A231D8153B6000C98F3 /* UIViewController+Analytics.m */; };
-		2BB41C9B1D8167D2000C98F3 /* DDChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB41C9A1D8167D2000C98F3 /* DDChatListViewController.m */; };
 		2BB41C9E1D816879000C98F3 /* DDChatRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB41C9D1D816879000C98F3 /* DDChatRoomViewController.m */; };
 		2BBB7D721DA89280005E90A5 /* DDLoadingMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D701DA89280005E90A5 /* DDLoadingMoreTableViewCell.m */; };
 		2BBB7D731DA89280005E90A5 /* DDLoadingMoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7D711DA89280005E90A5 /* DDLoadingMoreTableViewCell.xib */; };
@@ -264,7 +263,6 @@
 		2BBB7D851DA8F524005E90A5 /* DDReloadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7D841DA8F524005E90A5 /* DDReloadView.xib */; };
 		2BBB7D881DA9E290005E90A5 /* DDPostAskViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D871DA9E290005E90A5 /* DDPostAskViewModel.m */; };
 		2BBB7D901DAA2032005E90A5 /* DDAskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D8F1DAA2032005E90A5 /* DDAskDetailViewController.m */; };
-		2BBB7D931DAA3DD1005E90A5 /* DDConversationListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D921DAA3DD1005E90A5 /* DDConversationListViewModel.m */; };
 		2BBB7D981DAA4443005E90A5 /* DDConversationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D961DAA4443005E90A5 /* DDConversationListCell.m */; };
 		2BBB7D991DAA4443005E90A5 /* DDConversationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7D971DAA4443005E90A5 /* DDConversationListCell.xib */; };
 		2BCDD6911D79597000BADD43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6901D79597000BADD43 /* main.m */; };
@@ -795,8 +793,6 @@
 		2BB41A211D8153B6000C98F3 /* SYAnalyticsEventIDs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYAnalyticsEventIDs.h; sourceTree = "<group>"; };
 		2BB41A221D8153B6000C98F3 /* UIViewController+Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Analytics.h"; sourceTree = "<group>"; };
 		2BB41A231D8153B6000C98F3 /* UIViewController+Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Analytics.m"; sourceTree = "<group>"; };
-		2BB41C991D8167D2000C98F3 /* DDChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatListViewController.h; sourceTree = "<group>"; };
-		2BB41C9A1D8167D2000C98F3 /* DDChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatListViewController.m; sourceTree = "<group>"; };
 		2BB41C9C1D816879000C98F3 /* DDChatRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatRoomViewController.h; sourceTree = "<group>"; };
 		2BB41C9D1D816879000C98F3 /* DDChatRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatRoomViewController.m; sourceTree = "<group>"; };
 		2BBB7D6F1DA89280005E90A5 /* DDLoadingMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLoadingMoreTableViewCell.h; sourceTree = "<group>"; };
@@ -817,8 +813,6 @@
 		2BBB7D871DA9E290005E90A5 /* DDPostAskViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPostAskViewModel.m; sourceTree = "<group>"; };
 		2BBB7D8E1DAA2032005E90A5 /* DDAskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskDetailViewController.h; sourceTree = "<group>"; };
 		2BBB7D8F1DAA2032005E90A5 /* DDAskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskDetailViewController.m; sourceTree = "<group>"; };
-		2BBB7D911DAA3DD1005E90A5 /* DDConversationListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDConversationListViewModel.h; sourceTree = "<group>"; };
-		2BBB7D921DAA3DD1005E90A5 /* DDConversationListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDConversationListViewModel.m; sourceTree = "<group>"; };
 		2BBB7D951DAA4443005E90A5 /* DDConversationListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDConversationListCell.h; sourceTree = "<group>"; };
 		2BBB7D961DAA4443005E90A5 /* DDConversationListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDConversationListCell.m; sourceTree = "<group>"; };
 		2BBB7D971DAA4443005E90A5 /* DDConversationListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDConversationListCell.xib; sourceTree = "<group>"; };
@@ -1361,10 +1355,6 @@
 				2B75AB0C1D7FFF4E0074119E /* Class */,
 				2B75AB091D7FF8F90074119E /* DDChatKitManager.h */,
 				2B75AB0A1D7FF8F90074119E /* DDChatKitManager.m */,
-				2BBB7D911DAA3DD1005E90A5 /* DDConversationListViewModel.h */,
-				2BBB7D921DAA3DD1005E90A5 /* DDConversationListViewModel.m */,
-				2BB41C991D8167D2000C98F3 /* DDChatListViewController.h */,
-				2BB41C9A1D8167D2000C98F3 /* DDChatListViewController.m */,
 				2BB41C9C1D816879000C98F3 /* DDChatRoomViewController.h */,
 				2BB41C9D1D816879000C98F3 /* DDChatRoomViewController.m */,
 				2B444B811DAB6E4F009FAA61 /* DDAskChatManager.h */,
@@ -2517,7 +2507,6 @@
 				2BB3D7B31D7D6F8C00FFDC0E /* MGSwipeButton.m in Sources */,
 				2BB3D7791D7D6F8C00FFDC0E /* CTAssetsGroupViewCell.m in Sources */,
 				2BB3D7A31D7D6F8C00FFDC0E /* FSImageView.m in Sources */,
-				2BBB7D931DAA3DD1005E90A5 /* DDConversationListViewModel.m in Sources */,
 				2BB3D77B1D7D6F8C00FFDC0E /* CTAssetsPageViewController.m in Sources */,
 				2BF86C8B1D95179600E06BF8 /* NSString+NSCalendarExtension.m in Sources */,
 				2BB3D7921D7D6F8C00FFDC0E /* DBCollectionViewCell.m in Sources */,
@@ -2704,7 +2693,6 @@
 				2BB3D7DB1D7D6F8D00FFDC0E /* TOCroppedImageAttributes.m in Sources */,
 				2B75AB4E1D7FFF4E0074119E /* LCCKVCardMessageCell.m in Sources */,
 				2BB3D7E41D7D6F8D00FFDC0E /* UIButton+VerticalLayout.m in Sources */,
-				2BB41C9B1D8167D2000C98F3 /* DDChatListViewController.m in Sources */,
 				2BB3D7931D7D6F8C00FFDC0E /* DBCollectionViewFlowLayout.m in Sources */,
 				2B311C5D1D7EA31B007CE4DD /* DDUserManager.m in Sources */,
 				2BB3D7701D7D6F8C00FFDC0E /* UIImage+RTTint.m in Sources */,
