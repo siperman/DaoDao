@@ -62,10 +62,11 @@
 
 - (IBAction)interest:(UIButton *)sender
 {
-    [self.viewController showLoadingHUD];
     if ([self.delegete respondsToSelector:@selector(interest:)]) {
         [self.delegete interest:_askInfo];
     }
+//    [self.viewController showLoadingHUD];
+
 //    [SYRequestEngine interestAskWithId:_askInfo.aid
 //                              callback:^(BOOL success, id response) {
 //                                  [self.viewController hideAllHUD];

@@ -16,7 +16,8 @@
                 <frame key="frameInset" width="320" height="109"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D92-dR-jIU" customClass="BackView">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellbg_xiaoxi" translatesAutoresizingMaskIntoConstraints="NO" id="UP4-0W-cVZ"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D92-dR-jIU">
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kae-rv-1BC">
                                 <constraints>
@@ -67,7 +68,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Kae-rv-1BC" firstAttribute="leading" secondItem="MKK-Lp-Rhc" secondAttribute="leading" id="5E1-0h-qru"/>
                             <constraint firstItem="ABc-Oa-XEp" firstAttribute="leading" secondItem="XSh-PC-Vtf" secondAttribute="leading" id="5ej-rS-g48"/>
@@ -92,7 +93,11 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="D92-dR-jIU" secondAttribute="trailing" constant="8" id="2Mo-cr-Qyo"/>
                     <constraint firstItem="D92-dR-jIU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="5d4-Qx-kSd"/>
+                    <constraint firstAttribute="trailing" secondItem="UP4-0W-cVZ" secondAttribute="trailing" id="LVs-AJ-Yx4"/>
                     <constraint firstAttribute="bottom" secondItem="D92-dR-jIU" secondAttribute="bottom" constant="5" id="Rnj-RI-N9V"/>
+                    <constraint firstItem="UP4-0W-cVZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="XlU-8C-Hkf"/>
+                    <constraint firstItem="UP4-0W-cVZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="n0H-0E-gBg"/>
+                    <constraint firstAttribute="bottom" secondItem="UP4-0W-cVZ" secondAttribute="bottom" id="pnG-1o-M8e"/>
                     <constraint firstItem="D92-dR-jIU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="si9-iy-nUz"/>
                 </constraints>
             </tableViewCellContentView>
@@ -107,4 +112,7 @@
             <point key="canvasLocation" x="106" y="94"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="cellbg_xiaoxi" width="375" height="110"/>
+    </resources>
 </document>

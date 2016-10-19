@@ -22,6 +22,7 @@ static char kSepViewKey;
 
 - (void)sy_round
 {
+    [self layoutIfNeeded];
     [self sy_round:self.width / 2];
 }
 

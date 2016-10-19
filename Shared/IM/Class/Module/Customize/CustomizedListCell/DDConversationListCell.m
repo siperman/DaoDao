@@ -26,10 +26,10 @@
 + (DDConversationListCell *)dequeueOrCreateCellByTableView :(UITableView *)tableView {
     DDConversationListCell *cell = [tableView dequeueReusableCellWithIdentifier:[DDConversationListCell identifier]];
     if (cell == nil) {
+        [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [tableView registerNib:[self class]];
         cell = [tableView dequeueReusableCellWithIdentifier:[DDConversationListCell identifier]];
     }
-    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
     return cell;
 }
@@ -46,6 +46,23 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    for (UIView *subView in self.subviews) {
+        if ([subView isKindOfClass:NSClassFromString(@"UITableViewCellDeleteConfirmationView")]) {
+            subView.backgroundColor = ClearColor;
+            for (UIButton *btn in subView.subviews) {
+                if ([btn isKindOfClass:[UIButton class]]) {
+                    btn.backgroundColor = ClearColor;
+                    [btn setTitle:@""];
+                    [btn sy_setImage:Image(@"cell_delete")];
+                }
+            }
+        }
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

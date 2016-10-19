@@ -92,7 +92,7 @@
     if (![self checkParams]) {
         return;
     }
-    [self showLoadingHUD];
+    [self.navigationController showLoadingHUD];
     id params = @{ kDemandKey : _postAskModel.demand,
                    kIndustryKey : _postAskModel.industry,
                    kJobKey : _postAskModel.job,
@@ -100,13 +100,13 @@
                     };
     [SYRequestEngine sendAskWithParams:params
                               callback:^(BOOL success, id response) {
-                                  [self hideAllHUD];
+                                  [self.navigationController hideAllHUD];
                                   if (success) {
                                       DDAskDetailViewController *vc = [[DDAskDetailViewController alloc] init];
 
                                       [self.navigationController pushViewController:vc animated:YES];
                                   } else {
-                                      [self showRequestNotice:response];
+                                      [self.navigationController showRequestNotice:response];
                                   }
                               }];
 }

@@ -63,6 +63,9 @@
 		2B75AB591D7FFF4E0074119E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B75AB3B1D7FFF4E0074119E /* Assets.xcassets */; };
 		2B75AB5E1D7FFF4E0074119E /* LCCKContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB441D7FFF4E0074119E /* LCCKContactManager.m */; };
 		2B75AB5F1D7FFF4E0074119E /* NSObject+LCCKHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB481D7FFF4E0074119E /* NSObject+LCCKHUD.m */; };
+		2B90B9051DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B90B9041DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle */; };
+		2B90B9071DB71440000B6FE1 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B90B9061DB71440000B6FE1 /* Shared.xcassets */; };
+		2B90B9091DB71B64000B6FE1 /* CustomizedChatKit.MessageBubble.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B90B9081DB71B64000B6FE1 /* CustomizedChatKit.MessageBubble.bundle */; };
 		2BA3F2E31D911A4A00094E0A /* CityData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3F2D91D911A4A00094E0A /* CityData.plist */; };
 		2BA3F2E41D911A4A00094E0A /* GYZChooseCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3F2DB1D911A4A00094E0A /* GYZChooseCityController.m */; };
 		2BA3F2E51D911A4A00094E0A /* GYZCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3F2DE1D911A4A00094E0A /* GYZCity.m */; };
@@ -267,7 +270,6 @@
 		2BBB7D991DAA4443005E90A5 /* DDConversationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7D971DAA4443005E90A5 /* DDConversationListCell.xib */; };
 		2BCDD6911D79597000BADD43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6901D79597000BADD43 /* main.m */; };
 		2BCDD6941D79597000BADD43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6931D79597000BADD43 /* AppDelegate.m */; };
-		2BCDD6971D79597000BADD43 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6961D79597000BADD43 /* ViewController.m */; };
 		2BCDD69A1D79597000BADD43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDD6981D79597000BADD43 /* Main.storyboard */; };
 		2BCDD69C1D79597000BADD43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDD69B1D79597000BADD43 /* Assets.xcassets */; };
 		2BDB10221D9B98E700F2C27C /* ChooseImageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB10211D9B98E700F2C27C /* ChooseImageViewModel.m */; };
@@ -395,6 +397,9 @@
 		2B75AB451D7FFF4E0074119E /* LCCKExampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKExampleConstants.h; sourceTree = "<group>"; };
 		2B75AB471D7FFF4E0074119E /* NSObject+LCCKHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LCCKHUD.h"; sourceTree = "<group>"; };
 		2B75AB481D7FFF4E0074119E /* NSObject+LCCKHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LCCKHUD.m"; sourceTree = "<group>"; };
+		2B90B9041DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CustomizedChatKit.Other.bundle; sourceTree = "<group>"; };
+		2B90B9061DB71440000B6FE1 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
+		2B90B9081DB71B64000B6FE1 /* CustomizedChatKit.MessageBubble.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CustomizedChatKit.MessageBubble.bundle; sourceTree = "<group>"; };
 		2BA3F2D91D911A4A00094E0A /* CityData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CityData.plist; sourceTree = "<group>"; };
 		2BA3F2DA1D911A4A00094E0A /* GYZChooseCityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZChooseCityController.h; sourceTree = "<group>"; };
 		2BA3F2DB1D911A4A00094E0A /* GYZChooseCityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZChooseCityController.m; sourceTree = "<group>"; };
@@ -820,8 +825,6 @@
 		2BCDD6901D79597000BADD43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2BCDD6921D79597000BADD43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2BCDD6931D79597000BADD43 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2BCDD6951D79597000BADD43 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2BCDD6961D79597000BADD43 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2BCDD6991D79597000BADD43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2BCDD69B1D79597000BADD43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BCDD6A01D79597000BADD43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1306,6 +1309,7 @@
 				2BB3D7401D7D6F8C00FFDC0E /* View */,
 				2BB3D57C1D7D6F8C00FFDC0E /* Controller */,
 				2BF86C7F1D9511B700E06BF8 /* Shared.storyboard */,
+				2B90B9061DB71440000B6FE1 /* Shared.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1359,6 +1363,8 @@
 				2BB41C9D1D816879000C98F3 /* DDChatRoomViewController.m */,
 				2B444B811DAB6E4F009FAA61 /* DDAskChatManager.h */,
 				2B444B821DAB6E4F009FAA61 /* DDAskChatManager.m */,
+				2B90B9081DB71B64000B6FE1 /* CustomizedChatKit.MessageBubble.bundle */,
+				2B90B9041DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle */,
 			);
 			path = IM;
 			sourceTree = "<group>";
@@ -2280,8 +2286,6 @@
 				2B6D12661D98B586003433D0 /* Mine */,
 				2BCDD6921D79597000BADD43 /* AppDelegate.h */,
 				2BCDD6931D79597000BADD43 /* AppDelegate.m */,
-				2BCDD6951D79597000BADD43 /* ViewController.h */,
-				2BCDD6961D79597000BADD43 /* ViewController.m */,
 				2BCDD6981D79597000BADD43 /* Main.storyboard */,
 				2BCDD69B1D79597000BADD43 /* Assets.xcassets */,
 				2BCDD68F1D79597000BADD43 /* Supporting Files */,
@@ -2355,7 +2359,7 @@
 				TargetAttributes = {
 					2BCDD68B1D79597000BADD43 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 36XGTJ8RE9;
+						DevelopmentTeam = R54RSMK9W5;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2414,6 +2418,7 @@
 				2B75AB501D7FFF4E0074119E /* LCCKVCardView.xib in Resources */,
 				2B6D12701D98B586003433D0 /* DDForgetCodeNoticeView.xib in Resources */,
 				2BB3D7951D7D6F8C00FFDC0E /* DBCameraImages.xcassets in Resources */,
+				2B90B9071DB71440000B6FE1 /* Shared.xcassets in Resources */,
 				2BB3D7AA1D7D6F8C00FFDC0E /* lookup_soft_elegance_2.png in Resources */,
 				2BB3D7EB1D7D6F8D00FFDC0E /* UMSCommentInputController.xib in Resources */,
 				2B75AB4C1D7FFF4E0074119E /* calling_card_bg@2x.png in Resources */,
@@ -2432,6 +2437,7 @@
 				2BBB7D7A1DA89C89005E90A5 /* Ask.storyboard in Resources */,
 				2BBB7D851DA8F524005E90A5 /* DDReloadView.xib in Resources */,
 				2BB3D7D91D7D6F8D00FFDC0E /* TOCropViewControllerLocalizable.strings in Resources */,
+				2B90B9051DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle in Resources */,
 				2B75AB521D7FFF4E0074119E /* LCCKLoginViewController.xib in Resources */,
 				2BB3D7A81D7D6F8C00FFDC0E /* lookup_miss_etikate.png in Resources */,
 				2BDB10271D9BBC9500F2C27C /* DDFillJobIndustryViewController.xib in Resources */,
@@ -2445,6 +2451,7 @@
 				2BBB7D781DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.xib in Resources */,
 				2BB3D7EC1D7D6F8D00FFDC0E /* UMSCommentInputControlleriPad.xib in Resources */,
 				2BB3D7EE1D7D6F8D00FFDC0E /* UMShareEditViewControlleriPad.xib in Resources */,
+				2B90B9091DB71B64000B6FE1 /* CustomizedChatKit.MessageBubble.bundle in Resources */,
 				2B6D126E1D98B586003433D0 /* DDChooseImageCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2521,7 +2528,6 @@
 				2BB3D7491D7D6F8C00FFDC0E /* SYCameraManager.m in Sources */,
 				2BB3D7F51D7D6F8D00FFDC0E /* YIInnerShadowView.m in Sources */,
 				2BB3D7E71D7D6F8D00FFDC0E /* UIView+HidingView.m in Sources */,
-				2BCDD6971D79597000BADD43 /* ViewController.m in Sources */,
 				2BB3D7BE1D7D6F8C00FFDC0E /* UIImageView+MJWebCache.m in Sources */,
 				2B6D12871D9A1C3C003433D0 /* SYRequestEngine+Ask.m in Sources */,
 				2BDB10221D9B98E700F2C27C /* ChooseImageViewModel.m in Sources */,
@@ -2890,7 +2896,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = 36XGTJ8RE9;
+				DEVELOPMENT_TEAM = R54RSMK9W5;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "DaoDao/DaoDao-Prefix.pch";
 				INFOPLIST_FILE = DaoDao/Info.plist;
@@ -2900,7 +2906,7 @@
 					"$(PROJECT_DIR)/Shared/Vendor/fat-lame/lib",
 					"$(PROJECT_DIR)/Shared/Vendor/UMSocial_Sdk_5.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.soouya.DaoDao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daotong.DaoDao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2911,7 +2917,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = 36XGTJ8RE9;
+				DEVELOPMENT_TEAM = R54RSMK9W5;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "DaoDao/DaoDao-Prefix.pch";
 				INFOPLIST_FILE = DaoDao/Info.plist;
@@ -2921,7 +2927,7 @@
 					"$(PROJECT_DIR)/Shared/Vendor/fat-lame/lib",
 					"$(PROJECT_DIR)/Shared/Vendor/UMSocial_Sdk_5.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.soouya.DaoDao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daotong.DaoDao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

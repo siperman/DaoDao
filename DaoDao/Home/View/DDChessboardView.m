@@ -37,7 +37,7 @@ static const NSInteger pageChess = 7;
 
     self.pageControl.numberOfPages = _totalPage;
     CGFloat width = SCREEN_WIDTH;
-    self.scrollView.contentSize = CGSizeMake(width * _totalPage, pageChess * width / 4);
+    self.scrollView.contentSize = CGSizeMake(width * _totalPage, pageChess * 5 / 4);
     for (NSInteger i = 0; i < _totalPage; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.scrollView.bounds];
         imageView.origin = CGPointMake(width * i, 0);

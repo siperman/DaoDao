@@ -286,6 +286,7 @@ static NSString *const LCCKAPPKEY = @"RhI4OeI0gPrOClX4oIoODjQn";
     //        return menuItems;
     //    }];
 
+#if DEBUG
     [[LCChatKit sharedInstance] setHUDActionBlock:^(UIViewController *viewController, UIView *view, NSString *title, LCCKMessageHUDActionType type) {
         switch (type) {
                 case LCCKMessageHUDActionTypeShow:
@@ -306,6 +307,11 @@ static NSString *const LCCKAPPKEY = @"RhI4OeI0gPrOClX4oIoODjQn";
         }
     }];
 
+    [[LCChatKit sharedInstance] setShowNotificationBlock:^(UIViewController *viewController, NSString *title, NSString *subtitle, LCCKMessageNotificationType type) {
+        [self exampleShowNotificationWithTitle:title subtitle:subtitle type:type];
+    }];
+#endif
+
     [[LCChatKit sharedInstance] setOpenProfileBlock:^(NSString *userId, id<LCCKUserDelegate> user, __kindof UIViewController *parentController) {
         if (!userId) {
             [LCCKUtil showNotificationWithTitle:@"用户不存在" subtitle:nil type:LCCKMessageNotificationTypeError];
@@ -322,14 +328,12 @@ static NSString *const LCCKAPPKEY = @"RhI4OeI0gPrOClX4oIoODjQn";
         return 5;
     }];
 
-    [[LCChatKit sharedInstance] setShowNotificationBlock:^(UIViewController *viewController, NSString *title, NSString *subtitle, LCCKMessageNotificationType type) {
-        [self exampleShowNotificationWithTitle:title subtitle:subtitle type:type];
-    }];
+
 
     // 自定义Cell菜单
-    [[LCChatKit sharedInstance] setConversationEditActionBlock:^NSArray *(NSIndexPath *indexPath, NSArray<UITableViewRowAction *> *editActions, AVIMConversation *conversation, LCCKConversationListViewController *controller) {
-        return [self exampleConversationEditActionAtIndexPath:indexPath conversation:conversation controller:controller];
-    }];
+//    [[LCChatKit sharedInstance] setConversationEditActionBlock:^NSArray *(NSIndexPath *indexPath, NSArray<UITableViewRowAction *> *editActions, AVIMConversation *conversation, LCCKConversationListViewController *controller) {
+//        return [self exampleConversationEditActionAtIndexPath:indexPath conversation:conversation controller:controller];
+//    }];
 
     //    如果不是TabBar样式，请实现该 Blcok 来设置 Badge 红标。
     //    [[LCChatKit sharedInstance] setMarkBadgeWithTotalUnreadCountBlock:^(NSInteger totalUnreadCount, UIViewController *controller) {

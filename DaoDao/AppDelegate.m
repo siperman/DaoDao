@@ -30,7 +30,6 @@
         [[SYImageCache sharedInstance] setup];
     }
 
-
     // LeanCloud
     {
         [DDChatKitManager invokeThisMethodInDidFinishLaunching];
@@ -38,21 +37,17 @@
 
     // Umeng
     {
-//#if DEBUG
-//        NSString *UMKey = @"55cd6169e0f55ad7940005ef";
-//#else
-//        NSString *UMKey = @"54d9ff1afd98c5a093000299";
-//#endif
-//        UMConfigInstance.appKey = UMKey;
-//        [MobClick startWithConfigure:UMConfigInstance];
-//        [MobClick setCrashReportEnabled:NO];
-//
-//        NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-//        [MobClick setAppVersion:version];
-//
-//        [UMSocialData setAppKey:UMKey];
-//        [UMSocialWechatHandler setWXAppId:@"wx7541cb00cec835a5" appSecret:@"1cebf9fd328b5b544916a4a18ae44fb9" url:@"http://www.soouya.com"];
-//        [UMSocialQQHandler setQQWithAppId:@"1104078523" appKey:@"TFRnP4gVTRoPjP6B" url:@"http://www.soouya.com"];
+#if DEBUG
+        NSString *UMKey = @"57eba4e767e58ee6b80018c5";
+#else
+        NSString *UMKey = @"57eba4e767e58ee6b80018c5";
+#endif
+        UMConfigInstance.appKey = UMKey;
+        [MobClick startWithConfigure:UMConfigInstance];
+        [MobClick setCrashReportEnabled:NO];
+
+        NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        [MobClick setAppVersion:version];
     }
     // Cookies
     {

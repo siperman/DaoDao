@@ -64,6 +64,7 @@
     [self.labTitle setFont:NormalTextFont];
     [self.labTitle setTextColor:MainColor];
     [self.btnNext setBackgroundImage:[UIImage imageWithColor:TextColor] forState:UIControlStateDisabled];
+    self.btnNext.enabled = NO;
 }
 
 - (IBAction)next:(UIButton *)sender

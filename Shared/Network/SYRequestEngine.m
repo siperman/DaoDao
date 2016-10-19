@@ -11,8 +11,17 @@
 #import "UIImage+SYScale.h"
 #import "NSString+MD5Addition.h"
 
-NSString * kHostUrl = @"http://112.74.20.179/v1";
-NSString * kPicHostUrl = @"http://112.74.20.179/v1";
+#if DEBUG
+NSString * kHostUrl = @"http://apidaodao.soouya.com/v1";
+NSString * kPicHostUrl = @"http://apidaodao.soouya.com/v1";
+
+//NSString * kHostUrl = @"http://112.74.20.179/v1";
+//NSString * kPicHostUrl = @"http://112.74.20.179/v1";
+#else
+NSString * kHostUrl = @"http://apidaodao.soouya.com/v1";
+NSString * kPicHostUrl = @"http://apidaodao.soouya.com/v1";
+
+#endif
 
 // 剩余次数
 static NSString * const kCountPath                             = @"/count/{_model}";

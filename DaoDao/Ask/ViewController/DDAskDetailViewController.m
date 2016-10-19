@@ -18,6 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"约局详情";
+    self.view.backgroundColor = BackgroundColor;
+
 }
 
 - (void)didReceiveMemoryWarning {
