@@ -96,6 +96,10 @@
                     callback(YES, responseObject);
                 }
             } else {
+                if (([[responseObject valueForKey:kSuccessKey] integerValue] == 10009)) {
+                    // 10009 重新登录
+                    [self popToLogin];
+                }
                 if (callback) {
                     callback(NO, responseObject);
                 }
@@ -131,6 +135,19 @@
             [manager.requestSerializer setTimeoutInterval:kDefaultRequestTimeout];
             [manager DELETE:url parameters:p success:success failure:failure];
         }
+    }
+}
+
++ (void)popToLogin
+{
+    UIViewController *viewController = [[SYStoryboardManager manager].loginSB instantiateViewControllerWithIdentifier:@"DDLoginNav"];
+
+    if (viewController) {
+        UIViewController *rootViewController = [[UIApplication sharedApplication].delegate window].rootViewController;
+        if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+            rootViewController = [(UINavigationController*)rootViewController visibleViewController];
+        }
+        [rootViewController presentViewController:viewController animated:YES completion:nil];
     }
 }
 

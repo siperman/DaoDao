@@ -52,11 +52,6 @@
 		2B75AB4E1D7FFF4E0074119E /* LCCKVCardMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB201D7FFF4E0074119E /* LCCKVCardMessageCell.m */; };
 		2B75AB4F1D7FFF4E0074119E /* LCCKVCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB221D7FFF4E0074119E /* LCCKVCardView.m */; };
 		2B75AB501D7FFF4E0074119E /* LCCKVCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B75AB231D7FFF4E0074119E /* LCCKVCardView.xib */; };
-		2B75AB511D7FFF4E0074119E /* LCCKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB271D7FFF4E0074119E /* LCCKLoginViewController.m */; };
-		2B75AB521D7FFF4E0074119E /* LCCKLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B75AB281D7FFF4E0074119E /* LCCKLoginViewController.xib */; };
-		2B75AB531D7FFF4E0074119E /* DEMOCustomAutoCompleteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB2B1D7FFF4E0074119E /* DEMOCustomAutoCompleteObject.m */; };
-		2B75AB541D7FFF4E0074119E /* DEMODataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB2D1D7FFF4E0074119E /* DEMODataSource.m */; };
-		2B75AB551D7FFF4E0074119E /* LCCKLoginDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB2F1D7FFF4E0074119E /* LCCKLoginDataSource.m */; };
 		2B75AB561D7FFF4E0074119E /* LCCKMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB331D7FFF4E0074119E /* LCCKMapViewController.m */; };
 		2B75AB571D7FFF4E0074119E /* LCCKUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB361D7FFF4E0074119E /* LCCKUtil.m */; };
 		2B75AB581D7FFF4E0074119E /* LCCKPlusButtonSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB391D7FFF4E0074119E /* LCCKPlusButtonSubclass.m */; };
@@ -375,15 +370,6 @@
 		2B75AB211D7FFF4E0074119E /* LCCKVCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKVCardView.h; sourceTree = "<group>"; };
 		2B75AB221D7FFF4E0074119E /* LCCKVCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCKVCardView.m; sourceTree = "<group>"; };
 		2B75AB231D7FFF4E0074119E /* LCCKVCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LCCKVCardView.xib; sourceTree = "<group>"; };
-		2B75AB261D7FFF4E0074119E /* LCCKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKLoginViewController.h; sourceTree = "<group>"; };
-		2B75AB271D7FFF4E0074119E /* LCCKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCKLoginViewController.m; sourceTree = "<group>"; };
-		2B75AB281D7FFF4E0074119E /* LCCKLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LCCKLoginViewController.xib; sourceTree = "<group>"; };
-		2B75AB2A1D7FFF4E0074119E /* DEMOCustomAutoCompleteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEMOCustomAutoCompleteObject.h; sourceTree = "<group>"; };
-		2B75AB2B1D7FFF4E0074119E /* DEMOCustomAutoCompleteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEMOCustomAutoCompleteObject.m; sourceTree = "<group>"; };
-		2B75AB2C1D7FFF4E0074119E /* DEMODataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEMODataSource.h; sourceTree = "<group>"; };
-		2B75AB2D1D7FFF4E0074119E /* DEMODataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEMODataSource.m; sourceTree = "<group>"; };
-		2B75AB2E1D7FFF4E0074119E /* LCCKLoginDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKLoginDataSource.h; sourceTree = "<group>"; };
-		2B75AB2F1D7FFF4E0074119E /* LCCKLoginDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCKLoginDataSource.m; sourceTree = "<group>"; };
 		2B75AB321D7FFF4E0074119E /* LCCKMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKMapViewController.h; sourceTree = "<group>"; };
 		2B75AB331D7FFF4E0074119E /* LCCKMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCKMapViewController.m; sourceTree = "<group>"; };
 		2B75AB341D7FFF4E0074119E /* LCCKConstantsDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKConstantsDefinition.h; sourceTree = "<group>"; };
@@ -1114,7 +1100,6 @@
 			isa = PBXGroup;
 			children = (
 				2B75AB111D7FFF4E0074119E /* Customize */,
-				2B75AB241D7FFF4E0074119E /* Login */,
 				2B75AB301D7FFF4E0074119E /* Main */,
 				2B75AB3A1D7FFF4E0074119E /* Other */,
 			);
@@ -1187,38 +1172,6 @@
 				2B75AB231D7FFF4E0074119E /* LCCKVCardView.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		2B75AB241D7FFF4E0074119E /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				2B75AB251D7FFF4E0074119E /* Controller */,
-				2B75AB291D7FFF4E0074119E /* Model */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		2B75AB251D7FFF4E0074119E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				2B75AB261D7FFF4E0074119E /* LCCKLoginViewController.h */,
-				2B75AB271D7FFF4E0074119E /* LCCKLoginViewController.m */,
-				2B75AB281D7FFF4E0074119E /* LCCKLoginViewController.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		2B75AB291D7FFF4E0074119E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2B75AB2A1D7FFF4E0074119E /* DEMOCustomAutoCompleteObject.h */,
-				2B75AB2B1D7FFF4E0074119E /* DEMOCustomAutoCompleteObject.m */,
-				2B75AB2C1D7FFF4E0074119E /* DEMODataSource.h */,
-				2B75AB2D1D7FFF4E0074119E /* DEMODataSource.m */,
-				2B75AB2E1D7FFF4E0074119E /* LCCKLoginDataSource.h */,
-				2B75AB2F1D7FFF4E0074119E /* LCCKLoginDataSource.m */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		2B75AB301D7FFF4E0074119E /* Main */ = {
@@ -2440,7 +2393,6 @@
 				2BBB7D851DA8F524005E90A5 /* DDReloadView.xib in Resources */,
 				2BB3D7D91D7D6F8D00FFDC0E /* TOCropViewControllerLocalizable.strings in Resources */,
 				2B90B9051DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle in Resources */,
-				2B75AB521D7FFF4E0074119E /* LCCKLoginViewController.xib in Resources */,
 				2BB3D7A81D7D6F8C00FFDC0E /* lookup_miss_etikate.png in Resources */,
 				2BDB10271D9BBC9500F2C27C /* DDFillJobIndustryViewController.xib in Resources */,
 				2BBB7D731DA89280005E90A5 /* DDLoadingMoreTableViewCell.xib in Resources */,
@@ -2603,7 +2555,6 @@
 				2BB3D7C91D7D6F8D00FFDC0E /* SMPageControl.m in Sources */,
 				2BB3D7451D7D6F8C00FFDC0E /* NSString+Path.m in Sources */,
 				2B311C4E1D7E631D007CE4DD /* SYNetworkManager.m in Sources */,
-				2B75AB531D7FFF4E0074119E /* DEMOCustomAutoCompleteObject.m in Sources */,
 				2B75AB4D1D7FFF4E0074119E /* LCCKInputViewPluginVCard.m in Sources */,
 				2BB3D7461D7D6F8C00FFDC0E /* NSString+SYAddition.m in Sources */,
 				2BB3D7571D7D6F8C00FFDC0E /* UIImage+SYScale.m in Sources */,
@@ -2639,10 +2590,8 @@
 				2BB3D7D21D7D6F8D00FFDC0E /* SSHardwareInfo.m in Sources */,
 				2BB3D7891D7D6F8C00FFDC0E /* DBCameraCollectionViewController.m in Sources */,
 				2BB3D78A1D7D6F8C00FFDC0E /* DBCameraContainerViewController.m in Sources */,
-				2B75AB551D7FFF4E0074119E /* LCCKLoginDataSource.m in Sources */,
 				2BB3D7BB1D7D6F8C00FFDC0E /* MJPhotoToolbar.m in Sources */,
 				2BA3F2F31D9285E800094E0A /* DDAnswer.m in Sources */,
-				2B75AB541D7FFF4E0074119E /* DEMODataSource.m in Sources */,
 				2BB3D7671D7D6F8C00FFDC0E /* CoreFoundationDataSource.m in Sources */,
 				2BB3D76E1D7D6F8C00FFDC0E /* UIImage+ImageEffects.m in Sources */,
 				2BBB7D881DA9E290005E90A5 /* DDPostAskViewModel.m in Sources */,
@@ -2662,7 +2611,6 @@
 				2B311C5A1D7EA2FF007CE4DD /* DDUser.m in Sources */,
 				2BB3D7521D7D6F8C00FFDC0E /* UIButton+Addition.m in Sources */,
 				2B144A9C1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.m in Sources */,
-				2B75AB511D7FFF4E0074119E /* LCCKLoginViewController.m in Sources */,
 				2B75AB0B1D7FF8F90074119E /* DDChatKitManager.m in Sources */,
 				2BDB10261D9BBC9500F2C27C /* DDFillJobIndustryViewController.m in Sources */,
 				2BB3D75C1D7D6F8C00FFDC0E /* UIRefreshControl+Addition.m in Sources */,

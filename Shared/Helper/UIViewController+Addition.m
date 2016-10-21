@@ -42,14 +42,6 @@
     if ([response isKindOfClass:[NSDictionary class]] && response[kMsgKey]) {
         if ([response[kSuccessKey] integerValue] != 10009) {
             [self showNotice:response[kMsgKey]];
-        } else {
-            // 10009 重新登录
-            UIViewController *loginNavVC = [[SYStoryboardManager manager].loginSB instantiateViewControllerWithIdentifier:@"DDLoginNav"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self presentViewController:loginNavVC animated:YES completion:^{
-                    [self.navigationController popToRootViewControllerAnimated:NO];
-                }];
-            });
         }
     } else {
         [self showNotice:@"您的网络不给力哦"];

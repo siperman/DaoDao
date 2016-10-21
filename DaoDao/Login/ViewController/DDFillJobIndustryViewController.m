@@ -7,28 +7,21 @@
 //
 
 #import "DDFillJobIndustryViewController.h"
+#import "MLPAutoCompleteTextField.h"
 #import "DDConfig.h"
 
-@interface DDFillJobIndustryViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface DDFillJobIndustryViewController () <UITextFieldDelegate, MLPAutoCompleteTextFieldDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *labDesc;
-@property (weak, nonatomic) IBOutlet UITextField *txtOne;
-@property (weak, nonatomic) IBOutlet UITextField *txtTwo;
-@property (weak, nonatomic) IBOutlet UITextField *txtThree;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet MLPAutoCompleteTextField *txtOne;
+@property (weak, nonatomic) IBOutlet MLPAutoCompleteTextField *txtTwo;
+@property (weak, nonatomic) IBOutlet MLPAutoCompleteTextField *txtThree;
 @property (weak, nonatomic) IBOutlet UILabel *labOne;
 @property (weak, nonatomic) IBOutlet UILabel *labTwo;
 @property (weak, nonatomic) IBOutlet UILabel *labThree;
-@property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *inputView;
-@property (weak, nonatomic) IBOutlet UIButton *btnChoice;
-@property (weak, nonatomic) IBOutlet UILabel *labTop;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableTop;
-
-@property (nonatomic, weak) UITextField *writing;
 @property (nonatomic, strong) NSArray *data;
-@property (nonatomic, strong) NSMutableArray *searchArray;
 
 @end
 
@@ -55,25 +48,15 @@
         self.labOne.text = @"行业一";
         self.labTwo.text = @"行业二";
         self.labThree.text = @"行业三";
-        self.labTop.text = @"行业不限";
     }
     [self.labDesc setTextColor:TextColor];
-    [self.btnChoice setImage:Image(@"icon_choice") forState:UIControlStateNormal];
-    [self.btnChoice setImage:Image(@"icon_choiceSure") forState:UIControlStateSelected];
-
-    self.topView.hidden = !self.showTopView;
-    self.searchArray = [NSMutableArray array];
-    self.tableView.hidden = YES;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
 
     NSArray *strs = nil;
     if (self.fillStr) {
         self.fillStr = [self.fillStr stringByReplacingOccurrencesOfString:@"，" withString:@","];
         strs = [self.fillStr componentsSeparatedByString:@","];
     }
-    [@[self.txtOne, self.txtTwo, self.txtThree] enumerateObjectsUsingBlock:^(UITextField *textField, NSUInteger idx, BOOL * _Nonnull stop) {
-        [textField addTarget:self action:@selector(textFieldDidChange:)forControlEvents:UIControlEventEditingChanged];
+    [@[self.txtOne, self.txtTwo, self.txtThree] enumerateObjectsUsingBlock:^(MLPAutoCompleteTextField *textField, NSUInteger idx, BOOL * _Nonnull stop) {
         textField.delegate = self;
         if (!self.isFillJob) {
             [textField setPlaceholder:@"输入行业"];
@@ -81,6 +64,7 @@
         if (strs.count > idx) {
             textField.text = strs[idx];
         }
+        textField.autoCompleteTableBorderColor = SecondColor;
     }];
 
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(fillDone)];
@@ -99,20 +83,16 @@
 - (void)fillDone
 {
     if (self.callback) {
-        if (self.btnChoice.selected) {
-            self.callback([self.labTop.text copy]);
-        } else {
-            NSMutableString *str = [NSMutableString stringWithString:@""];
-            for (NSString *text in @[self.txtOne.text,
-                                     self.txtTwo.text,
-                                     self.txtThree.text]) {
-                if (text.length > 0) {
-                    [str appendFormat:@"%@，", text];
-                }
+        NSMutableString *str = [NSMutableString stringWithString:@""];
+        for (NSString *text in @[self.txtOne.text,
+                                 self.txtTwo.text,
+                                 self.txtThree.text]) {
+            if (text.length > 0) {
+                [str appendFormat:@"%@，", text];
             }
-            !str.length ?: [str deleteCharactersInRange:NSMakeRange(str.length - 1, 1)];
-            self.callback(str);
         }
+        !str.length ?: [str deleteCharactersInRange:NSMakeRange(str.length - 1, 1)];
+        self.callback(str);
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -126,23 +106,6 @@
 
 #pragma mark UITextFieldDelegate
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    if (textField == self.txtOne) {
-        self.tableTop.constant = -100;
-    } else if (textField == self.txtTwo) {
-        self.tableTop.constant = -50;
-    } else {
-        self.tableTop.constant = 0;
-    }
-    _writing = textField;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    self.tableView.hidden = YES;
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -150,64 +113,66 @@
     return YES;
 }
 
-- (void)textFieldDidChange:(UITextField *)textField
-{
-    [self.searchArray removeAllObjects];
-    NSString *searchText = textField.text;
-    if (searchText.length == 0) {
-        self.tableView.hidden = YES;
-    } else {
-        for (NSDictionary *dict in self.data) {
-            NSString *text = dict[@"name"];
-            if (text.length > 0) {
-                NSRange range = [text rangeOfString:searchText options:NSCaseInsensitiveSearch];
-                if (range.location != NSNotFound) {
-                    [self.searchArray addObject:text];
-                }
-            }
-        }
-        if (self.searchArray.count > 0) {
-            self.tableView.hidden = NO;
-            [self.tableView reloadData];
-        } else {
-            self.tableView.hidden = YES;
-        }
-    }
-}
-
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     return textField.text.length + string.length <= 10;
 }
 
+#pragma mark - MLPAutoCompleteTextField Delegate
 
-#pragma mark UITableViewDelegate, UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.searchArray.count;
+//- (BOOL)autoCompleteTextField:(MLPAutoCompleteTextField *)textField
+//          shouldConfigureCell:(UITableViewCell *)cell
+//       withAutoCompleteString:(NSString *)autocompleteString
+//         withAttributedString:(NSAttributedString *)boldedString
+//        forAutoCompleteObject:(id<MLPAutoCompletionObject>)autocompleteObject
+//            forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    //This is your chance to customize an autocomplete tableview cell before it appears in the autocomplete tableview
+//    cell.textLabel.text = self.searchArray[indexPath.row];
+//
+//    return YES;
+//}
+
+//- (void)autoCompleteTextField:(MLPAutoCompleteTextField *)textField
+//  didSelectAutoCompleteString:(NSString *)selectedString
+//       withAutoCompleteObject:(id<MLPAutoCompletionObject>)selectedObject
+//            forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    !_clientIDHandler ?: _clientIDHandler(selectedString);
+//}
+
+- (void)autoCompleteTextField:(MLPAutoCompleteTextField *)textField willHideAutoCompleteTableView:(UITableView *)autoCompleteTableView {
+    NSLog(@"Autocomplete table view will be removed from the view hierarchy");
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSInteger row = indexPath.row;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    }
-    cell.textLabel.text = self.searchArray[row];
-
-    return cell;
+- (void)autoCompleteTextField:(MLPAutoCompleteTextField *)textField willShowAutoCompleteTableView:(UITableView *)autoCompleteTableView {
+    NSLog(@"Autocomplete table view will be added to the view hierarchy");
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSInteger row = indexPath.row;
+- (void)autoCompleteTextField:(MLPAutoCompleteTextField *)textField didHideAutoCompleteTableView:(UITableView *)autoCompleteTableView {
+    NSLog(@"Autocomplete table view ws removed from the view hierarchy");
+}
 
-    if (row < self.searchArray.count) {
-        self.writing.text = self.searchArray[row];
-        [self.view endEditing:YES];
+- (void)autoCompleteTextField:(MLPAutoCompleteTextField *)textField didShowAutoCompleteTableView:(UITableView *)autoCompleteTableView {
+    NSLog(@"Autocomplete table view was added to the view hierarchy");
+}
+
+- (NSArray *)autoCompleteTextField:(MLPAutoCompleteTextField *)textField
+      possibleCompletionsForString:(NSString *)string
+{
+    NSMutableArray *array = [NSMutableArray array];
+    NSString *searchText = string;
+    if (searchText.length > 0) {
+        for (NSDictionary *dict in self.data) {
+            NSString *text = dict[@"name"];
+            if (text.length > 0) {
+                NSRange range = [text rangeOfString:searchText options:NSCaseInsensitiveSearch];
+                if (range.location != NSNotFound) {
+                    [array addObject:text];
+                }
+            }
+        }
     }
+    return array;
 }
 
 @end
