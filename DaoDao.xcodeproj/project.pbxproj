@@ -47,11 +47,8 @@
 		2B75AB491D7FFF4E0074119E /* LCCKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB0F1D7FFF4E0074119E /* LCCKUser.m */; };
 		2B75AB4A1D7FFF4E0074119E /* LCCKInputViewPluginConversationBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB141D7FFF4E0074119E /* LCCKInputViewPluginConversationBackground.m */; };
 		2B75AB4B1D7FFF4E0074119E /* LCCKVCardMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB191D7FFF4E0074119E /* LCCKVCardMessage.m */; };
-		2B75AB4C1D7FFF4E0074119E /* calling_card_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B75AB1B1D7FFF4E0074119E /* calling_card_bg@2x.png */; };
 		2B75AB4D1D7FFF4E0074119E /* LCCKInputViewPluginVCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB1E1D7FFF4E0074119E /* LCCKInputViewPluginVCard.m */; };
 		2B75AB4E1D7FFF4E0074119E /* LCCKVCardMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB201D7FFF4E0074119E /* LCCKVCardMessageCell.m */; };
-		2B75AB4F1D7FFF4E0074119E /* LCCKVCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB221D7FFF4E0074119E /* LCCKVCardView.m */; };
-		2B75AB501D7FFF4E0074119E /* LCCKVCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B75AB231D7FFF4E0074119E /* LCCKVCardView.xib */; };
 		2B75AB561D7FFF4E0074119E /* LCCKMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB331D7FFF4E0074119E /* LCCKMapViewController.m */; };
 		2B75AB571D7FFF4E0074119E /* LCCKUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB361D7FFF4E0074119E /* LCCKUtil.m */; };
 		2B75AB581D7FFF4E0074119E /* LCCKPlusButtonSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB391D7FFF4E0074119E /* LCCKPlusButtonSubclass.m */; };
@@ -362,14 +359,10 @@
 		2B75AB141D7FFF4E0074119E /* LCCKInputViewPluginConversationBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCKInputViewPluginConversationBackground.m; sourceTree = "<group>"; };
 		2B75AB181D7FFF4E0074119E /* LCCKVCardMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKVCardMessage.h; sourceTree = "<group>"; };
 		2B75AB191D7FFF4E0074119E /* LCCKVCardMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCKVCardMessage.m; sourceTree = "<group>"; };
-		2B75AB1B1D7FFF4E0074119E /* calling_card_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calling_card_bg@2x.png"; sourceTree = "<group>"; };
 		2B75AB1D1D7FFF4E0074119E /* LCCKInputViewPluginVCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKInputViewPluginVCard.h; sourceTree = "<group>"; };
 		2B75AB1E1D7FFF4E0074119E /* LCCKInputViewPluginVCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCKInputViewPluginVCard.m; sourceTree = "<group>"; };
 		2B75AB1F1D7FFF4E0074119E /* LCCKVCardMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKVCardMessageCell.h; sourceTree = "<group>"; };
 		2B75AB201D7FFF4E0074119E /* LCCKVCardMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCKVCardMessageCell.m; sourceTree = "<group>"; };
-		2B75AB211D7FFF4E0074119E /* LCCKVCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKVCardView.h; sourceTree = "<group>"; };
-		2B75AB221D7FFF4E0074119E /* LCCKVCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCKVCardView.m; sourceTree = "<group>"; };
-		2B75AB231D7FFF4E0074119E /* LCCKVCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LCCKVCardView.xib; sourceTree = "<group>"; };
 		2B75AB321D7FFF4E0074119E /* LCCKMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKMapViewController.h; sourceTree = "<group>"; };
 		2B75AB331D7FFF4E0074119E /* LCCKMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCKMapViewController.m; sourceTree = "<group>"; };
 		2B75AB341D7FFF4E0074119E /* LCCKConstantsDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKConstantsDefinition.h; sourceTree = "<group>"; };
@@ -1137,7 +1130,6 @@
 			isa = PBXGroup;
 			children = (
 				2B75AB171D7FFF4E0074119E /* Model */,
-				2B75AB1A1D7FFF4E0074119E /* Resources */,
 				2B75AB1C1D7FFF4E0074119E /* View */,
 			);
 			path = VCardMessage;
@@ -1152,14 +1144,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		2B75AB1A1D7FFF4E0074119E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				2B75AB1B1D7FFF4E0074119E /* calling_card_bg@2x.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		2B75AB1C1D7FFF4E0074119E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1167,9 +1151,6 @@
 				2B75AB1E1D7FFF4E0074119E /* LCCKInputViewPluginVCard.m */,
 				2B75AB1F1D7FFF4E0074119E /* LCCKVCardMessageCell.h */,
 				2B75AB201D7FFF4E0074119E /* LCCKVCardMessageCell.m */,
-				2B75AB211D7FFF4E0074119E /* LCCKVCardView.h */,
-				2B75AB221D7FFF4E0074119E /* LCCKVCardView.m */,
-				2B75AB231D7FFF4E0074119E /* LCCKVCardView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2370,13 +2351,11 @@
 				2B144A9D1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib in Resources */,
 				2BB3D7F21D7D6F8D00FFDC0E /* UMSocialSDKResourcesNew.bundle in Resources */,
 				2BB3D7ED1D7D6F8D00FFDC0E /* UMShareEditViewController.xib in Resources */,
-				2B75AB501D7FFF4E0074119E /* LCCKVCardView.xib in Resources */,
 				2B6D12701D98B586003433D0 /* DDForgetCodeNoticeView.xib in Resources */,
 				2BB3D7951D7D6F8C00FFDC0E /* DBCameraImages.xcassets in Resources */,
 				2B90B9071DB71440000B6FE1 /* Shared.xcassets in Resources */,
 				2BB3D7AA1D7D6F8C00FFDC0E /* lookup_soft_elegance_2.png in Resources */,
 				2BB3D7EB1D7D6F8D00FFDC0E /* UMSCommentInputController.xib in Resources */,
-				2B75AB4C1D7FFF4E0074119E /* calling_card_bg@2x.png in Resources */,
 				2BB3D7A91D7D6F8C00FFDC0E /* lookup_soft_elegance_1.png in Resources */,
 				2B6D128C1D9A66E9003433D0 /* DDMajorGradePickerView.xib in Resources */,
 				2BB3D7EF1D7D6F8D00FFDC0E /* UMSLoginViewController.xib in Resources */,
@@ -2627,7 +2606,6 @@
 				2BF86C7B1D9510A500E06BF8 /* DDCalendarViewController.m in Sources */,
 				2BBB7D771DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.m in Sources */,
 				2BB3D7631D7D6F8C00FFDC0E /* UIViewController+EmptyNotice.m in Sources */,
-				2B75AB4F1D7FFF4E0074119E /* LCCKVCardView.m in Sources */,
 				2BB3D7831D7D6F8C00FFDC0E /* UIImage+CTAssetsPickerController.m in Sources */,
 				2BB3D75A1D7D6F8C00FFDC0E /* UINavigationBar+Awesome.m in Sources */,
 				2B6D12741D98B586003433D0 /* DDForgetInviteCodeViewController.m in Sources */,

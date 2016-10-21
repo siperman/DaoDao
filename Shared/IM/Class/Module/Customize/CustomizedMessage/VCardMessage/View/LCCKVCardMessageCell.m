@@ -14,45 +14,65 @@
 #else
 #import "UIImageView+WebCache.h"
 #endif
-#import "LCCKVCardView.h"
 
 @interface LCCKVCardMessageCell ()
-@property (nonatomic, weak) LCCKVCardView *vCardView;
-@end
 
-static CGFloat LCCK_MSG_SPACE_TOP = 10;
-static CGFloat LCCK_MSG_SPACE_BTM = 10;
-static CGFloat LCCK_MSG_SPACE_LEFT = 20;
-static CGFloat LCCK_MSG_SPACE_RIGHT = 20;
+@property (nonatomic, strong) UIImageView *messageImageView;
+
+@end
 
 @implementation LCCKVCardMessageCell
 
-#pragma mark -
+
 #pragma mark - Override Methods
 
+#pragma mark - Public Methods
+
 - (void)setup {
-    [self.vCardView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.contentView).with.insets(UIEdgeInsetsMake(LCCK_MSG_SPACE_TOP, LCCK_MSG_SPACE_LEFT, LCCK_MSG_SPACE_BTM, LCCK_MSG_SPACE_RIGHT));
+    [self.messageContentView addSubview:self.messageImageView];
+
+    UIEdgeInsets edgeMessageBubbleCustomize;
+    if (self.messageOwner == LCCKMessageOwnerTypeSelf) {
+        UIEdgeInsets rightEdgeMessageBubbleCustomize = [LCCKSettingService sharedInstance].rightHollowEdgeMessageBubbleCustomize;
+        edgeMessageBubbleCustomize = rightEdgeMessageBubbleCustomize;
+    } else {
+        UIEdgeInsets leftEdgeMessageBubbleCustomize = [LCCKSettingService sharedInstance].leftHollowEdgeMessageBubbleCustomize;
+        edgeMessageBubbleCustomize = leftEdgeMessageBubbleCustomize;
+    }
+    [self.messageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.messageContentView).with.insets(edgeMessageBubbleCustomize);
+        make.height.lessThanOrEqualTo(@200).priorityHigh();
     }];
-    [self updateConstraintsIfNeeded];
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapMessageImageViewGestureRecognizerHandler:)];
+    [self.messageContentView addGestureRecognizer:recognizer];
     [super setup];
+    [self addGeneralView];
 }
 
-- (void)configureCellWithData:(AVIMTypedMessage *)message {
+- (void)singleTapMessageImageViewGestureRecognizerHandler:(UITapGestureRecognizer *)tapGestureRecognizer {
+    if (tapGestureRecognizer.state == UIGestureRecognizerStateEnded) {
+//        if ([self.delegate respondsToSelector:@selector(messageCellTappedMessage:)]) {
+//            [self.delegate messageCellTappedMessage:self];
+//        }
+        [self.viewController showNotice:@"邀请函"];
+    }
+}
+
+- (void)configureCellWithData:(LCCKMessage *)message {
     [super configureCellWithData:message];
-    NSString *clientId;
-    NSString *name = nil;
-    NSURL *avatarURL = nil;
-    clientId = [message.attributes valueForKey:@"clientId"];
-    [[LCChatKit sharedInstance] getCachedProfileIfExists:clientId name:&name avatarURL:&avatarURL error:nil];
-    if (!name) {
-        name = clientId;
+    self.messageImageView.image = Image(@"bg_im_yaoqinghan");
+}
+
+#pragma mark - Getters
+
+- (UIImageView *)messageImageView {
+    if (!_messageImageView) {
+        _messageImageView = [[UIImageView alloc] init];
+        //FIXME:这一行可以不需要
+        _messageImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
-    if (!name) {
-        name = @"未知用户";
-    }
-    
-    [self.vCardView configureWithAvatarURL:avatarURL title:name clientId:clientId];
+    return _messageImageView;
+
 }
 
 #pragma mark -
@@ -64,31 +84,6 @@ static CGFloat LCCK_MSG_SPACE_RIGHT = 20;
 
 + (AVIMMessageMediaType)classMediaType {
     return kAVIMMessageMediaTypeVCard;
-}
-
-#pragma mark -
-#pragma mark - Getter Method
-
-- (LCCKVCardView *)vCardView {
-    if (_vCardView) {
-        return _vCardView;
-    }
-    LCCKVCardView *vCardView = [LCCKVCardView vCardView];
-    [vCardView setVCardDidClickedHandler:^(NSString *clientId) {
-        LCCKOpenProfileBlock openProfileBlock = [LCCKUIService sharedInstance].openProfileBlock;
-        if (openProfileBlock) {
-            id<LCCKUserDelegate> user;
-            if (clientId.length > 0) {
-                NSArray *users = [[LCChatKit sharedInstance] getCachedProfilesIfExists:@[clientId] error:nil];
-                if (users.count > 0) {
-                    user = users[0];
-                }
-            }
-            openProfileBlock(clientId, user, (UIViewController *)self.delegate);
-        }
-    }];
-    [self.contentView addSubview:(_vCardView = vCardView)];
-    return _vCardView;
 }
 
 @end

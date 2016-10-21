@@ -21,9 +21,9 @@
 #pragma mark -
 #pragma mark - LCCKInputViewPluginSubclassing Method
 
-//+ (void)load {
-//    [self registerCustomInputViewPlugin];
-//}
++ (void)load {
+    [self registerCustomInputViewPlugin];
+}
 
 + (LCCKInputViewPluginType)classPluginType {
     return LCCKInputViewPluginTypeVCard;
@@ -43,7 +43,7 @@
  * 插件名称
  */
 - (NSString *)pluginTitle {
-    return @"名片";
+    return @"邀请函";
 }
 
 /**
@@ -69,16 +69,16 @@
         return _sendCustomMessageHandler;
     }
     if (!self.conversationViewController.isAvailable) {
-        [self.conversationViewController sendLocalFeedbackTextMessge:@"名片发送失败"];
+        [self.conversationViewController sendLocalFeedbackTextMessge:@"邀请函发送失败"];
         return nil;
     }
     LCCKIdResultBlock sendCustomMessageHandler = ^(id object, NSError *error) {
         LCCKVCardMessage *vCardMessage = [LCCKVCardMessage vCardMessageWithClientId:object conversationType:[self.conversationViewController getConversationIfExists].lcck_type];
         [self.conversationViewController sendCustomMessage:vCardMessage progressBlock:^(NSInteger percentDone) {
         } success:^(BOOL succeeded, NSError *error) {
-            [self.conversationViewController sendLocalFeedbackTextMessge:@"名片发送成功"];
+            [self.conversationViewController sendLocalFeedbackTextMessge:@"邀请函发送成功"];
         } failed:^(BOOL succeeded, NSError *error) {
-            [self.conversationViewController sendLocalFeedbackTextMessge:@"名片发送失败"];
+            [self.conversationViewController sendLocalFeedbackTextMessge:@"邀请函发送失败"];
         }];
         //important: avoid retain cycle!
         _sendCustomMessageHandler = nil;
@@ -96,6 +96,11 @@
 }
 
 - (void)presentSelectMemberViewController {
+
+    [self.inputViewRef open];
+    !self.sendCustomMessageHandler ?: self.sendCustomMessageHandler(@"yaoqinghan", nil);
+
+    return;
     AVIMConversation *conversation = [self.conversationViewController getConversationIfExists];
     NSArray *allPersonIds;
     if (conversation.lcck_type == LCCKConversationTypeSingle) {
@@ -106,7 +111,7 @@
     NSArray *users = [[LCChatKit sharedInstance] getCachedProfilesIfExists:allPersonIds shouldSameCount:YES error:nil];
     NSString *currentClientID = [[LCChatKit sharedInstance] clientId];
     LCCKContactListViewController *contactListViewController = [[LCCKContactListViewController alloc] initWithContacts:[NSSet setWithArray:users] userIds:[NSSet setWithArray:allPersonIds] excludedUserIds:[NSSet setWithArray:@[currentClientID]] mode:LCCKContactListModeSingleSelection];
-    contactListViewController.title = @"发送名片";
+    contactListViewController.title = @"发送邀请函";
     [contactListViewController setViewDidDismissBlock:^(LCCKBaseViewController *viewController) {
         [self.inputViewRef open];
         [self.inputViewRef beginInputing];

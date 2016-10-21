@@ -13,9 +13,9 @@
 
 #if DEBUG
 NSString * kHostUrl = @"http://devapi.daodaoclub.com/v1";
-//NSString * kHostUrl = @"http://testapi.daodaoclub.com/v1";
 #else
-NSString * kHostUrl = @"http://apidaodao.soouya.com/v1";
+NSString * kHostUrl = @"http://testapi.daodaoclub.com/v1";
+//NSString * kHostUrl = @"http://apidaodao.soouya.com/v1";
 #endif
 NSString * kPicHostUrl = @"http://img.daodaoclub.com";
 

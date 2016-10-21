@@ -23,6 +23,7 @@
 #import "LCCKContactManager.h"
 
 #import "DDConversationListCell.h"
+#import "LCCKInputViewPluginVCard.h"
 
 #ifdef DEBUG
 static NSString *const LCCKAPPID = @"bcBzimEL1vcQy8qPkdM064mA-gzGzoHsz";

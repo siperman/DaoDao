@@ -26,9 +26,9 @@
     if (!self) {
         return nil;
     }
-    [self lcck_setObject:@"名片" forKey:LCCKCustomMessageTypeTitleKey];
-    [self lcck_setObject:@"这是一条名片消息，当前版本过低无法显示，请尝试升级APP查看" forKey:LCCKCustomMessageDegradeKey];
-    [self lcck_setObject:@"有人向您发送了一条名片消息，请打开APP查看" forKey:LCCKCustomMessageSummaryKey];
+    [self lcck_setObject:@"邀请函" forKey:LCCKCustomMessageTypeTitleKey];
+    [self lcck_setObject:@"这是一条邀请函消息，当前版本过低无法显示，请尝试升级APP查看" forKey:LCCKCustomMessageDegradeKey];
+    [self lcck_setObject:@"有人向您发送了邀请函，请打开APP查看" forKey:LCCKCustomMessageSummaryKey];
     [self lcck_setObject:@(conversationType) forKey:LCCKCustomMessageConversationTypeKey];
     [self lcck_setObject:clientId forKey:@"clientId"];
     //定向群消息，仅部分用户可见，需要实现 `-setFilterMessagesBlock:`, 详情见 LCChatKitExample 中的演示
