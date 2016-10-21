@@ -24,10 +24,10 @@
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:Image(@"icon_p1")];
 
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:Image(@"icon_left_bar") style:UIBarButtonItemStylePlain target:self action:@selector(goMine)];
-    [leftItem setTintColor:SecondColor];
+    [leftItem setTintColor:BarTintColor];
 
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:Image(@"icon_new") style:UIBarButtonItemStylePlain target:self action:@selector(goIM)];
-    [rightItem setTintColor:SecondColor];
+    [rightItem setTintColor:BarTintColor];
 
     self.navigationItem.rightBarButtonItem = rightItem;
     self.navigationItem.leftBarButtonItem = leftItem;
@@ -68,17 +68,6 @@
 
 - (void)goMine
 {
-//    DDChess *chess = [[DDChess alloc] init];
-//    NSMutableArray *array = [NSMutableArray array];
-//    for (NSInteger i = 0; i < 18; i++) {
-//        chess.isBig = i%2;
-//        chess.isWhite = i%3;
-//        chess.isLighting = i%4;
-//        chess.cid = [NSString stringWithFormat:@"围棋棋子第%@个", @(i)];
-//        [array addObject:[chess copy]];
-//    }
-//    [self.chessboard setChessArray:array];
-
     RIButtonItem *btnCancle = [RIButtonItem itemWithLabel:@"取消"];
     RIButtonItem *btnLogout = [RIButtonItem itemWithLabel:@"确定" action:^{
         [SYRequestEngine userLogout:^(BOOL success, id response) {
@@ -107,7 +96,6 @@
 
 - (void)postAsk
 {
-//    [self showNotice:@"click post"];
     DDPostAskTableViewController *vc = [DDPostAskTableViewController viewController];
 
     [self.navigationController pushViewController:vc animated:YES];
@@ -127,6 +115,9 @@
     if (!_btnPost) {
         _btnPost = [[UIButton alloc] init];
         [_btnPost shadowStyle];
+        [_btnPost.layer setShadowOpacity:0.4];
+        [_btnPost.layer setBorderColor:ColorHex(@"dadada").CGColor];
+        [_btnPost.layer setBorderWidth:OnePixelHeight];
         [_btnPost setTitle:@"发需求"];
         [_btnPost setTitleColor:MainColor];
         _btnPost.backgroundColor = ColorHex(@"ebebeb");

@@ -14,9 +14,8 @@
 @interface DDAsk : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy) NSString *aid;//id
-@property (nonatomic, copy) NSString *type;//类型
+@property (nonatomic, readonly) NSString *type;//谁发起
 @property (nonatomic, copy) NSString *demand;//需求
-@property (nonatomic, copy) NSString *descr;//描述
 @property (nonatomic, copy) NSArray <NSString *>* industry;//行业
 @property (nonatomic, copy) NSArray <NSString *>* job;//职务
 @property (nonatomic, copy) NSArray <NSString *>* expert;//专家

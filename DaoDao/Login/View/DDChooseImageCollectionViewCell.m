@@ -10,6 +10,7 @@
 
 @interface DDChooseImageCollectionViewCell ()
 
+@property (weak, nonatomic) IBOutlet UIView *backView;
 @end
 
 @implementation DDChooseImageCollectionViewCell
@@ -20,11 +21,13 @@
 
     self.layer.cornerRadius = kCornerRadius;
     self.layer.masksToBounds = YES;
+    self.backView.backgroundColor = MainColor;
 }
 
 - (void)choose:(BOOL)value
 {
     self.imageSelect.image = value ? Image(@"icon_choiceSure") : Image(@"icon_choice");
+    self.backView.hidden = !value;
 }
 
 + (CGSize)cellSize

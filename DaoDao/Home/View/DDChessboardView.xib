@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="349" height="490"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="8Vx-Y5-HzK">
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="8Vx-Y5-HzK">
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="FhO-zY-aaD"/>
                     </constraints>

@@ -12,16 +12,12 @@
 #import "NSString+MD5Addition.h"
 
 #if DEBUG
-NSString * kHostUrl = @"http://apidaodao.soouya.com/v1";
-NSString * kPicHostUrl = @"http://apidaodao.soouya.com/v1";
-
-//NSString * kHostUrl = @"http://112.74.20.179/v1";
-//NSString * kPicHostUrl = @"http://112.74.20.179/v1";
+NSString * kHostUrl = @"http://devapi.daodaoclub.com/v1";
+//NSString * kHostUrl = @"http://testapi.daodaoclub.com/v1";
 #else
 NSString * kHostUrl = @"http://apidaodao.soouya.com/v1";
-NSString * kPicHostUrl = @"http://apidaodao.soouya.com/v1";
-
 #endif
+NSString * kPicHostUrl = @"http://img.daodaoclub.com";
 
 // 剩余次数
 static NSString * const kCountPath                             = @"/count/{_model}";

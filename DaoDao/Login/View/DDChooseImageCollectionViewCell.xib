@@ -18,6 +18,9 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kax-Td-znL"/>
+                    <view hidden="YES" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="geO-2U-ZmB">
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndj-up-aG0">
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -34,16 +37,21 @@
             <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Zev-Gk-R2q" firstAttribute="trailing" secondItem="Kax-Td-znL" secondAttribute="trailing" constant="-4" id="1bK-v7-yo0"/>
+                <constraint firstItem="geO-2U-ZmB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7M7-FD-YG0"/>
                 <constraint firstItem="Zev-Gk-R2q" firstAttribute="top" secondItem="Kax-Td-znL" secondAttribute="top" constant="4" id="AeC-Og-SoE"/>
+                <constraint firstItem="geO-2U-ZmB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="QQE-Lk-t0j"/>
                 <constraint firstAttribute="trailing" secondItem="Kax-Td-znL" secondAttribute="trailing" id="ayj-0j-FBQ"/>
                 <constraint firstItem="Kax-Td-znL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fsZ-h3-Urt"/>
                 <constraint firstAttribute="bottom" secondItem="Kax-Td-znL" secondAttribute="bottom" id="mdn-PM-37w"/>
+                <constraint firstAttribute="trailing" secondItem="geO-2U-ZmB" secondAttribute="trailing" id="neZ-Zw-HAU"/>
+                <constraint firstAttribute="bottom" secondItem="geO-2U-ZmB" secondAttribute="bottom" id="ofd-3m-hak"/>
                 <constraint firstItem="ndj-up-aG0" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" id="p7s-TA-Xmb"/>
                 <constraint firstItem="ndj-up-aG0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="sb0-Xd-XcN"/>
                 <constraint firstItem="Kax-Td-znL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ypC-jw-8X5"/>
             </constraints>
             <size key="customSize" width="120" height="120"/>
             <connections>
+                <outlet property="backView" destination="geO-2U-ZmB" id="KKL-89-Y07"/>
                 <outlet property="imageSelect" destination="Zev-Gk-R2q" id="ZkD-d8-ECG"/>
                 <outlet property="imageView" destination="Kax-Td-znL" id="gM9-Xt-sZO"/>
                 <outlet property="labDesc" destination="ndj-up-aG0" id="rxf-o0-OSZ"/>

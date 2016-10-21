@@ -26,7 +26,7 @@ static char kNoticeViewKey;
 {
     return @[
              @"哎呀，网络加载失败",
-             @"暂无新的约局邀请",
+             @"暂无新的邀请",
              ][type];
 }
 
@@ -42,16 +42,15 @@ static char kNoticeViewKey;
         objc_setAssociatedObject(self, &kNoticeViewKey, noticeView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
         // imgNotice
-        CGFloat imgWidth = 90.0;
-        CGFloat imgOffset = -imgWidth;
+        CGFloat imgOffset = -90.0;
         UIImageView *imgNotice = [[UIImageView alloc] init];
         imgNotice.image = Image([self noticeImageNameForType:type]);
         
         [noticeView addSubview:imgNotice];
         
         [imgNotice mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(imgWidth);
-            make.height.mas_equalTo(imgWidth);
+            make.width.mas_equalTo(125);
+            make.height.mas_equalTo(120);
             make.center.equalTo(noticeView).centerOffset(CGPointMake(0, imgOffset));
         }];
         
@@ -60,7 +59,7 @@ static char kNoticeViewKey;
         labNotice.textAlignment = NSTextAlignmentCenter;
         labNotice.numberOfLines = 0;
         labNotice.textColor = TextColor;
-        labNotice.font = BigTextFont;
+        labNotice.font = Font(24);
         labNotice.text = [self noticeTextForType:type];
         
         [noticeView addSubview:labNotice];
@@ -68,7 +67,7 @@ static char kNoticeViewKey;
         [labNotice mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(10.0);
             make.right.mas_equalTo(-10.0);
-            make.top.equalTo(imgNotice.mas_bottom).with.offset(10.0);
+            make.bottom.equalTo(imgNotice.mas_top).with.offset(-40.0);
         }];
 
         noticeView.backgroundColor = BackgroundColor;

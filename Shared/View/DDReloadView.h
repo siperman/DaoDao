@@ -10,6 +10,7 @@
 
 @interface DDReloadView : UIControl
 
+@property (weak, nonatomic) IBOutlet UILabel *label;
 @property (nonatomic, strong) void(^reloadBlock)();
 
 + (instancetype)showReloadViewOnView:(UIView *)view reloadAction:(void(^)())reload;

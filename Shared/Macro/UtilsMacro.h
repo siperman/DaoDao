@@ -31,6 +31,7 @@ return; \
 #define TextColor ColorHex(@"9e9e9e")
 #define BackgroundColor ColorHex(@"f2f2f2")
 #define SepColor ColorHex(@"e9e9e9")
+#define BarTintColor ColorHex(@"c2a05f")
 
 // Font
 #define TitleTextFont Font(18)

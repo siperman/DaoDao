@@ -14,6 +14,7 @@ typedef void(^fillBlock)(NSString *);
 @property (nonatomic) BOOL isFillJob;
 @property (nonatomic) BOOL showTopView;
 @property (nonatomic, copy) fillBlock callback;
+@property (nonatomic, copy) NSString *fillStr;
 
 + (instancetype)viewController;
 @end

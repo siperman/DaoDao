@@ -63,6 +63,7 @@
                                                            @"mobilePhone" : self.txtPhone.text,
                                                            @"key" : [self.txtPhone.text stringFromMD5],
                                                            @"type" : @"sms",
+                                                           @"is4Login" : @"1"
                                                            }
                                                 callback:^(BOOL success, id response) {
                                                     if (success) {

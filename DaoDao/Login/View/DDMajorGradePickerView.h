@@ -20,6 +20,7 @@
 @property (nonatomic, weak) id<DDMajorGradePickerProtocol> delegate;
 
 + (instancetype)majorGradePickerWithDelegate:(id<DDMajorGradePickerProtocol>) delegate;
+- (void)pickedMajor:(NSString *)major grade:(NSNumber *)grade;
 - (void)showInView:(UIView *)view;
 - (void)cancelPicker;
 @end

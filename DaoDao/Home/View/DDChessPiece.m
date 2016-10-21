@@ -49,7 +49,11 @@
 
     CGRect rect = self.bounds;
     _lab = [[UILabel alloc] initWithFrame:CGRectInset(rect, 20, 20)];
-    _lab.text = _chess.cid;
+    if ([_chess.cid isEqualToString:@"all@industry"]) {
+        _lab.text = @"我的行业";
+    } else {
+        _lab.text = _chess.cid;
+    }
     _lab.font = NormalTextFont;
     _lab.textAlignment = NSTextAlignmentCenter;
     _lab.numberOfLines = 0;

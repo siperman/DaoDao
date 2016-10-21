@@ -25,6 +25,7 @@
 
 @property (nonatomic, strong) NSString *topic; // 感兴趣话题
 @property (nonatomic, strong) NSString *expert; // 擅长领域
+
 @end
 
 @implementation DDRegisterStepThreeViewController
@@ -77,6 +78,7 @@
 #pragma mark - Avatar
 - (IBAction)changeAvatar:(UIButton *)sender 
 {
+    [self.view endEditing:YES];
     [[SYCameraManager sharedInstance] getAvatarInViewController:self callback:^(NSArray *photos) {
         [self.btnAvatar setImage:photos.lastObject forState:UIControlStateNormal];
     }];
@@ -94,10 +96,27 @@
         vc.callback = ^(NSString *str) {
             textField.text = str;
         };
+        vc.fillStr = textField.text;
         [self.navigationController pushViewController:vc animated:YES];
         return NO;
     }
 
+    return YES;
+}
+
+//- (void)textFieldDidBeginEditing:(UITextField *)textField
+//{
+//    if (textField == self.txtYear) {
+//        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//    }
+//}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.txtYear) {
+        NSString *year = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        return year.integerValue <= 60;
+    }
     return YES;
 }
 
@@ -111,8 +130,8 @@
         id params = @{ kPhoneKey : _user.mobilePhone,
                        kCodeKey : _authCode,
                        kInviteCodeKey : _inviteCode,
-                       kJobKey : _txtJob.text,
-                       kIndustryKey : _txtIndustry.text,
+                       kJobKey : [_txtJob.text stringByReplacingOccurrencesOfString:@"，" withString:@","],
+                       kIndustryKey : [_txtIndustry.text stringByReplacingOccurrencesOfString:@"，" withString:@","],
                        kYearKey : _user.year,
                        kExpertKey : _expert,
                        kTopicKey : _topic,

@@ -46,17 +46,18 @@
 
     if (self.isFillJob) {
         self.title = @"输入职务";
-        self.labDesc.text = @"请输入您的职务，请至少输入1个，最多可输入3个职务。";
+        self.labDesc.text = @"请输入您的职务，请至少输入1个，最多3个";
         self.data = [DDConfig job];
     } else {
         self.title = @"输入行业";
-        self.labDesc.text = @"请输入您所在的行业，请至少输入1个，最多可输入3个行业";
+        self.labDesc.text = @"请输入您的行业，请至少输入1个，最多3个";
         self.data = [DDConfig industry];
         self.labOne.text = @"行业一";
         self.labTwo.text = @"行业二";
         self.labThree.text = @"行业三";
         self.labTop.text = @"行业不限";
     }
+    [self.labDesc setTextColor:TextColor];
     [self.btnChoice setImage:Image(@"icon_choice") forState:UIControlStateNormal];
     [self.btnChoice setImage:Image(@"icon_choiceSure") forState:UIControlStateSelected];
 
@@ -66,11 +67,19 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
+    NSArray *strs = nil;
+    if (self.fillStr) {
+        self.fillStr = [self.fillStr stringByReplacingOccurrencesOfString:@"，" withString:@","];
+        strs = [self.fillStr componentsSeparatedByString:@","];
+    }
     [@[self.txtOne, self.txtTwo, self.txtThree] enumerateObjectsUsingBlock:^(UITextField *textField, NSUInteger idx, BOOL * _Nonnull stop) {
         [textField addTarget:self action:@selector(textFieldDidChange:)forControlEvents:UIControlEventEditingChanged];
         textField.delegate = self;
         if (!self.isFillJob) {
             [textField setPlaceholder:@"输入行业"];
+        }
+        if (strs.count > idx) {
+            textField.text = strs[idx];
         }
     }];
 
@@ -98,7 +107,7 @@
                                      self.txtTwo.text,
                                      self.txtThree.text]) {
                 if (text.length > 0) {
-                    [str appendFormat:@"%@,", text];
+                    [str appendFormat:@"%@，", text];
                 }
             }
             !str.length ?: [str deleteCharactersInRange:NSMakeRange(str.length - 1, 1)];
@@ -164,6 +173,11 @@
             self.tableView.hidden = YES;
         }
     }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return textField.text.length + string.length <= 10;
 }
 
 

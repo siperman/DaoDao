@@ -56,6 +56,7 @@
         self.labTitle.text = @"为了更精准的帮您找到靠谱的人，请至少选择3项";
         self.data = [ChooseImageViewModel parseFromDicts:[DDConfig topic]];
         self.title = @"感兴趣话题";
+        [self.btnNext setTitle:@"开启道道"];
     } else {
         self.labTitle.text = @"为了更精准的帮您找到靠谱的人，请选择1~3项";
         self.data = [ChooseImageViewModel parseFromDicts:[DDConfig expert]];
@@ -108,6 +109,12 @@
 {
     NSInteger row = indexPath.row;
     ChooseImageViewModel *model = [self.data objectAtIndex:row];
+
+    if (!model.selected &&
+        !self.isChooseFav &&
+        _selectCount == 3) {
+        [self showNotice:@"最多可勾选3项喔！"];
+    }
 
     model.selected = !model.selected;
     model.selected ? _selectCount++ : _selectCount--;

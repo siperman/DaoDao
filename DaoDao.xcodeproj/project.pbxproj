@@ -2338,6 +2338,7 @@
 				2BCDD68A1D79597000BADD43 /* Resources */,
 				DE0EA462839FB961508824BF /* [CP] Embed Pods Frameworks */,
 				B147807F8A41B0351E8B8B66 /* [CP] Copy Pods Resources */,
+				2B90B90A1DB86430000B6FE1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2360,6 +2361,7 @@
 					2BCDD68B1D79597000BADD43 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = R54RSMK9W5;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2459,6 +2461,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2B90B90A1DB86430000B6FE1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
 		4E23BBC1B3EEB3F03D0E7AEB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2896,6 +2911,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = R54RSMK9W5;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "DaoDao/DaoDao-Prefix.pch";
@@ -2917,6 +2933,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = R54RSMK9W5;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "DaoDao/DaoDao-Prefix.pch";

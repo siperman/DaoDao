@@ -62,21 +62,22 @@
         // 行业
         DDFillJobIndustryViewController *vc = [DDFillJobIndustryViewController viewController];
         vc.isFillJob = NO;
-//        vc.showTopView = YES;
         vc.callback = ^(NSString *str) {
-            self.postAskModel.industry = str;
+            self.postAskModel.industry = [str stringByReplacingOccurrencesOfString:@"，" withString:@","];
             self.txtIndustry.text = str;
         };
+        vc.fillStr = self.txtIndustry.text;
         [self.navigationController pushViewController:vc animated:YES];
     } else if (tag == 1) {
         // 职务
         DDFillJobIndustryViewController *vc = [DDFillJobIndustryViewController viewController];
         vc.isFillJob = YES;
-//        vc.showTopView = YES;
         vc.callback = ^(NSString *str) {
-            self.postAskModel.job = str;
+            self.postAskModel.job = [str stringByReplacingOccurrencesOfString:@"，" withString:@","];
             self.txtJob.text = str;
         };
+        vc.fillStr = self.txtJob.text;
+
         [self.navigationController pushViewController:vc animated:YES];
     } else {
         // 专家
@@ -103,8 +104,10 @@
                                   [self.navigationController hideAllHUD];
                                   if (success) {
                                       DDAskDetailViewController *vc = [[DDAskDetailViewController alloc] init];
+                                      NSMutableArray *vcs = [[self.navigationController viewControllers] mutableCopy];
+                                      [vcs replaceObjectAtIndex:[vcs indexOfObject:self] withObject:vc];
 
-                                      [self.navigationController pushViewController:vc animated:YES];
+                                      [self.navigationController setViewControllers:vcs animated:YES];
                                   } else {
                                       [self.navigationController showRequestNotice:response];
                                   }

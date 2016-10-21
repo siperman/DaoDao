@@ -33,8 +33,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.title = self.cid;
+
+    if ([self.cid isEqualToString:@"all@industry"]) {
+        self.title = @"我的行业";
+    } else {
+        self.title = self.cid;
+    }
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[DDAskInfoTableViewCell class]];
     [self.tableView registerNib:[DDLoadingMoreTableViewCell class]];
@@ -42,6 +46,7 @@
     _answerList = [NSMutableArray array];
     [self.refreshControl addTarget:self action:@selector(refreshAsk) forControlEvents:UIControlEventValueChanged];
     [self refreshAsk];
+    self.view.backgroundColor = BackgroundColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="KGk-i7-Jjw" customClass="DDConversationListCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="115" id="KGk-i7-Jjw" customClass="DDConversationListCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -28,8 +28,8 @@
                                 <color key="textColor" red="0.2450951338" green="0.14873373509999999" blue="0.135093987" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKK-Lp-Rhc" customClass="SepView">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKK-Lp-Rhc">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ciN-0J-W8X">
                                 <constraints>
@@ -95,7 +95,7 @@
                     <constraint firstItem="D92-dR-jIU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="5d4-Qx-kSd"/>
                     <constraint firstAttribute="trailing" secondItem="UP4-0W-cVZ" secondAttribute="trailing" id="LVs-AJ-Yx4"/>
                     <constraint firstAttribute="bottom" secondItem="D92-dR-jIU" secondAttribute="bottom" constant="5" id="Rnj-RI-N9V"/>
-                    <constraint firstItem="UP4-0W-cVZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="XlU-8C-Hkf"/>
+                    <constraint firstItem="UP4-0W-cVZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="XlU-8C-Hkf"/>
                     <constraint firstItem="UP4-0W-cVZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="n0H-0E-gBg"/>
                     <constraint firstAttribute="bottom" secondItem="UP4-0W-cVZ" secondAttribute="bottom" id="pnG-1o-M8e"/>
                     <constraint firstItem="D92-dR-jIU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="si9-iy-nUz"/>

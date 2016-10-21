@@ -24,6 +24,7 @@
 {
     // Appearance
     [self configureAppearance];
+    sleep(2);
 
     // Setting
     {
@@ -38,7 +39,7 @@
     // Umeng
     {
 #if DEBUG
-        NSString *UMKey = @"57eba4e767e58ee6b80018c5";
+        NSString *UMKey = @"58073d59c895767d3a0000eb";
 #else
         NSString *UMKey = @"57eba4e767e58ee6b80018c5";
 #endif
@@ -90,10 +91,26 @@
 
     [[UIPageControl appearance] setPageIndicatorTintColor:TextColor];
     [[UIPageControl appearance] setCurrentPageIndicatorTintColor:SecondColor];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
+//    AVInstallation *currentInstallation = [AVInstallation currentInstallation];
+//#if DEBUG && INHOUSE
+//    currentInstallation.deviceProfile = @"aps_soouya_inhouse_pro_beta_leancloud";
+//#elif DEBUG
+//    currentInstallation.deviceProfile = @"aps_soouya_inhouse_dev_leancloud";
+//#elif INHOUSE
+//    currentInstallation.deviceProfile = @"aps_soouya_inhouse_pro_leancloud";
+//#else
+//    currentInstallation.deviceProfile = @"aps_soouya_pro_leancloud";
+//#endif
+//
+//    [currentInstallation setDeviceTokenFromData:deviceToken];
+//    [currentInstallation saveInBackground];
+
+    [SYPrefManager setObject:deviceToken forKey:kCurrentDeviceToken];
     [DDChatKitManager invokeThisMethodInDidRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 

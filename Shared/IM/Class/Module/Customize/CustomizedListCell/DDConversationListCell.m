@@ -40,7 +40,7 @@
 
 + (CGFloat)cellHeight
 {
-    return 110.0;
+    return 115.0;
 }
 
 - (void)awakeFromNib {
@@ -136,13 +136,13 @@
     self.conversationId = conversationId;
     DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:conversationId];
     if (ask) {
-        *askInfo = [[NSString alloc] initWithFormat:@"%@  |  %@", ask.type, ask.descr];
+        *askInfo = [[NSString alloc] initWithFormat:@"%@  |  %@", ask.type, ask.demand];
     } else {
         __weak __typeof(self) weakSelf = self;
         [[DDAskChatManager sharedInstance] getProfilesInBackgroundForConversationId:conversationId callback:^(DDAsk *ask) {
             if ([weakSelf.conversationId isEqualToString:conversationId])
             {
-                weakSelf.askInfoLabel.text = [[NSString alloc] initWithFormat:@"%@  |  %@", ask.type, ask.descr];
+                weakSelf.askInfoLabel.text = [[NSString alloc] initWithFormat:@"%@  |  %@", ask.type, ask.demand];
             }
         }];
     }

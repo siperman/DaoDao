@@ -19,23 +19,12 @@ typedef NS_ENUM(NSUInteger, SYValidationType) {
     SYValidationTypeValid, //默认有效
 };
 
-
-
 //登录成功后的block
 typedef void(^loginCallback)(void);
 //常用block
 typedef void(^SYVoidBlock)(void);
 typedef BOOL(^SYBOOLBlock)(void);
 typedef void(^SYEditBlock)(NSString *);
-
-//dev (预发布)环境地址
-static NSString * const kDevHostURL = @"http://dev.soouya.com";
-
-//测试 环境地址
-static NSString * const kTestHostURL = @"http://test.soouya.com";
-
-//生成环境地址
-static NSString * const kProHostURL = @"http://www.soouya.com";
 
 //接口字段名常量
 static NSString * const kFunctionKey                              = @"_function";
@@ -103,7 +92,7 @@ static NSString * const kMaxThumbnailResolution                   = @"@300w_300h
 static NSString * const kPictureQuality                           = @"_80Q";
 
 //服务电话
-static NSString * const kServiceCall                              = @"020-37525050";
+static NSString * const kServiceCall                              = @"020-12345678";
 
 //通用常量
 static CGFloat kAnimationDuration                                 = 0.25;//动画时长

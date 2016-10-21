@@ -81,12 +81,6 @@
 
 - (IBAction)next:(UIButton *)sender
 {
-
-//    DDRegisterStepThreeViewController *vc = [DDRegisterStepThreeViewController viewController];
-//    vc.inviteCode = self.inviteCode;
-//    vc.user = self.user;
-//    vc.authCode = self.txtAuthCode.text;
-//    [self.navigationController pushViewController:vc animated:YES];
     [self.view endEditing:YES];
 
     [self.navigationController showLoadingHUD];
@@ -178,6 +172,7 @@
     if (textField == self.txtSchool) {
         DDMajorGradePickerView *pv = [DDMajorGradePickerView majorGradePickerWithDelegate:self];
         textField.inputView = pv;
+        [pv pickedMajor:_user.major grade:_user.grade];
         return YES;
     }
 

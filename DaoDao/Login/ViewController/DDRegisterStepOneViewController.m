@@ -76,4 +76,9 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return textField.text.length + string.length <= 20;
+}
+
 @end

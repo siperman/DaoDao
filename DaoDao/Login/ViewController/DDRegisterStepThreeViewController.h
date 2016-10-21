@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DDRegisterStepThreeViewController : UIViewController
+@interface DDRegisterStepThreeViewController : UITableViewController
 
 @property (nonatomic, copy) DDUser *user;
 @property (nonatomic, strong) NSString *authCode; // 短信验证码

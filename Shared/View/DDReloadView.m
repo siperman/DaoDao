@@ -15,6 +15,7 @@
     [super awakeFromNib];
     [self addTarget:self action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
     self.backgroundColor = BackgroundColor;
+    self.label.textColor = TextColor;
 }
 
 + (instancetype)showReloadViewOnView:(UIView *)view reloadAction:(void (^)())reload

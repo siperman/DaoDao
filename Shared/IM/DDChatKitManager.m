@@ -18,7 +18,6 @@
 #import <ChatKit/LCCKInputViewPluginLocation.h>
 #import <ChatKit/LCCKAlertController.h>
 #import <ChatKit/NSFileManager+LCCKExtension.h>
-#import "LCCKLoginViewController.h"
 #import "LCCKVCardMessageCell.h"
 #import "LCCKExampleConstants.h"
 #import "LCCKContactManager.h"
@@ -362,22 +361,6 @@ static NSString *const LCCKAPPKEY = @"RhI4OeI0gPrOClX4oIoODjQn";
             return;
         }
 
-        // 用户拒绝了重连请求
-        // - 退回登录页面
-        [[self class] clearLocalClientInfo];
-        LCCKLoginViewController *loginViewController = [[LCCKLoginViewController alloc] init];
-        [loginViewController setClientIDHandler:^(NSString *clientID) {
-            [LCCKUtil showProgressText:@"open client ..." duration:10.0f];
-            [DDChatKitManager invokeThisMethodAfterLoginSuccessWithClientId:clientID success:^{
-                [LCCKUtil hideProgress];
-//                LCCKTabBarControllerConfig *tabBarControllerConfig = [[LCCKTabBarControllerConfig alloc] init];
-//                [UIApplication sharedApplication].keyWindow.rootViewController = tabBarControllerConfig.tabBarController;
-            } failed:^(NSError *error) {
-                [LCCKUtil hideProgress];
-                NSLog(@"%@",error);
-            }];
-        }];
-        [[self class] tryPresentViewControllerViewController:loginViewController];
         // - 显示返回信息
         NSInteger code = 0;
         NSString *errorReasonText = @"not granted";
@@ -573,26 +556,6 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
     NSString *title = [NSString stringWithFormat:@"打开地理位置：%@", geolocations];
     NSString *subTitle = [NSString stringWithFormat:@"纬度：%@\n经度：%@",@(location.coordinate.latitude), @(location.coordinate.longitude)];
     [LCCKUtil showNotificationWithTitle:title subtitle:subTitle type:LCCKMessageNotificationTypeMessage];
-}
-
-+ (void)signOutFromViewController:(UIViewController *)viewController {
-    [LCCKUtil showProgressText:@"close client ..." duration:10.0f];
-    [DDChatKitManager invokeThisMethodBeforeLogoutSuccess:^{
-        [LCCKUtil hideProgress];
-        LCCKLoginViewController *loginViewController = [[LCCKLoginViewController alloc] init];
-        [loginViewController setClientIDHandler:^(NSString *clientID) {
-            [DDChatKitManager invokeThisMethodAfterLoginSuccessWithClientId:clientID success:^{
-//                LCCKTabBarControllerConfig *tabBarControllerConfig = [[LCCKTabBarControllerConfig alloc] init];
-//                [self cyl_tabBarController].rootWindow.rootViewController = tabBarControllerConfig.tabBarController;
-            } failed:^(NSError *error) {
-                LCCKLog(@"%@", error);
-            }];
-        }];
-        [viewController presentViewController:loginViewController animated:YES completion:nil];
-    } failed:^(NSError *error) {
-        [LCCKUtil hideProgress];
-        LCCKLog(@"%@", error);
-    }];
 }
 
 void dispatch_async_limit(dispatch_queue_t queue, NSUInteger limitSemaphoreCount, dispatch_block_t block) {

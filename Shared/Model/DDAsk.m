@@ -14,9 +14,7 @@
 {
     return @{
              @"aid" : @"id",
-             @"type" : @"type",
              @"demand" : @"demand",
-             @"descr" : @"descr",
              @"industry" : @"industry",
              @"job" : @"job",
              @"expert" : @"expert",
@@ -27,6 +25,16 @@
              @"user" : @"user",
              @"answer" : @"answer",
              };
+}
+
+- (NSString *)type
+{
+    DDUser *user = [DDUserManager manager].user;
+    if ([self.user.uid isEqualToString:user.uid]) {
+        return @"我发起";
+    } else {
+        return @"对方发起";
+    }
 }
 
 @end

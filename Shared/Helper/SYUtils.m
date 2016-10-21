@@ -17,6 +17,7 @@
 
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
+#import <UserNotifications/UserNotifications.h>
 
 #import "RIButtonItem.h"
 #import "UIAlertView+Blocks.h"
@@ -491,16 +492,15 @@ static NSDateFormatter *timestampFormatter = nil;
 {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
     float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
-    if(sysVer < 8){
-        [self registerPush];
-    }
-    else{
+    if (sysVer >= 10.0) {
+        [self registerPushForIOS10];
+    } else {
         [self registerPushForIOS8];
     }
 #else
     //iOS8之前注册push方法
     //注册Push服务，注册后才能收到推送
-    [self registerPush];
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
 #endif
 }
 
@@ -561,9 +561,16 @@ static NSDateFormatter *timestampFormatter = nil;
 #endif
 }
 
-+ (void)registerPush
++ (void)registerPushForIOS10
 {
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = APP_DELEGATE;
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"succeeded!");
+        }
+    }];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
 + (void)firUpdate

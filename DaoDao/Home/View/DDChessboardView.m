@@ -22,6 +22,7 @@ static const NSInteger pageChess = 7;
 {
     [super awakeFromNib];
     self.scrollView.delegate = self;
+//    self.pageControl.hidden = YES;
 }
 
 - (void)refresh

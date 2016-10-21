@@ -105,6 +105,27 @@
     }
 }
 
+- (void)pickedMajor:(NSString *)major grade:(NSNumber *)grade
+{
+    if (major.length > 0) {
+        for (NSInteger row = 0; row < _majorGrades.count; row++) {
+            if ([major isEqualToString:[[_majorGrades objectAtIndex:row] objectForKey:@"name"]]) {
+                [self.pickerView selectRow:row inComponent:0 animated:YES];
+                self.major = major;
+            }
+        }
+    }
+
+    if (grade) {
+        for (NSInteger row = 0; row < _grades.count; row++) {
+            if ([grade isEqualToNumber:[_grades objectAtIndex:row]]) {
+                [self.pickerView selectRow:row inComponent:1 animated:YES];
+                self.grade = grade;
+            }
+        }
+    }
+
+}
 
 #pragma mark - animation
 
