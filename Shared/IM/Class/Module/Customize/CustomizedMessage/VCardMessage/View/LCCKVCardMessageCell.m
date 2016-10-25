@@ -8,6 +8,7 @@
 
 #import "LCCKVCardMessageCell.h"
 #import "LCCKVCardMessage.h"
+#import "DDMeetDetailViewController.h"
 
 #if __has_include(<SDWebImage/UIImageView+WebCache.h>)
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -51,16 +52,16 @@
 
 - (void)singleTapMessageImageViewGestureRecognizerHandler:(UITapGestureRecognizer *)tapGestureRecognizer {
     if (tapGestureRecognizer.state == UIGestureRecognizerStateEnded) {
-//        if ([self.delegate respondsToSelector:@selector(messageCellTappedMessage:)]) {
-//            [self.delegate messageCellTappedMessage:self];
-//        }
         [self.viewController showNotice:@"邀请函"];
+        DDMeetDetailViewController *vc = [DDMeetDetailViewController viewController];
+        vc.conversationId = ((LCCKConversationViewController *)self.delegate).conversationId;
+        [self.viewController.navigationController pushViewController:vc animated:YES];
     }
 }
 
 - (void)configureCellWithData:(LCCKMessage *)message {
     [super configureCellWithData:message];
-    self.messageImageView.image = Image(@"bg_im_yaoqinghan");
+    self.messageImageView.image = Image(@"yaoqinghan");
 }
 
 #pragma mark - Getters

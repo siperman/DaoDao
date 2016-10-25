@@ -9,7 +9,7 @@
 #import <Mantle/Mantle.h>
 #import "MTLModel+Addition.h"
 
-@class DDRate;
+@class DDRate, DDMeet;
 // 应局
 @interface DDAnswer : MTLModel <MTLJSONSerializing>
 
@@ -20,6 +20,8 @@
 @property (nonatomic, strong) DDUser *user;
 @property (nonatomic, strong) DDRate *askRate;
 @property (nonatomic, strong) DDRate *answerRate;
+@property (nonatomic, strong) DDMeet *meet;
+
 @end
 
 
@@ -30,4 +32,12 @@
 @property (nonatomic, strong) NSNumber *happy;//是否愉快
 @property (nonatomic, copy) NSArray <NSString *>* impress;//对人整体印象
 
+@end
+
+// 约见
+@interface DDMeet : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, strong) NSNumber *time;//见面时间
+@property (nonatomic, copy) NSString *city;//市
+@property (nonatomic, copy) NSString *addr;//详细地址
 @end

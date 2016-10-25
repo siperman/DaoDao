@@ -19,6 +19,7 @@
              @"user" : @"user",
              @"askRate" : @"askRate",
              @"answerRate" : @"answerRate",
+             @"meet" : @"meet",
              };
 }
 

@@ -27,12 +27,14 @@
 
 #ifdef DEBUG
 static NSString *const LCCKAPPKEY = @"E7glabfvph8e91qthD9wxt7n";
+static NSString *const LCCKAPPID  = @"56fTKRrEQiYcnhXgSbNjF2RR-gzGzoHsz";
 #elif TEST
 static NSString *const LCCKAPPKEY = @"aLnJXroXfsO3O2y0TzMeyx0z";
+static NSString *const LCCKAPPID  = @"bcBzimEL1vcQy8qPkdM064mA-gzGzoHsz";
 #else
 static NSString *const LCCKAPPKEY = @"RhI4OeI0gPrOClX4oIoODjQn";
+static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 #endif
-static NSString *const LCCKAPPID = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 
 @interface DDChatKitManager () <MWPhotoBrowserDelegate>
 

@@ -103,7 +103,7 @@
     vc.ask = ask;
     [vc setCallback:^(){
         [self.inputViewRef open];
-        !self.sendCustomMessageHandler ?: self.sendCustomMessageHandler(@"yaoqinghan", nil);
+        !self.sendCustomMessageHandler ?: self.sendCustomMessageHandler(nil, nil);
     }];
 
     [self.conversationViewController.navigationController pushViewController:vc animated:YES];

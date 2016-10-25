@@ -69,6 +69,7 @@
 		2BA3F2E71D911A4A00094E0A /* GYZCityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3F2E21D911A4A00094E0A /* GYZCityHeaderView.m */; };
 		2BA3F2F01D92821A00094E0A /* DDAsk.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3F2EF1D92821A00094E0A /* DDAsk.m */; };
 		2BA3F2F31D9285E800094E0A /* DDAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3F2F21D9285E800094E0A /* DDAnswer.m */; };
+		2BAE2BEB1DBF08DA003BC7B9 /* DDMeetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE2BEA1DBF08DA003BC7B9 /* DDMeetDetailViewController.m */; };
 		2BB3D7411D7D6F8C00FFDC0E /* AZCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D57F1D7D6F8C00FFDC0E /* AZCacheHelper.m */; };
 		2BB3D7421D7D6F8C00FFDC0E /* CTAssetsPickerController+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D5811D7D6F8C00FFDC0E /* CTAssetsPickerController+Addition.m */; };
 		2BB3D7431D7D6F8C00FFDC0E /* MTLModel+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D5831D7D6F8C00FFDC0E /* MTLModel+Addition.m */; };
@@ -402,6 +403,8 @@
 		2BA3F2EF1D92821A00094E0A /* DDAsk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAsk.m; sourceTree = "<group>"; };
 		2BA3F2F11D9285E800094E0A /* DDAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnswer.h; sourceTree = "<group>"; };
 		2BA3F2F21D9285E800094E0A /* DDAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnswer.m; sourceTree = "<group>"; };
+		2BAE2BE91DBF08DA003BC7B9 /* DDMeetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMeetDetailViewController.h; sourceTree = "<group>"; };
+		2BAE2BEA1DBF08DA003BC7B9 /* DDMeetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeetDetailViewController.m; sourceTree = "<group>"; };
 		2BB3D57E1D7D6F8C00FFDC0E /* AZCacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZCacheHelper.h; sourceTree = "<group>"; };
 		2BB3D57F1D7D6F8C00FFDC0E /* AZCacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZCacheHelper.m; sourceTree = "<group>"; };
 		2BB3D5801D7D6F8C00FFDC0E /* CTAssetsPickerController+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTAssetsPickerController+Addition.h"; sourceTree = "<group>"; };
@@ -927,6 +930,8 @@
 				2BBB7D8F1DAA2032005E90A5 /* DDAskDetailViewController.m */,
 				2B86A25C1DBDA24B00ED2253 /* DDMeetTableViewController.h */,
 				2B86A25D1DBDA24B00ED2253 /* DDMeetTableViewController.m */,
+				2BAE2BE91DBF08DA003BC7B9 /* DDMeetDetailViewController.h */,
+				2BAE2BEA1DBF08DA003BC7B9 /* DDMeetDetailViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2598,6 +2603,7 @@
 				2BBB7D881DA9E290005E90A5 /* DDPostAskViewModel.m in Sources */,
 				2BA3F2E71D911A4A00094E0A /* GYZCityHeaderView.m in Sources */,
 				2B311C541D7E6A5E007CE4DD /* SepView.m in Sources */,
+				2BAE2BEB1DBF08DA003BC7B9 /* DDMeetDetailViewController.m in Sources */,
 				2BCDD6941D79597000BADD43 /* AppDelegate.m in Sources */,
 				2BB3D77A1D7D6F8C00FFDC0E /* CTAssetsGroupViewController.m in Sources */,
 				2BB3D7871D7D6F8C00FFDC0E /* UIViewController+UIViewController_FullScreen.m in Sources */,

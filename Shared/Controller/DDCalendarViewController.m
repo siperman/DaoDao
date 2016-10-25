@@ -41,8 +41,9 @@
 
     [self.view addSubview:self.calendar];
     [self.calendar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.trailing.top.equalTo(self.view);
-        make.height.mas_equalTo(500);
+        make.leading.trailing.equalTo(self.view);
+        make.top.equalTo(self.view).offset(64);
+        make.height.mas_equalTo(300);
     }];
 
     [self.view addSubview:self.timeView];
@@ -63,9 +64,9 @@
 
 - (void)setUpData
 {
-    self.gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
-
     NSLocale *chinese = [NSLocale localeWithLocaleIdentifier:@"zh-CN"];
+
+    self.gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 
     self.dateFormatter1 = [[NSDateFormatter alloc] init];
     self.dateFormatter1.locale = chinese;
@@ -83,15 +84,7 @@
     self.lunarCalendar.locale = chinese;
     self.lunarChars = @[@"初一",@"初二",@"初三",@"初四",@"初五",@"初六",@"初七",@"初八",@"初九",@"初十",@"十一",@"十二",@"十三",@"十四",@"十五",@"十六",@"十七",@"十八",@"十九",@"二十",@"二一",@"二二",@"二三",@"二四",@"二五",@"二六",@"二七",@"二八",@"二九",@"三十"];
 
-    _calendar.today = [NSDate date];
-    _calendar.placeholderType = FSCalendarPlaceholderTypeNone;
-
-    _calendar.appearance.weekdayTextColor = ColorHex(@"c2a05f");
-    _calendar.appearance.headerTitleColor = [UIColor darkGrayColor];
-    _calendar.appearance.eventDefaultColor = [UIColor greenColor];
-    _calendar.appearance.selectionColor = SecondColor;
-    _calendar.appearance.todaySelectionColor = ClearColor;
-    _calendar.appearance.headerMinimumDissolvedAlpha = 0.0;
+    [self configureCalendar];
 
     self.title = [self.dateFormatter3 stringFromDate:[NSDate date]];
 }
@@ -104,12 +97,36 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)configureCalendar
+{
+    _calendar.placeholderType = FSCalendarPlaceholderTypeNone;
+    _calendar.headerHeight = 0;
+    _calendar.weekdayHeight = 34.0;
+
+    FSCalendarAppearance *appearance = _calendar.appearance;
+
+    appearance.titleWeekendColor = ColorHex(@"9e9e9e");
+    appearance.subtitleWeekendColor = ColorHex(@"9e9e9e");
+    appearance.weekdayTextColor = ColorHex(@"f87127");
+    appearance.weekdayFont = Font(16);
+    appearance.headerTitleColor = ColorHex(@"3f2622");
+    appearance.selectionColor = SecondColor;
+    appearance.todayColor = ClearColor;
+    appearance.titleTodayColor = ColorHex(@"3f2622");
+    appearance.subtitleTodayColor = ColorHex(@"3f2622");
+    appearance.titleFont =Font(16);
+    appearance.subtitleFont =Font(11);
+    appearance.headerTitleFont = Font(16);
+    appearance.adjustsFontSizeToFitContentSize = NO;
+    appearance.headerMinimumDissolvedAlpha = 0.0;
+}
+
 #pragma mark - FSCalendarDataSource
 
-- (NSString *)calendar:(FSCalendar *)calendar titleForDate:(NSDate *)date
-{
-    return [self.gregorianCalendar isDateInToday:date] ? @"今天" : nil;
-}
+//- (NSString *)calendar:(FSCalendar *)calendar titleForDate:(NSDate *)date
+//{
+//    return [self.gregorianCalendar isDateInToday:date] ? @"今天" : nil;
+//}
 
 - (NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date
 {
@@ -146,7 +163,7 @@
 - (BOOL)calendar:(FSCalendar *)calendar shouldSelectDate:(NSDate *)date
 {
     // 只能选大于今天的日期
-    return [calendar daysFromDate:calendar.today toDate:date] > 0;
+    return [date compare:[NSDate date]] == NSOrderedDescending;
 }
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date
@@ -170,6 +187,7 @@
 
 - (void)calendarCurrentScopeWillChange:(FSCalendar *)calendar animated:(BOOL)animated
 {
+    debugLog(@"width %0.2f, height %0.2f", [calendar sizeThatFits:CGSizeZero].width, [calendar sizeThatFits:CGSizeZero].height);
     [self.calendar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo([calendar sizeThatFits:CGSizeZero].height);
     }];
@@ -179,6 +197,8 @@
 
 - (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated
 {
+    debugLog(@"width %0.2f, height %0.2f", bounds.size.width, bounds.size.height);
+
     [self.calendar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(CGRectGetHeight(bounds));
     }];
@@ -188,12 +208,12 @@
 
 - (UIColor *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance borderDefaultColorForDate:(NSDate *)date
 {
-    return [calendar isDateInToday:date] ? SecondColor : appearance.borderDefaultColor;
+    return [_lunarCalendar isDateInToday:date] ? SecondColor : appearance.borderDefaultColor;
 }
 
 - (CGFloat)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance borderRadiusForDate:(nonnull NSDate *)date
 {
-    return [self.calendar isDateInToday:date] ? 0.0 : 1.0;
+    return [_lunarCalendar isDateInToday:date] ? 0.0 : 1.0;
 }
 
 #pragma mark datePicker
@@ -259,8 +279,15 @@
 {
     if (!_datePicker) {
         _datePicker = [[UIDatePicker alloc] init];
-        _datePicker.minimumDate = [NSDate date];
         [_datePicker addTarget:self action:@selector(pickTime:) forControlEvents:UIControlEventValueChanged]; //为UIDatePicker添加一个事件当UIDatePicker的值被改变时触发
+
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        NSDateComponents *components = [cal components:( NSCalendarUnitDay | NSCalendarUnitHour ) fromDate:[NSDate date]];
+        [components setDay:1];
+        [components setHour:-components.hour];
+
+        NSDate *minDate = [cal dateByAddingComponents:components toDate:[NSDate date] options:0];
+        _datePicker.minimumDate = minDate;
 
     }
     return _datePicker;

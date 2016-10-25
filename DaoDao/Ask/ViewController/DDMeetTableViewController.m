@@ -41,43 +41,43 @@
 }
 
 - (IBAction)post:(UIButton *)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-    if (self.callback) {
-        self.callback();
-    }
-}
 //{
-//    if (self.txtTime.text.length == 0) {
-//        [self showNotice:@"还未选择见面时间喔！"];
-//        return;
-//    } else if (self.txtCity.text.length == 0) {
-//        [self showNotice:@"所在城市不能为空喔！"];
-//        return;
-//    } else if (self.txtAddr.text.length == 0) {
-//        [self showNotice:@"详细地址不能为空喔！"];
-//        return;
+//    [self.navigationController popViewControllerAnimated:YES];
+//    if (self.callback) {
+//        self.callback();
 //    }
-//
-//    NSNumber *time = [NSNumber numberWithDouble:_time];
-//    id params = @{ kIDKey : [NSString validString:_ask.aid],
-//                   @"meetTime" : time,
-//                   @"meetCity" : _txtCity.text,
-//                   @"meetAddr" : _txtAddr.text};
-//
-//    [self showLoadingHUD];
-//    [SYRequestEngine inviteAnswerWithParams:params callback:^(BOOL success, id response) {
-//        [self hideAllHUD];
-//        if (success) {
-//            [self.navigationController popViewControllerAnimated:YES];
-//            if (self.callback) {
-//                self.callback();
-//            }
-//        } else {
-//            [self showRequestNotice:response];
-//        }
-//    }];
 //}
+{
+    if (self.txtTime.text.length == 0) {
+        [self showNotice:@"还未选择见面时间喔！"];
+        return;
+    } else if (self.txtCity.text.length == 0) {
+        [self showNotice:@"所在城市不能为空喔！"];
+        return;
+    } else if (self.txtAddr.text.length == 0) {
+        [self showNotice:@"详细地址不能为空喔！"];
+        return;
+    }
+
+    NSNumber *time = [NSNumber numberWithDouble:_time];
+    id params = @{ kIDKey : [NSString validString:_ask.aid],
+                   @"meetTime" : time,
+                   @"meetCity" : _txtCity.text,
+                   @"meetAddr" : _txtAddr.text};
+
+    [self showLoadingHUD];
+    [SYRequestEngine inviteAnswerWithParams:params callback:^(BOOL success, id response) {
+        [self hideAllHUD];
+        if (success) {
+            [self.navigationController popViewControllerAnimated:YES];
+            if (self.callback) {
+                self.callback();
+            }
+        } else {
+            [self showRequestNotice:response];
+        }
+    }];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
