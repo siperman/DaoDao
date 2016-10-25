@@ -2,7 +2,7 @@
 //  LCCKConversationService.h
 //  LeanCloudChatKit-iOS
 //
-//  v0.7.0 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/3/1.
+//  v0.7.20 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/3/1.
 //  Copyright © 2016年 LeanCloud. All rights reserved.
 //
 
@@ -90,11 +90,6 @@ FOUNDATION_EXTERN NSString *const LCCKConversationServiceErrorDomain;
  */
 - (void)setupDatabaseWithUserId:(NSString *)userId;
 
-/**
- *  插入一条最近对话
- *  @param conversation
- */
-- (void)insertRecentConversation:(AVIMConversation *)conversation;
 - (void)insertRecentConversation:(AVIMConversation *)conversation shouldRefreshWhenFinished:(BOOL)shouldRefreshWhenFinished;
 
 - (void)increaseUnreadCount:(NSUInteger)increaseUnreadCount withConversationId:(NSString *)conversationId shouldRefreshWhenFinished:(BOOL)shouldRefreshWhenFinished;
@@ -119,7 +114,11 @@ FOUNDATION_EXTERN NSString *const LCCKConversationServiceErrorDomain;
  */
 - (void)updateRecentConversation:(NSArray *)conversations;
 - (void)updateRecentConversation:(NSArray *)conversations shouldRefreshWhenFinished:(BOOL)shouldRefreshWhenFinished;
+- (void)increaseUnreadCountWithConversationId:(NSString *)conversationId shouldRefreshWhenFinished:(BOOL)shouldRefreshWhenFinished;
 
+- (void)deleteRecentConversationWithConversationId:(NSString *)conversationId shouldRefreshWhenFinished:(BOOL)shouldRefreshWhenFinished;
+- (void)updateUnreadCountToZeroWithConversationId:(NSString *)conversationId shouldRefreshWhenFinished:(BOOL)shouldRefreshWhenFinished;
+ 
 /**
  *  从数据库查找所有的对话，即所有的最近对话
  *  @return 对话数据

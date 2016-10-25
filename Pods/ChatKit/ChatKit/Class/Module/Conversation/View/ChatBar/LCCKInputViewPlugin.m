@@ -2,7 +2,7 @@
 //  LCCKInputViewPlugin.m
 //  Pods
 //
-//  v0.7.0 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/7/19.
+//  v0.7.20 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/7/19.
 //
 //
 
@@ -33,7 +33,13 @@ NSMutableArray const *LCCKInputViewPluginArray = nil;
 @end
 
 @implementation LCCKInputViewPlugin
+@synthesize delegate = _delegate;
+@synthesize inputViewRef = _inputViewRef;
+@synthesize pluginContentView = _pluginContentView;
 @synthesize pluginType = _pluginType;
+@synthesize pluginIconImage = _pluginIconImage;
+@synthesize pluginTitle = _pluginTitle;
+@synthesize sendCustomMessageHandler = _sendCustomMessageHandler;
 
 - (instancetype)init {
     if (![self conformsToProtocol:@protocol(LCCKInputViewPluginSubclassing)]) {

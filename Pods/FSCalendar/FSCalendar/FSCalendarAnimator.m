@@ -7,7 +7,7 @@
 //
 
 #import "FSCalendarAnimator.h"
-#import "UIView+FSExtension.h"
+#import "FSCalendarExtensions.h"
 #import "FSCalendarDynamicHeader.h"
 #import <objc/runtime.h>
 
@@ -84,11 +84,14 @@
         return NO;
     }
     if (gestureRecognizer == self.calendar.scopeHandle.panGesture) {
-        return YES;
+        CGFloat velocity = [(UIPanGestureRecognizer *)gestureRecognizer velocityInView:gestureRecognizer.view].y;
+        return self.calendarScope == FSCalendarScopeWeek ? velocity>=0 : velocity<=0;
     }
     if (gestureRecognizer == self.calendar.scopeGesture) {
         CGPoint velocity = [(UIPanGestureRecognizer *)gestureRecognizer velocityInView:self.calendar.daysContainer];
-        BOOL shouldStart = (ABS(velocity.x)<=ABS(velocity.y));
+        BOOL shouldStart = self.calendarScope == FSCalendarScopeWeek ? velocity.y>=0 : velocity.y<=0;
+        if (!shouldStart) return NO;
+        shouldStart = (ABS(velocity.x)<=ABS(velocity.y));
         if (shouldStart) {
             self.calendar.collectionView.panGestureRecognizer.enabled = NO;
             self.calendar.collectionView.panGestureRecognizer.enabled = YES;
@@ -306,16 +309,23 @@
         CGFloat animationDuration = duration;
         CGRect bounds = (CGRect){CGPointZero,[self.calendar sizeThatFits:self.calendar.frame.size scope:FSCalendarScopeMonth]};
         self.state = FSCalendarTransitionStateInProgress;
-        [UIView animateWithDuration:animationDuration delay:0  options:UIViewAnimationOptionAllowUserInteraction animations:^{
-            [self boundingRectWillChange:bounds animated:YES];
-        } completion:^(BOOL finished) {
+        void (^completion)(BOOL) = ^(BOOL finished) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MAX(0, duration-animationDuration) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 self.calendar.needsAdjustingViewFrame = YES;
                 [self.calendar setNeedsLayout];
                 self.state = FSCalendarTransitionStateIdle;
             });
-        }];
-        
+        };
+        if (FSCalendarInAppExtension) {
+            // Detect today extension: http://stackoverflow.com/questions/25048026/ios-8-extension-how-to-detect-running
+            [self boundingRectWillChange:bounds animated:YES];
+            completion(YES);
+        } else {
+            [UIView animateWithDuration:animationDuration delay:0  options:UIViewAnimationOptionAllowUserInteraction animations:^{
+                [self boundingRectWillChange:bounds animated:YES];
+            } completion:completion];
+        }
+    
     }
 }
 
@@ -406,16 +416,16 @@
                 }
                 // Focus begining day of month
                 if (!focusedDate) {
-                    focusedDate = [self.calendar beginingOfMonthOfDate:self.calendar.currentPage];
+                    focusedDate = [self.calendar beginingOfMonth:self.calendar.currentPage];
                     kCalculateRowNumber
                 }
                 
                 NSDate *currentPage = self.calendar.currentPage;
-                NSDate *minimumPage = [self.calendar beginingOfMonthOfDate:self.calendar.minimumDate];
-                NSInteger visibleSection = [self.calendar monthsFromDate:minimumPage toDate:currentPage];
+                NSDate *minimumPage = [self.calendar beginingOfMonth:self.calendar.minimumDate];
+                NSInteger visibleSection = [self.calendar.gregorian components:NSCalendarUnitMonth fromDate:minimumPage toDate:currentPage options:0].month;
                 NSIndexPath *firstIndexPath = [NSIndexPath indexPathForItem:0 inSection:visibleSection];
                 NSDate *firstDate = [self.calendar dateForIndexPath:firstIndexPath scope:FSCalendarScopeMonth];
-                currentPage = [self.calendar dateByAddingDays:focusedRowNumber*7 toDate:firstDate];
+                currentPage = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitDay value:focusedRowNumber*7 toDate:firstDate options:0];
                 
                 attributes.focusedRowNumber = focusedRowNumber;
                 attributes.focusedDate = focusedDate;
@@ -442,17 +452,18 @@
                     }
                 }
                 if (!focusedDate) {
-                    focusedDate = [self.calendar endOfWeekOfDate:currentPage];
+                    focusedDate = [self.calendar endOfWeek:currentPage];
                 }
                 
-                NSDate *firstDayOfMonth = [self.calendar beginingOfMonthOfDate:focusedDate];
+                NSDate *firstDayOfMonth = [self.calendar beginingOfMonth:focusedDate];
                 attributes.focusedDate = focusedDate;
-                firstDayOfMonth = firstDayOfMonth ?: [self.calendar beginingOfMonthOfDate:currentPage];
+                firstDayOfMonth = firstDayOfMonth ?: [self.calendar beginingOfMonth:currentPage];
                 NSInteger numberOfPlaceholdersForPrev = [self.calendar numberOfHeadPlaceholdersForMonth:firstDayOfMonth];
-                NSDate *firstDateOfPage = [self.calendar dateBySubstractingDays:numberOfPlaceholdersForPrev fromDate:firstDayOfMonth];
+                NSDate *firstDateOfPage = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitDay value:-numberOfPlaceholdersForPrev toDate:firstDayOfMonth options:0];
+                
                 for (int i = 0; i < 6; i++) {
-                    NSDate *currentRow = [self.calendar dateByAddingWeeks:i toDate:firstDateOfPage];
-                    if ([self.calendar isDate:currentRow equalToDate:currentPage toCalendarUnit:FSCalendarUnitDay]) {
+                    NSDate *currentRow = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitWeekOfYear value:i toDate:firstDateOfPage options:0];
+                    if ([self.calendar.gregorian isDate:currentRow inSameDayAsDate:currentPage]) {
                         focusedRowNumber = i;
                         currentPage = firstDayOfMonth;
                         break;
@@ -558,7 +569,7 @@
             
             self.calendar.contentView.clipsToBounds = YES;
             
-            CGFloat currentAlpha = 1 - progress;
+            CGFloat currentAlpha = MAX(1-progress*1.1,0);
             CGFloat duration = 0.3;
             [self performAlphaAnimationFrom:currentAlpha to:0 duration:0.22 exception:attr.focusedRowNumber completion:^{
                 [self performTransitionCompletionAnimated:YES];
@@ -608,7 +619,7 @@
 {
     switch (transition) {
         case FSCalendarTransitionMonthToWeek: {
-            [self performAlphaAnimationFrom:1-progress to:1 duration:0.3 exception:self.pendingAttributes.focusedRowNumber completion:^{
+            [self performAlphaAnimationFrom:MAX(1-progress*1.1,0) to:1 duration:0.3 exception:self.pendingAttributes.focusedRowNumber completion:^{
                 [self.calendar.collectionView.visibleCells enumerateObjectsUsingBlock:^(__kindof UICollectionViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     obj.contentView.layer.opacity = 1;
                     [obj.contentView.layer removeAnimationForKey:@"opacity"];
@@ -689,7 +700,7 @@
 
 - (void)performAlphaAnimationWithProgress:(CGFloat)progress
 {
-    CGFloat opacity = self.transition == FSCalendarTransitionMonthToWeek ? 1-progress: progress;
+    CGFloat opacity = self.transition == FSCalendarTransitionMonthToWeek ? MAX((1-progress*1.1),0) : progress;
     [self.collectionView.visibleCells enumerateObjectsUsingBlock:^(FSCalendarCell *cell, NSUInteger idx, BOOL *stop) {
         if (CGRectContainsPoint(self.collectionView.bounds, cell.center)) {
             BOOL shouldPerformAlpha = NO;

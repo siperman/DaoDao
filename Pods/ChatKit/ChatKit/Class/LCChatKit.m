@@ -2,7 +2,7 @@
 //  LCChatKit.m
 //  LeanCloudChatKit-iOS
 //
-//  v0.7.0 Created by ElonChan (wechat:chenyilong1010) on 16/2/22.
+//  v0.7.20 Created by ElonChan (wechat:chenyilong1010) on 16/2/22.
 //  Copyright © 2016年 LeanCloud. All rights reserved.
 //
 
@@ -38,14 +38,14 @@
 @synthesize didDeleteConversationsListCellBlock = _didDeleteConversationsListCellBlock;
 @synthesize conversationEditActionBlock = _conversationEditActionBlock;
 @synthesize markBadgeWithTotalUnreadCountBlock = _markBadgeWithTotalUnreadCountBlock;
+@synthesize conversationInvalidedHandler = _conversationInvalidedHandler;
+@synthesize fetchConversationHandler = _fetchConversationHandler;
+@synthesize loadLatestMessagesHandler = _loadLatestMessagesHandler;
+@synthesize disableSingleSignOn = _disableSingleSignOn;
+@synthesize filterMessagesBlock = _filterMessagesBlock;
 
 #pragma mark -
 
-//+ (id)allocWithZone:(NSZone *)zone {
-//    // Not allow allocating memory in a different zone
-//    return [self sharedInstance];
-//}
-//
 + (id)copyWithZone:(NSZone *)zone {
     // Not allow copying to a different zone
     return [self sharedInstance];
@@ -71,7 +71,7 @@
     [LCChatKit sharedInstance].appId = appId;
     [LCChatKit sharedInstance].appKey = appKey;
     if ([LCCKSettingService allLogsEnabled]) {
-        NSLog(@"LeanCloudKit Version is %@", [LCCKSettingService ChatKitVersion]);
+        LCCKLog(@"ChatKit Version is %@", [LCCKSettingService ChatKitVersion]);
     }
 }
 
@@ -261,8 +261,12 @@
     self.settingService.useDevPushCerticate = useDevPushCerticate;
 }
 
-- (void)setCurrentConversationBackgroundImage:(UIImage *)image scaledToSize:(CGSize)scaledToSize {
-    [self.settingService setCurrentConversationBackgroundImage:image scaledToSize:scaledToSize];
+- (BOOL)isDisablePreviewUserId {
+    return self.settingService.isDisablePreviewUserId;
+}
+
+- (void)setDisablePreviewUserId:(BOOL)disablePreviewUserId {
+    self.settingService.disablePreviewUserId = disablePreviewUserId;
 }
 
 - (void)setBackgroundImage:(UIImage *)image forConversationId:(NSString *)conversationId scaledToSize:(CGSize)scaledToSize {
@@ -304,6 +308,10 @@
 
 - (void)didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [self.conversationService didReceiveRemoteNotification:userInfo];
+}
+
+- (void)insertRecentConversation:(AVIMConversation *)conversation {
+    [self.conversationService insertRecentConversation:conversation];
 }
 
 - (void)increaseUnreadCountWithConversationId:(NSString *)conversationId {

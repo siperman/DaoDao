@@ -23,12 +23,6 @@ case "${TARGETED_DEVICE_FAMILY}" in
     ;;
 esac
 
-realpath() {
-  DIRECTORY="$(cd "${1%/*}" && pwd)"
-  FILENAME="${1##*/}"
-  echo "$DIRECTORY/$FILENAME"
-}
-
 install_resource()
 {
   if [[ "$1" = /* ]] ; then
@@ -70,7 +64,7 @@ EOM
       xcrun mapc "$RESOURCE_PATH" "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$RESOURCE_PATH" .xcmappingmodel`.cdm"
       ;;
     *.xcassets)
-      ABSOLUTE_XCASSET_FILE=$(realpath "$RESOURCE_PATH")
+      ABSOLUTE_XCASSET_FILE="$RESOURCE_PATH"
       XCASSET_FILES+=("$ABSOLUTE_XCASSET_FILE")
       ;;
     *)
@@ -129,6 +123,31 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "TWMessageBarManager/Classes/Icons/icon-success@2x.png"
   install_resource "iVersion/iVersion/iVersion.bundle"
 fi
+if [[ "$CONFIGURATION" == "Test" ]]; then
+  install_resource "AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
+  install_resource "ChatKit/ChatKit/Class/Resources/BarButtonIcon.bundle"
+  install_resource "ChatKit/ChatKit/Class/Resources/ChatKeyboard.bundle"
+  install_resource "ChatKit/ChatKit/Class/Resources/DateTools.bundle"
+  install_resource "ChatKit/ChatKit/Class/Resources/Emoji.bundle"
+  install_resource "ChatKit/ChatKit/Class/Resources/LCCKPBLocalizations.bundle"
+  install_resource "ChatKit/ChatKit/Class/Resources/LCCKPhotoBrowser.bundle"
+  install_resource "ChatKit/ChatKit/Class/Resources/MBProgressHUD.bundle"
+  install_resource "ChatKit/ChatKit/Class/Resources/MessageBubble.bundle"
+  install_resource "ChatKit/ChatKit/Class/Resources/Other.bundle"
+  install_resource "ChatKit/ChatKit/Class/Resources/Placeholder.bundle"
+  install_resource "ChatKit/ChatKit/Class/Resources/VoiceMessageSource.bundle"
+  install_resource "ChatKit/ChatKit/Class/Module/ContactList/View/LCCKContactCell.xib"
+  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle"
+  install_resource "SAMKeychain/Support/SAMKeychain.bundle"
+  install_resource "TWMessageBarManager/Classes/Icons/icon-error.png"
+  install_resource "TWMessageBarManager/Classes/Icons/icon-error@2x.png"
+  install_resource "TWMessageBarManager/Classes/Icons/icon-info.png"
+  install_resource "TWMessageBarManager/Classes/Icons/icon-info@2x.png"
+  install_resource "TWMessageBarManager/Classes/Icons/icon-success.png"
+  install_resource "TWMessageBarManager/Classes/Icons/icon-success@2x.png"
+  install_resource "iVersion/iVersion/iVersion.bundle"
+fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
@@ -143,7 +162,7 @@ then
   # Find all other xcassets (this unfortunately includes those of path pods and other targets).
   OTHER_XCASSETS=$(find "$PWD" -iname "*.xcassets" -type d)
   while read line; do
-    if [[ $line != "`realpath $PODS_ROOT`*" ]]; then
+    if [[ $line != "${PODS_ROOT}*" ]]; then
       XCASSET_FILES+=("$line")
     fi
   done <<<"$OTHER_XCASSETS"

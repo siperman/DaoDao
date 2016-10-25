@@ -2,7 +2,7 @@
 //  UIImageView+LCCKExtension.m
 //  LeanCloudChatKit-iOS
 //
-//  v0.7.0 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/5/16.
+//  v0.7.20 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/5/16.
 //  Copyright © 2016年 LeanCloud. All rights reserved.
 //
 
@@ -53,11 +53,11 @@
         self.originImageView = imageView;
         [imageView addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionNew context:nil];
         [imageView addObserver:self forKeyPath:@"contentMode" options:NSKeyValueObservingOptionNew context:nil];
-            __unsafe_unretained typeof(self) weakSelf = self;
-            [self lcck_executeAtDealloc:^{
+        __unsafe_unretained typeof(self) weakSelf = self;
+        [self lcck_executeAtDealloc:^{
             [weakSelf.originImageView removeObserver:weakSelf forKeyPath:@"image"];
             [weakSelf.originImageView removeObserver:weakSelf forKeyPath:@"contentMode"];
-                }];
+        }];
     }
     return self;
 }
@@ -129,10 +129,17 @@
 }
 
 - (LCCKImageObserver *)lcck_imageObserver {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     LCCKImageObserver *imageObserver = objc_getAssociatedObject(self, @selector(imageObserver));
+#pragma clang diagnostic pop
+    
     if (!imageObserver) {
         imageObserver = [[LCCKImageObserver alloc] initWithImageView:self];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
         objc_setAssociatedObject(self, @selector(imageObserver), imageObserver, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+#pragma clang diagnostic pop
     }
     return imageObserver;
 }

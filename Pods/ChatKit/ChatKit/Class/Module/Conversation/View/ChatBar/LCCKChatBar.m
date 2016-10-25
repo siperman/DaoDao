@@ -2,7 +2,7 @@
 //  LCCKChatBar.m
 //  LCCKChatBarExample
 //
-//  v0.7.0 Created by ElonChan (微信向我报BUG:chenyilong1010) ( https://github.com/leancloud/ChatKit-OC ) on 15/8/17.
+//  v0.7.20 Created by ElonChan (微信向我报BUG:chenyilong1010) ( https://github.com/leancloud/ChatKit-OC ) on 15/8/17.
 //  Copyright (c) 2015年 https://LeanCloud.cn . All rights reserved.
 //
 
@@ -132,7 +132,7 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
 }
 
 - (UIViewController *)controllerRef {
-    return self.delegate;
+    return (UIViewController *)self.delegate;
 }
 
 - (void)setDelegate:(id<LCCKChatBarDelegate>)delegate {

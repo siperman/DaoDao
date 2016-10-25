@@ -2,7 +2,7 @@
 //  LCCKServiceDefinition.h
 //  LeanCloudChatKit-iOS
 //
-//  v0.7.0 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/2/22.
+//  v0.7.20 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/2/22.
 //  Copyright © 2016年 LeanCloud. All rights reserved.
 //  All the Typedefine for all kinds of services.
 
@@ -37,7 +37,7 @@ typedef void (^LCCKForceReconnectSessionBlock)(NSError *error, BOOL granted, __k
 @property (nonatomic, copy, readonly) NSString *clientId;
 @property (nonatomic, strong, readonly) AVIMClient *client;
 @property (nonatomic, assign) BOOL disableSingleSignOn;
-@property (nonatomic, copy, readonly) LCCKForceReconnectSessionBlock forceReconnectSessionBlock;
+@property (nonatomic, copy) LCCKForceReconnectSessionBlock forceReconnectSessionBlock;
 
 /*!
  * @param clientId You can use the user id in your user system as clientId, ChatKit will get the current user's information by both this id and the method `-[LCCKChatService getProfilesForUserIds:callback:]`.
@@ -329,11 +329,16 @@ typedef CGFloat (^LCCKAvatarImageViewCornerRadiusBlock)(CGSize avatarImageViewSi
 - (void)syncBadge;
 
 /*!
+ * 禁止预览id
+ * 如果不设置，或者设置为NO，在群聊需要显示最后一条消息的发送者时，会在网络请求用户昵称成功前，先显示id，然后，成功后再显示昵称。
+ */
+@property (nonatomic, assign, getter=isDisablePreviewUserId) BOOL disablePreviewUserId;
+
+/*!
  *  是否使用开发证书去推送，默认为 NO。如果设为 YES 的话每条消息会带上这个参数，云代码利用 Hook 设置证书
  *  参考 https://github.com/leancloud/leanchat-cloudcode/blob/master/cloud/mchat.js
  */
 @property (nonatomic, assign) BOOL useDevPushCerticate;
-- (void)setCurrentConversationBackgroundImage:(UIImage *)image scaledToSize:(CGSize)scaledToSize;
 - (void)setBackgroundImage:(UIImage *)image forConversationId:(NSString *)conversationId scaledToSize:(CGSize)scaledToSize;
 
 @end
@@ -364,7 +369,7 @@ typedef void (^LCCKConversationInvalidedHandler) (NSString *conversationId, LCCK
  */
 - (void)setConversationInvalidedHandler:(LCCKConversationInvalidedHandler)conversationInvalidedHandler;
 
-typedef void (^LCCKFilterMessagesCompletionHandler)(NSArray *filterMessages, NSError *error);
+typedef void (^LCCKFilterMessagesCompletionHandler)(NSArray *filteredMessages, NSError *error);
 typedef void (^LCCKFilterMessagesBlock)(AVIMConversation *conversation, NSArray<AVIMTypedMessage *> *messages, LCCKFilterMessagesCompletionHandler completionHandler);
 
 /*!
@@ -391,24 +396,29 @@ typedef void (^LCCKLoadLatestMessagesHandler)(LCCKConversationViewController *co
 - (void)didReceiveRemoteNotification:(NSDictionary *)userInfo;
 
 /**
+ *  插入一条最近对话
+ *  @param conversation
+ */
+- (void)insertRecentConversation:(AVIMConversation *)conversation;
+
+/**
  *  增加未读数
  *  @param conversation 相应对话
  */
 - (void)increaseUnreadCountWithConversationId:(NSString *)conversationId;
-- (void)increaseUnreadCountWithConversationId:(NSString *)conversationId shouldRefreshWhenFinished:(BOOL)shouldRefreshWhenFinished;
+
 /**
  *  最近对话列表左滑删除本地数据库的对话，将不显示在列表
  *  @param conversation
  */
 - (void)deleteRecentConversationWithConversationId:(NSString *)conversationId;
-- (void)deleteRecentConversationWithConversationId:(NSString *)conversationId shouldRefreshWhenFinished:(BOOL)shouldRefreshWhenFinished;
 
 /**
  *  清空未读数
  *  @param conversation 相应的对话
  */
 - (void)updateUnreadCountToZeroWithConversationId:(NSString *)conversationId;
-- (void)updateUnreadCountToZeroWithConversationId:(NSString *)conversationId shouldRefreshWhenFinished:(BOOL)shouldRefreshWhenFinished;
+
 /**
  *  删除全部缓存，比如当切换用户时，如果同一个人显示的名称和头像需要变更
  */

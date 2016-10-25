@@ -8,7 +8,7 @@
 
 #import "FSCalendarCell.h"
 #import "FSCalendar.h"
-#import "UIView+FSExtension.h"
+#import "FSCalendarExtensions.h"
 #import "FSCalendarDynamicHeader.h"
 #import "FSCalendarConstance.h"
 
@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) UIColor *colorForSubtitleLabel;
 @property (readonly, nonatomic) UIColor *colorForCellBorder;
 @property (readonly, nonatomic) NSArray<UIColor *> *colorsForEvents;
-@property (readonly, nonatomic) FSCalendarCellShape cellShape;
+@property (readonly, nonatomic) CGFloat borderRadius;
 
 @end
 
@@ -95,7 +95,8 @@
                                        bounds.size.width,
                                        eventSize*0.83
                                       );
-    _imageView.frame = self.contentView.bounds;
+    _imageView.frame = CGRectMake(self.preferredImageOffset.x, self.preferredImageOffset.y, self.contentView.fs_width, self.contentView.fs_height);
+    
 }
 
 - (void)layoutSubviews
@@ -146,8 +147,8 @@
 - (void)configureCell
 {
     if (self.dateIsPlaceholder) {
-        if (self.calendar.placeholderType == FSCalendarPlaceholderTypeNone) {
-            self.contentView.hidden = YES;
+        if (self.calendar.placeholderType==FSCalendarPlaceholderTypeNone) {
+            self.contentView.hidden = [self.calendar isDateInRange:self.date]||![self.calendar.gregorian isDate:self.date equalToDate:self.month toUnitGranularity:NSCalendarUnitMonth];
         } else if (self.calendar.placeholderType == FSCalendarPlaceholderTypeFillHeadTail && self.calendar.scope == FSCalendarScopeMonth && !self.calendar.floatingMode) {
             
             NSIndexPath *indexPath = [self.calendar.collectionView indexPathForCell:self];
@@ -172,7 +173,7 @@
     
     if (self.contentView.hidden) return;
     
-    _titleLabel.text = self.title ?: [NSString stringWithFormat:@"%@",@([_calendar dayOfDate:_date])];
+    _titleLabel.text = self.title ?: @([self.calendar.gregorian component:NSCalendarUnitDay fromDate:_date]).stringValue;
     if (_subtitle) {
         _subtitleLabel.text = _subtitle;
         if (_subtitleLabel.hidden) {
@@ -185,7 +186,6 @@
     }
     if (_needsAdjustingViewFrame || CGSizeEqualToSize(_titleLabel.frame.size, CGSizeZero)) {
         _needsAdjustingViewFrame = NO;
-        
         if (_subtitle) {
             CGFloat titleHeight = [@"1" sizeWithAttributes:@{NSFontAttributeName:_titleLabel.font}].height;
             CGFloat subtitleHeight = [@"1" sizeWithAttributes:@{NSFontAttributeName:_subtitleLabel.font}].height;
@@ -194,13 +194,13 @@
             _titleLabel.frame = CGRectMake(
                                            self.preferredTitleOffset.x,
                                            (self.contentView.fs_height*5.0/6.0-height)*0.5+self.preferredTitleOffset.y,
-                                           self.fs_width,
+                                           self.contentView.fs_width,
                                            titleHeight
                                           );
             _subtitleLabel.frame = CGRectMake(
                                               self.preferredSubtitleOffset.x,
                                               (_titleLabel.fs_bottom-self.preferredTitleOffset.y) - (_titleLabel.fs_height-_titleLabel.font.pointSize)+self.preferredSubtitleOffset.y,
-                                              self.fs_width,
+                                              self.contentView.fs_width,
                                               subtitleHeight
                                              );
         } else {
@@ -214,11 +214,12 @@
         
         _imageView.center = CGPointMake(
                                         self.contentView.fs_width/2.0 + self.preferredImageOffset.x,
-                                        _imageView.center.y + self.preferredImageOffset.y
+                                        self.contentView.fs_height/2.0 + self.preferredImageOffset.y
                                        );
-        
+    } else {
+        _titleLabel.fs_width = self.contentView.fs_width;
+        _subtitleLabel.fs_width = self.contentView.fs_width;
     }
-    
     UIColor *textColor = self.colorForTitleLabel;
     if (![textColor isEqual:_titleLabel.textColor]) {
         _titleLabel.textColor = textColor;
@@ -239,10 +240,8 @@
         _shapeLayer.hidden = shouldHideShapeLayer;
     }
     if (!shouldHideShapeLayer) {
-        
-        CGPathRef path = self.cellShape == FSCalendarCellShapeCircle ?
-        [UIBezierPath bezierPathWithOvalInRect:_shapeLayer.bounds].CGPath :
-        [UIBezierPath bezierPathWithRect:_shapeLayer.bounds].CGPath;
+        CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:_shapeLayer.bounds
+                                                    cornerRadius:CGRectGetWidth(_shapeLayer.bounds)*0.5*self.borderRadius].CGPath;
         if (!CGPathEqualToPath(_shapeLayer.path,path)) {
             _shapeLayer.path = path;
         }
@@ -280,7 +279,8 @@
 
 - (BOOL)isWeekend
 {
-    return _date && ([_calendar weekdayOfDate:_date] == 1 || [_calendar weekdayOfDate:_date] == 7);
+    if (!_date) return NO;
+    return [self.calendar.gregorian isDateInWeekend:self.date];
 }
 
 - (UIColor *)colorForCurrentStateInDictionary:(NSDictionary *)dictionary
@@ -338,11 +338,10 @@
     _eventIndicator.color = self.colorsForEvents;
 }
 
-- (void)invalidateCellShapes
+- (void)invalidateBorderRadius
 {
-    CGPathRef path = self.cellShape == FSCalendarCellShapeCircle ?
-    [UIBezierPath bezierPathWithOvalInRect:_shapeLayer.bounds].CGPath :
-    [UIBezierPath bezierPathWithRect:_shapeLayer.bounds].CGPath;
+    CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:_shapeLayer.bounds
+                                                cornerRadius:CGRectGetWidth(_shapeLayer.bounds)*0.5*self.borderRadius].CGPath;
     _shapeLayer.path = path;
 }
 
@@ -394,9 +393,9 @@
     return _preferredEventDefaultColors ?: @[_appearance.eventDefaultColor];
 }
 
-- (FSCalendarCellShape)cellShape
+- (CGFloat)borderRadius
 {
-    return _preferredCellShape ?: _appearance.cellShape;
+    return _preferredBorderRadius >= 0 ? _preferredBorderRadius : _appearance.borderRadius;
 }
 
 #define OFFSET_PROPERTY(NAME,CAPITAL,ALTERNATIVE) \

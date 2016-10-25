@@ -2,7 +2,7 @@
 //  LCCKConstants.h
 //  LeanCloudChatKit-iOS
 //
-//  v0.7.0 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/2/19.
+//  v0.7.20 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/2/19.
 //  Copyright © 2016年 LeanCloud. All rights reserved.
 //  Common typdef and constants, and so on.
 
@@ -42,6 +42,8 @@ typedef void (^LCCKProgressBlock)(NSInteger percentDone);
 /// @name Common Define
 ///=============================================================================
 
+static NSString *const LCCKBadgeTextForNumberGreaterThanLimit = @"···";
+
 #define LCCK_DEPRECATED(explain) __attribute__((deprecated(explain)))
 
 #ifndef LCCKLocalizedStrings
@@ -55,6 +57,13 @@ typedef void (^LCCKProgressBlock)(NSInteger percentDone);
 #else
 #   define LCCKLog(...)
 #endif
+
+#define XCODE_VERSION_GREATER_THAN_OR_EQUAL_TO_8    __has_include(<UserNotifications/UserNotifications.h>)
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 #pragma mark - Notification Name
 ///=============================================================================
@@ -220,7 +229,7 @@ static NSString *const LCCKCustomMessageOnlyVisiableForPartClientIds = @"OnlyVis
  */
 static NSString *const LCCKCustomMessageConversationTypeKey = @"conversationType";
 
-static NSString *const LCCKConversationGroupAvatarURLKey = @"groupAvatarURL";
+#define LCCKConversationGroupAvatarURLKey (LCCKLocalizedStrings(@"ConversationAvatarURLKey") ?: @"avatarURL")
 
 #pragma mark - Custom Message Cell
 ///=============================================================================

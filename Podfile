@@ -4,7 +4,8 @@ target 'DaoDao' do
     # ignoring warning from pods
     inhibit_all_warnings!
 
-	pod 'ChatKit', '~> 0.7.2'
+	pod 'ChatKit'
+	pod 'UITableView+FDTemplateLayoutCell'
     pod 'CYLTabBarController'
     pod 'TWMessageBarManager'
     pod 'MLPAutoCompleteTextField'
@@ -26,6 +27,6 @@ target 'DaoDao' do
     pod 'TPKeyboardAvoiding'
     pod 'SDWebImage'
     pod 'SAMKeychain'
-    pod 'ReactiveCocoa'
+    pod 'ReactiveCocoa', '~> 2.5'
     pod 'UMengAnalytics'
 end

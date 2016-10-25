@@ -2,7 +2,7 @@
 //  LCCKConversationListCell.m
 //  LeanCloudChatKit-iOS
 //
-//  v0.7.0 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/3/22.
+//  v0.7.20 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/3/22.
 //  Copyright © 2016年 LeanCloud. All rights reserved.
 //
 
@@ -183,7 +183,8 @@ CGFloat const LCCKConversationListCellDefaultHeight = 61; //LCCKImageSize + LCCK
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.badgeView.badgeText = nil;
-    self.badgeView = nil;
+// 长列表下会引起badgeView频繁创建和销毁，导致卡顿
+//    self.badgeView = nil;
     self.litteBadgeView.hidden = YES;
     self.messageTextLabel.text = nil;
     self.timestampLabel.text = nil;

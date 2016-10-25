@@ -2,7 +2,7 @@
 //  LCCKBaseTableViewController.h
 //  LeanCloudChatKit-iOS
 //
-//  v0.7.0 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/3/9.
+//  v0.7.20 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/3/9.
 //  Copyright © 2016年 LeanCloud. All rights reserved.
 //
 
@@ -74,6 +74,9 @@
     if (self.viewControllerStyle == LCCKViewControllerStylePresenting) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewController:)];
     }
+    self.checkSessionStatus = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 - (void)dismissViewController:(id)sender {
@@ -121,6 +124,14 @@
 
 - (void)statusViewClicked:(id)sender {
     [[LCCKSessionService sharedInstance] reconnectForViewController:self callback:nil];
+}
+
+- (void)applicationDidBecomeActive:(NSNotification*)note {
+    self.checkSessionStatus = YES;
+}
+
+- (void)applicationWillResignActive:(NSNotification*)note {
+    self.checkSessionStatus = NO;
 }
 
 @end

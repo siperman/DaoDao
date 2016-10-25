@@ -2,7 +2,7 @@
 //  LCCKSettingService.m
 //  LeanCloudChatKit-iOS
 //
-//  v0.7.0 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/2/23.
+//  v0.7.20 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/2/23.
 //  Copyright © 2016年 LeanCloud. All rights reserved.
 //
 
@@ -27,6 +27,7 @@ static BOOL LCCKAllLogsEnabled;
 
 @implementation LCCKSettingService
 @synthesize useDevPushCerticate = _useDevPushCerticate;
+@synthesize disablePreviewUserId = _disablePreviewUserId;
 
 + (void)setAllLogsEnabled:(BOOL)enabled {
     LCCKAllLogsEnabled = enabled;
@@ -38,7 +39,7 @@ static BOOL LCCKAllLogsEnabled;
 }
 
 + (NSString *)ChatKitVersion {
-    return @"1.0.0";
+    return @"v0.7.20";
 }
 
 - (NSString *)tmpPath {
@@ -76,7 +77,7 @@ static BOOL LCCKAllLogsEnabled;
 - (void)saveInstallationWithDeviceToken:(NSData *)deviceToken userId:(NSString *)userId {
     AVInstallation *currentInstallation = [AVInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    // openClient 的时候也会将 clientId 注册到 channels，这里多余了？
+    //FIXME: openClient 的时候也会将 clientId 注册到 channels，这里多余了？
     if (userId) {
         [currentInstallation addUniqueObject:userId forKey:LCCKInstallationKeyChannels];
     }
@@ -85,6 +86,7 @@ static BOOL LCCKAllLogsEnabled;
     }];
 }
 
+//TODO:Never used
 - (void)pushMessage:(NSString *)message userIds:(NSArray *)userIds block:(AVBooleanResultBlock)block {
     AVPush *push = [[AVPush alloc] init];
     [push setChannels:userIds];
@@ -161,7 +163,6 @@ static BOOL LCCKAllLogsEnabled;
  * @param position 主要分为：CommonLeft、CommonRight等
  */
 - (UIEdgeInsets)messageBubbleCustomizeSettingsForPosition:(NSString *)position capOrEdge:(NSString *)capOrEdge {
-    NSString *leftOrRight = position;
     NSDictionary *CapOrEdgeDict = self.messageBubbleCustomizeSettings[@"BubbleStyle"][position][@"background"][capOrEdge];
     CGFloat top = [(NSNumber *)CapOrEdgeDict[@"top"] floatValue];
     CGFloat left = [(NSNumber *)CapOrEdgeDict[@"left"] floatValue];
@@ -268,12 +269,10 @@ static BOOL LCCKAllLogsEnabled;
     return defaultThemeTextMessageFont;
 }
 
-- (void)setCurrentConversationBackgroundImage:(UIImage *)image scaledToSize:(CGSize)scaledToSize {
-    NSString *conversationId = [LCCKConversationService sharedInstance].currentConversation.conversationId;
-    [self setBackgroundImage:image forConversationId:conversationId scaledToSize:scaledToSize];
-}
-
 - (void)setBackgroundImage:(UIImage *)image forConversationId:(NSString *)conversationId scaledToSize:(CGSize)scaledToSize {
+    if (conversationId.length == 0 || !conversationId) {
+        return;
+    }
     image = [image lcck_scalingPatternImageToSize:scaledToSize];
     NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) : UIImageJPEGRepresentation(image, 1));
     NSString *imageName = [NSString stringWithFormat:@"%@.jpg", [[NSUUID UUID] UUIDString]];

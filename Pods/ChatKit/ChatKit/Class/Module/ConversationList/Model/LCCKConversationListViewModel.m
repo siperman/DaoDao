@@ -2,7 +2,7 @@
 //  LCCKConversationListViewModel.m
 //  LeanCloudChatKit-iOS
 //
-//  v0.7.0 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/3/22.
+//  v0.7.20 Created by ElonChan (微信向我报BUG:chenyilong1010) on 16/3/22.
 //  Copyright © 2016年 LeanCloud. All rights reserved.
 //
 
@@ -36,7 +36,7 @@
 
 @interface LCCKConversationListViewModel ()
 
-@property (nonatomic, strong) LCCKConversationListViewController *conversationListViewController;
+@property (nonatomic, weak) LCCKConversationListViewController *conversationListViewController;
 @property (nonatomic, assign, getter=isFreshing) BOOL freshing;
 
 @end
@@ -55,10 +55,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:LCCKNotificationMessageReceived object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:LCCKNotificationUnreadsUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:LCCKNotificationConversationListDataSourceUpdated object:nil];
-        __unsafe_unretained typeof(self) weakSelf = self;
-        [self lcck_executeAtDealloc:^{
-               [[NSNotificationCenter defaultCenter] removeObserver:weakSelf];
-            }];
+    __unsafe_unretained typeof(self) weakSelf = self;
+    [self lcck_executeAtDealloc:^{
+        [[NSNotificationCenter defaultCenter] removeObserver:weakSelf];
+    }];
     _conversationListViewController = conversationListViewController;
     return self;
 }
@@ -131,7 +131,13 @@
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     LCCKConversationEditActionsBlock conversationEditActionBlock = [[LCCKConversationListService sharedInstance] conversationEditActionBlock];
-    AVIMConversation *conversation = [self.dataArray objectAtIndex:indexPath.row];
+    AVIMConversation *conversation = nil;
+    if ((NSUInteger)indexPath.row < self.dataArray.count) {
+        conversation = [self.dataArray objectAtIndex:indexPath.row];
+    }
+    else {
+        return nil;
+    }
     NSArray *editActions = [NSArray array];
     if (conversationEditActionBlock) {
         editActions = conversationEditActionBlock(indexPath, [self defaultRightButtons], conversation, self.conversationListViewController);
@@ -150,7 +156,7 @@
     }
     //头像消息一般和昵称消息一同返回，故假设如果服务端返回了昵称，那么如果该用户有头像就一定会返回头像。反之，没返回昵称，一定是还未缓存用户信息。如果你的App中，不是这样的逻辑，可联系维护者将这一逻辑修改得严谨些，邮箱luohanchenyilong@163.com.
     if (!*name) {
-        if (peerId != NULL) {
+        if (peerId != NULL && ![LCCKSettingService sharedInstance].isDisablePreviewUserId) {
             *name = peerId;
         }
         __weak __typeof(self) weakSelf = self;
@@ -194,9 +200,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    AVIMConversation *conversation = [self.dataArray objectAtIndex:indexPath.row];
     LCCKHeightForRowBlock heightForRowBlock = [[LCCKConversationListService sharedInstance] heightForRowBlock];
     if (heightForRowBlock) {
+        AVIMConversation *conversation = [self.dataArray objectAtIndex:indexPath.row];
         return heightForRowBlock(tableView, indexPath, conversation);
     }
     return LCCKConversationListCellDefaultHeight;
@@ -228,7 +234,7 @@
                 if (totalUnreadCount > 0) {
                     NSString *badgeValue = [NSString stringWithFormat:@"%ld", (long)totalUnreadCount];
                     if (totalUnreadCount > 99) {
-                        badgeValue = @"...";
+                        badgeValue = LCCKBadgeTextForNumberGreaterThanLimit;
                     }
                     [self.conversationListViewController.navigationController tabBarItem].badgeValue = badgeValue;
                     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:totalUnreadCount];
