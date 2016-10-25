@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DDChooseTimeProtocol <NSObject>
+
+- (void)chooseTime:(NSTimeInterval)time;
+
+@end
+
 @interface DDCalendarViewController : UIViewController
 
+@property (nonatomic, weak) id<DDChooseTimeProtocol> delegete;
 @end

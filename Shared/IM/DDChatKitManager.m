@@ -26,12 +26,13 @@
 #import "LCCKInputViewPluginVCard.h"
 
 #ifdef DEBUG
-static NSString *const LCCKAPPID = @"bcBzimEL1vcQy8qPkdM064mA-gzGzoHsz";
+static NSString *const LCCKAPPKEY = @"E7glabfvph8e91qthD9wxt7n";
+#elif TEST
 static NSString *const LCCKAPPKEY = @"aLnJXroXfsO3O2y0TzMeyx0z";
 #else
-static NSString *const LCCKAPPID = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 static NSString *const LCCKAPPKEY = @"RhI4OeI0gPrOClX4oIoODjQn";
 #endif
+static NSString *const LCCKAPPID = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 
 @interface DDChatKitManager () <MWPhotoBrowserDelegate>
 
@@ -171,24 +172,42 @@ static NSString *const LCCKAPPKEY = @"RhI4OeI0gPrOClX4oIoODjQn";
             return;
         }
 
-        NSString *uids = [userIds componentsJoinedByString:@","];
-        [SYRequestEngine requestUserWithIds:uids callback:^(BOOL success, id response) {
-            if (success) {
-                NSArray *users = [LCCKUser parseFromDicts:response[kResultKey]];
-
-                !completionHandler ?: completionHandler([users copy], nil);
-            } else {
-                NSMutableArray *users = [NSMutableArray arrayWithCapacity:userIds.count];
-
-                [userIds enumerateObjectsUsingBlock:^(NSString * _Nonnull clientId, NSUInteger idx, BOOL * _Nonnull stop) {
-                    //注意：如果网络请求失败，请至少提供 ClientId！
-                    LCCKUser *user_ = [LCCKUser userWithClientId:clientId];
-                    [users addObject:user_];
-                }];
-                !completionHandler ?: completionHandler([users copy], nil);
+        NSMutableArray *users_ = [NSMutableArray array];
+        NSMutableArray *userIds_ = [userIds mutableCopy];
+        for (NSString *uid in userIds) {
+            // 先本地取
+            LCCKUser *user = [LCCKUser loadFromDiskWithKey:uid];
+            if (user) {
+                [users_ addObject:user];
+                [userIds_ removeObject:uid];
             }
-        }];
+        }
 
+        if (userIds_.count > 0) {
+            NSString *uids = [userIds_ componentsJoinedByString:@","];
+            [SYRequestEngine requestUserWithIds:uids callback:^(BOOL success, id response) {
+                if (success) {
+                    NSArray *users = [LCCKUser parseFromDicts:response[kPageKey][kResultKey]];
+                    for (LCCKUser *user in users) {
+                        // 缓存到本地
+                        [user saveToDiskWithKey:user.userId];
+                    }
+                    [users_ addObjectsFromArray:users];
+
+                    !completionHandler ?: completionHandler([users_ copy], nil);
+                } else {
+
+                    [userIds enumerateObjectsUsingBlock:^(NSString * _Nonnull clientId, NSUInteger idx, BOOL * _Nonnull stop) {
+                        //注意：如果网络请求失败，请至少提供 ClientId！
+                        LCCKUser *user_ = [LCCKUser userWithClientId:clientId];
+                        [users_ addObject:user_];
+                    }];
+                    !completionHandler ?: completionHandler([users_ copy], nil);
+                }
+            }];
+        } else {
+            !completionHandler ?: completionHandler([users_ copy], nil);
+        }
     }];
 
     [[LCChatKit sharedInstance] setDidSelectConversationsListCellBlock:^(NSIndexPath *indexPath, AVIMConversation *conversation, LCCKConversationListViewController *controller) {

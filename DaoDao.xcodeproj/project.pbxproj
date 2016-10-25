@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0098F4637878457F898BC9ED /* libPods-DaoDao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F393DEFF642AFC9F74740E /* libPods-DaoDao.a */; };
 		2B144A9C1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B144A9A1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.m */; };
 		2B144A9D1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B144A9B1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib */; };
 		2B311C4E1D7E631D007CE4DD /* SYNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B311C461D7E631D007CE4DD /* SYNetworkManager.m */; };
@@ -55,6 +56,9 @@
 		2B75AB591D7FFF4E0074119E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B75AB3B1D7FFF4E0074119E /* Assets.xcassets */; };
 		2B75AB5E1D7FFF4E0074119E /* LCCKContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB441D7FFF4E0074119E /* LCCKContactManager.m */; };
 		2B75AB5F1D7FFF4E0074119E /* NSObject+LCCKHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB481D7FFF4E0074119E /* NSObject+LCCKHUD.m */; };
+		2B86A25E1DBDA24B00ED2253 /* DDMeetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B86A25D1DBDA24B00ED2253 /* DDMeetTableViewController.m */; };
+		2B86A2641DBDFB5600ED2253 /* CustomizedChatKit.Other.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B86A2631DBDFB5600ED2253 /* CustomizedChatKit.Other.bundle */; };
+		2B86A2691DBE0A6400ED2253 /* DDUserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B86A2681DBE0A6400ED2253 /* DDUserFactory.m */; };
 		2B90B9051DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B90B9041DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle */; };
 		2B90B9071DB71440000B6FE1 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B90B9061DB71440000B6FE1 /* Shared.xcassets */; };
 		2B90B9091DB71B64000B6FE1 /* CustomizedChatKit.MessageBubble.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B90B9081DB71B64000B6FE1 /* CustomizedChatKit.MessageBubble.bundle */; };
@@ -277,7 +281,6 @@
 		2BF86C891D95179600E06BF8 /* NSCalendar+NSCalendarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C831D95179600E06BF8 /* NSCalendar+NSCalendarExtension.m */; };
 		2BF86C8A1D95179600E06BF8 /* NSDateComponents+NSCalendarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C861D95179600E06BF8 /* NSDateComponents+NSCalendarExtension.m */; };
 		2BF86C8B1D95179600E06BF8 /* NSString+NSCalendarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C881D95179600E06BF8 /* NSString+NSCalendarExtension.m */; };
-		5EDD888A25676D0C2EC6FFA4 /* libPods-DaoDao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC1FD7D85756456A899757D6 /* libPods-DaoDao.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -376,7 +379,13 @@
 		2B75AB451D7FFF4E0074119E /* LCCKExampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCKExampleConstants.h; sourceTree = "<group>"; };
 		2B75AB471D7FFF4E0074119E /* NSObject+LCCKHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LCCKHUD.h"; sourceTree = "<group>"; };
 		2B75AB481D7FFF4E0074119E /* NSObject+LCCKHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LCCKHUD.m"; sourceTree = "<group>"; };
-		2B90B9041DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CustomizedChatKit.Other.bundle; sourceTree = "<group>"; };
+		2B86A25C1DBDA24B00ED2253 /* DDMeetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMeetTableViewController.h; sourceTree = "<group>"; };
+		2B86A25D1DBDA24B00ED2253 /* DDMeetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeetTableViewController.m; sourceTree = "<group>"; };
+		2B86A2631DBDFB5600ED2253 /* CustomizedChatKit.Other.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CustomizedChatKit.Other.bundle; sourceTree = "<group>"; };
+		2B86A2671DBE0A6400ED2253 /* DDUserFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserFactory.h; sourceTree = "<group>"; };
+		2B86A2681DBE0A6400ED2253 /* DDUserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserFactory.m; sourceTree = "<group>"; };
+		2B8D33FB1DBB851A00F02104 /* DaoDao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DaoDao.entitlements; sourceTree = "<group>"; };
+		2B90B9041DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = CustomizedChatKit.Other.bundle; path = ../IM/CustomizedChatKit.Other.bundle; sourceTree = "<group>"; };
 		2B90B9061DB71440000B6FE1 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
 		2B90B9081DB71B64000B6FE1 /* CustomizedChatKit.MessageBubble.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CustomizedChatKit.MessageBubble.bundle; sourceTree = "<group>"; };
 		2BA3F2D91D911A4A00094E0A /* CityData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CityData.plist; sourceTree = "<group>"; };
@@ -831,7 +840,8 @@
 		2BF86C861D95179600E06BF8 /* NSDateComponents+NSCalendarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateComponents+NSCalendarExtension.m"; sourceTree = "<group>"; };
 		2BF86C871D95179600E06BF8 /* NSString+NSCalendarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSCalendarExtension.h"; sourceTree = "<group>"; };
 		2BF86C881D95179600E06BF8 /* NSString+NSCalendarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSCalendarExtension.m"; sourceTree = "<group>"; };
-		CC1FD7D85756456A899757D6 /* libPods-DaoDao.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DaoDao.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		57F393DEFF642AFC9F74740E /* libPods-DaoDao.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DaoDao.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F3CE64E83C12BD5D621A5C9 /* Pods-DaoDao.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaoDao.test.xcconfig"; path = "Pods/Target Support Files/Pods-DaoDao/Pods-DaoDao.test.xcconfig"; sourceTree = "<group>"; };
 		F7E6478744817CF6FE556625 /* Pods-DaoDao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaoDao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaoDao/Pods-DaoDao.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -841,8 +851,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BB3D7E91D7D6F8D00FFDC0E /* libUMSocial_Sdk_5.0.a in Frameworks */,
-				5EDD888A25676D0C2EC6FFA4 /* libPods-DaoDao.a in Frameworks */,
 				2BB3D79D1D7D6F8C00FFDC0E /* libmp3lame.a in Frameworks */,
+				0098F4637878457F898BC9ED /* libPods-DaoDao.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,6 +864,7 @@
 			children = (
 				F7E6478744817CF6FE556625 /* Pods-DaoDao.debug.xcconfig */,
 				245B0016971B47DC5D8AC6D1 /* Pods-DaoDao.release.xcconfig */,
+				6F3CE64E83C12BD5D621A5C9 /* Pods-DaoDao.test.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -914,6 +925,8 @@
 				2BBB7D7C1DA8C73A005E90A5 /* DDPostAskTableViewController.m */,
 				2BBB7D8E1DAA2032005E90A5 /* DDAskDetailViewController.h */,
 				2BBB7D8F1DAA2032005E90A5 /* DDAskDetailViewController.m */,
+				2B86A25C1DBDA24B00ED2253 /* DDMeetTableViewController.h */,
+				2B86A25D1DBDA24B00ED2253 /* DDMeetTableViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1291,14 +1304,16 @@
 			isa = PBXGroup;
 			children = (
 				2B75AB0C1D7FFF4E0074119E /* Class */,
+				2B86A2671DBE0A6400ED2253 /* DDUserFactory.h */,
+				2B86A2681DBE0A6400ED2253 /* DDUserFactory.m */,
 				2B75AB091D7FF8F90074119E /* DDChatKitManager.h */,
 				2B75AB0A1D7FF8F90074119E /* DDChatKitManager.m */,
 				2BB41C9C1D816879000C98F3 /* DDChatRoomViewController.h */,
 				2BB41C9D1D816879000C98F3 /* DDChatRoomViewController.m */,
 				2B444B811DAB6E4F009FAA61 /* DDAskChatManager.h */,
 				2B444B821DAB6E4F009FAA61 /* DDAskChatManager.m */,
+				2B86A2631DBDFB5600ED2253 /* CustomizedChatKit.Other.bundle */,
 				2B90B9081DB71B64000B6FE1 /* CustomizedChatKit.MessageBubble.bundle */,
-				2B90B9041DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle */,
 			);
 			path = IM;
 			sourceTree = "<group>";
@@ -1306,6 +1321,7 @@
 		2BB3D5C81D7D6F8C00FFDC0E /* Macro */ = {
 			isa = PBXGroup;
 			children = (
+				2B90B9041DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle */,
 				2BB3D5C91D7D6F8C00FFDC0E /* AppMacro.h */,
 				2BB3D5CA1D7D6F8C00FFDC0E /* UtilsMacro.h */,
 			);
@@ -2213,6 +2229,7 @@
 		2BCDD68E1D79597000BADD43 /* DaoDao */ = {
 			isa = PBXGroup;
 			children = (
+				2B8D33FB1DBB851A00F02104 /* DaoDao.entitlements */,
 				2B6D12321D98B586003433D0 /* Answer */,
 				2B6D12361D98B586003433D0 /* Ask */,
 				2B6D123A1D98B586003433D0 /* Home */,
@@ -2254,7 +2271,7 @@
 		372B00B14EEE8EB5D4E2F3B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CC1FD7D85756456A899757D6 /* libPods-DaoDao.a */,
+				57F393DEFF642AFC9F74740E /* libPods-DaoDao.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2298,6 +2315,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -2372,6 +2392,7 @@
 				2BBB7D851DA8F524005E90A5 /* DDReloadView.xib in Resources */,
 				2BB3D7D91D7D6F8D00FFDC0E /* TOCropViewControllerLocalizable.strings in Resources */,
 				2B90B9051DB70E53000B6FE1 /* CustomizedChatKit.Other.bundle in Resources */,
+				2B86A2641DBDFB5600ED2253 /* CustomizedChatKit.Other.bundle in Resources */,
 				2BB3D7A81D7D6F8C00FFDC0E /* lookup_miss_etikate.png in Resources */,
 				2BDB10271D9BBC9500F2C27C /* DDFillJobIndustryViewController.xib in Resources */,
 				2BBB7D731DA89280005E90A5 /* DDLoadingMoreTableViewCell.xib in Resources */,
@@ -2417,7 +2438,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B147807F8A41B0351E8B8B66 /* [CP] Copy Pods Resources */ = {
@@ -2493,6 +2514,7 @@
 				2BB3D7841D7D6F8C00FFDC0E /* UIImage+Asset.m in Sources */,
 				2BB3D7B51D7D6F8C00FFDC0E /* MBProgressHUD+Add.m in Sources */,
 				2BB3D7851D7D6F8C00FFDC0E /* UIImage+Crop.m in Sources */,
+				2B86A25E1DBDA24B00ED2253 /* DDMeetTableViewController.m in Sources */,
 				2BB3D7E11D7D6F8D00FFDC0E /* TOCropToolbar.m in Sources */,
 				2BB3D7771D7D6F8C00FFDC0E /* CTAssetItemViewController.m in Sources */,
 				2BA3F2F01D92821A00094E0A /* DDAsk.m in Sources */,
@@ -2667,6 +2689,7 @@
 				2B75AB561D7FFF4E0074119E /* LCCKMapViewController.m in Sources */,
 				2BB3D7D01D7D6F8D00FFDC0E /* SSCarrierInfo.m in Sources */,
 				2BB3D7DE1D7D6F8D00FFDC0E /* TOCropViewController.m in Sources */,
+				2B86A2691DBE0A6400ED2253 /* DDUserFactory.m in Sources */,
 				2BB3D7BD1D7D6F8C00FFDC0E /* SDWebImageManager+MJ.m in Sources */,
 				2B444B831DAB6E4F009FAA61 /* DDAskChatManager.m in Sources */,
 				2BBB7D721DA89280005E90A5 /* DDLoadingMoreTableViewCell.m in Sources */,
@@ -2743,6 +2766,75 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2B86A2651DBE074F00ED2253 /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Test;
+		};
+		2B86A2661DBE074F00ED2253 /* Test */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F3CE64E83C12BD5D621A5C9 /* Pods-DaoDao.test.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = DaoDao/DaoDao.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = R54RSMK9W5;
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "DaoDao/DaoDao-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"TEST=1",
+				);
+				INFOPLIST_FILE = DaoDao/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Shared/Vendor/fat-lame/lib",
+					"$(PROJECT_DIR)/Shared/Vendor/UMSocial_Sdk_5.0",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.daotong.DaoDao;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Test;
+		};
 		2BCDD6A11D79597000BADD43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2837,6 +2929,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = DaoDao/DaoDao.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = R54RSMK9W5;
 				ENABLE_BITCODE = NO;
@@ -2859,6 +2952,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = DaoDao/DaoDao.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = R54RSMK9W5;
 				ENABLE_BITCODE = NO;
@@ -2883,6 +2977,7 @@
 			buildConfigurations = (
 				2BCDD6A11D79597000BADD43 /* Debug */,
 				2BCDD6A21D79597000BADD43 /* Release */,
+				2B86A2651DBE074F00ED2253 /* Test */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2892,6 +2987,7 @@
 			buildConfigurations = (
 				2BCDD6A41D79597000BADD43 /* Debug */,
 				2BCDD6A51D79597000BADD43 /* Release */,
+				2B86A2661DBE074F00ED2253 /* Test */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

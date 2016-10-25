@@ -24,8 +24,8 @@
 {
     return @{
              @"userId" : @"id",
-             @"userId" : @"id",
-             @"clientId" : @"title",
+             @"clientId" : @"id",
+             @"name" : @"title",
              @"avatarURL" : @"headUrl",
              };
 }

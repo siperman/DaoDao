@@ -10,6 +10,8 @@
 #import "LCCKVCardMessage.h"
 #import "LCCKContactListViewController.h"
 #import "LCCKContactManager.h"
+#import "DDMeetTableViewController.h"
+#import "DDAskChatManager.h"
 
 @implementation LCCKInputViewPluginVCard
 @synthesize inputViewRef = _inputViewRef;
@@ -58,7 +60,7 @@
  */
 - (void)pluginDidClicked {
     [super pluginDidClicked];
-    [self presentSelectMemberViewController];
+    [self pushMeetViewController];
 }
 
 /**
@@ -95,39 +97,46 @@
     return image;
 }
 
-- (void)presentSelectMemberViewController {
-
-    [self.inputViewRef open];
-    !self.sendCustomMessageHandler ?: self.sendCustomMessageHandler(@"yaoqinghan", nil);
-
-    return;
-    AVIMConversation *conversation = [self.conversationViewController getConversationIfExists];
-    NSArray *allPersonIds;
-    if (conversation.lcck_type == LCCKConversationTypeSingle) {
-        allPersonIds = [[LCCKContactManager defaultManager] fetchContactPeerIds];
-    } else {
-        allPersonIds = conversation.members;
-    }
-    NSArray *users = [[LCChatKit sharedInstance] getCachedProfilesIfExists:allPersonIds shouldSameCount:YES error:nil];
-    NSString *currentClientID = [[LCChatKit sharedInstance] clientId];
-    LCCKContactListViewController *contactListViewController = [[LCCKContactListViewController alloc] initWithContacts:[NSSet setWithArray:users] userIds:[NSSet setWithArray:allPersonIds] excludedUserIds:[NSSet setWithArray:@[currentClientID]] mode:LCCKContactListModeSingleSelection];
-    contactListViewController.title = @"发送邀请函";
-    [contactListViewController setViewDidDismissBlock:^(LCCKBaseViewController *viewController) {
+- (void)pushMeetViewController {
+    DDMeetTableViewController *vc = [DDMeetTableViewController viewController];
+    DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:self.conversationViewController.conversationId];
+    vc.ask = ask;
+    [vc setCallback:^(){
         [self.inputViewRef open];
-        [self.inputViewRef beginInputing];
+        !self.sendCustomMessageHandler ?: self.sendCustomMessageHandler(@"yaoqinghan", nil);
     }];
-    [contactListViewController setSelectedContactCallback:^(UIViewController *viewController, NSString *peerId) {
-        [viewController dismissViewControllerAnimated:YES completion:^{
-            [self.inputViewRef open];
-        }];
-        if (peerId.length > 0) {
-            !self.sendCustomMessageHandler ?: self.sendCustomMessageHandler(peerId, nil);
-        }
-    }];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contactListViewController];
-    [self.conversationViewController presentViewController:navigationController animated:YES completion:^{
-        [self.inputViewRef close];
-    }];
+
+    [self.conversationViewController.navigationController pushViewController:vc animated:YES];
 }
+
+//- (void)presentSelectMemberViewController {
+//    AVIMConversation *conversation = [self.conversationViewController getConversationIfExists];
+//    NSArray *allPersonIds;
+//    if (conversation.lcck_type == LCCKConversationTypeSingle) {
+//        allPersonIds = [[LCCKContactManager defaultManager] fetchContactPeerIds];
+//    } else {
+//        allPersonIds = conversation.members;
+//    }
+//    NSArray *users = [[LCChatKit sharedInstance] getCachedProfilesIfExists:allPersonIds shouldSameCount:YES error:nil];
+//    NSString *currentClientID = [[LCChatKit sharedInstance] clientId];
+//    LCCKContactListViewController *contactListViewController = [[LCCKContactListViewController alloc] initWithContacts:[NSSet setWithArray:users] userIds:[NSSet setWithArray:allPersonIds] excludedUserIds:[NSSet setWithArray:@[currentClientID]] mode:LCCKContactListModeSingleSelection];
+//    contactListViewController.title = @"发送邀请函";
+//    [contactListViewController setViewDidDismissBlock:^(LCCKBaseViewController *viewController) {
+//        [self.inputViewRef open];
+//        [self.inputViewRef beginInputing];
+//    }];
+//    [contactListViewController setSelectedContactCallback:^(UIViewController *viewController, NSString *peerId) {
+//        [viewController dismissViewControllerAnimated:YES completion:^{
+//            [self.inputViewRef open];
+//        }];
+//        if (peerId.length > 0) {
+//            !self.sendCustomMessageHandler ?: self.sendCustomMessageHandler(peerId, nil);
+//        }
+//    }];
+//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contactListViewController];
+//    [self.conversationViewController presentViewController:navigationController animated:YES completion:^{
+//        [self.inputViewRef close];
+//    }];
+//}
 
 @end

@@ -50,7 +50,7 @@
     return [dateFormatter stringFromDate:date];
 }
 
-+ (NSString *)dateFormInterval:(NSNumber *)interval
++ (NSString *)dateFormInterval:(NSTimeInterval)interval
 {
     static NSDateFormatter *dateFormatter = nil;
     static dispatch_once_t onceToken;
@@ -58,8 +58,8 @@
         dateFormatter = [[NSDateFormatter alloc] init];
     });
 
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[interval doubleValue] / 1000];
-    dateFormatter.dateFormat = @"M月d日";
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
+    dateFormatter.dateFormat = @"M月d日 HH:mm";
 
     return [dateFormatter stringFromDate:date];
 }
@@ -108,7 +108,7 @@ static NSDateFormatter *timestampFormatter = nil;
     time(&now);
     
     NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *components = [cal components:( NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[[NSDate alloc] init]];
+    NSDateComponents *components = [cal components:( NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond ) fromDate:[[NSDate alloc] init]];
     
     [components setHour:-[components hour]];
     [components setMinute:-[components minute]];
@@ -164,8 +164,8 @@ static NSDateFormatter *timestampFormatter = nil;
     time(&now);
     
     NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *components = [cal components:( NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[[NSDate alloc] init]];
-    
+    NSDateComponents *components = [cal components:( NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond ) fromDate:[[NSDate alloc] init]];
+
     [components setHour:-[components hour]];
     [components setMinute:-[components minute]];
     [components setSecond:-[components second]];

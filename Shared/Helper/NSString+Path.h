@@ -3,7 +3,7 @@
 //  Falcon
 //
 //  Created by hetao on 8/12/14.
-//  Copyright (c) 2014 hetaoZhu. All rights reserved.
+//  Copyright (c) 2014 hetao. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

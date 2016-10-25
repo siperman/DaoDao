@@ -37,7 +37,7 @@
 
     // Umeng
     {
-#if DEBUG
+#if DEBUG || TEST
         NSString *UMKey = @"58073d59c895767d3a0000eb";
 #else
         NSString *UMKey = @"57eba4e767e58ee6b80018c5";

@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong) DDChessboardView *chessboard;
 @property (nonatomic, strong) UIButton *btnPost;
+
+@property (nonatomic) BOOL isLoading;
+
 @end
 
 @implementation DDHomeViewController
@@ -51,18 +54,22 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if ([self checkLogin]) {
+    if ([self checkLogin] && !self.isLoading) {
         [self requestChess];
+    } else {
+        debugLog(@"拜了个呆门");
     }
 }
 
 - (void)requestChess
 {
+    self.isLoading = YES;
     [SYRequestEngine requestChessCallback:^(BOOL success, id response) {
         if (success) {
             NSArray *array = [DDChess parseFromDicts:response[kResultKey]];
             [self.chessboard setChessArray:array];
         }
+        self.isLoading = NO;
     }];
 }
 

@@ -18,7 +18,7 @@
 
 + (NSString *)dateFormString:(NSString *)dateString;
 
-+ (NSString *)dateFormInterval:(NSNumber *)interval;
++ (NSString *)dateFormInterval:(NSTimeInterval)interval;
 
 + (NSString *)dateDetailFormInterval:(NSNumber *)interval;
 

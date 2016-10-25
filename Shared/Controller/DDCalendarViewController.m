@@ -25,6 +25,7 @@
 @property (strong, nonatomic) UILabel *labTime;
 @property (strong, nonatomic) UIView *timeView;
 
+@property (nonatomic) NSTimeInterval time;
 @end
 
 @implementation DDCalendarViewController
@@ -33,10 +34,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor;
 
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
     self.navigationItem.rightBarButtonItem = item;
-    [item setTintColor:MainColor];
-
+    [item setTintColor:BarTintColor];
+    item.enabled = NO;
 
     [self.view addSubview:self.calendar];
     [self.calendar mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -72,7 +73,7 @@
 
     self.dateFormatter2 = [[NSDateFormatter alloc] init];
     self.dateFormatter2.locale = chinese;
-    self.dateFormatter2.dateFormat = @"yyyy/MM/01";
+    self.dateFormatter2.dateFormat = @"yyyy/MM/dd HH:mm";
 
     self.dateFormatter3 = [[NSDateFormatter alloc] init];
     self.dateFormatter3.locale = chinese;
@@ -97,7 +98,10 @@
 
 - (void)done
 {
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    if ([self.delegete respondsToSelector:@selector(chooseTime:)]) {
+        [self.delegete chooseTime:_time];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - FSCalendarDataSource
@@ -115,13 +119,26 @@
 
 - (NSDate *)minimumDateForCalendar:(FSCalendar *)calendar
 {
-    NSString *s = [self.dateFormatter2 stringFromDate:[NSDate date]];
-    return [self.dateFormatter1 dateFromString:s];
+    // 月初
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *components = [cal components:( NSCalendarUnitDay ) fromDate:[NSDate date]];
+    [components setDay:-([components day] - 1)];
+
+    NSDate *minDate = [cal dateByAddingComponents:components toDate:[NSDate date] options:0];
+
+    return minDate;
 }
 
 - (NSDate *)maximumDateForCalendar:(FSCalendar *)calendar
 {
-    return [self.dateFormatter1 dateFromString:@"2016/11/31"];
+    // 一年后
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *components = [cal components:( NSCalendarUnitYear ) fromDate:[NSDate date]];
+    components.year = 1;
+
+    NSDate *maxDate = [cal dateByAddingComponents:components toDate:[NSDate date] options:0];
+
+    return maxDate;
 }
 
 #pragma mark - FSCalendarDelegate
@@ -139,6 +156,7 @@
     NSLog(@"%@",NSStringFromCGRect(frame));
 
     [self.datePicker setDate:date animated:YES];
+    [self changeTime:date];
 }
 
 - (void)calendarCurrentPageDidChange:(FSCalendar *)calendar
@@ -176,6 +194,20 @@
 - (CGFloat)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance borderRadiusForDate:(nonnull NSDate *)date
 {
     return [self.calendar isDateInToday:date] ? 0.0 : 1.0;
+}
+
+#pragma mark datePicker
+- (void)pickTime:(UIDatePicker*)sender
+{
+    [self.calendar selectDate:sender.date];
+    [self changeTime:sender.date];
+}
+
+- (void)changeTime:(NSDate *)date
+{
+    [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    _labTime.text = [self.dateFormatter2 stringFromDate:date];
+    _time = [date timeIntervalSince1970];
 }
 
 #pragma mark Getter / Setter
@@ -228,6 +260,8 @@
     if (!_datePicker) {
         _datePicker = [[UIDatePicker alloc] init];
         _datePicker.minimumDate = [NSDate date];
+        [_datePicker addTarget:self action:@selector(pickTime:) forControlEvents:UIControlEventValueChanged]; //为UIDatePicker添加一个事件当UIDatePicker的值被改变时触发
+
     }
     return _datePicker;
 }

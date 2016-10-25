@@ -55,8 +55,8 @@ NSString *const cityCell = @"CityCell";
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.navigationItem setTitle:@"城市选择"];
-    UIBarButtonItem *cancelBarButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonDown:)];
-    [self.navigationItem setLeftBarButtonItem:cancelBarButton];
+//    UIBarButtonItem *cancelBarButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonDown:)];
+//    [self.navigationItem setLeftBarButtonItem:cancelBarButton];
     self.isSearch = NO;
     [self locationStart];
     
