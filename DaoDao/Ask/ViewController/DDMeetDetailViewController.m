@@ -41,7 +41,7 @@
 {
     [super viewDidAppear:animated];
 
-    if (_ask) {
+    if (_ask && _ask.answer.meet) {
         [self setUpData];
     } else {
         [self requestData];
@@ -56,6 +56,8 @@
         [self hideAllHUD];
         if (success) {
             _ask = [DDAsk fromDict:response[kObjKey]];
+            // 缓存约局信息
+            [[DDAskChatManager sharedInstance] cacheAsk:_ask ForConversationId:_conversationId];
             [weakSelf setUpData];
         } else {
             [self showRequestNotice:response];

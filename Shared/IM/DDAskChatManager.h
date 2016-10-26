@@ -16,7 +16,8 @@ typedef void(^DDAskChatCallback)(DDAsk *);
 
 // 根据聊天室id取本地缓存约局信息
 - (DDAsk *)getCachedProfileIfExists:(NSString *)conversationId;
-
+// 根据聊天室id缓存约局信息到本地
+- (void)cacheAsk:(DDAsk *)ask ForConversationId:(NSString *)conversationId;
 // 根据聊天室id取服务端约局信息并更新本地缓存
 - (void)getProfilesInBackgroundForConversationId:(NSString *)conversationId callback:(DDAskChatCallback)callback;
 

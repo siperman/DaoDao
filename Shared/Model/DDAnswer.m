@@ -40,3 +40,18 @@
 }
 
 @end
+
+//////////////////////////////////////////////////////////////////
+
+@implementation DDMeet
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{
+             @"time" : @"time",
+             @"city" : @"city",
+             @"addr" : @"addr",
+             };
+}
+
+@end
