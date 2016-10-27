@@ -58,6 +58,13 @@
     if ([self checkLogin] && !self.isLoading) {
         [self requestChess];
     }
+    self.badgeView.hidden = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.badgeView.hidden = YES;
 }
 
 - (void)requestChess
@@ -87,7 +94,8 @@
         [SYUtils showWindowLevelNotice:kLogoutSuccessNotice];
     }];
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"确定要退出当前账号？"
+    NSString *title = [NSString stringWithFormat:@"确定要退出当前账号？\n %@", [DDUserManager manager].user.mobilePhone];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                     message:nil
                                            cancelButtonItem:btnCancle
                                            otherButtonItems:btnLogout, nil];
@@ -132,6 +140,21 @@
         [_btnPost addTarget:self action:@selector(postAsk) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnPost;
+}
+
+- (LCCKBadgeView *)badgeView {
+    if (_badgeView == nil) {
+        LCCKBadgeView *badgeView = [[LCCKBadgeView alloc] initWithParentView:self.navigationController.navigationBar
+                                                                   alignment:LCCKBadgeViewAlignmentTopRight];
+        badgeView.badgeBackgroundColor = ColorHex(@"f6634a");
+        badgeView.badgeTextColor = WhiteColor;
+        badgeView.badgePositionAdjustment = CGPointMake(-16, 8);
+        //        [self.nameLabel addSubview:(_badgeView = badgeView)];
+        //        [self.nameLabel bringSubviewToFront:_badgeView];
+        _badgeView = badgeView;
+
+    }
+    return _badgeView;
 }
 
 @end

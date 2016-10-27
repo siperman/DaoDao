@@ -150,12 +150,11 @@
 
 - (LCCKBadgeView *)badgeView {
     if (_badgeView == nil) {
-        LCCKBadgeView *badgeView = [[LCCKBadgeView alloc] initWithParentView:self.avatarImageView
+        LCCKBadgeView *badgeView = [[LCCKBadgeView alloc] initWithParentView:self.litteBadgeView
                                                                    alignment:LCCKBadgeViewAlignmentTopRight];
         badgeView.badgeBackgroundColor = self.conversationListUnreadBackgroundColor;
         badgeView.badgeTextColor = self.conversationListUnreadTextColor;
-        [self.avatarImageView addSubview:(_badgeView = badgeView)];
-        [self.avatarImageView bringSubviewToFront:_badgeView];
+        _badgeView = badgeView;
     }
     return _badgeView;
 }
@@ -180,7 +179,6 @@
     [super prepareForReuse];
     self.badgeView.badgeText = nil;
     self.badgeView = nil;
-    self.litteBadgeView.hidden = YES;
     self.messageTextLabel.text = nil;
     self.timestampLabel.text = nil;
     self.nameLabel.text = nil;

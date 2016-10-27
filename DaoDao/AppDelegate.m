@@ -12,6 +12,7 @@
 #import "SYPrefManager.h"
 #import "DDConfig.h"
 #import "DDChatKitManager.h"
+#import "LCCKBadgeView.h"
 
 @interface AppDelegate ()
 
@@ -91,6 +92,8 @@
     [[UIPageControl appearance] setPageIndicatorTintColor:TextColor];
     [[UIPageControl appearance] setCurrentPageIndicatorTintColor:SecondColor];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+
+    [[LCCKBadgeView appearance] setBadgeTextFont:SmallTextFont];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken

@@ -29,8 +29,9 @@
 
 - (void)sy_setThumbnailImageWithUrl:(NSString *)url
 {
+    // TODO: 缩略图
     if (url.length > 0) {
-        NSString *thumbnailUrl = [url stringByAppendingString:kThumbnailResolution];
+        NSString *thumbnailUrl = url;//[url stringByAppendingString:kThumbnailResolution];
         NSURL *URL = [[NSURL alloc] initWithString:PicUrlFactory(thumbnailUrl)];
         [self sy_setImageWithURL:URL];
     }

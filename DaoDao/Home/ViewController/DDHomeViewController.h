@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LCCKBadgeView.h"
 
 @interface DDHomeViewController : UIViewController
+
+@property (nonatomic, strong) LCCKBadgeView *badgeView;
 
 @end

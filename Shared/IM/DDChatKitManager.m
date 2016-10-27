@@ -24,6 +24,7 @@
 
 #import "DDConversationListCell.h"
 #import "LCCKInputViewPluginVCard.h"
+#import "DDHomeViewController.h"
 
 #ifdef DEBUG
 static NSString *const LCCKAPPKEY = @"E7glabfvph8e91qthD9wxt7n";
@@ -357,9 +358,9 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 //    }];
 
     //    如果不是TabBar样式，请实现该 Blcok 来设置 Badge 红标。
-    //    [[LCChatKit sharedInstance] setMarkBadgeWithTotalUnreadCountBlock:^(NSInteger totalUnreadCount, UIViewController *controller) {
-    //        [self exampleMarkBadgeWithTotalUnreadCount:totalUnreadCount controller:controller];
-    //    }];
+    [[LCChatKit sharedInstance] setMarkBadgeWithTotalUnreadCountBlock:^(NSInteger totalUnreadCount, UIViewController *controller) {
+        [self exampleMarkBadgeWithTotalUnreadCount:totalUnreadCount controller:controller];
+    }];
 
     [[LCChatKit sharedInstance] setPreviewLocationMessageBlock:^(CLLocation *location, NSString *geolocations, NSDictionary *userInfo) {
         [self examplePreViewLocationMessageWithLocation:location geolocations:geolocations];
@@ -547,13 +548,6 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
 }
 
 + (void)pushToViewController:(UIViewController *)viewController {
-//    UITabBarController *tabBarController = [self cyl_tabBarController];
-//    UINavigationController *navigationController = tabBarController.selectedViewController;
-//    [navigationController cyl_popSelectTabBarChildViewControllerAtIndex:0
-//                                                             completion:^(__kindof UIViewController *selectedChildTabBarController) {
-//                                                                 [selectedChildTabBarController.navigationController pushViewController:viewController animated:YES];
-//                                                             }];
-
     id<UIApplicationDelegate> delegate = ((id<UIApplicationDelegate>)[[UIApplication sharedApplication] delegate]);
     UIWindow *window = delegate.window;
     if ([window.rootViewController isKindOfClass:[UINavigationController class]]) {
@@ -562,15 +556,19 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
 }
 
 - (void)exampleMarkBadgeWithTotalUnreadCount:(NSInteger)totalUnreadCount controller:(UIViewController *)controller {
+    DDHomeViewController *vc = nil;
+    if ([controller isKindOfClass:[UINavigationController class]]) {
+        vc = [[(UINavigationController *)controller viewControllers] firstObject];
+    }
     if (totalUnreadCount > 0) {
         NSString *badgeValue = [NSString stringWithFormat:@"%ld", (long)totalUnreadCount];
         if (totalUnreadCount > 99) {
-            badgeValue = @"...";
+            badgeValue = @"99+";
         }
-        [controller tabBarItem].badgeValue = badgeValue;
+        vc.badgeView.badgeText = badgeValue;
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:totalUnreadCount];
     } else {
-        [controller tabBarItem].badgeValue = nil;
+        vc.badgeView.badgeText = nil;
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     }
 }

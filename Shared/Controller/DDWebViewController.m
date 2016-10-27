@@ -38,7 +38,7 @@
     [self.view addSubview:self.webView];
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.bottom.equalTo(self.view);
-        make.top.equalTo(self.view).offset(20);
+        make.top.equalTo(self.view).offset(64);
     }];
 
     self.progressProxy = [[NJKWebViewProgress alloc] init]; // instance variable

@@ -64,6 +64,7 @@
         self.txtName.text = _user.realName;
         self.txtSchool.text = MajorGrade(_user.major, _user.grade);
         self.txtPhone.text = _user.mobilePhone;
+        self.txtPhone.enabled = NO;
     } else {
         _user = [[DDUser alloc] init];
     }
