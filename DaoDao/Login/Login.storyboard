@@ -624,11 +624,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="7PH-iM-reK">
-                                        <rect key="frame" x="0.0" y="468" width="375" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="162" id="7PH-iM-reK">
+                                        <rect key="frame" x="0.0" y="468" width="375" height="162"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7PH-iM-reK" id="ddj-OK-o7R">
-                                            <frame key="frameInset" width="375" height="100"/>
+                                            <frame key="frameInset" width="375" height="162"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JqS-qd-d8a">
@@ -664,9 +664,9 @@
                                                 <constraint firstItem="QE0-jf-G5c" firstAttribute="centerX" secondItem="JqS-qd-d8a" secondAttribute="centerX" constant="-30" id="7X8-cL-UPQ"/>
                                                 <constraint firstItem="dqa-hn-cRq" firstAttribute="leading" secondItem="QE0-jf-G5c" secondAttribute="trailing" constant="3" id="FQj-OA-q8q"/>
                                                 <constraint firstItem="JqS-qd-d8a" firstAttribute="trailing" secondItem="ddj-OK-o7R" secondAttribute="trailingMargin" id="Qax-Mm-hiQ"/>
+                                                <constraint firstItem="JqS-qd-d8a" firstAttribute="top" secondItem="ddj-OK-o7R" secondAttribute="topMargin" constant="32" id="Sp4-Xn-3lc"/>
                                                 <constraint firstItem="QE0-jf-G5c" firstAttribute="centerY" secondItem="dqa-hn-cRq" secondAttribute="centerY" id="eTp-OQ-DkT"/>
                                                 <constraint firstItem="QE0-jf-G5c" firstAttribute="top" secondItem="JqS-qd-d8a" secondAttribute="bottom" constant="14" id="t9C-Uu-sSK"/>
-                                                <constraint firstItem="JqS-qd-d8a" firstAttribute="centerY" secondItem="ddj-OK-o7R" secondAttribute="centerY" id="x19-0J-Gae"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -692,7 +692,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCW-ov-6U8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4785" y="145"/>
+            <point key="canvasLocation" x="4784.8000000000002" y="144.3778110944528"/>
         </scene>
         <!--Choose Fav Good View Controller-->
         <scene sceneID="euG-yc-2mj">

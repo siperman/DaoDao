@@ -98,13 +98,13 @@
         [self.notificationManager refreshAllNotifications];
 
         // 注册信鸽
-        [SYUtils registerXGPush];
-        [XGPush setAccount:self.user.uid];
-
-        id deviceToken = [SYPrefManager objectForKey:kCurrentDeviceToken];
-        if (deviceToken) {
-            [XGPush registerDevice:deviceToken];
-        }
+//        [SYUtils registerXGPush];
+//        [XGPush setAccount:self.user.uid];
+//
+//        id deviceToken = [SYPrefManager objectForKey:kCurrentDeviceToken];
+//        if (deviceToken) {
+//            [XGPush registerDevice:deviceToken];
+//        }
 
         [DDChatKitManager invokeThisMethodAfterLoginSuccessWithClientId:self.user.uid success:^{
             debugLog(@"登入成功");
@@ -128,7 +128,7 @@
         debugLog(@"登出失败 %@", error);
     }];
     // 注销信鸽
-    [XGPush unRegisterDevice];
+//    [XGPush unRegisterDevice];
 }
 
 @end

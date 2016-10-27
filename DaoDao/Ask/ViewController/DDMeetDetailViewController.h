@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+// 邀请函详情
 @interface DDMeetDetailViewController : UIViewController
 
 @property (nonatomic, strong) NSString *conversationId;

@@ -32,6 +32,7 @@
 {
     [super viewDidLoad];
 
+    self.title = @"查看邀请函";
     self.view.backgroundColor = BackgroundColor;
 
     _ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:_conversationId];

@@ -49,18 +49,17 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 #pragma mark - SDK Life Control
 
 + (void)invokeThisMethodInDidFinishLaunching {
+    // 如果APP是在国外使用，开启北美节点
     //    [AVOSCloud setServiceRegion:AVServiceRegionUS];
     // 启用未读消息
-    [AVIMClient setUserOptions:@{
-                                 AVIMUserOptionUseUnread: @(YES)
-                                 }];
-    [AVOSCloud registerForRemoteNotification];
+    [AVIMClient setUserOptions:@{ AVIMUserOptionUseUnread : @(YES) }];
     [AVIMClient setTimeoutIntervalInSeconds:20];
     //添加输入框底部插件，如需更换图标标题，可子类化，然后调用 `+registerSubclass`
     [LCCKInputViewPluginTakePhoto registerSubclass];
     [LCCKInputViewPluginPickImage registerSubclass];
-
     //    [LCCKInputViewPluginLocation registerSubclass];
+    // 关闭单点登陆
+    [[LCChatKit sharedInstance] setDisableSingleSignOn:NO];
 }
 
 + (void)invokeThisMethodInDidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -81,6 +80,7 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         }
     }];
 }
+
 + (void)saveLocalClientInfo:(NSString *)clientId {
     // 在系统偏好保存信息
     NSUserDefaults *defaultsSet = [NSUserDefaults standardUserDefaults];
@@ -514,7 +514,8 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
     [conversationViewController setViewWillAppearBlock:^(LCCKBaseViewController *viewController, BOOL aAnimated) {
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:aAnimated];
     }];
-
+    // 禁止双击文字全屏
+    conversationViewController.disableTextShowInFullScreen = YES;
 
     [aNavigationController pushViewController:conversationViewController animated:YES];
 }

@@ -52,7 +52,6 @@
 
 - (void)singleTapMessageImageViewGestureRecognizerHandler:(UITapGestureRecognizer *)tapGestureRecognizer {
     if (tapGestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        [self.viewController showNotice:@"邀请函"];
         DDMeetDetailViewController *vc = [DDMeetDetailViewController viewController];
         vc.conversationId = ((LCCKConversationViewController *)self.delegate).conversationId;
         [self.viewController.navigationController pushViewController:vc animated:YES];

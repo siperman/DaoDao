@@ -10,6 +10,7 @@
 #import "DDChooseFavGoodViewController.h"
 #import "DDFillJobIndustryViewController.h"
 #import "SYCameraManager.h"
+#import "DDWebViewController.h"
 
 @interface DDRegisterStepThreeViewController () <UITextFieldDelegate, DDChooseFavGoodViewControllerProtocol>
 
@@ -73,6 +74,9 @@
 
 - (IBAction)showWeb:(UIButton *)sender
 {
+    DDWebViewController *vc = [[DDWebViewController alloc] init];
+    vc.url = @"http://testadmin.daodaoclub.com/h5/company/announce.html";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Avatar

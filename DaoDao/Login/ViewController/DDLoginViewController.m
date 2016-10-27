@@ -43,13 +43,6 @@
     RAC(self.btnLogin, enabled) = self.viewModel.enableLoginSignal;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-}
-
 #pragma mark - Data
 
 - (IBAction)requestAuthCode:(id)sender

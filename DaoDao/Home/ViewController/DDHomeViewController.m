@@ -57,8 +57,6 @@
     [super viewDidAppear:animated];
     if ([self checkLogin] && !self.isLoading) {
         [self requestChess];
-    } else {
-        debugLog(@"拜了个呆门");
     }
 }
 

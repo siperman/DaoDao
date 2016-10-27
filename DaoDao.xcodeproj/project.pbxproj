@@ -269,6 +269,13 @@
 		2BCDD6941D79597000BADD43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6931D79597000BADD43 /* AppDelegate.m */; };
 		2BCDD69A1D79597000BADD43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDD6981D79597000BADD43 /* Main.storyboard */; };
 		2BCDD69C1D79597000BADD43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDD69B1D79597000BADD43 /* Assets.xcassets */; };
+		2BD6AE001DC0A77900626677 /* DDUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6ADFE1DC0A77900626677 /* DDUserInfoTableViewCell.m */; };
+		2BD6AE011DC0A77900626677 /* DDUserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BD6ADFF1DC0A77900626677 /* DDUserInfoTableViewCell.xib */; };
+		2BD6AE071DC0B24800626677 /* BackSepView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6AE061DC0B24800626677 /* BackSepView.m */; };
+		2BD6AE101DC1969900626677 /* DDDemandInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6AE0E1DC1969900626677 /* DDDemandInfoTableViewCell.m */; };
+		2BD6AE111DC1969900626677 /* DDDemandInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BD6AE0F1DC1969900626677 /* DDDemandInfoTableViewCell.xib */; };
+		2BD6AE141DC1B3B000626677 /* DDAskBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6AE131DC1B3B000626677 /* DDAskBaseViewController.m */; };
+		2BD6AE171DC1E06900626677 /* DDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6AE161DC1E06900626677 /* DDWebViewController.m */; };
 		2BDB10221D9B98E700F2C27C /* ChooseImageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB10211D9B98E700F2C27C /* ChooseImageViewModel.m */; };
 		2BDB10261D9BBC9500F2C27C /* DDFillJobIndustryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB10241D9BBC9500F2C27C /* DDFillJobIndustryViewController.m */; };
 		2BDB10271D9BBC9500F2C27C /* DDFillJobIndustryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BDB10251D9BBC9500F2C27C /* DDFillJobIndustryViewController.xib */; };
@@ -819,6 +826,18 @@
 		2BCDD6991D79597000BADD43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2BCDD69B1D79597000BADD43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BCDD6A01D79597000BADD43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BD6ADFD1DC0A77900626677 /* DDUserInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserInfoTableViewCell.h; sourceTree = "<group>"; };
+		2BD6ADFE1DC0A77900626677 /* DDUserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserInfoTableViewCell.m; sourceTree = "<group>"; };
+		2BD6ADFF1DC0A77900626677 /* DDUserInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDUserInfoTableViewCell.xib; sourceTree = "<group>"; };
+		2BD6AE051DC0B24800626677 /* BackSepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackSepView.h; sourceTree = "<group>"; };
+		2BD6AE061DC0B24800626677 /* BackSepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackSepView.m; sourceTree = "<group>"; };
+		2BD6AE0D1DC1969900626677 /* DDDemandInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDemandInfoTableViewCell.h; sourceTree = "<group>"; };
+		2BD6AE0E1DC1969900626677 /* DDDemandInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDemandInfoTableViewCell.m; sourceTree = "<group>"; };
+		2BD6AE0F1DC1969900626677 /* DDDemandInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDDemandInfoTableViewCell.xib; sourceTree = "<group>"; };
+		2BD6AE121DC1B3B000626677 /* DDAskBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskBaseViewController.h; sourceTree = "<group>"; };
+		2BD6AE131DC1B3B000626677 /* DDAskBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskBaseViewController.m; sourceTree = "<group>"; };
+		2BD6AE151DC1E06900626677 /* DDWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDWebViewController.h; sourceTree = "<group>"; };
+		2BD6AE161DC1E06900626677 /* DDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDWebViewController.m; sourceTree = "<group>"; };
 		2BDB10201D9B98E700F2C27C /* ChooseImageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseImageViewModel.h; sourceTree = "<group>"; };
 		2BDB10211D9B98E700F2C27C /* ChooseImageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseImageViewModel.m; sourceTree = "<group>"; };
 		2BDB10231D9BBC9500F2C27C /* DDFillJobIndustryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFillJobIndustryViewController.h; sourceTree = "<group>"; };
@@ -917,6 +936,12 @@
 		2B6D12371D98B586003433D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2BD6ADFD1DC0A77900626677 /* DDUserInfoTableViewCell.h */,
+				2BD6ADFE1DC0A77900626677 /* DDUserInfoTableViewCell.m */,
+				2BD6ADFF1DC0A77900626677 /* DDUserInfoTableViewCell.xib */,
+				2BD6AE0D1DC1969900626677 /* DDDemandInfoTableViewCell.h */,
+				2BD6AE0E1DC1969900626677 /* DDDemandInfoTableViewCell.m */,
+				2BD6AE0F1DC1969900626677 /* DDDemandInfoTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -924,6 +949,8 @@
 		2B6D12381D98B586003433D0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2BD6AE121DC1B3B000626677 /* DDAskBaseViewController.h */,
+				2BD6AE131DC1B3B000626677 /* DDAskBaseViewController.m */,
 				2BBB7D7B1DA8C73A005E90A5 /* DDPostAskTableViewController.h */,
 				2BBB7D7C1DA8C73A005E90A5 /* DDPostAskTableViewController.m */,
 				2BBB7D8E1DAA2032005E90A5 /* DDAskDetailViewController.h */,
@@ -1271,6 +1298,8 @@
 			children = (
 				2BF86C781D9510A500E06BF8 /* DDCalendarViewController.h */,
 				2BF86C791D9510A500E06BF8 /* DDCalendarViewController.m */,
+				2BD6AE151DC1E06900626677 /* DDWebViewController.h */,
+				2BD6AE161DC1E06900626677 /* DDWebViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2113,6 +2142,8 @@
 				2B311C531D7E6A5E007CE4DD /* SepView.m */,
 				2BBB7D7E1DA8CDA3005E90A5 /* BackView.h */,
 				2BBB7D7F1DA8CDA3005E90A5 /* BackView.m */,
+				2BD6AE051DC0B24800626677 /* BackSepView.h */,
+				2BD6AE061DC0B24800626677 /* BackSepView.m */,
 				2BBB7D6F1DA89280005E90A5 /* DDLoadingMoreTableViewCell.h */,
 				2BBB7D701DA89280005E90A5 /* DDLoadingMoreTableViewCell.m */,
 				2BBB7D711DA89280005E90A5 /* DDLoadingMoreTableViewCell.xib */,
@@ -2404,6 +2435,8 @@
 				2BB3D7AE1D7D6F8C00FFDC0E /* HZAreaPickerView.xib in Resources */,
 				2BBB7D991DAA4443005E90A5 /* DDConversationListCell.xib in Resources */,
 				2B75AB591D7FFF4E0074119E /* Assets.xcassets in Resources */,
+				2BD6AE111DC1969900626677 /* DDDemandInfoTableViewCell.xib in Resources */,
+				2BD6AE011DC0A77900626677 /* DDUserInfoTableViewCell.xib in Resources */,
 				2BB3D7AC1D7D6F8C00FFDC0E /* city.plist in Resources */,
 				2BCDD69A1D79597000BADD43 /* Main.storyboard in Resources */,
 				2BB3D78E1D7D6F8C00FFDC0E /* DBCamera.strings in Resources */,
@@ -2535,6 +2568,7 @@
 				2BB3D7751D7D6F8C00FFDC0E /* ALAsset+isEqual.m in Sources */,
 				2BB3D7E61D7D6F8D00FFDC0E /* UIDevice+IdentifierAddition.m in Sources */,
 				2BB3D7681D7D6F8C00FFDC0E /* DataSource.m in Sources */,
+				2BD6AE071DC0B24800626677 /* BackSepView.m in Sources */,
 				2BB3D7B91D7D6F8C00FFDC0E /* MJPhotoLoadingView.m in Sources */,
 				2BB3D7971D7D6F8C00FFDC0E /* DBCameraFiltersView.m in Sources */,
 				2BB3D7B11D7D6F8C00FFDC0E /* LPlaceholderTextView.m in Sources */,
@@ -2559,6 +2593,7 @@
 				2BB3D7D51D7D6F8D00FFDC0E /* SSNetworkInfo.m in Sources */,
 				2B49A9B81D894F0300CD14AB /* UILabel+Addition.m in Sources */,
 				2BB3D7C91D7D6F8D00FFDC0E /* SMPageControl.m in Sources */,
+				2BD6AE141DC1B3B000626677 /* DDAskBaseViewController.m in Sources */,
 				2BB3D7451D7D6F8C00FFDC0E /* NSString+Path.m in Sources */,
 				2B311C4E1D7E631D007CE4DD /* SYNetworkManager.m in Sources */,
 				2B75AB4D1D7FFF4E0074119E /* LCCKInputViewPluginVCard.m in Sources */,
@@ -2622,6 +2657,7 @@
 				2BDB10261D9BBC9500F2C27C /* DDFillJobIndustryViewController.m in Sources */,
 				2BB3D75C1D7D6F8C00FFDC0E /* UIRefreshControl+Addition.m in Sources */,
 				2BB3D78B1D7D6F8C00FFDC0E /* DBCameraLibraryViewController.m in Sources */,
+				2BD6AE101DC1969900626677 /* DDDemandInfoTableViewCell.m in Sources */,
 				2BB3D7BC1D7D6F8C00FFDC0E /* MJPhotoView.m in Sources */,
 				2BB3D7CF1D7D6F8D00FFDC0E /* SSBatteryInfo.m in Sources */,
 				2B6D128F1D9A7596003433D0 /* DDConfig.m in Sources */,
@@ -2681,6 +2717,7 @@
 				2BB3D7B01D7D6F8C00FFDC0E /* KeychainItemWrapper.m in Sources */,
 				2BB3D7541D7D6F8C00FFDC0E /* UIButton+WebCache.m in Sources */,
 				2B6D126B1D98B586003433D0 /* DDHomeViewController.m in Sources */,
+				2BD6AE171DC1E06900626677 /* DDWebViewController.m in Sources */,
 				2B49A9AF1D893EF800CD14AB /* UITextField+Addition.m in Sources */,
 				2B75AB4A1D7FFF4E0074119E /* LCCKInputViewPluginConversationBackground.m in Sources */,
 				2BB3D7DC1D7D6F8D00FFDC0E /* TOCropViewControllerTransitioning.m in Sources */,
@@ -2710,6 +2747,7 @@
 				2BEF03741D869F3A005372B6 /* UIView+Addition.m in Sources */,
 				2BB3D7561D7D6F8C00FFDC0E /* UICollectionViewCell+Addition.m in Sources */,
 				2BB3D7661D7D6F8C00FFDC0E /* AutoRecoveringHttpDataSource.m in Sources */,
+				2BD6AE001DC0A77900626677 /* DDUserInfoTableViewCell.m in Sources */,
 				2BB3D7E31D7D6F8D00FFDC0E /* UAProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
