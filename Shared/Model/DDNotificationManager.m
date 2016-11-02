@@ -7,6 +7,8 @@
 //
 
 #import "DDNotificationManager.h"
+#import <ChatKit/LCCKConstants.h>
+#import <ChatKit/LCCKConversationListService.h>
 
 @interface DDNotificationManager ()
 
@@ -22,7 +24,8 @@
 
     _currentUser = user;
 
-    [self subscribeNotication:UIApplicationDidBecomeActiveNotification selector:@selector(refreshAllNotifications)];
+//    [self subscribeNotication:UIApplicationDidBecomeActiveNotification selector:@selector(refreshAllNotifications)];
+    [self subscribeNotication:LCCKNotificationMessageReceived selector:@selector(refreshIM:)]; // 订阅聊天消息推送
 
     return self;
 }
@@ -36,16 +39,29 @@
 
 #pragma mark - Notifications
 
-- (void)setUnreadIMMessagesCount:(NSInteger)unreadIMMessagesCount
+- (void)refreshIM:(NSNotification*) notification
 {
-    _unreadIMMessagesCount = unreadIMMessagesCount;
-
+    NSDictionary *userInfo = [notification object];
+    NSArray *msgs = userInfo[LCCKDidReceiveMessagesUserInfoMessagesKey];
+    if ([msgs isKindOfClass:[NSArray class]]) {
+        self.unreadIMMessagesCount += msgs.count;
+    }
     POST_NOTIFICATION(kNewIMMessageNotification, nil);
 }
 
-- (void)setUnreadNotificationsCount:(NSInteger)unreadNotificationsCount
+- (void)setUnreadIMMessagesCount:(NSInteger)unreadIMMessagesCount
 {
-    _unreadNotificationsCount = unreadNotificationsCount;
+    _unreadIMMessagesCount = unreadIMMessagesCount;
+    POST_NOTIFICATION(kUpdateUnreadCountNotification, nil);
+}
+
+- (void)refreshIM
+{
+    [[LCCKConversationListService sharedInstance] findRecentConversationsWithBlock:^(NSArray *conversations, NSInteger totalUnreadCount, NSError *error) {
+        if (!error) {
+            self.unreadIMMessagesCount = totalUnreadCount;
+        }
+    }];
 }
 
 - (void)refreshAllNotifications

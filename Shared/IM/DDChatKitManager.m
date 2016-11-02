@@ -556,19 +556,11 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
 }
 
 - (void)exampleMarkBadgeWithTotalUnreadCount:(NSInteger)totalUnreadCount controller:(UIViewController *)controller {
-    DDHomeViewController *vc = nil;
-    if ([controller isKindOfClass:[UINavigationController class]]) {
-        vc = [[(UINavigationController *)controller viewControllers] firstObject];
-    }
+    debugLog(@"============totalUnreadCount : %ld", (long)totalUnreadCount);
+    [DDUserManager manager].notificationManager.unreadIMMessagesCount = totalUnreadCount;
     if (totalUnreadCount > 0) {
-        NSString *badgeValue = [NSString stringWithFormat:@"%ld", (long)totalUnreadCount];
-        if (totalUnreadCount > 99) {
-            badgeValue = @"99+";
-        }
-        vc.badgeView.badgeText = badgeValue;
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:totalUnreadCount];
     } else {
-        vc.badgeView.badgeText = nil;
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     }
 }

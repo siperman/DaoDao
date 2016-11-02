@@ -20,6 +20,8 @@
 // 未读的系统消息
 @property (nonatomic) NSInteger unreadNotificationsCount;
 
+- (void)refreshIM;
+
 - (void)refreshAllNotifications;
 
 - (void)refreshUnreadNotificationsCount:(void(^)(void))callback;

@@ -26,4 +26,6 @@
 
 - (BOOL)isDisplayedInScreen;
 
+- (void)shake;
+
 @end

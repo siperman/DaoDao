@@ -51,6 +51,9 @@
         make.width.mas_equalTo(305);
         make.height.mas_equalTo(40);
     }];
+
+    [self subscribeNotication:kNewIMMessageNotification selector:@selector(newIMMessage)]; // 订阅新聊天消息推送
+    [self subscribeNotication:kUpdateUnreadCountNotification selector:@selector(refreshIM)]; // 订阅未读聊天消息数推送
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -83,6 +86,28 @@
         }
         self.isLoading = NO;
     }];
+}
+
+- (void)refreshIM
+{
+    NSInteger totalUnreadCount = [DDUserManager manager].notificationManager.unreadIMMessagesCount;
+
+    if (totalUnreadCount > 0) {
+        NSString *badgeValue = [NSString stringWithFormat:@"%ld", (long)totalUnreadCount];
+        if (totalUnreadCount > 99) {
+            badgeValue = @"99+";
+        }
+        self.badgeView.badgeText = badgeValue;
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:totalUnreadCount];
+    } else {
+        self.badgeView.badgeText = nil;
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    }
+}
+
+- (void)newIMMessage
+{
+    [self.badgeView shake];
 }
 
 - (void)goMine
@@ -158,8 +183,6 @@
         badgeView.badgeBackgroundColor = ColorHex(@"f6634a");
         badgeView.badgeTextColor = WhiteColor;
         badgeView.badgePositionAdjustment = CGPointMake(-16, 8);
-        //        [self.nameLabel addSubview:(_badgeView = badgeView)];
-        //        [self.nameLabel bringSubviewToFront:_badgeView];
         _badgeView = badgeView;
 
     }

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DDAskBaseViewController.h"
 
+// 约局详情
 @interface DDAskDetailViewController : DDAskBaseViewController
 
 @end

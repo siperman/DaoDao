@@ -57,6 +57,9 @@
 		2B75AB5E1D7FFF4E0074119E /* LCCKContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB441D7FFF4E0074119E /* LCCKContactManager.m */; };
 		2B75AB5F1D7FFF4E0074119E /* NSObject+LCCKHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB481D7FFF4E0074119E /* NSObject+LCCKHUD.m */; };
 		2B8033411DC9BB550059FD28 /* DDAnswerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8033401DC9BB550059FD28 /* DDAnswerDetailViewController.m */; };
+		2B8033451DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8033431DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.m */; };
+		2B8033461DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B8033441DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.xib */; };
+		2B8033491DC9D9CC0059FD28 /* DDAskMeetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8033481DC9D9CC0059FD28 /* DDAskMeetDetailViewController.m */; };
 		2B86A25E1DBDA24B00ED2253 /* DDMeetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B86A25D1DBDA24B00ED2253 /* DDMeetTableViewController.m */; };
 		2B86A2641DBDFB5600ED2253 /* CustomizedChatKit.Other.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B86A2631DBDFB5600ED2253 /* CustomizedChatKit.Other.bundle */; };
 		2B86A2691DBE0A6400ED2253 /* DDUserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B86A2681DBE0A6400ED2253 /* DDUserFactory.m */; };
@@ -406,6 +409,11 @@
 		2B75AB481D7FFF4E0074119E /* NSObject+LCCKHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LCCKHUD.m"; sourceTree = "<group>"; };
 		2B80333F1DC9BB550059FD28 /* DDAnswerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnswerDetailViewController.h; sourceTree = "<group>"; };
 		2B8033401DC9BB550059FD28 /* DDAnswerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnswerDetailViewController.m; sourceTree = "<group>"; };
+		2B8033421DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnswerInfoTableViewCell.h; sourceTree = "<group>"; };
+		2B8033431DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnswerInfoTableViewCell.m; sourceTree = "<group>"; };
+		2B8033441DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDAnswerInfoTableViewCell.xib; sourceTree = "<group>"; };
+		2B8033471DC9D9CC0059FD28 /* DDAskMeetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskMeetDetailViewController.h; sourceTree = "<group>"; };
+		2B8033481DC9D9CC0059FD28 /* DDAskMeetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskMeetDetailViewController.m; sourceTree = "<group>"; };
 		2B86A25C1DBDA24B00ED2253 /* DDMeetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMeetTableViewController.h; sourceTree = "<group>"; };
 		2B86A25D1DBDA24B00ED2253 /* DDMeetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeetTableViewController.m; sourceTree = "<group>"; };
 		2B86A2631DBDFB5600ED2253 /* CustomizedChatKit.Other.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CustomizedChatKit.Other.bundle; sourceTree = "<group>"; };
@@ -984,6 +992,8 @@
 		2B6D12371D98B586003433D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2BB23C791DC7259400FC5657 /* DDBaseTableViewCell.h */,
+				2BB23C7A1DC7259400FC5657 /* DDBaseTableViewCell.m */,
 				2BD6ADFD1DC0A77900626677 /* DDUserInfoTableViewCell.h */,
 				2BD6ADFE1DC0A77900626677 /* DDUserInfoTableViewCell.m */,
 				2BD6ADFF1DC0A77900626677 /* DDUserInfoTableViewCell.xib */,
@@ -996,8 +1006,9 @@
 				2BB23C741DC6F8F000FC5657 /* DDAskHandOutTableViewCell.h */,
 				2BB23C751DC6F8F000FC5657 /* DDAskHandOutTableViewCell.m */,
 				2BB23C761DC6F8F000FC5657 /* DDAskHandOutTableViewCell.xib */,
-				2BB23C791DC7259400FC5657 /* DDBaseTableViewCell.h */,
-				2BB23C7A1DC7259400FC5657 /* DDBaseTableViewCell.m */,
+				2B8033421DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.h */,
+				2B8033431DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.m */,
+				2B8033441DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1011,6 +1022,8 @@
 				2BBB7D7C1DA8C73A005E90A5 /* DDPostAskTableViewController.m */,
 				2BBB7D8E1DAA2032005E90A5 /* DDAskDetailViewController.h */,
 				2BBB7D8F1DAA2032005E90A5 /* DDAskDetailViewController.m */,
+				2B8033471DC9D9CC0059FD28 /* DDAskMeetDetailViewController.h */,
+				2B8033481DC9D9CC0059FD28 /* DDAskMeetDetailViewController.m */,
 				2B86A25C1DBDA24B00ED2253 /* DDMeetTableViewController.h */,
 				2B86A25D1DBDA24B00ED2253 /* DDMeetTableViewController.m */,
 				2BAE2BE91DBF08DA003BC7B9 /* DDMeetDetailViewController.h */,
@@ -2487,6 +2500,7 @@
 				2BB3D7951D7D6F8C00FFDC0E /* DBCameraImages.xcassets in Resources */,
 				2B90B9071DB71440000B6FE1 /* Shared.xcassets in Resources */,
 				2BB3D7AA1D7D6F8C00FFDC0E /* lookup_soft_elegance_2.png in Resources */,
+				2B8033461DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.xib in Resources */,
 				2BB3D7EB1D7D6F8D00FFDC0E /* UMSCommentInputController.xib in Resources */,
 				2BB3D7A91D7D6F8C00FFDC0E /* lookup_soft_elegance_1.png in Resources */,
 				2B6D128C1D9A66E9003433D0 /* DDMajorGradePickerView.xib in Resources */,
@@ -2671,6 +2685,7 @@
 				2B6D128A1D9A66D3003433D0 /* DDMajorGradePickerView.m in Sources */,
 				2BB3D7761D7D6F8C00FFDC0E /* ALAssetsGroup+isEqual.m in Sources */,
 				2BB3D7B61D7D6F8C00FFDC0E /* MJPhoto.m in Sources */,
+				2B8033451DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.m in Sources */,
 				2BB3D7651D7D6F8C00FFDC0E /* AudioPlayer.m in Sources */,
 				2B311C501D7E631D007CE4DD /* SYRequestEngine+Common.m in Sources */,
 				2BB3D7E51D7D6F8D00FFDC0E /* NSString+MD5Addition.m in Sources */,
@@ -2731,6 +2746,7 @@
 				2BB3D77A1D7D6F8C00FFDC0E /* CTAssetsGroupViewController.m in Sources */,
 				2BB3D7871D7D6F8C00FFDC0E /* UIViewController+UIViewController_FullScreen.m in Sources */,
 				2BB3D76F1D7D6F8C00FFDC0E /* UIImage+ImageWithColor.m in Sources */,
+				2B8033491DC9D9CC0059FD28 /* DDAskMeetDetailViewController.m in Sources */,
 				2BB3D7AD1D7D6F8C00FFDC0E /* HZAreaPickerView.m in Sources */,
 				2BBB7D901DAA2032005E90A5 /* DDAskDetailViewController.m in Sources */,
 				2BB3D7981D7D6F8C00FFDC0E /* DBCameraGridView.m in Sources */,

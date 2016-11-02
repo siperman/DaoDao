@@ -1,5 +1,5 @@
 //
-//  DDAnswerDetailViewController.h
+//  DDAskMeetDetailViewController.h
 //  DaoDao
 //
 //  Created by hetao on 2016/11/2.
@@ -8,7 +8,7 @@
 
 #import "DDAskBaseViewController.h"
 
-// 应局详情
-@interface DDAnswerDetailViewController : DDAskBaseViewController
+// 约见详情
+@interface DDAskMeetDetailViewController : DDAskBaseViewController
 
 @end

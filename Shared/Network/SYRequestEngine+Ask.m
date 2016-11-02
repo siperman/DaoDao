@@ -64,7 +64,7 @@ static NSString * const kRateAnswerPath                     = @"/ask/{id}?_funct
 {
     [SYNetworkManager startRequestWithUrl:RequestUrlFactory(kAskPath)
                                    method:SYRequestMethodGet
-                                   params:@{kFunctionKey : @"listMyAnswer",
+                                   params:@{kFunctionKey : @"listMyAsk",
                                             @"id" : aid}
                                      body:nil
                                  callback:callback];
