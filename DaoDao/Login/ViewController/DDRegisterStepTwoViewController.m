@@ -45,6 +45,7 @@
     [super viewDidLoad];
 
     self.title = @"注册道道";
+    self.view.backgroundColor = BackgroundColor;
     [@[self.labName, self.labSchool, self.labPhone, self.labCode]
      enumerateObjectsUsingBlock:^(UILabel *lab, NSUInteger idx, BOOL * _Nonnull stop) {
          [lab bigSecondStyle];

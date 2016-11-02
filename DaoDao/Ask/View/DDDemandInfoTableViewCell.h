@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDBaseTableViewCell.h"
 
-@interface DDDemandInfoTableViewCell : UITableViewCell
+@interface DDDemandInfoTableViewCell : DDBaseTableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *labDemand;
 @property (weak, nonatomic) IBOutlet UILabel *labDesc;
 
-- (void)configureCellWithData:(id)data;
 @end

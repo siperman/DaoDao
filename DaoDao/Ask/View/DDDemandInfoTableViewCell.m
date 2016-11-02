@@ -23,5 +23,9 @@
     self.labDesc.text = [NSString stringWithFormat:@"职务：%@\n行业：%@\n专家：%@", [ask.job componentsJoinedByString:@"、"], [ask.industry componentsJoinedByString:@"、"], [ask.expert componentsJoinedByString:@"、"]];
 }
 
++ (CGFloat)cellHeight
+{
+    return 176.0;
+}
 
 @end

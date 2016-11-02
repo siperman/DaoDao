@@ -79,7 +79,7 @@
             return [[_majorGrades objectAtIndex:row] objectForKey:@"name"];
             break;
         case 1:
-            return [[_grades objectAtIndex:row] stringValue];
+            return [NSString stringWithFormat:@"%@期", [_grades objectAtIndex:row]];
             break;
         default:
             return @"";

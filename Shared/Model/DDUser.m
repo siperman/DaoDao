@@ -40,14 +40,14 @@
              };
 }
 
-+ (NSValueTransformer *)avatarURLJSONTransformer
-{
-    return [self URLJSONTransformer];
-}
-
 - (NSString *)relation
 {
     return _meetTimes.integerValue ? @"TA和您见过" : @"";
+}
+
+- (UIImage *)genderImage
+{
+    return [self.gender boolValue] ? Image(@"icon_woman") : Image(@"icon_man");
 }
 
 @end

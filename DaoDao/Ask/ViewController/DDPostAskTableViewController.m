@@ -49,6 +49,11 @@
 //    RAC(self.btnPost, enabled) = self.postAskModel.enablePostSignal;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.view endEditing:YES];
+}
 #pragma mark Action
 
 - (IBAction)clickPush:(UIButton *)sender
@@ -106,6 +111,7 @@
                                       DDAskDetailViewController *vc = [[DDAskDetailViewController alloc] init];
                                       NSMutableArray *vcs = [[self.navigationController viewControllers] mutableCopy];
                                       [vcs replaceObjectAtIndex:[vcs indexOfObject:self] withObject:vc];
+                                      vc.ask = [DDAsk fromDict:response[kObjKey]];
 
                                       [self.navigationController setViewControllers:vcs animated:YES];
                                   } else {

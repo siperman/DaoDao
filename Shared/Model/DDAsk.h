@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, DDAskStatus) {
 
 @property (nonatomic, copy) NSString *aid;//id
 @property (nonatomic, readonly) NSString *type;//谁发起
+@property (nonatomic, readonly) BOOL isMyAsk;//是否我发起
 @property (nonatomic, copy) NSString *demand;//需求
 @property (nonatomic, copy) NSArray <NSString *>* industry;//行业
 @property (nonatomic, copy) NSArray <NSString *>* job;//职务
@@ -42,6 +43,9 @@ typedef NS_ENUM(NSInteger, DDAskStatus) {
 
 @property (nonatomic, strong) DDAnswer *answer;
 @property (nonatomic, strong) DDUser *user;
+
+- (UIImage *)statusImage;
+
 @end
 
 

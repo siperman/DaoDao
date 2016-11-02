@@ -52,16 +52,27 @@ static char kSepViewKey;
         ([tel rangeOfString:@"*"].location == NSNotFound)) {
         NSString *t = title ? title : tel;
         
-        RIButtonItem *btnCancle = [RIButtonItem itemWithLabel:@"取消"];
-        RIButtonItem *btnCall = [RIButtonItem itemWithLabel:@"呼叫" action:^{
+//        RIButtonItem *btnCancle = [RIButtonItem itemWithLabel:@"取消"];
+//        RIButtonItem *btnCall = [RIButtonItem itemWithLabel:@"呼叫" action:^{
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", tel]]];
+//        }];
+//        
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:t
+//                                                        message:nil
+//                                               cancelButtonItem:btnCancle
+//                                               otherButtonItems:btnCall, nil];
+//        [alert show];
+
+
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:t message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *call = [UIAlertAction actionWithTitle:@"呼叫" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", tel]]];
         }];
+        [vc addAction:cancle];
+        [vc addAction:call];
+        [self.viewController presentViewController:vc animated:YES completion:nil];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:t
-                                                        message:nil
-                                               cancelButtonItem:btnCancle
-                                               otherButtonItems:btnCall, nil];
-        [alert show];
     }
 }
 

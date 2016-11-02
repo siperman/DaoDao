@@ -123,7 +123,7 @@
             strongSelf.reloadView = nil;
         }];
     } else {
-        [self showNotice:@"您的网络不给力哦"];
+        [self showNotice:@"网络异常，请检查网络信号！"];
     }
 }
 

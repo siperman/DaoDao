@@ -71,7 +71,7 @@
                             </constraints>
                             <color key="textColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             <connections>
                                 <outlet property="autoCompleteDataSource" destination="-1" id="4EP-xr-jsf"/>
                                 <outlet property="autoCompleteDelegate" destination="-1" id="say-kK-Jrc"/>
@@ -84,7 +84,7 @@
                             </constraints>
                             <color key="textColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             <connections>
                                 <outlet property="autoCompleteDataSource" destination="-1" id="9rC-mM-EMF"/>
                                 <outlet property="autoCompleteDelegate" destination="-1" id="Box-XY-cIH"/>
@@ -97,7 +97,7 @@
                             </constraints>
                             <color key="textColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             <connections>
                                 <outlet property="autoCompleteDataSource" destination="-1" id="q2j-ek-hLk"/>
                                 <outlet property="autoCompleteDelegate" destination="-1" id="MJE-gV-rmC"/>

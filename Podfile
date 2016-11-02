@@ -20,7 +20,7 @@ target 'DaoDao' do
     pod 'FDFullscreenPopGesture'
     pod 'RegexKitLite'
     pod 'CocoaLumberjack'
-    pod 'iVersion'
+    #    pod 'iVersion'
     pod 'Masonry'
     pod 'UIView+Borders'
     pod 'UITableView+FDTemplateLayoutCell'

@@ -37,6 +37,7 @@
     [super awakeFromNib];
 
     self.layer.cornerRadius = kCornerRadius;
+    self.clipsToBounds = YES;
     self.backgroundColor = WhiteColor;
 
     if (!self.sepColor) {

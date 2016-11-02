@@ -12,6 +12,7 @@
 @interface DDMeetDetailViewController : UIViewController
 
 @property (nonatomic, strong) NSString *conversationId;
+@property (nonatomic, copy) SYEditBlock callback;
 + (instancetype)viewController;
 
 @end

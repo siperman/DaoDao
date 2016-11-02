@@ -54,6 +54,13 @@
     if (tapGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         DDMeetDetailViewController *vc = [DDMeetDetailViewController viewController];
         vc.conversationId = ((LCCKConversationViewController *)self.delegate).conversationId;
+        WeakSelf;
+        vc.callback = ^(NSString *text) {
+            LCCKConversationViewController *vc = (LCCKConversationViewController *)weakSelf.delegate;
+            if (vc.isAvailable) {
+                [vc sendTextMessage:text];
+            }
+        };
         [self.viewController.navigationController pushViewController:vc animated:YES];
     }
 }

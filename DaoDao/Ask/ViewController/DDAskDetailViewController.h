@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDAskBaseViewController.h"
 
-@interface DDAskDetailViewController : UIViewController
+@interface DDAskDetailViewController : DDAskBaseViewController
 
 @end

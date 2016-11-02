@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDBaseTableViewCell.h"
 
-@interface DDUserInfoTableViewCell : UITableViewCell
+@interface DDUserInfoTableViewCell : DDBaseTableViewCell
 
 @property (nonatomic, strong) DDUser *user;
-+ (CGFloat)cellHeight;
 @end

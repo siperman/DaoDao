@@ -44,14 +44,15 @@
     [self.tableView registerNib:[DDLoadingMoreTableViewCell class]];
 
     _answerList = [NSMutableArray array];
-    [self.refreshControl addTarget:self action:@selector(refreshAsk) forControlEvents:UIControlEventValueChanged];
-    [self refreshAsk];
     self.view.backgroundColor = BackgroundColor;
-}
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    WeakSelf;
+    self.tableView.mj_header = [MJRefreshHeader normalHeader];
+    self.tableView.mj_header.refreshingBlock = ^{
+        [weakSelf refreshAsk];
+    };
+    [self.tableView.mj_header beginRefreshing];
+
 }
 
 - (void)refreshAsk
@@ -72,13 +73,9 @@
 
 - (void)requestDataWithPage:(NSInteger)page
 {
-    if (page == 1) {
-        [self showLoadingHUD];
-    }
     [SYRequestEngine requestAnswerListWithChessId:self.cid
                                        pageNumber:page
                                     callback:^(BOOL success, id response) {
-                                        [self hideAllHUD];
                                         [self endRefreshing];
 
                                         if (success) {
@@ -98,7 +95,7 @@
                                             if (!self.reloadView) {
                                                 WeakSelf;
                                                 self.reloadView = [DDReloadView showReloadViewOnView:self.view reloadAction:^{
-                                                    [weakSelf refreshAsk];
+                                                    [weakSelf.tableView.mj_header beginRefreshing];
                                                 }];
                                             } else {
                                                 [self showRequestNotice:response];
@@ -109,7 +106,7 @@
 
 - (void)endRefreshing
 {
-    [self.refreshControl endRefreshingSmoothly];
+    [self.tableView.mj_header endRefreshing];
     self.isLoading = NO;
 }
 
@@ -159,16 +156,18 @@
 
 - (void)interest:(DDAsk *)askInfo
 {
-    [self.answerList removeObject:askInfo];
-    [self.tableView reloadData];
+    NSInteger idx = [self.answerList indexOfObject:askInfo];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     // 去聊天室
     [DDChatKitManager exampleOpenConversationViewControllerWithConversaionId:askInfo.answer.conversionId fromNavigationController:self.navigationController];
 }
 
 - (void)disinterest:(DDAsk *)askInfo
 {
-    [self.answerList removeObject:askInfo];
-    [self.tableView reloadData];
+    NSInteger idx = [self.answerList indexOfObject:askInfo];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end

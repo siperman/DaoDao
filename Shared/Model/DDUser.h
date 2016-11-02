@@ -9,7 +9,7 @@
 #import <Mantle/Mantle.h>
 #import "MTLModel+Addition.h"
 
-#define MajorGrade(major, grade) [NSString stringWithFormat:@"%@%@届", major, grade]
+#define MajorGrade(major, grade) [NSString stringWithFormat:@"%@%@期", major, grade]
 
 @class DDRateTag;
 @interface DDUser : MTLModel <MTLJSONSerializing>
@@ -40,6 +40,8 @@
 @property (nonatomic, strong) NSNumber *meetTimes;//见过次数
 @property (nonatomic, strong) NSNumber *integrity;//完整率
 @property (nonatomic, readonly) NSString *relation;//关系
+
+- (UIImage *)genderImage;
 @end
 
 // 评价

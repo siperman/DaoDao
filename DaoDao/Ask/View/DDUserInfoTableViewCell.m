@@ -23,7 +23,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    [self.imgHead sy_round];
 }
 
 - (void)setUser:(DDUser *)user
@@ -39,6 +39,21 @@
         [self layoutIfNeeded];
     }
 }
+
+- (void)configureCellWithData:(id)data
+{
+    if ([data isKindOfClass:[DDUser class]]) {
+        [self setUser:data];
+    } else if ([data isKindOfClass:[DDAsk class]]) {
+        DDAsk *ask = (DDAsk *)data;
+        if (ask.isMyAsk) {
+            [self setUser:ask.answer.user];
+        } else {
+            [self setUser:ask.user];
+        }
+    }
+}
+
 
 + (CGFloat)cellHeight
 {

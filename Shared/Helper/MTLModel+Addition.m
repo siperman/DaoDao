@@ -46,7 +46,7 @@
 
         for (NSString *u in urls) {
             NSString *thumbnailUrl = [ u stringByAppendingString:kThumbnailResolution];
-            [results addObject:[NSURL URLWithString:RequestUrlFactory(thumbnailUrl)]];
+            [results addObject:[NSURL URLWithString:PicUrlFactory(thumbnailUrl)]];
         }
 
         return results;
@@ -59,7 +59,7 @@
         NSMutableArray *results = [NSMutableArray array];
 
         for (NSString *u in urls) {
-            [results addObject:[NSURL URLWithString:RequestUrlFactory(u)]];
+            [results addObject:[NSURL URLWithString:PicUrlFactory(u)]];
         }
 
         return results;
@@ -70,7 +70,7 @@
 {
     return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *url, BOOL *success, NSError *__autoreleasing *error) {
         if (url && url.length > 0) {
-            return [NSURL URLWithString:RequestUrlFactory(url)];
+            return [NSURL URLWithString:PicUrlFactory(url)];
         }
 
         return nil;

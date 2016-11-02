@@ -11,13 +11,20 @@
 @interface SYRequestEngine (Ask)
 
 // 我的约局列表
-+ (void)requestMyAskListCallback:(AZNetworkResultBlock)callback;
++ (void)requestMyAskListWithPageNumber:(NSInteger)page
+                              callback:(AZNetworkResultBlock)callback;
 // 我的应局列表
-+ (void)requestMyAnswerListCallback:(AZNetworkResultBlock)callback;
++ (void)requestMyAnswerListWithPageNumber:(NSInteger)page
+                                 callback:(AZNetworkResultBlock)callback;
 // 首页棋子应局列表
 + (void)requestAnswerListWithChessId:(NSString *)cid
                           pageNumber:(NSInteger)page
                             callback:(AZNetworkResultBlock)callback;
+
+// 应局列表
++ (void)requestAnswerListWithAskId:(NSString *)aid
+                          callback:(AZNetworkResultBlock)callback;
+
 // 发布约局
 + (void)sendAskWithParams:(NSDictionary *)params callback:(AZNetworkResultBlock)callback;
 // 获取约应局详情

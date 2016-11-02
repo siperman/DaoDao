@@ -13,6 +13,8 @@
 #import "DDConfig.h"
 #import "DDChatKitManager.h"
 #import "LCCKBadgeView.h"
+#import "SYUtils.h"
+#import <UserNotifications/UserNotifications.h>
 
 @interface AppDelegate ()
 
@@ -34,6 +36,7 @@
     // LeanCloud
     {
         [DDChatKitManager invokeThisMethodInDidFinishLaunching];
+        [SYUtils registerNotification];
     }
 
     // Umeng
@@ -76,6 +79,7 @@
         [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : TitleTextFont, NSForegroundColorAttributeName : TitleColor}];
         [[UINavigationBar appearance] setBarTintColor:ColorHex(@"100402")];
         [[UINavigationBar appearance] setTranslucent:YES];
+        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     }
 
     // 后退箭头
@@ -93,6 +97,7 @@
     [[UIPageControl appearance] setCurrentPageIndicatorTintColor:SecondColor];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 
+    [[UITableViewHeaderFooterView appearance] setTintColor:ClearColor];
     [[LCCKBadgeView appearance] setBadgeTextFont:SmallTextFont];
 }
 
@@ -120,6 +125,31 @@
 {
     [DDChatKitManager invokeThisMethodInApplication:application didReceiveRemoteNotification:userInfo];
 }
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler
+{
+    [DDChatKitManager invokeThisMethodInApplication:application didReceiveRemoteNotification:userInfo];
+
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    // 不做后台刷新
+    completionHandler(UIBackgroundFetchResultNoData);
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    //应用在前台收到通知
+    NSLog(@"========%@", notification);
+    NSDictionary *userInfo = notification.request.content.userInfo;
+
+    [DDChatKitManager invokeThisMethodInApplication:[UIApplication sharedApplication] didReceiveRemoteNotification:userInfo];
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+    //点击通知进入应用
+    NSLog(@"response:%@", response);
+    NSDictionary *userInfo = response.notification.request.content.userInfo;
+    [DDChatKitManager invokeThisMethodInApplication:[UIApplication sharedApplication] didReceiveRemoteNotification:userInfo];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     [DDChatKitManager invokeThisMethodInApplicationWillResignActive:application];

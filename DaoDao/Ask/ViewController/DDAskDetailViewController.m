@@ -7,34 +7,78 @@
 //
 
 #import "DDAskDetailViewController.h"
+#import "DDBaseTableViewCell.h"
 
 @interface DDAskDetailViewController ()
 
+@property (nonatomic, strong) NSArray <DDAsk *>*answers;
 @end
 
 @implementation DDAskDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.title = @"约局详情";
-    self.view.backgroundColor = BackgroundColor;
 
+    if (self.ask.status.integerValue >= DDAskWaitingSendMeet) {
+
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark Request
+
+- (void)requestAnswers
+{
+    [self showLoadingHUD];
+    [SYRequestEngine requestAnswerListWithAskId:self.ask.aid callback:^(BOOL success, id response) {
+        if (success) {
+            self.answers = [DDAsk parseFromDicts:response[kPageKey][kResultKey]];
+
+        }
+    }];
 }
 
-/*
-#pragma mark - Navigation
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if (!self.ask) {
+        return 0;
+    }
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSInteger status = self.ask.status.integerValue;
+    if (status == DDAskPostSuccess ||
+        status == DDAskWaitingHandOut ||
+        status == DDAskWaitingAnswerInterest) {
+        return 2;
+    }
+    return 0;
 }
-*/
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (!self.ask) {
+        return 0;
+    }
+
+    NSInteger status = self.ask.status.integerValue;
+    if (status == DDAskPostSuccess ||
+        status == DDAskWaitingHandOut ||
+        status == DDAskWaitingAnswerInterest) {
+        return 1;
+    }
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger status = self.ask.status.integerValue;
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+
+    if (status == DDAskPostSuccess ||
+        status == DDAskWaitingHandOut) {
+
+    }
+
+    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+}
 
 @end

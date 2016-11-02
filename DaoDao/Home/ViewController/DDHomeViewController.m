@@ -11,6 +11,7 @@
 #import "DDPostAskTableViewController.h"
 #import <ChatKit/LCCKConversationListViewController.h>
 #import "DDCalendarViewController.h"
+#import "DDMineViewController.h"
 
 @interface DDHomeViewController ()
 
@@ -52,12 +53,17 @@
     }];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     if ([self checkLogin] && !self.isLoading) {
         [self requestChess];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     self.badgeView.hidden = NO;
 }
 
@@ -81,25 +87,28 @@
 
 - (void)goMine
 {
-    RIButtonItem *btnCancle = [RIButtonItem itemWithLabel:@"取消"];
-    RIButtonItem *btnLogout = [RIButtonItem itemWithLabel:@"确定" action:^{
-        [SYRequestEngine userLogout:^(BOOL success, id response) {
-            debugLog(@"reponse %@", response);
-        }];
-        [DDUserManager manager].user = nil;
+//    RIButtonItem *btnCancle = [RIButtonItem itemWithLabel:@"取消"];
+//    RIButtonItem *btnLogout = [RIButtonItem itemWithLabel:@"确定" action:^{
+//        [SYRequestEngine userLogout:^(BOOL success, id response) {
+//            debugLog(@"reponse %@", response);
+//        }];
+//        [DDUserManager manager].user = nil;
+//
+//        [self checkLogin];
+//        [self.navigationController popViewControllerAnimated:NO];
+//
+//        [SYUtils showWindowLevelNotice:kLogoutSuccessNotice];
+//    }];
+//
+//    NSString *title = [NSString stringWithFormat:@"确定要退出当前账号？\n %@", [DDUserManager manager].user.mobilePhone];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+//                                                    message:nil
+//                                           cancelButtonItem:btnCancle
+//                                           otherButtonItems:btnLogout, nil];
+//    [alert show];
+    DDMineViewController *vc = [[DDMineViewController alloc] init];
 
-        [self checkLogin];
-        [self.navigationController popViewControllerAnimated:NO];
-
-        [SYUtils showWindowLevelNotice:kLogoutSuccessNotice];
-    }];
-
-    NSString *title = [NSString stringWithFormat:@"确定要退出当前账号？\n %@", [DDUserManager manager].user.mobilePhone];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:nil
-                                           cancelButtonItem:btnCancle
-                                           otherButtonItems:btnLogout, nil];
-    [alert show];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)goIM

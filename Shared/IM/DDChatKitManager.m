@@ -225,7 +225,7 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         if (!conversation.createAt) {
             return;
         }
-        [[self class] lcck_showMessage:@"加载历史记录..." toView:aConversationController.view];
+//        [[self class] lcck_showMessage:@"加载历史记录..." toView:aConversationController.view];
         if (conversation.members.count > 2) {
             [aConversationController configureBarButtonItemStyle:LCCKBarButtonItemStyleGroupProfile action:^(UIBarButtonItem *sender, UIEvent *event) {
                 NSString *title = @"打开群聊详情";
