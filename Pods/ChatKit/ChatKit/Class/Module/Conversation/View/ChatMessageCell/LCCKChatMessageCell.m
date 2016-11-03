@@ -36,7 +36,7 @@
 
 NSMutableDictionary const *LCCKChatMessageCellMediaTypeDict = nil;
 
-static CGFloat const kAvatarImageViewWidth = 50.f;
+static CGFloat const kAvatarImageViewWidth = 40.f;
 static CGFloat const kAvatarImageViewHeight = kAvatarImageViewWidth;
 static CGFloat const LCCKMessageSendStateViewWidthHeight = 30.f;
 static CGFloat const LCCKMessageSendStateViewLeftOrRightToMessageContentView = 2.f;
