@@ -104,6 +104,12 @@
     }
     if (conversation.lcck_unreadCount > 0) {
         self.badgeView.badgeText = conversation.lcck_badgeText;
+        // 未读消息标红
+        if (!(conversation.lcck_mentioned || conversation.lcck_draft.length > 0)) {
+            NSMutableAttributedString *str = [self.messageTextLabel.attributedText mutableCopy];
+            [str setAttributes:@{ NSForegroundColorAttributeName: ColorHex(@"f6634a")} range:NSMakeRange(0, str.length)];
+            self.messageTextLabel.attributedText = str;
+        }
     }
 }
 

@@ -121,6 +121,9 @@
         NSString *year = [textField.text stringByReplacingCharactersInRange:range withString:string];
         return year.integerValue <= 60;
     }
+    if (textField == self.txtName) {
+        return textField.text.length + string.length <= 8;
+    }
     return YES;
 }
 

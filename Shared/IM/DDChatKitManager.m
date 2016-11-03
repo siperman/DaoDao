@@ -149,7 +149,7 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 - (void)exampleInit {
 #ifndef __OPTIMIZE__
     //        [LCChatKit setAllLogsEnabled:YES];
-    [[LCChatKit sharedInstance] setUseDevPushCerticate:YES];
+//    [[LCChatKit sharedInstance] setUseDevPushCerticate:YES];
 #endif
     /**
      * @attention 请区别 `[AVOSCloud setApplicationId:appId clientKey:appKey];` 与 `[LCChatKit setAppId:appId appKey:appKey];`。
