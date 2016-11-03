@@ -52,9 +52,15 @@
 
 - (void)singleTapMessageImageViewGestureRecognizerHandler:(UITapGestureRecognizer *)tapGestureRecognizer {
     if (tapGestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        [self.viewController showNotice:@"邀请函"];
         DDMeetDetailViewController *vc = [DDMeetDetailViewController viewController];
         vc.conversationId = ((LCCKConversationViewController *)self.delegate).conversationId;
+        WeakSelf;
+        vc.callback = ^(NSString *text) {
+            LCCKConversationViewController *vc = (LCCKConversationViewController *)weakSelf.delegate;
+            if (vc.isAvailable) {
+                [vc sendTextMessage:text];
+            }
+        };
         [self.viewController.navigationController pushViewController:vc animated:YES];
     }
 }

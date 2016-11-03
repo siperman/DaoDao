@@ -30,6 +30,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <UMengAnalytics/UMMobClick/MobClick.h>
+#import <MJRefresh/MJRefresh.h>
 #import "UIImageView+AFNetworking.h"
 
 #import "UITableView+Addition.h"
@@ -39,6 +40,8 @@
 #import "UIImageView+WebCache.h"
 #import "NSString+MD5Addition.h"
 #import "UIViewController+EmptyNotice.h"
+#import "MJRefreshHeader+Addtion.h"
+#import "MJRefreshFooter+Addtion.h"
 
 #import "DDAsk.h"
 #import "DDAnswer.h"

@@ -42,6 +42,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vrc-Ma-TEm">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSh-PC-Vtf">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="n9C-4x-clI"/>
@@ -73,7 +76,9 @@
                             <constraint firstItem="Kae-rv-1BC" firstAttribute="leading" secondItem="MKK-Lp-Rhc" secondAttribute="leading" id="5E1-0h-qru"/>
                             <constraint firstItem="ABc-Oa-XEp" firstAttribute="leading" secondItem="XSh-PC-Vtf" secondAttribute="leading" id="5ej-rS-g48"/>
                             <constraint firstItem="jUg-co-a2w" firstAttribute="trailing" secondItem="MKK-Lp-Rhc" secondAttribute="trailing" id="5rJ-Fb-tF1"/>
+                            <constraint firstItem="Vrc-Ma-TEm" firstAttribute="top" secondItem="ciN-0J-W8X" secondAttribute="top" constant="4" id="9cc-xC-Kfb"/>
                             <constraint firstItem="MKK-Lp-Rhc" firstAttribute="leading" secondItem="D92-dR-jIU" secondAttribute="leading" constant="10" id="CeZ-uD-tXK"/>
+                            <constraint firstItem="Vrc-Ma-TEm" firstAttribute="trailing" secondItem="ciN-0J-W8X" secondAttribute="trailing" constant="-4" id="Cl7-W6-TBS"/>
                             <constraint firstItem="jUg-co-a2w" firstAttribute="leading" secondItem="XSh-PC-Vtf" secondAttribute="trailing" constant="8" symbolic="YES" id="Cpu-5V-ExJ"/>
                             <constraint firstItem="jUg-co-a2w" firstAttribute="baseline" secondItem="XSh-PC-Vtf" secondAttribute="baseline" id="KX5-sY-xVN"/>
                             <constraint firstItem="ciN-0J-W8X" firstAttribute="leading" secondItem="MKK-Lp-Rhc" secondAttribute="leading" id="Pnf-kx-IFa"/>
@@ -83,6 +88,8 @@
                             <constraint firstItem="MKK-Lp-Rhc" firstAttribute="top" secondItem="D92-dR-jIU" secondAttribute="top" constant="40" id="b7U-R1-DBP"/>
                             <constraint firstItem="XSh-PC-Vtf" firstAttribute="top" secondItem="ciN-0J-W8X" secondAttribute="top" id="gXB-Dm-AgG"/>
                             <constraint firstItem="ABc-Oa-XEp" firstAttribute="bottom" secondItem="ciN-0J-W8X" secondAttribute="bottom" id="mYw-bT-XXT"/>
+                            <constraint firstItem="Vrc-Ma-TEm" firstAttribute="leading" secondItem="ciN-0J-W8X" secondAttribute="leading" constant="5" id="mep-Fj-z87"/>
+                            <constraint firstItem="Vrc-Ma-TEm" firstAttribute="bottom" secondItem="ciN-0J-W8X" secondAttribute="bottom" constant="-5" id="rzh-XU-HKQ"/>
                             <constraint firstAttribute="trailing" secondItem="MKK-Lp-Rhc" secondAttribute="trailing" constant="10" id="uAv-fR-Fmy"/>
                             <constraint firstAttribute="bottom" secondItem="MKK-Lp-Rhc" secondAttribute="bottom" constant="59" id="vph-VH-Jgv"/>
                             <constraint firstAttribute="trailing" secondItem="XSh-PC-Vtf" secondAttribute="trailing" constant="97" id="zfx-pJ-RcJ"/>
@@ -105,6 +112,7 @@
             <connections>
                 <outlet property="askInfoLabel" destination="Kae-rv-1BC" id="aAM-Tw-XmR"/>
                 <outlet property="avatarImageView" destination="ciN-0J-W8X" id="noM-37-F1V"/>
+                <outlet property="litteBadgeView" destination="Vrc-Ma-TEm" id="Th0-p4-Iu1"/>
                 <outlet property="messageTextLabel" destination="ABc-Oa-XEp" id="2yd-9k-4yC"/>
                 <outlet property="nameLabel" destination="XSh-PC-Vtf" id="13x-6s-dvi"/>
                 <outlet property="timestampLabel" destination="jUg-co-a2w" id="4kD-7d-POu"/>

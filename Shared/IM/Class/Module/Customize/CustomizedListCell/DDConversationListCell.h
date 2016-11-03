@@ -15,9 +15,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *askInfoLabel;
 @property (nonatomic, strong) IBOutlet UIImageView *avatarImageView;
 @property (nonatomic, strong) IBOutlet UILabel *nameLabel;
-@property (nonatomic, strong) IBOutlet UILabel  *messageTextLabel;
+@property (nonatomic, strong) IBOutlet UILabel *messageTextLabel;
 @property (nonatomic, strong) LCCKBadgeView *badgeView;
-@property (nonatomic, strong) UIView *litteBadgeView;
+@property (nonatomic, strong) IBOutlet UIView *litteBadgeView;
 @property (nonatomic, strong) IBOutlet UILabel *timestampLabel;
 @property (nonatomic, strong) UIButton *remindMuteImageView;
 

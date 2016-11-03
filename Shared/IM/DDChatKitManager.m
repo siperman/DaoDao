@@ -24,6 +24,7 @@
 
 #import "DDConversationListCell.h"
 #import "LCCKInputViewPluginVCard.h"
+#import "DDHomeViewController.h"
 
 #ifdef DEBUG
 static NSString *const LCCKAPPKEY = @"E7glabfvph8e91qthD9wxt7n";
@@ -49,18 +50,17 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 #pragma mark - SDK Life Control
 
 + (void)invokeThisMethodInDidFinishLaunching {
+    // 如果APP是在国外使用，开启北美节点
     //    [AVOSCloud setServiceRegion:AVServiceRegionUS];
     // 启用未读消息
-    [AVIMClient setUserOptions:@{
-                                 AVIMUserOptionUseUnread: @(YES)
-                                 }];
-    [AVOSCloud registerForRemoteNotification];
+    [AVIMClient setUserOptions:@{ AVIMUserOptionUseUnread : @(YES) }];
     [AVIMClient setTimeoutIntervalInSeconds:20];
     //添加输入框底部插件，如需更换图标标题，可子类化，然后调用 `+registerSubclass`
     [LCCKInputViewPluginTakePhoto registerSubclass];
     [LCCKInputViewPluginPickImage registerSubclass];
-
     //    [LCCKInputViewPluginLocation registerSubclass];
+    // 关闭单点登陆
+    [[LCChatKit sharedInstance] setDisableSingleSignOn:NO];
 }
 
 + (void)invokeThisMethodInDidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -81,6 +81,7 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         }
     }];
 }
+
 + (void)saveLocalClientInfo:(NSString *)clientId {
     // 在系统偏好保存信息
     NSUserDefaults *defaultsSet = [NSUserDefaults standardUserDefaults];
@@ -148,7 +149,7 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 - (void)exampleInit {
 #ifndef __OPTIMIZE__
     //        [LCChatKit setAllLogsEnabled:YES];
-    [[LCChatKit sharedInstance] setUseDevPushCerticate:YES];
+//    [[LCChatKit sharedInstance] setUseDevPushCerticate:YES];
 #endif
     /**
      * @attention 请区别 `[AVOSCloud setApplicationId:appId clientKey:appKey];` 与 `[LCChatKit setAppId:appId appKey:appKey];`。
@@ -224,7 +225,7 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         if (!conversation.createAt) {
             return;
         }
-        [[self class] lcck_showMessage:@"加载历史记录..." toView:aConversationController.view];
+//        [[self class] lcck_showMessage:@"加载历史记录..." toView:aConversationController.view];
         if (conversation.members.count > 2) {
             [aConversationController configureBarButtonItemStyle:LCCKBarButtonItemStyleGroupProfile action:^(UIBarButtonItem *sender, UIEvent *event) {
                 NSString *title = @"打开群聊详情";
@@ -357,9 +358,9 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 //    }];
 
     //    如果不是TabBar样式，请实现该 Blcok 来设置 Badge 红标。
-    //    [[LCChatKit sharedInstance] setMarkBadgeWithTotalUnreadCountBlock:^(NSInteger totalUnreadCount, UIViewController *controller) {
-    //        [self exampleMarkBadgeWithTotalUnreadCount:totalUnreadCount controller:controller];
-    //    }];
+    [[LCChatKit sharedInstance] setMarkBadgeWithTotalUnreadCountBlock:^(NSInteger totalUnreadCount, UIViewController *controller) {
+        [self exampleMarkBadgeWithTotalUnreadCount:totalUnreadCount controller:controller];
+    }];
 
     [[LCChatKit sharedInstance] setPreviewLocationMessageBlock:^(CLLocation *location, NSString *geolocations, NSDictionary *userInfo) {
         [self examplePreViewLocationMessageWithLocation:location geolocations:geolocations];
@@ -514,7 +515,8 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
     [conversationViewController setViewWillAppearBlock:^(LCCKBaseViewController *viewController, BOOL aAnimated) {
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:aAnimated];
     }];
-
+    // 禁止双击文字全屏
+    conversationViewController.disableTextShowInFullScreen = YES;
 
     [aNavigationController pushViewController:conversationViewController animated:YES];
 }
@@ -546,13 +548,6 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
 }
 
 + (void)pushToViewController:(UIViewController *)viewController {
-//    UITabBarController *tabBarController = [self cyl_tabBarController];
-//    UINavigationController *navigationController = tabBarController.selectedViewController;
-//    [navigationController cyl_popSelectTabBarChildViewControllerAtIndex:0
-//                                                             completion:^(__kindof UIViewController *selectedChildTabBarController) {
-//                                                                 [selectedChildTabBarController.navigationController pushViewController:viewController animated:YES];
-//                                                             }];
-
     id<UIApplicationDelegate> delegate = ((id<UIApplicationDelegate>)[[UIApplication sharedApplication] delegate]);
     UIWindow *window = delegate.window;
     if ([window.rootViewController isKindOfClass:[UINavigationController class]]) {
@@ -561,15 +556,11 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
 }
 
 - (void)exampleMarkBadgeWithTotalUnreadCount:(NSInteger)totalUnreadCount controller:(UIViewController *)controller {
+    debugLog(@"============totalUnreadCount : %ld", (long)totalUnreadCount);
+    [DDUserManager manager].notificationManager.unreadIMMessagesCount = totalUnreadCount;
     if (totalUnreadCount > 0) {
-        NSString *badgeValue = [NSString stringWithFormat:@"%ld", (long)totalUnreadCount];
-        if (totalUnreadCount > 99) {
-            badgeValue = @"...";
-        }
-        [controller tabBarItem].badgeValue = badgeValue;
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:totalUnreadCount];
     } else {
-        [controller tabBarItem].badgeValue = nil;
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     }
 }

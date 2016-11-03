@@ -62,6 +62,8 @@
 
 @interface SYUtils (AppDelegate)
 
++ (void)registerNotification;
+
 + (void)registerXGPush;
 
 + (void)firUpdate;

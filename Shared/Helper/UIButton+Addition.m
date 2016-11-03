@@ -28,7 +28,7 @@
 
 - (void)actionTransparentStyle
 {
-    self.backgroundColor = WhiteColor;
+    self.backgroundColor = ClearColor;
     self.titleLabel.font = Font(18.0);
 
     [self setTitleColor:MainColor forState:UIControlStateNormal];
@@ -37,7 +37,7 @@
     self.layer.borderColor = MainColor.CGColor;
     self.layer.borderWidth = OnePixelHeight;
     self.layer.masksToBounds = YES;
-    self.layer.cornerRadius = 2.0;
+    self.layer.cornerRadius = kCornerRadius;
 }
 
 - (void)textStyle

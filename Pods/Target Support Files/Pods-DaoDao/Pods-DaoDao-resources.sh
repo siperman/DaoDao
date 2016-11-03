@@ -96,7 +96,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "TWMessageBarManager/Classes/Icons/icon-info@2x.png"
   install_resource "TWMessageBarManager/Classes/Icons/icon-success.png"
   install_resource "TWMessageBarManager/Classes/Icons/icon-success@2x.png"
-  install_resource "iVersion/iVersion/iVersion.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
@@ -121,7 +120,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "TWMessageBarManager/Classes/Icons/icon-info@2x.png"
   install_resource "TWMessageBarManager/Classes/Icons/icon-success.png"
   install_resource "TWMessageBarManager/Classes/Icons/icon-success@2x.png"
-  install_resource "iVersion/iVersion/iVersion.bundle"
 fi
 if [[ "$CONFIGURATION" == "Test" ]]; then
   install_resource "AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
@@ -146,7 +144,6 @@ if [[ "$CONFIGURATION" == "Test" ]]; then
   install_resource "TWMessageBarManager/Classes/Icons/icon-info@2x.png"
   install_resource "TWMessageBarManager/Classes/Icons/icon-success.png"
   install_resource "TWMessageBarManager/Classes/Icons/icon-success@2x.png"
-  install_resource "iVersion/iVersion/iVersion.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

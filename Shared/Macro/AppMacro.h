@@ -130,8 +130,9 @@ static NSString * const kUploadAvatarFailNotice                   = @"头像上�
 static NSString * const kUserDidChangeLoggingStateNotification = @"kUserDidChangeLoggingStateNotification"; //用户已改变log状态
 static NSString * const kLoginPhoneWriteBackNotification       = @"kLoginPhoneWriteBackNotification"; //登录手机号写回调
 static NSString * const kUserDidLogoutNotification             = @"kUserDidLogoutNotification";
-static NSString * const kNewIMMessageNotification            = @"kNewIMMessageNotification"; //新im消息
-static NSString * const kUpdateUserInfoNotification          = @"kUpdateUserInfoNotification"; //更新用户信息
+static NSString * const kNewIMMessageNotification              = @"kNewIMMessageNotification"; //新im消息
+static NSString * const kUpdateUnreadCountNotification         = @"kUpdateUnreadCountNotification"; //更新未读消息
+static NSString * const kUpdateUserInfoNotification            = @"kUpdateUserInfoNotification"; //更新用户信息
 
 // Cache
 static NSString * const kLastSysNotificationsCacheKey    = @"kLastSysNotificationsCacheKey"; //最后一条系统消息

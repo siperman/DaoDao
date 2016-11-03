@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIView *bigView;
 @property (weak, nonatomic) IBOutlet UIImageView *imgHead;
 @property (weak, nonatomic) IBOutlet UIImageView *imgGender;
+@property (weak, nonatomic) IBOutlet UIButton *btnLeft;
+@property (weak, nonatomic) IBOutlet UIButton *btnRight;
 
 @property (weak, nonatomic) IBOutlet UILabel *labName; // 花名
 @property (weak, nonatomic) IBOutlet UILabel *labGrade; // 届别
@@ -27,21 +29,31 @@
     // Initialization code
     [self.bigView shadowStyle];
     [self.labDemand normalTextStyle];
+    [self.btnLeft setTitleColor:ColorHex(@"707070")];
 }
 
 - (void)setAskInfo:(DDAsk *)askInfo
 {
-    if (_askInfo != askInfo) {
-        _askInfo = askInfo;
-        [self.imgHead sy_setThumbnailImageWithUrl:askInfo.user.headUrl];
-        [self.imgGender setImage:([askInfo.user.gender boolValue] ? Image(@"icon_woman") : Image(@"icon_man"))];
+    _askInfo = askInfo;
+    [self.imgHead sy_setThumbnailImageWithUrl:askInfo.user.headUrl];
+    [self.imgGender setImage:([askInfo.user.gender boolValue] ? Image(@"icon_woman") : Image(@"icon_man"))];
 
-        self.labName.text = askInfo.user.nickName;
-        self.labGrade.text = MajorGrade(askInfo.user.major, askInfo.user.grade);
-        self.labDemand.text = askInfo.demand;
-        self.labRelation.text = askInfo.user.relation;
-        [self layoutIfNeeded];
+    self.labName.text = askInfo.user.nickName;
+    self.labGrade.text = MajorGrade(askInfo.user.major, askInfo.user.grade);
+    self.labDemand.text = askInfo.demand;
+    self.labRelation.text = askInfo.user.relation;
+
+    if (askInfo.status.integerValue >= DDAskWaitingSendMeet) {
+        [self.btnRight setTitle:@"您已感兴趣"];
+        self.btnLeft.enabled = NO;
+        self.btnRight.enabled = NO;
+    } else if (askInfo.status.integerValue < DDAskPostSuccess) {
+        [self.btnLeft setTitle:@"您已不感兴趣"];
+        self.btnLeft.enabled = NO;
+        self.btnRight.enabled = NO;
     }
+
+    [self layoutIfNeeded];
 }
 
 - (IBAction)disinterest:(UIButton *)sender
@@ -51,6 +63,7 @@
                                  callback:^(BOOL success, id response) {
                                      [self.viewController hideAllHUD];
                                      if (success) {
+                                         _askInfo.status = @(-1);
                                          if ([self.delegete respondsToSelector:@selector(disinterestAskWithId:callback:)]) {
                                              [self.delegete disinterest:_askInfo];
                                          }
@@ -68,6 +81,7 @@
                               callback:^(BOOL success, id response) {
                                   [self.viewController hideAllHUD];
                                   if (success) {
+                                      _askInfo.status = @(3); // 待约见
                                       if ([self.delegete respondsToSelector:@selector(interest:)]) {
                                           [self.delegete interest:_askInfo];
                                       }

@@ -11,6 +11,7 @@
 #import "DDPostAskTableViewController.h"
 #import <ChatKit/LCCKConversationListViewController.h>
 #import "DDCalendarViewController.h"
+#import "DDMineViewController.h"
 
 @interface DDHomeViewController ()
 
@@ -50,16 +51,29 @@
         make.width.mas_equalTo(305);
         make.height.mas_equalTo(40);
     }];
+
+    [self subscribeNotication:kNewIMMessageNotification selector:@selector(newIMMessage)]; // 订阅新聊天消息推送
+    [self subscribeNotication:kUpdateUnreadCountNotification selector:@selector(refreshIM)]; // 订阅未读聊天消息数推送
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if ([self checkLogin] && !self.isLoading) {
+        [self requestChess];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if ([self checkLogin] && !self.isLoading) {
-        [self requestChess];
-    } else {
-        debugLog(@"拜了个呆门");
-    }
+    self.badgeView.hidden = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.badgeView.hidden = YES;
 }
 
 - (void)requestChess
@@ -74,26 +88,52 @@
     }];
 }
 
+- (void)refreshIM
+{
+    NSInteger totalUnreadCount = [DDUserManager manager].notificationManager.unreadIMMessagesCount;
+
+    if (totalUnreadCount > 0) {
+        NSString *badgeValue = [NSString stringWithFormat:@"%ld", (long)totalUnreadCount];
+        if (totalUnreadCount > 99) {
+            badgeValue = @"99+";
+        }
+        self.badgeView.badgeText = badgeValue;
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:totalUnreadCount];
+    } else {
+        self.badgeView.badgeText = nil;
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    }
+}
+
+- (void)newIMMessage
+{
+    [self.badgeView shake];
+}
+
 - (void)goMine
 {
-    RIButtonItem *btnCancle = [RIButtonItem itemWithLabel:@"取消"];
-    RIButtonItem *btnLogout = [RIButtonItem itemWithLabel:@"确定" action:^{
-        [SYRequestEngine userLogout:^(BOOL success, id response) {
-            debugLog(@"reponse %@", response);
-        }];
-        [DDUserManager manager].user = nil;
+//    RIButtonItem *btnCancle = [RIButtonItem itemWithLabel:@"取消"];
+//    RIButtonItem *btnLogout = [RIButtonItem itemWithLabel:@"确定" action:^{
+//        [SYRequestEngine userLogout:^(BOOL success, id response) {
+//            debugLog(@"reponse %@", response);
+//        }];
+//        [DDUserManager manager].user = nil;
+//
+//        [self checkLogin];
+//        [self.navigationController popViewControllerAnimated:NO];
+//
+//        [SYUtils showWindowLevelNotice:kLogoutSuccessNotice];
+//    }];
+//
+//    NSString *title = [NSString stringWithFormat:@"确定要退出当前账号？\n %@", [DDUserManager manager].user.mobilePhone];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+//                                                    message:nil
+//                                           cancelButtonItem:btnCancle
+//                                           otherButtonItems:btnLogout, nil];
+//    [alert show];
+    DDMineViewController *vc = [[DDMineViewController alloc] init];
 
-        [self checkLogin];
-        [self.navigationController popViewControllerAnimated:NO];
-
-        [SYUtils showWindowLevelNotice:kLogoutSuccessNotice];
-    }];
-
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"确定要退出当前账号？"
-                                                    message:nil
-                                           cancelButtonItem:btnCancle
-                                           otherButtonItems:btnLogout, nil];
-    [alert show];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)goIM
@@ -134,6 +174,19 @@
         [_btnPost addTarget:self action:@selector(postAsk) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnPost;
+}
+
+- (LCCKBadgeView *)badgeView {
+    if (_badgeView == nil) {
+        LCCKBadgeView *badgeView = [[LCCKBadgeView alloc] initWithParentView:self.navigationController.navigationBar
+                                                                   alignment:LCCKBadgeViewAlignmentTopRight];
+        badgeView.badgeBackgroundColor = ColorHex(@"f6634a");
+        badgeView.badgeTextColor = WhiteColor;
+        badgeView.badgePositionAdjustment = CGPointMake(-16, 8);
+        _badgeView = badgeView;
+
+    }
+    return _badgeView;
 }
 
 @end

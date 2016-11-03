@@ -55,7 +55,6 @@ PODS:
   - FMDB/standard (2.6.2)
   - FSCalendar (2.4.0)
   - FTPopOverMenu (1.2.2)
-  - iVersion (1.11.4)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
@@ -98,7 +97,6 @@ DEPENDENCIES:
   - FDFullscreenPopGesture
   - FSCalendar
   - FTPopOverMenu
-  - iVersion
   - Mantle
   - Masonry
   - MLPAutoCompleteTextField
@@ -128,7 +126,6 @@ SPEC CHECKSUMS:
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   FSCalendar: a9a02ab39a385b5a25bae2f96b50204292154a82
   FTPopOverMenu: 6a535b7664b20d52d5a299d1f34414414e996caf
-  iVersion: 2b6ffe708672cb494ba3cab150a94800c2892e81
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
@@ -149,6 +146,6 @@ SPEC CHECKSUMS:
   UMengAnalytics: 8d95752776c32f5b954d40edc7f23944882a7c14
   XGPush: fa2e9fce1895ea238bcd92dd0a5189a5452e15f2
 
-PODFILE CHECKSUM: 772effcbaf969a2ded32b660757e585c329df86c
+PODFILE CHECKSUM: fb5880e9a9bb4a7cf2e7c63cc48421b457768585
 
 COCOAPODS: 1.1.1

@@ -21,21 +21,25 @@ static NSString * const kRateAnswerPath                     = @"/ask/{id}?_funct
 @implementation SYRequestEngine (Ask)
 
 // 我的约局列表
-+ (void)requestMyAskListCallback:(AZNetworkResultBlock)callback
++ (void)requestMyAskListWithPageNumber:(NSInteger)page
+                              callback:(AZNetworkResultBlock)callback
 {
     [SYNetworkManager startRequestWithUrl:RequestUrlFactory(kAskPath)
                                    method:SYRequestMethodGet
-                                   params:@{kFunctionKey : @"listMyAsk"}
+                                   params:@{kFunctionKey : @"listMyAsk",
+                                            kPageNumberKey : @(page)}
                                      body:nil
                                  callback:callback];
 }
 
 // 我的应局列表
-+ (void)requestMyAnswerListCallback:(AZNetworkResultBlock)callback
++ (void)requestMyAnswerListWithPageNumber:(NSInteger)page
+                                 callback:(AZNetworkResultBlock)callback
 {
     [SYNetworkManager startRequestWithUrl:RequestUrlFactory(kAskPath)
                                    method:SYRequestMethodGet
-                                   params:@{kFunctionKey : @"listMyAnswer"}
+                                   params:@{kFunctionKey : @"listMyAnswer",
+                                            kPageNumberKey : @(page)}
                                      body:nil
                                  callback:callback];
 }
@@ -54,6 +58,17 @@ static NSString * const kRateAnswerPath                     = @"/ask/{id}?_funct
                                  callback:callback];
 }
 
+// 应局列表
++ (void)requestAnswerListWithAskId:(NSString *)aid
+                          callback:(AZNetworkResultBlock)callback
+{
+    [SYNetworkManager startRequestWithUrl:RequestUrlFactory(kAskPath)
+                                   method:SYRequestMethodGet
+                                   params:@{kFunctionKey : @"listMyAsk",
+                                            @"id" : aid}
+                                     body:nil
+                                 callback:callback];
+}
 
 // 发布约局
 + (void)sendAskWithParams:(NSDictionary *)params callback:(AZNetworkResultBlock)callback

@@ -140,6 +140,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="bigView" destination="3WZ-6e-nSW" id="28c-0O-nhL"/>
+                <outlet property="btnLeft" destination="ayT-OP-FYM" id="dKM-O0-hhd"/>
+                <outlet property="btnRight" destination="U0Z-CX-I7S" id="4bk-Qv-CiM"/>
                 <outlet property="imgGender" destination="PNd-y1-yTb" id="kcR-t5-0H5"/>
                 <outlet property="imgHead" destination="5bH-eP-Flj" id="plS-Jv-BGN"/>
                 <outlet property="labDemand" destination="c8i-de-zyg" id="FNj-lt-9k6"/>

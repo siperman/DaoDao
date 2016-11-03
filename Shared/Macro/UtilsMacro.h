@@ -52,6 +52,7 @@ return; \
 #define PicUrlFactory(path) [NSString stringWithFormat:@"%@%@", kPicHostUrl, path]
 #define TimeStamp [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000]
 #define OnePixelHeight (1 / [UIScreen mainScreen].scale)
+#define DefaultAvatar [UIImage imageNamed:@"icon_touxiang"]
 
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height

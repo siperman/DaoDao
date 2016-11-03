@@ -37,4 +37,62 @@
     }
 }
 
+- (BOOL)isMyAsk
+{
+    DDUser *user = [DDUserManager manager].user;
+    return [self.user.uid isEqualToString:user.uid];
+}
+
+- (UIImage *)statusImage
+{
+    if (self.isMyAsk) {
+        NSArray *imgNames = @[@"bq_loading", @"bq_ing", @"bq_done", @"bq_cancel", @"bq_fail"];
+        NSString *imgName;
+        NSInteger status = self.status.integerValue;
+
+        if (status == DDAskPostSuccess ||
+            status == DDAskWaitingHandOut ||
+            status == DDAskWaitingAnswerInterest) {
+            imgName = imgNames[0];
+        } else if (status >= DDAskWaitingSendMeet &&
+                   status <= DDAskAnswerRate) {
+            imgName = imgNames[1];
+        } else if (status == -1) { // 约局已取消
+            imgName = imgNames[3];
+        } else if (status == -2) { // 约局失效
+            imgName = imgNames[4];
+        } else {
+            imgName = imgNames[2];
+        }
+
+        return Image(imgName);
+    } else {
+        NSArray *imgNames = @[@"bq_interest", @"bq_waitDate", @"bq_Wmeet", @"bq_comment", @"bq_done", @"bq_cancel", @"bq_fail"];
+        NSString *imgName;
+        NSInteger status = self.status.integerValue;
+
+        if (status == DDAskWaitingSendMeet) {
+            imgName = imgNames[0];
+        } else if (status == DDAskWaitingAgreeMeet) {
+            imgName = imgNames[1];
+        } else if (status == DDAskWaitingMeet) {
+            imgName = imgNames[2];
+        } else if (status == DDAskAskerRate ||
+                   status == DDAskBothUnRate) {
+            imgName = imgNames[3];
+        } else if (status == DDAskAnswerRate ||
+                   status == DDAskBothRate) {
+            imgName = imgNames[4];
+        } else if (status == -5 ||
+                   status == -3) {
+            imgName = imgNames[6];
+        } else if (status == -4) {
+            imgName = imgNames[5];
+        } else {
+            return nil;
+        }
+
+        return Image(imgName);
+    }
+}
 @end

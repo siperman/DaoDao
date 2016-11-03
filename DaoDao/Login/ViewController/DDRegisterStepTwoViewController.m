@@ -45,6 +45,7 @@
     [super viewDidLoad];
 
     self.title = @"注册道道";
+    self.view.backgroundColor = BackgroundColor;
     [@[self.labName, self.labSchool, self.labPhone, self.labCode]
      enumerateObjectsUsingBlock:^(UILabel *lab, NSUInteger idx, BOOL * _Nonnull stop) {
          [lab bigSecondStyle];
@@ -63,7 +64,6 @@
     if (_user) {
         self.txtName.text = _user.realName;
         self.txtSchool.text = MajorGrade(_user.major, _user.grade);
-        self.txtPhone.text = _user.mobilePhone;
     } else {
         _user = [[DDUser alloc] init];
     }
@@ -108,6 +108,7 @@
             [self.navigationController showLoadingHUD];
 
             [SYRequestEngine requestVerifyCodeWithParams:@{
+                                                           @"inviteCode" : self.inviteCode,
                                                            @"mobilePhone" : self.txtPhone.text,
                                                            @"key" : [self.txtPhone.text stringFromMD5],
                                                            @"type" : @"sms",
@@ -176,6 +177,14 @@
         return YES;
     }
 
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.txtName) {
+        return textField.text.length + string.length <= 8;
+    }
     return YES;
 }
 

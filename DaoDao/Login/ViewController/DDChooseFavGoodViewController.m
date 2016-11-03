@@ -114,6 +114,7 @@
         !self.isChooseFav &&
         _selectCount == 3) {
         [self showNotice:@"最多可勾选3项喔！"];
+        return;
     }
 
     model.selected = !model.selected;
