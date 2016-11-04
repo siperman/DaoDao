@@ -7,7 +7,6 @@
 //
 
 #import "MJRefreshHeader+Addtion.h"
-#import <ChatKit/LCCKSettingService.h>
 
 @implementation MJRefreshHeader (Addtion)
 

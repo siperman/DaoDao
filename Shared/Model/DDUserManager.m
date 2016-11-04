@@ -7,7 +7,6 @@
 //
 
 #import "DDUserManager.h"
-#import <XGPush/XGPush.h>
 #import "SYCache.h"
 #import "SYUtils.h"
 #import "SYPrefManager.h"

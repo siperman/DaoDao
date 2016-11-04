@@ -1,1 +1,0 @@
-../../../ChatKit/ChatKit/Class/View/LCCKSwipeView.h

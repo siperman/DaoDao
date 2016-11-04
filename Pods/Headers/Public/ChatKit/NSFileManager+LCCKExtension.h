@@ -1,1 +1,0 @@
-../../../ChatKit/ChatKit/Class/Tool/Categories/NSFileManager+LCCKExtension.h

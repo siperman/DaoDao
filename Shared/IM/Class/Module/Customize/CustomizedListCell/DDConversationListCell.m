@@ -8,7 +8,6 @@
 
 #import "DDConversationListCell.h"
 #import "LCCKBadgeView.h"
-#import <ChatKit/LCChatKit.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "LCCKLastMessageTypeManager.h"
 #import "NSDate+LCCKDateTools.h"

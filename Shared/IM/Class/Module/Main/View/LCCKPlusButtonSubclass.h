@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 https://github.com/ChenYilong . All rights reserved.
 //
 
-#import "CYLPlusButton.h"
-
-@interface LCCKPlusButtonSubclass : CYLPlusButton<CYLPlusButtonSubclassing>
-
-@end
+//#import "CYLPlusButton.h"
+//
+//@interface LCCKPlusButtonSubclass : CYLPlusButton<CYLPlusButtonSubclassing>
+//
+//@end

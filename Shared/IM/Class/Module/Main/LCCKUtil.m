@@ -8,7 +8,6 @@
 
 #import "LCCKUtil.h"
 #import "MBProgressHUD.h"
-#import "TWMessageBarManager.h"
 #if __has_include(<ChatKit/LCChatKit.h>)
 #import <ChatKit/LCChatKit.h>
 #else
@@ -64,26 +63,26 @@
      */
     
     //TODO:
-    TWMessageBarMessageType type_;
-    switch (type) {
-        case LCCKMessageNotificationTypeError:
-            type_ = TWMessageBarMessageTypeError;
-            break;
-        case LCCKMessageNotificationTypeSuccess:
-            type_ = TWMessageBarMessageTypeSuccess;
-            break;
-        case LCCKMessageNotificationTypeWarning:
-            type_ = TWMessageBarMessageTypeInfo;
-            break;
-        case LCCKMessageNotificationTypeMessage:
-            type_ = TWMessageBarMessageTypeInfo;
-            break;
-    }
-    [[TWMessageBarManager sharedInstance] showMessageWithTitle:title
-                                                   description:subtitle
-                                                          type:type_
-                                                      duration:duration
-                                                      callback:nil];
+//    TWMessageBarMessageType type_;
+//    switch (type) {
+//        case LCCKMessageNotificationTypeError:
+//            type_ = TWMessageBarMessageTypeError;
+//            break;
+//        case LCCKMessageNotificationTypeSuccess:
+//            type_ = TWMessageBarMessageTypeSuccess;
+//            break;
+//        case LCCKMessageNotificationTypeWarning:
+//            type_ = TWMessageBarMessageTypeInfo;
+//            break;
+//        case LCCKMessageNotificationTypeMessage:
+//            type_ = TWMessageBarMessageTypeInfo;
+//            break;
+//    }
+//    [[TWMessageBarManager sharedInstance] showMessageWithTitle:title
+//                                                   description:subtitle
+//                                                          type:type_
+//                                                      duration:duration
+//                                                      callback:nil];
 }
 
 + (void)showNotificationWithTitle:(NSString *)title subtitle:(NSString *)subtitle type:(LCCKMessageNotificationType)type {
@@ -93,7 +92,7 @@
 }
 
 + (void)hideNotification {
-    [[TWMessageBarManager sharedInstance] hideAll];
+//    [[TWMessageBarManager sharedInstance] hideAll];
 }
 
 @end

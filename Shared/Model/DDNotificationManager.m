@@ -7,8 +7,6 @@
 //
 
 #import "DDNotificationManager.h"
-#import <ChatKit/LCCKConstants.h>
-#import <ChatKit/LCCKConversationListService.h>
 
 @interface DDNotificationManager ()
 

@@ -15,29 +15,16 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - ALAssetsLibrary-CustomPhotoAlbum (1.3.1)
-  - AVOSCloud (3.5.1)
-  - AVOSCloudIM (3.5.1):
-    - AVOSCloud (= 3.5.1)
-    - AVOSCloudIM/_ARC (= 3.5.1)
-    - AVOSCloudIM/_NOARC (= 3.5.1)
-  - AVOSCloudIM/_ARC (3.5.1):
-    - AVOSCloud (= 3.5.1)
-    - AVOSCloudIM/_NOARC (= 3.5.1)
-  - AVOSCloudIM/_NOARC (3.5.1):
-    - AVOSCloud (= 3.5.1)
-  - ChatKit (0.7.21):
-    - AVOSCloud (~> 3.5.1)
-    - AVOSCloudIM (~> 3.5.1)
-    - DACircularProgress (~> 2.3.1)
-    - FDStackView (~> 1.0)
-    - FMDB (~> 2.6.2)
-    - Masonry (~> 1.0.1)
-    - MJRefresh (~> 3.1.9)
-    - MLLabel (~> 1.9.2)
-    - MWPhotoBrowser (~> 2.1.2)
-    - pop (~> 1.0.9)
-    - SDWebImage (~> 3.8.0)
-    - UITableView+FDTemplateLayoutCell (~> 1.5.beta)
+  - AVOSCloud (3.6.0)
+  - AVOSCloudIM (3.6.0):
+    - AVOSCloud (= 3.6.0)
+    - AVOSCloudIM/_ARC (= 3.6.0)
+    - AVOSCloudIM/_NOARC (= 3.6.0)
+  - AVOSCloudIM/_ARC (3.6.0):
+    - AVOSCloud (= 3.6.0)
+    - AVOSCloudIM/_NOARC (= 3.6.0)
+  - AVOSCloudIM/_NOARC (3.6.0):
+    - AVOSCloud (= 3.6.0)
   - CocoaLumberjack (3.0.0):
     - CocoaLumberjack/Default (= 3.0.0)
     - CocoaLumberjack/Extensions (= 3.0.0)
@@ -46,7 +33,6 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (3.0.0):
     - CocoaLumberjack/Default
-  - CYLTabBarController (1.6.1)
   - DACircularProgress (2.3.1)
   - FDFullscreenPopGesture (1.1)
   - FDStackView (1.0)
@@ -54,7 +40,6 @@ PODS:
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
   - FSCalendar (2.4.0)
-  - FTPopOverMenu (1.2.2)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
@@ -82,50 +67,49 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - TPKeyboardAvoiding (1.3)
-  - TWMessageBarManager (1.8.1)
   - UITableView+FDTemplateLayoutCell (1.5.beta)
   - UIView+Borders (0.0.2)
   - UMengAnalytics (4.1.2)
-  - XGPush (2.3)
 
 DEPENDENCIES:
   - AFNetworking
   - ALAssetsLibrary-CustomPhotoAlbum
-  - ChatKit
+  - AVOSCloud (~> 3.6.0)
+  - AVOSCloudIM (~> 3.6.0)
   - CocoaLumberjack
-  - CYLTabBarController
+  - DACircularProgress (~> 2.3.1)
   - FDFullscreenPopGesture
+  - FDStackView (~> 1.0)
+  - FMDB (~> 2.6.2)
   - FSCalendar
-  - FTPopOverMenu
   - Mantle
   - Masonry
+  - MJRefresh (~> 3.1.9)
+  - MLLabel (~> 1.9.2)
   - MLPAutoCompleteTextField
+  - MWPhotoBrowser (~> 2.1.2)
+  - pop (~> 1.0.9)
   - ReactiveCocoa (~> 2.5)
   - RegexKitLite
   - Reveal-iOS-SDK
   - SAMKeychain
   - SDWebImage
   - TPKeyboardAvoiding
-  - TWMessageBarManager
-  - UITableView+FDTemplateLayoutCell
+  - UITableView+FDTemplateLayoutCell (= 1.5.beta)
   - UIView+Borders
   - UMengAnalytics
-  - XGPush
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   ALAssetsLibrary-CustomPhotoAlbum: 299ea3f58e988b453b19c595859354e562814c93
-  AVOSCloud: 3dfc202ae8c8b543e2332c0f019e08972c4092c0
-  AVOSCloudIM: a8a89cbdc9387079f6da7bd4f371c523086a7635
-  ChatKit: fe3663899874cf0a2828426112437bd2e4e1434f
+  AVOSCloud: be838e80e13c3247abf24d95e325b3fd515f9d12
+  AVOSCloudIM: 7044ffb9c883fedb8d9055db12e4f28c5160795d
   CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
-  CYLTabBarController: c1a3eaee3081c84cd45105c5b4c26d62b747de67
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FDStackView: 3a4bbe0ce9c35e974246a585168b9da8c32213f1
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   FSCalendar: a9a02ab39a385b5a25bae2f96b50204292154a82
-  FTPopOverMenu: 6a535b7664b20d52d5a299d1f34414414e996caf
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
@@ -140,12 +124,10 @@ SPEC CHECKSUMS:
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
-  TWMessageBarManager: fd84e7948ba7968a2b5d9454859135761214ec56
   UITableView+FDTemplateLayoutCell: 02b508ab1cb4cea16a8c17ac83d2cd1fd72124f9
   UIView+Borders: d632c8bef679e7f98e913b569e972858742841ce
   UMengAnalytics: 8d95752776c32f5b954d40edc7f23944882a7c14
-  XGPush: fa2e9fce1895ea238bcd92dd0a5189a5452e15f2
 
-PODFILE CHECKSUM: fb5880e9a9bb4a7cf2e7c63cc48421b457768585
+PODFILE CHECKSUM: 62453342176be334cb2dfdff19d0c2f9e7bc2778
 
 COCOAPODS: 1.1.1

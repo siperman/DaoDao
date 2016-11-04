@@ -64,8 +64,6 @@
 
 + (void)registerNotification;
 
-+ (void)registerXGPush;
-
 + (void)firUpdate;
 
 @end

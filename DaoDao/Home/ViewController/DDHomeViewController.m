@@ -9,7 +9,6 @@
 #import "DDHomeViewController.h"
 #import "DDChessboardView.h"
 #import "DDPostAskTableViewController.h"
-#import <ChatKit/LCCKConversationListViewController.h>
 #import "DDCalendarViewController.h"
 #import "DDMineViewController.h"
 

@@ -1,1 +1,0 @@
-../../../ChatKit/ChatKit/Class/Module/Conversation/View/ChatBar/LCCKChatMoreView.h

@@ -21,7 +21,6 @@
 
 #import "RIButtonItem.h"
 #import "UIAlertView+Blocks.h"
-#import "XGPush.h"
 
 #import "FSBasicImage.h"
 #import "FSBasicImageSource.h"
@@ -502,35 +501,6 @@ static NSDateFormatter *timestampFormatter = nil;
     //注册Push服务，注册后才能收到推送
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
 #endif
-}
-
-+ (void)registerXGPush
-{
-#if SOOUYA
-
-#if DEBUG
-//    [XGPush startApp:2200104715 appKey:@"I5W8XX8NP34Z"];
-
-    [XGPush startApp:2200140107 appKey:@"IJ9C672TKX1I"];
-#elif INHOUSE
-    [XGPush startApp:2200131160 appKey:@"I1S5DB78KN2R"];
-#else
-    [XGPush startApp:2200104715 appKey:@"I5W8XX8NP34Z"];
-#endif
-
-#else
-
-#if DEBUG
-    [XGPush startApp:2200140108 appKey:@"IAW2LM1552MP"];   // 测试
-#elif INHOUSE
-    [XGPush startApp:2200131161 appKey:@"IKE9C5165VEQ"];   // 企业版
-#else
-    [XGPush startApp:2200104921 appKey:@"IPM7Y8E83R4P"];   // AppStore版
-#endif
-
-#endif
-    [XGPush initForReregister:nil];
-
 }
 
 + (void)registerPushForIOS8

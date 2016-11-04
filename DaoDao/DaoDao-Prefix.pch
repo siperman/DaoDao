@@ -25,6 +25,7 @@
 #import "SYUtils.h"
 #import "CategoryHeaders.h"
 #import "SYStoryboardManager.h"
+#import "ChatKitHeaders.h"
 
 #import <Masonry/Masonry.h>
 #import <MBProgressHUD/MBProgressHUD.h>
