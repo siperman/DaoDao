@@ -89,6 +89,7 @@
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backSelButtonImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -64.0) forBarMetrics:UIBarMetricsDefault];   // Just hide the title
+    [[UIBarButtonItem appearance] setTintColor:BarTintColor];
 
     // 按钮
 //    [[UIButton appearance] setBackgroundImage:[UIImage imageWithColor:CCCColor] forState:UIControlStateDisabled];

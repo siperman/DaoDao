@@ -10,6 +10,7 @@
 #import "DDAskInfoTableViewCell.h"
 #import "DDReloadView.h"
 #import "DDChatKitManager.h"
+#import "LCCKUser.h"
 
 @interface DDChessDetailViewController () <DDAskInfoProtocol>
 
@@ -159,6 +160,10 @@
     NSInteger idx = [self.answerList indexOfObject:askInfo];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+
+    // 缓存聊天用户信息
+    [LCCKUser saveToDisk:askInfo.answer.user];
+
     // 去聊天室
     [DDChatKitManager exampleOpenConversationViewControllerWithConversaionId:askInfo.answer.conversionId fromNavigationController:self.navigationController];
 }

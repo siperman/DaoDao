@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LCCKConstants.h"
 
-static CGFloat const kFunctionViewHeight = 210.0f;
+static CGFloat const kFunctionViewHeight = 107.0f;
 @class LCCKChatBar;
 /**
  *  更多view

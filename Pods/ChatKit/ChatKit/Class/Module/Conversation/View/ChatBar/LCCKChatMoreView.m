@@ -57,7 +57,7 @@
     CGFloat height = [UIApplication sharedApplication].keyWindow.frame.size.height;
     CGFloat widthLimit = MIN(width, height);
     CGFloat itemWidth = (widthLimit - self.edgeInsets.left - self.edgeInsets.right) / self.numberPerLine;
-    CGFloat itemHeight = kFunctionViewHeight / 2;
+    CGFloat itemHeight = kFunctionViewHeight;
     self.itemSize = CGSizeMake(itemWidth, itemHeight);
     if (self && [self respondsToSelector:@selector(titlesOfMoreView:)]&&[self respondsToSelector:@selector(imagesOfMoreView:)]) {
         self.titles = [self titlesOfMoreView:self];

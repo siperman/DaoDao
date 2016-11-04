@@ -139,8 +139,9 @@
 }
 
 - (void)setDefaultBackgroundImage {
-    UIImage *image = [self imageInBundlePathForImageName:@"conversationViewController_default_backgroundImage"];
-    [self.parentConversationViewController.view setBackgroundColor:[UIColor colorWithPatternImage:image]];
+    self.parentConversationViewController.view.backgroundColor = [@"#f2f2f2" lcck_hexStringToColor];
+//    UIImage *image = [self imageInBundlePathForImageName:@"conversationViewController_default_backgroundImage"];
+//    [self.parentConversationViewController.view setBackgroundColor:[UIColor colorWithPatternImage:image]];
 }
 
 - (void)resetBackgroundImage {

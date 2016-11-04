@@ -113,6 +113,9 @@
     _labTime.text = [SYUtils dateFormInterval:_ask.answer.meet.time.doubleValue];
     _labAddr.text = [NSString stringWithFormat:@"%@%@", _ask.answer.meet.city, _ask.answer.meet.addr];
 
+//    if (_ask.status.integerValue != DDAskWaitingAgreeMeet) {
+//        return;
+//    }
     if (_ask.isMyAsk) {
         UILabel *lab = [[UILabel alloc] init];
         lab.text = @"等待对方确认赴约...";

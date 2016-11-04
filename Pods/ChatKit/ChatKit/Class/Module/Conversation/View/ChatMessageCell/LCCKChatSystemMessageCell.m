@@ -57,7 +57,7 @@
     if (!_systemmessageContentView) {
         _systemmessageContentView = [[UIView alloc] init];
         _systemmessageContentView.backgroundColor = self.conversationViewTimeLineBackgroundColor ?: [UIColor lightGrayColor];
-        _systemmessageContentView.alpha = .8f;
+//        _systemmessageContentView.alpha = .8f;
         _systemmessageContentView.layer.cornerRadius = 6.0f;
         _systemmessageContentView.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -77,7 +77,7 @@
 
 - (NSDictionary *)systemMessageStyle {
     if (!_systemMessageStyle) {
-        UIFont *font = [UIFont systemFontOfSize:14];
+        UIFont *font = [UIFont systemFontOfSize:12];
         NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
         style.paragraphSpacing = 0.15 * font.lineHeight;
         style.hyphenationFactor = 1.0;
@@ -86,7 +86,7 @@
         _systemMessageStyle = @{
                  NSFontAttributeName: font,
                  NSParagraphStyleAttributeName: style,
-                 NSForegroundColorAttributeName: [UIColor whiteColor]
+                 NSForegroundColorAttributeName: self.conversationViewTimeLineTextColor
                  };
     }
     return _systemMessageStyle;
@@ -107,7 +107,7 @@
     if (_conversationViewTimeLineTextColor) {
         return _conversationViewTimeLineTextColor;
     }
-    _conversationViewTimeLineTextColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"ConversationView-TimeLine-TextColor"];
+    _conversationViewTimeLineTextColor = [@"#9e9e9e" lcck_hexStringToColor];
     return _conversationViewTimeLineTextColor;
 }
 
@@ -115,7 +115,7 @@
     if (_conversationViewTimeLineBackgroundColor) {
         return _conversationViewTimeLineBackgroundColor;
     }
-    _conversationViewTimeLineBackgroundColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"ConversationView-TimeLine-BackgroundColor"];
+    _conversationViewTimeLineBackgroundColor = [@"#f2f2f2" lcck_hexStringToColor];
     return _conversationViewTimeLineBackgroundColor;
 }
 

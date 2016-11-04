@@ -227,13 +227,14 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         }
 //        [[self class] lcck_showMessage:@"加载历史记录..." toView:aConversationController.view];
         if (conversation.members.count > 2) {
-            [aConversationController configureBarButtonItemStyle:LCCKBarButtonItemStyleGroupProfile action:^(UIBarButtonItem *sender, UIEvent *event) {
-                NSString *title = @"打开群聊详情";
-                NSString *subTitle = [NSString stringWithFormat:@"群聊id：%@", conversation.conversationId];
-                [LCCKUtil showNotificationWithTitle:title subtitle:subTitle type:LCCKMessageNotificationTypeMessage];
-            }];
+//            [aConversationController configureBarButtonItemStyle:LCCKBarButtonItemStyleGroupProfile action:^(UIBarButtonItem *sender, UIEvent *event) {
+//                NSString *title = @"打开群聊详情";
+//                NSString *subTitle = [NSString stringWithFormat:@"群聊id：%@", conversation.conversationId];
+//                [LCCKUtil showNotificationWithTitle:title subtitle:subTitle type:LCCKMessageNotificationTypeMessage];
+//            }];
         } else {
             [aConversationController configureBarButtonItemStyle:LCCKBarButtonItemStyleSingleProfile action:^(UIBarButtonItem *sender, UIEvent *event) {
+                // 点击详情按钮事件
                 NSString *title = @"打开用户详情";
                 NSArray *members = conversation.members;
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT (SELF IN %@)", @[ [LCChatKit sharedInstance].clientId ]];

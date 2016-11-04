@@ -25,4 +25,5 @@
 
 + (id)loadFromDiskWithKey:(NSString *)key;
 
++ (void)saveToDisk:(DDUser *)user;
 @end
