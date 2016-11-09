@@ -37,7 +37,8 @@
 /**
  *  搜索框
  */
-@property (nonatomic, strong) UISearchBar *searchBar;
+//@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchController *searchController;
 
 /**
  *  搜索城市列表
@@ -54,29 +55,43 @@ NSString *const cityCell = @"CityCell";
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"城市选择"];
-//    UIBarButtonItem *cancelBarButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonDown:)];
-//    [self.navigationItem setLeftBarButtonItem:cancelBarButton];
+    [self.navigationItem setTitle:@"地区"];
+
     self.isSearch = NO;
     [self locationStart];
-    
-    self.searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44.0f)];
-//    self.searchBar.barStyle     = UIBarStyleDefault;
-    self.searchBar.translucent  = YES;
-    self.searchBar.delegate     = self;
-    self.searchBar.placeholder  = @"城市名称或首字母";
-    self.searchBar.keyboardType = UIKeyboardTypeDefault;
-    [self.searchBar setBarTintColor:[UIColor colorWithWhite:0.95 alpha:1.0]];
-    [self.searchBar.layer setBorderWidth:0.5f];
-    [self.searchBar.layer setBorderColor:[UIColor colorWithWhite:0.7 alpha:1.0].CGColor];
-    
-    [self.tableView setTableHeaderView:self.searchBar];
-    [self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
-    [self.tableView setSectionIndexColor:[UIColor blueColor]];
+
+    [self setSearchControllerView];
+//    self.searchController.searchBar.barStyle     = UIBarStyleDefault;
+//    self.searchController.searchBar.translucent  = YES;
+//    [self.searchController.searchBar setImage:Image(@"") forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+//    [self.searchController.searchBar.layer setBorderWidth:0.5f];
+//    [self.searchController.searchBar.layer setBorderColor:[UIColor colorWithWhite:0.7 alpha:1.0].CGColor];
+
+
+    [self.tableView setTableHeaderView:self.searchController.searchBar];
+    [self.tableView setSectionIndexBackgroundColor:[UIColor colorWithWhite:1 alpha:0.95]];
+    [self.tableView setSectionIndexColor:MainColor];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cityCell];
     [self.tableView registerClass:[GYZCityGroupCell class] forCellReuseIdentifier:cityGroupCell];
     [self.tableView registerClass:[GYZCityHeaderView class] forHeaderFooterViewReuseIdentifier:cityHeaderView];
 }
+
+- (void)setSearchControllerView{
+    self.searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
+    self.searchController.searchBar.frame = CGRectMake(0, 0, 0, 44);
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    //搜索栏表头视图
+    UISearchBar *searchBar = self.searchController.searchBar;
+    self.tableView.tableHeaderView = searchBar;
+    [searchBar sizeToFit];
+
+    searchBar.delegate     = self;
+    searchBar.placeholder  = @"搜索";
+    searchBar.keyboardType = UIKeyboardTypeDefault;
+    
+    [searchBar setBarTintColor:BackgroundColor];
+}
+
 -(NSMutableArray *) cityDatas{
     if (_cityDatas == nil) {
         NSArray *array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CityData" ofType:@"plist"]];
@@ -180,7 +195,7 @@ NSString *const cityCell = @"CityCell";
 - (NSMutableArray *) arraySection
 {
     if (_arraySection == nil) {
-        _arraySection = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, @"定位", @"最近", @"最热", nil];
+        _arraySection = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, @"#", @"$", @"*", nil];
     }
     return _arraySection;
 }
@@ -260,18 +275,20 @@ NSString *const cityCell = @"CityCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cityCell];
         GYZCity *city =  [self.searchCities objectAtIndex:indexPath.row];
         [cell.textLabel setText:city.cityName];
+        [cell.textLabel setFont:NormalTextFont];
+        [cell.textLabel setTextColor:MainColor];
         return cell;
     }
     
     if (indexPath.section < 3) {
         GYZCityGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:cityGroupCell];
         if (indexPath.section == 0) {
-            cell.titleLabel.text = @"定位城市";
+            cell.titleLabel.text = @"当前定位城市";
             cell.noDataLabel.text = @"无法定位当前城市，请稍后再试";
             [cell setCityArray:self.localCityData];
         }
         else if (indexPath.section == 1) {
-            cell.titleLabel.text = @"最近访问城市";
+            cell.titleLabel.text = @"历史选择城市";
             [cell setCityArray:self.commonCityData];
         }
         else {
@@ -285,6 +302,8 @@ NSString *const cityCell = @"CityCell";
     GYZCityGroup *group = [self.cityDatas objectAtIndex:indexPath.section - 3];
     GYZCity *city =  [group.arrayCitys objectAtIndex:indexPath.row];
     [cell.textLabel setText:city.cityName];
+    [cell.textLabel setFont:NormalTextFont];
+    [cell.textLabel setTextColor:MainColor];
     
     return cell;
 }
@@ -332,6 +351,7 @@ NSString *const cityCell = @"CityCell";
     GYZCity *city = nil;
     if (self.isSearch) {
         city =  [self.searchCities objectAtIndex:indexPath.row];
+        self.searchController.active = NO;
     }else{
         if (indexPath.section < 3) {
             if (indexPath.section == 0 && self.localCityData.count <= 0) {

@@ -15,7 +15,7 @@
             <subviews>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="8Vx-Y5-HzK">
                     <constraints>
-                        <constraint firstAttribute="height" constant="22" id="FhO-zY-aaD"/>
+                        <constraint firstAttribute="height" constant="40" id="FhO-zY-aaD"/>
                     </constraints>
                     <connections>
                         <action selector="changePage:" destination="iN0-l3-epB" eventType="valueChanged" id="4lx-Hj-uTi"/>

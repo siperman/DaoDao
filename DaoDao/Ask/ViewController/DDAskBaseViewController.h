@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) DDAsk *ask;
 @property (nonatomic) BOOL showSmall; // 收起详情cell
+@property (nonatomic) BOOL showHead;  // 顶部Label
 
 - (Class)cellClassForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end

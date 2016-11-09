@@ -105,15 +105,15 @@
                              if(self.alpha == 0) {
                                  [self removeFromSuperview];
                                  
-                                 NSMutableArray *windows = [[NSMutableArray alloc] initWithArray:[UIApplication sharedApplication].windows];
-                                 [windows removeObject:self.overlayWindow];
-                                 
-                                 [windows enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(UIWindow *window, NSUInteger idx, BOOL *stop) {
-                                     if([window isKindOfClass:[UIWindow class]] && window.windowLevel == UIWindowLevelNormal) {
-                                         [window makeKeyWindow];
-                                         *stop = YES;
-                                     }
-                                 }];
+//                                 NSMutableArray *windows = [[NSMutableArray alloc] initWithArray:[UIApplication sharedApplication].windows];
+//                                 [windows removeObject:self.overlayWindow];
+//                                 
+//                                 [windows enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(UIWindow *window, NSUInteger idx, BOOL *stop) {
+//                                     if([window isKindOfClass:[UIWindow class]] && window.windowLevel == UIWindowLevelNormal) {
+//                                         [window makeKeyWindow];
+//                                         *stop = YES;
+//                                     }
+//                                 }];
                              }
                          }];
     });
@@ -207,13 +207,14 @@
 }
 
 - (UIWindow *)overlayWindow {
-    if(!_overlayWindow) {
-        _overlayWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        _overlayWindow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _overlayWindow.userInteractionEnabled = NO;
-        [_overlayWindow makeKeyAndVisible];
-    }
-    return _overlayWindow;
+    return [[UIApplication sharedApplication] keyWindow];
+//    if(!_overlayWindow) {
+//        _overlayWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//        _overlayWindow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//        _overlayWindow.userInteractionEnabled = NO;
+//        [_overlayWindow makeKeyAndVisible];
+//    }
+//    return _overlayWindow;
 }
 
 #pragma mark - Class Methods

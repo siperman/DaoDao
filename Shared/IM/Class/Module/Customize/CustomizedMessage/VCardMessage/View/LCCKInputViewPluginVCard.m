@@ -92,14 +92,14 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    LCCKConversationViewController *vc = (LCCKConversationViewController *)self.viewController;
-    DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:vc.conversationId];
-
-    if (ask.isMyAsk && ask.status.integerValue == DDAskWaitingSendMeet) {
-        self.hidden = NO;
-    } else {
-        self.hidden = YES;
-    }
+//    LCCKConversationViewController *vc = (LCCKConversationViewController *)self.viewController;
+//    DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:vc.conversationId];
+//
+//    if (ask.isMyAsk && ask.status.integerValue == DDAskWaitingSendMeet) {
+//        self.hidden = NO;
+//    } else {
+//        self.hidden = YES;
+//    }
 }
 
 #pragma mark - Private Methods

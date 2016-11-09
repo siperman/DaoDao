@@ -19,7 +19,7 @@
 
 NSString *const kLCCKAudioDataKey;
 
-@interface LCCKAVAudioPlayer () <AVAudioPlayerDelegate,AVAudioSessionDelegate>
+@interface LCCKAVAudioPlayer () <AVAudioPlayerDelegate>
 {
     
     AVAudioPlayer *_audioPlayer;
@@ -40,7 +40,6 @@ NSString *const kLCCKAudioDataKey;
 + (void)initialize {
     //配置播放器配置
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
-    [[AVAudioSession sharedInstance] setDelegate:self];
 }
 
 + (instancetype)sharePlayer{
@@ -169,8 +168,13 @@ NSString *const kLCCKAudioDataKey;
 }
 
 - (void)playAudioWithData:(NSData *)audioData {
-    
-    
+    // 监听距离感应
+    [[UIDevice currentDevice] setProximityMonitoringEnabled:YES];
+    if ([UIDevice currentDevice].proximityMonitoringEnabled == YES) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(proximityStateChanged:)name:UIDeviceProximityStateDidChangeNotification object:nil];
+    }
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+
     NSString *audioURLMD5String = objc_getAssociatedObject(audioData, &kLCCKAudioDataKey);
     
     if (![[[NSString stringWithFormat:@"%@_%@",self.URLString,self.identifier] lcck_MD5String] isEqualToString:audioURLMD5String]) {
@@ -205,9 +209,11 @@ NSString *const kLCCKAudioDataKey;
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
     [self setAudioPlayerState:LCCKVoiceMessageStateNormal];
-//    //删除近距离事件监听
-//    [[UIDevice currentDevice] setProximityMonitoringEnabled:NO];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceProximityStateDidChangeNotification object:nil];
+    //删除近距离事件监听
+    [[UIDevice currentDevice] setProximityMonitoringEnabled:NO];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceProximityStateDidChangeNotification object:nil];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+
     //延迟一秒将audioPlayer 释放
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .2f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self stopAudioPlayer];

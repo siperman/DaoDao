@@ -12,6 +12,8 @@
 #import "ChooseImageViewModel.h"
 #import "UIImage+ImageWithColor.h"
 
+#import <UINavigationController+FDFullscreenPopGesture.h>
+
 @interface DDChooseFavGoodViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *labTitle;
@@ -60,12 +62,28 @@
     } else {
         self.labTitle.text = @"为了更精准的帮您找到靠谱的人，请选择1~3项";
         self.data = [ChooseImageViewModel parseFromDicts:[DDConfig expert]];
-        self.title = @"您是哪方面的专家";
+        if (self.navigationController.presentingViewController) {
+            self.title = @"您是哪方面的专家";
+        } else {
+            self.title = @"选择专家";
+        }
     }
     [self.labTitle setFont:NormalTextFont];
     [self.labTitle setTextColor:MainColor];
     [self.btnNext setBackgroundImage:[UIImage imageWithColor:TextColor] forState:UIControlStateDisabled];
     self.btnNext.enabled = NO;
+
+    [self setBackButtonSelector:@selector(back)];
+    if (self.navigationController.presentingViewController) {
+        self.navigationController.fd_viewControllerBasedNavigationBarAppearanceEnabled = NO;
+    } else {
+        self.btnNext.hidden = YES;
+
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(next:)];
+        [item setTintColor:SecondColor];
+        item.enabled = NO;
+        self.navigationItem.rightBarButtonItem = item;
+    }
 }
 
 - (IBAction)next:(UIButton *)sender
@@ -81,6 +99,15 @@
 
         self.chooseValues = str;
         [self.delegete chooseFavGood:self];
+    }
+}
+
+- (void)back
+{
+    if (self.navigationController.presentingViewController) {
+        return;
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -125,6 +152,7 @@
         self.btnNext.enabled = (_selectCount >= 3);
     } else {
         self.btnNext.enabled = (_selectCount > 0 && _selectCount <= 3);
+        self.navigationItem.rightBarButtonItem.enabled = self.btnNext.enabled;
     }
 }
 

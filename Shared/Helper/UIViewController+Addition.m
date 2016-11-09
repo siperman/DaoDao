@@ -63,7 +63,7 @@
 - (void)setBackButtonSelector: (SEL) back {
     if (self.navigationController && self.navigationItem) {
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        btn.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
+        btn.imageEdgeInsets = UIEdgeInsetsMake(0, -8, 0, 0);
         [btn setImage:Image(@"icon_back") forState:UIControlStateNormal];
         btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [btn addTarget:self action:back forControlEvents:UIControlEventTouchUpInside];

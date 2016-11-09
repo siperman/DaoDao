@@ -40,12 +40,12 @@ static CGFloat const kAvatarImageViewWidth = 40.f;
 static CGFloat const kAvatarImageViewHeight = kAvatarImageViewWidth;
 static CGFloat const LCCKMessageSendStateViewWidthHeight = 30.f;
 static CGFloat const LCCKMessageSendStateViewLeftOrRightToMessageContentView = 2.f;
-static CGFloat const LCCKAvatarToMessageContent = 5.f;
+static CGFloat const LCCKAvatarToMessageContent = 10.f;
 
-static CGFloat const LCCKAvatarBottomToMessageContentTop = -1.f;
+static CGFloat const LCCKAvatarBottomToMessageContentTop = 0.f;
 
 
-static CGFloat const LCCK_MSG_CELL_EDGES_OFFSET = 16;
+static CGFloat const LCCK_MSG_CELL_EDGES_OFFSET = 12;
 static CGFloat const LCCK_MSG_CELL_NICKNAME_HEIGHT = 16;
 static CGFloat const LCCK_MSG_CELL_NICKNAME_FONT_SIZE = 12;
 

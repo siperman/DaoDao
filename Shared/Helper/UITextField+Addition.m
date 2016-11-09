@@ -15,5 +15,6 @@
     self.textColor = MainColor;
     self.font = NormalTextFont;
     self.layer.borderColor = SecondColor.CGColor;
+    self.borderStyle = UITextBorderStyleNone;
 }
 @end

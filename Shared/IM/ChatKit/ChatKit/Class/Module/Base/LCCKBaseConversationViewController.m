@@ -38,8 +38,13 @@ static CGFloat const LCCKScrollViewInsetTop = 20.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initilzer];
+    [self.btnHeader mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.view);
+        make.height.mas_equalTo(@0);
+    }];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.left.and.width.equalTo(self.view);
+        make.left.and.width.equalTo(self.view);
+        make.top.equalTo(self.btnHeader.mas_bottom);
         make.bottom.equalTo(self.chatBar.mas_top);
     }];
     [self.chatBar mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -138,6 +143,11 @@ static CGFloat const LCCKScrollViewInsetTop = 20.f;
     }
 }
 
+- (void)actionTapHeader
+{
+
+}
+
 #pragma mark - Getters
 
 - (LCCKChatBar *)chatBar {
@@ -147,6 +157,20 @@ static CGFloat const LCCKScrollViewInsetTop = 20.f;
         [self.view bringSubviewToFront:_chatBar];
     }
     return _chatBar;
+}
+
+- (UIButton *)btnHeader
+{
+    if (!_btnHeader) {
+        _btnHeader = [[UIButton alloc] init];
+        _btnHeader.titleLabel.font = BigTextFont;
+        _btnHeader.backgroundColor = MainColor;
+        _btnHeader.alpha = 0.7;
+        [_btnHeader setTitleColor:WhiteColor];
+        [_btnHeader addTarget:self action:@selector(actionTapHeader) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_btnHeader];
+    }
+    return _btnHeader;
 }
 
 #pragma mark - Previte Method

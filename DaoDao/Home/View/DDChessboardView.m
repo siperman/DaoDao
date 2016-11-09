@@ -110,7 +110,7 @@ static const NSInteger pageChess = 7;
 + (CGSize)boardSize
 {
     CGFloat width = SCREEN_WIDTH;
-    return CGSizeMake(width, 22 + 5 * width / 4);
+    return CGSizeMake(width, 40 + 5 * width / 4);
 }
 
 @end

@@ -250,14 +250,14 @@
                                                         <constraint firstItem="Baq-pk-r04" firstAttribute="leading" secondItem="nvC-G6-E1p" secondAttribute="leading" id="8oo-oy-RJO"/>
                                                         <constraint firstAttribute="trailing" secondItem="jBD-lK-e8C" secondAttribute="trailing" constant="25" id="9lD-AS-F0Q"/>
                                                         <constraint firstItem="e8O-XH-hvp" firstAttribute="top" secondItem="deT-50-2re" secondAttribute="bottom" constant="50" id="AHp-fT-Alb"/>
-                                                        <constraint firstItem="jBD-lK-e8C" firstAttribute="leading" secondItem="9NH-Z1-kN9" secondAttribute="trailing" constant="8" symbolic="YES" id="FqI-m1-6fj"/>
+                                                        <constraint firstItem="jBD-lK-e8C" firstAttribute="leading" secondItem="9NH-Z1-kN9" secondAttribute="trailing" constant="20" id="FqI-m1-6fj"/>
                                                         <constraint firstItem="oIf-Bx-Oi5" firstAttribute="leading" secondItem="nvC-G6-E1p" secondAttribute="leading" id="HlQ-fq-yN0"/>
                                                         <constraint firstItem="jBD-lK-e8C" firstAttribute="centerY" secondItem="9NH-Z1-kN9" secondAttribute="centerY" id="NK8-aX-I4I"/>
-                                                        <constraint firstItem="D1S-5A-JVv" firstAttribute="leading" secondItem="VFE-fR-n5S" secondAttribute="trailing" constant="8" symbolic="YES" id="QU7-0I-nh5"/>
+                                                        <constraint firstItem="VFE-fR-n5S" firstAttribute="leading" secondItem="RMU-fF-z30" secondAttribute="leading" id="Rbb-bG-ev5"/>
                                                         <constraint firstItem="e8O-XH-hvp" firstAttribute="leading" secondItem="deT-50-2re" secondAttribute="leading" id="RhS-rM-Oim"/>
                                                         <constraint firstItem="VFE-fR-n5S" firstAttribute="top" secondItem="e8O-XH-hvp" secondAttribute="bottom" constant="15" id="Sid-va-UQq"/>
                                                         <constraint firstItem="deT-50-2re" firstAttribute="trailing" secondItem="nvC-G6-E1p" secondAttribute="trailing" id="VZz-DM-atF"/>
-                                                        <constraint firstItem="gUx-tb-KHx" firstAttribute="leading" secondItem="RMU-fF-z30" secondAttribute="trailing" constant="8" symbolic="YES" id="Wdc-Ap-akQ"/>
+                                                        <constraint firstItem="gUx-tb-KHx" firstAttribute="leading" secondItem="RMU-fF-z30" secondAttribute="trailing" constant="20" id="Wdc-Ap-akQ"/>
                                                         <constraint firstItem="nvC-G6-E1p" firstAttribute="centerY" secondItem="jBD-lK-e8C" secondAttribute="centerY" id="ZuP-uD-cnn"/>
                                                         <constraint firstItem="RMU-fF-z30" firstAttribute="leading" secondItem="9NH-Z1-kN9" secondAttribute="leading" id="dPh-0p-zYe"/>
                                                         <constraint firstItem="oIf-Bx-Oi5" firstAttribute="centerY" secondItem="D1S-5A-JVv" secondAttribute="centerY" id="e7k-DM-5TG"/>
@@ -558,7 +558,7 @@
                                                             <color key="textColor" red="0.97401458019999998" green="0.4423997402" blue="0.15183952449999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入详细地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zz0-ea-deL">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入详细地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zz0-ea-deL">
                                                             <color key="textColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -604,7 +604,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcL-uM-iUr">
                                                     <color key="backgroundColor" red="0.2450951338" green="0.14873373509999999" blue="0.135093987" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="PVv-R8-0XY"/>
+                                                        <constraint firstAttribute="height" constant="44" id="PVv-R8-0XY"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="发送">

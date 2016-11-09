@@ -59,6 +59,7 @@ static NSString * const SYCachedAskInfoFileName = @"conv_ask";
         OSSpinLockUnlock(&_spinlock);
 
         [[SYCache sharedInstance] saveItem:tempAsks forKey:SYCachedAskInfoFileName];
+        POST_NOTIFICATION(kUpdateAskInfoNotification, nil);
     }
 }
 

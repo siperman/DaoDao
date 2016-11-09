@@ -129,6 +129,7 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
          }
          */
         [[LCChatKit sharedInstance] didReceiveRemoteNotification:userInfo];
+        [MobClick event:EnterIm];
     }
 }
 
@@ -508,6 +509,7 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
 }
 
 + (void)exampleOpenConversationViewControllerWithConversaionId:(NSString *)conversationId fromNavigationController:(UINavigationController *)aNavigationController {
+    [MobClick event:EnterIm];
     LCCKConversationViewController *conversationViewController = [[LCCKConversationViewController alloc] initWithConversationId:conversationId];
     conversationViewController.enableAutoJoin = YES;
     [conversationViewController setViewWillDisappearBlock:^(LCCKBaseViewController *viewController, BOOL aAnimated) {

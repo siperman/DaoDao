@@ -72,33 +72,33 @@
 #pragma mark - Public Method
 
 - (void)configureBarButtonItemStyle:(LCCKBarButtonItemStyle)style action:(LCCKBarButtonItemActionBlock)action {
-    NSString *icon;
-    switch (style) {
-        case LCCKBarButtonItemStyleSetting: {
-            icon = @"barbuttonicon_set";
-            break;
-        }
-        case LCCKBarButtonItemStyleMore: {
-            icon = @"barbuttonicon_more";
-            break;
-        }
-        case LCCKBarButtonItemStyleAdd: {
-            icon = @"barbuttonicon_add";
-            break;
-        }
-        case LCCKBarButtonItemStyleAddFriends:
-            icon = @"barbuttonicon_addfriends";
-            break;
-        case LCCKBarButtonItemStyleSingleProfile:
-            icon = @"barbuttonicon_InfoSingle";
-            break;
-        case LCCKBarButtonItemStyleGroupProfile:
-            icon = @"barbuttonicon_InfoMulti";
-            break;
-        case LCCKBarButtonItemStyleShare:
-            icon = @"barbuttonicon_Operate";
-            break;
-    }
+//    NSString *icon;
+//    switch (style) {
+//        case LCCKBarButtonItemStyleSetting: {
+//            icon = @"barbuttonicon_set";
+//            break;
+//        }
+//        case LCCKBarButtonItemStyleMore: {
+//            icon = @"barbuttonicon_more";
+//            break;
+//        }
+//        case LCCKBarButtonItemStyleAdd: {
+//            icon = @"barbuttonicon_add";
+//            break;
+//        }
+//        case LCCKBarButtonItemStyleAddFriends:
+//            icon = @"barbuttonicon_addfriends";
+//            break;
+//        case LCCKBarButtonItemStyleSingleProfile:
+//            icon = @"barbuttonicon_InfoSingle";
+//            break;
+//        case LCCKBarButtonItemStyleGroupProfile:
+//            icon = @"barbuttonicon_InfoMulti";
+//            break;
+//        case LCCKBarButtonItemStyleShare:
+//            icon = @"barbuttonicon_Operate";
+//            break;
+//    }
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"详情" style:UIBarButtonItemStylePlain target:self action:@selector(clickedBarButtonItemAction:event:)];
     self.barButtonItemAction = action;
 }

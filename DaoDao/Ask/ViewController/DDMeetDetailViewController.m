@@ -31,23 +31,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [MobClick event:Invitation_view];
     self.title = @"查看邀请函";
     self.view.backgroundColor = BackgroundColor;
 
-    _ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:_conversationId];
+//    _ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:_conversationId];
+    [self requestData];
+
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-
-    if (_ask && _ask.answer.meet) {
-        [self setUpData];
-    } else {
-        [self requestData];
-    }
-}
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//
+//    if (_ask && _ask.answer.meet) {
+//        [self setUpData];
+//    } else {
+//        [self requestData];
+//    }
+//}
 
 - (void)requestData
 {
@@ -116,20 +118,7 @@
 //    if (_ask.status.integerValue != DDAskWaitingAgreeMeet) {
 //        return;
 //    }
-    if (_ask.isMyAsk) {
-        UILabel *lab = [[UILabel alloc] init];
-        lab.text = @"等待对方确认赴约...";
-        lab.textColor = WhiteColor;
-        lab.font = BigTextFont;
-        lab.backgroundColor = ColorHex(@"9e9e9e");
-        lab.alpha = 0.8;
-        lab.textAlignment = NSTextAlignmentCenter;
-        [self.view addSubview:lab];
-        [lab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.leading.bottom.equalTo(self.view);
-            make.height.mas_equalTo(49);
-        }];
-    } else {
+    if (!_ask.isMyAsk && _ask.status.integerValue == DDAskWaitingAgreeMeet) {
         UIButton *btn1 = [self getBtnTitle:@"无法赴约" action:@selector(disagree)];
         btn1.alpha = 0.7;
         [self.view addSubview:btn1];
@@ -145,6 +134,32 @@
         [btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.trailing.bottom.equalTo(self.view);
             make.width.mas_equalTo(SCREEN_WIDTH/2);
+            make.height.mas_equalTo(49);
+        }];
+    } else {
+        NSString *text;
+        if (_ask.isMyAsk && _ask.status.integerValue == DDAskWaitingAgreeMeet) {
+            text = @"等待对方确认赴约...";
+        } else if (_ask.isMyAsk && _ask.status.integerValue == DDAskAnswerDisagreeMeet) {
+            text = @"对方已拒绝赴约";
+        } else if (_ask.isMyAsk && _ask.status.integerValue >= DDAskWaitingMeet) {
+            text = @"对方已确认赴约";
+        } else if (!_ask.isMyAsk && _ask.status.integerValue == DDAskAnswerDisagreeMeet) {
+            text = @"您已拒绝赴约";
+        } else if (!_ask.isMyAsk && _ask.status.integerValue >= DDAskWaitingMeet) {
+            text = @"您已确认赴约";
+        }
+
+        UILabel *lab = [[UILabel alloc] init];
+        lab.text = text;
+        lab.textColor = WhiteColor;
+        lab.font = BigTextFont;
+        lab.backgroundColor = ColorHex(@"9e9e9e");
+        lab.alpha = 0.8;
+        lab.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:lab];
+        [lab mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.leading.bottom.equalTo(self.view);
             make.height.mas_equalTo(49);
         }];
     }

@@ -9,6 +9,7 @@
 #import "DDMyAskTableViewController.h"
 #import "DDAskListViewModel.h"
 #import "DDMyAskTableViewCell.h"
+#import "DDPostAskTableViewController.h"
 
 @interface DDMyAskTableViewController ()
 
@@ -39,6 +40,14 @@
     self.tableView.mj_footer.refreshingBlock = ^{
         [weakSelf.viewModel loadMore];
     };
+
+    [self subscribeNotication:kClickEmptyViewNotification selector:@selector(postAsk)];
+}
+
+- (void)postAsk
+{
+    DDPostAskTableViewController *vc = [DDPostAskTableViewController viewController];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (DDAskListViewModel *)viewModel

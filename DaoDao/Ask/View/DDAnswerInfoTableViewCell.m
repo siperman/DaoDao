@@ -8,6 +8,7 @@
 
 #import "DDAnswerInfoTableViewCell.h"
 #import "DDChatKitManager.h"
+#import "DDRateViewController.h"
 
 @interface DDAnswerInfoTableViewCell ()
 
@@ -46,7 +47,7 @@
     _ask = ask;
 
     [self.imgHead sy_setThumbnailImageWithUrl:user.headUrl];
-    [self.imgGender setImage:([user.gender boolValue] ? Image(@"icon_woman") : Image(@"icon_man"))];
+    [self.imgGender setImage:user.genderImage];
 
     self.labName.text = user.nickName;
     self.labGrade.text = MajorGrade(user.major, user.grade);
@@ -66,6 +67,12 @@
     } else if (status == DDAskWaitingMeet) {
         self.labStatus.text = @"等待见面";
         self.labStatus.textColor = MainColor;
+
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        NSDateComponents *components = [cal components:( kCFCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute ) fromDate:[NSDate dateWithTimeIntervalSince1970:ask.answer.meet.time.doubleValue]];
+
+        NSString *timeStr = [NSString stringWithFormat:@"距离见面时间：%ld天%ld小时%ld分", components.day, components.hour, components.minute];
+        self.labMeetTime.text = timeStr;
     } else if (status == DDAskBothUnRate ||
                status == DDAskAnswerRate) {
         self.labStatus.text = @"等待评价";
@@ -87,6 +94,8 @@
 
 - (IBAction)chat:(UIButton *)sender
 {
+    [MobClick event:ChatBtn_click];
+
     if (_ask.answer.conversionId) {
         [DDChatKitManager exampleOpenConversationViewControllerWithConversaionId:_ask.answer.conversionId fromNavigationController:self.viewController.navigationController];
     }
@@ -100,6 +109,9 @@
     if (status == DDAskBothUnRate ||
         status == DDAskAnswerRate) {
         // 去评价
+        DDRateViewController *vc = [[DDRateViewController alloc] init];
+        vc.ask = self.ask;
+        [self.viewController.navigationController pushViewController:vc animated:YES];
     } else {
         [self makeCall:_ask.answer.user.mobilePhone];
     }

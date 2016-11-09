@@ -60,6 +60,8 @@
     }];
 
     [self setUpData];
+    self.timeView.alpha = 0;
+    self.datePicker.alpha = 0;
 }
 
 - (void)setUpData
@@ -174,6 +176,12 @@
 
     [self.datePicker setDate:date animated:YES];
     [self changeTime:date];
+    if (self.datePicker.alpha == 0) {
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            self.datePicker.alpha = 1;
+            self.timeView.alpha = 1;
+        }];
+    }
 }
 
 - (void)calendarCurrentPageDidChange:(FSCalendar *)calendar
@@ -279,6 +287,7 @@
 {
     if (!_datePicker) {
         _datePicker = [[UIDatePicker alloc] init];
+        _datePicker.minuteInterval = 10;
         [_datePicker addTarget:self action:@selector(pickTime:) forControlEvents:UIControlEventValueChanged]; //为UIDatePicker添加一个事件当UIDatePicker的值被改变时触发
 
         NSCalendar *cal = [NSCalendar currentCalendar];

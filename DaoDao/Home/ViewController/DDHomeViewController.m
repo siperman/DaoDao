@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) DDChessboardView *chessboard;
 @property (nonatomic, strong) UIButton *btnPost;
+@property (nonatomic, strong) NSTimer *countDownTimer;
 
 @property (nonatomic) BOOL isLoading;
 
@@ -45,7 +46,7 @@
 
     [self.view addSubview:self.btnPost];
     [self.btnPost mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.chessboard.mas_bottom).offset(32);
+        make.top.equalTo(self.chessboard.mas_bottom).offset(14);
         make.centerX.equalTo(self.view);
         make.width.mas_equalTo(305);
         make.height.mas_equalTo(40);
@@ -53,6 +54,9 @@
 
     [self subscribeNotication:kNewIMMessageNotification selector:@selector(newIMMessage)]; // 订阅新聊天消息推送
     [self subscribeNotication:kUpdateUnreadCountNotification selector:@selector(refreshIM)]; // 订阅未读聊天消息数推送
+//    [self subscribeNotication:kShowWelcomeNotification selector:@selector(showWelcome)];
+
+    self.countDownTimer = [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(requestChess) userInfo:nil repeats:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,6 +81,9 @@
 
 - (void)requestChess
 {
+    if (self.isLoading || ![DDUserManager manager].user) {
+        return;
+    }
     self.isLoading = YES;
     [SYRequestEngine requestChessCallback:^(BOOL success, id response) {
         if (success) {
@@ -111,6 +118,7 @@
 
 - (void)goMine
 {
+    [MobClick event:Home_mineIcon_click];
 //    RIButtonItem *btnCancle = [RIButtonItem itemWithLabel:@"取消"];
 //    RIButtonItem *btnLogout = [RIButtonItem itemWithLabel:@"确定" action:^{
 //        [SYRequestEngine userLogout:^(BOOL success, id response) {
@@ -137,12 +145,14 @@
 
 - (void)goIM
 {
+    [MobClick event:Home_msgIcon_click];
     LCCKConversationListViewController *vc = [[LCCKConversationListViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)postAsk
 {
+    [MobClick event:Home_publishDemandBtn_click];
     DDPostAskTableViewController *vc = [DDPostAskTableViewController viewController];
 //    DDCalendarViewController *vc = [[DDCalendarViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];

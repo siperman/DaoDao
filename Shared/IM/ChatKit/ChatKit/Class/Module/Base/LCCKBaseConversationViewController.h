@@ -17,6 +17,7 @@
  */
 @property (nonatomic, assign) BOOL loadingMoreMessage;
 @property (nonatomic, weak) LCCKChatBar *chatBar;
+@property (nonatomic, strong) UIButton *btnHeader;
 
 /**
  *  判断是否支持下拉加载更多消息, 如果已经加载完所有消息，那么就可以设为NO。
@@ -41,6 +42,9 @@
 - (void)scrollToBottomAnimated:(BOOL)animated;
 
 - (void)loadMoreMessagesScrollTotop;
+
+- (void)actionTapHeader;
+
 /**
  *  判断是否用户手指滚动
  */

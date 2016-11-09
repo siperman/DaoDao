@@ -13,7 +13,7 @@
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1.0]];
+        [self setBackgroundColor:BackgroundColor];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         [self addSubview:self.titleLabel];
         [self addSubview:self.noDataLabel];
@@ -25,7 +25,7 @@
 {
     if (_titleLabel == nil) {
         _titleLabel = [[UILabel alloc] init];
-        [_titleLabel setFont:[UIFont systemFontOfSize:14.0]];
+        [_titleLabel setFont:SmallTextFont];
     }
     return _titleLabel;
 }
@@ -63,17 +63,14 @@
         else {
             button = [[UIButton alloc] init];
             [button setBackgroundColor:[UIColor whiteColor]];
-            [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-            [button.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
-            [button.layer setMasksToBounds:YES];
-            [button.layer setCornerRadius:2.0f];
-            [button.layer setBorderColor:[UIColor colorWithWhite:0.8 alpha:1.0].CGColor];
-            [button.layer setBorderWidth:1.0f];
+            [button setTitleColor:MainColor forState:UIControlStateNormal];
+            [button.titleLabel setFont:NormalTextFont];
+            [button.layer setCornerRadius:kCornerRadius];
             [button addTarget:self action:@selector(cityButtonDown:) forControlEvents:UIControlEventTouchUpInside];
             [self.arrayCityButtons addObject:button];
             [self addSubview:button];
         }
-        [button setTitle:city.cityName forState:UIControlStateNormal];
+        [button setTitle:city.shortName forState:UIControlStateNormal];
         button.tag = i;
     }
     while (cityArray.count < self.arrayCityButtons.count) {
@@ -117,7 +114,7 @@
         UIButton *button = [self.arrayCityButtons objectAtIndex:i];
         [button setFrame:CGRectMake(x, y, width, HEIGHT_BUTTON)];
         if ((i + 1) % t == 0) {
-            y += HEIGHT_BUTTON + 5;
+            y += HEIGHT_BUTTON + HEIGHT_SPACE;
             x = WIDTH_LEFT;
         }else {
             x += width + space;
@@ -139,7 +136,7 @@
             space = MAX_SPACE;
         }
         
-        h += (10 + (HEIGHT_BUTTON + 5) * (cityArray.count / t + (cityArray.count % t == 0 ? 0 : 1)));
+        h += (10 + (HEIGHT_BUTTON + HEIGHT_SPACE) * (cityArray.count / t + (cityArray.count % t == 0 ? 0 : 1)));
     }
     else {
         h += 17;

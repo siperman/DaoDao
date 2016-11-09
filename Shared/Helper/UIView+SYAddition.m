@@ -51,7 +51,12 @@ static char kSepViewKey;
         tel.length > 0 &&
         ([tel rangeOfString:@"*"].location == NSNotFound)) {
         NSString *t = title ? title : tel;
-        
+
+        if ([t isEqualToString:kServiceCall]) {
+            [MobClick event:DialingBtn_click];
+        } else {
+            [MobClick event:CallCustomerServiceBtn_click];
+        }
 //        RIButtonItem *btnCancle = [RIButtonItem itemWithLabel:@"取消"];
 //        RIButtonItem *btnCall = [RIButtonItem itemWithLabel:@"呼叫" action:^{
 //            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", tel]]];

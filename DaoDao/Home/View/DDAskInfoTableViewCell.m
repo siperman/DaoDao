@@ -58,6 +58,7 @@
 
 - (IBAction)disinterest:(UIButton *)sender
 {
+    [MobClick event:PieceDtl_uninterestBtn_click];
     [self.viewController showLoadingHUD];
     [SYRequestEngine disinterestAskWithId:_askInfo.aid
                                  callback:^(BOOL success, id response) {
@@ -75,6 +76,7 @@
 
 - (IBAction)interest:(UIButton *)sender
 {
+    [MobClick event:PieceDtl_interestBtn_click];
     [self.viewController showLoadingHUD];
 
     [SYRequestEngine interestAskWithId:_askInfo.aid

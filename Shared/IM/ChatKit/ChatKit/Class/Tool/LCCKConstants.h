@@ -42,7 +42,7 @@ typedef void (^LCCKProgressBlock)(NSInteger percentDone);
 /// @name Common Define
 ///=============================================================================
 
-static NSString *const LCCKBadgeTextForNumberGreaterThanLimit = @"···";
+static NSString *const LCCKBadgeTextForNumberGreaterThanLimit = @"99+";
 
 #define LCCK_DEPRECATED(explain) __attribute__((deprecated(explain)))
 
@@ -262,8 +262,8 @@ static NSString *const LCCKInputViewPluginClassKey = @"LCCKInputViewPluginClassK
  */
 typedef NS_ENUM(NSUInteger, LCCKInputViewPluginType) {
     LCCKInputViewPluginTypeDefault = 0,       /**< 默认未知类型 */
-    LCCKInputViewPluginTypeTakePhoto = -1,         /**< 拍照 */
-    LCCKInputViewPluginTypePickImage = -2,         /**< 选择照片 */
+    LCCKInputViewPluginTypePickImage = -1,         /**< 选择照片 */
+    LCCKInputViewPluginTypeTakePhoto = -2,         /**< 拍照 */
     LCCKInputViewPluginTypeLocation = -3,          /**< 地理位置 */
     LCCKInputViewPluginTypeShortVideo = -4,        /**< 短视频 */
 //    LCCKInputViewPluginTypeMorePanel= -7,         /**< 显示更多面板 */

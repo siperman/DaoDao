@@ -145,6 +145,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lz3-nA-SkM">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="FoE-96-PGV"/>
+                                </constraints>
                                 <state key="normal" title="忘记邀请码">
                                     <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -534,20 +537,17 @@
                                                             <color key="textColor" red="0.97401458019999998" green="0.4423997402" blue="0.15183952449999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入您的花名（8个字以内）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XxX-t2-IJ9">
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="40" id="40w-Rm-yxE"/>
-                                                            </constraints>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入您的花名（8个字以内）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XxX-t2-IJ9">
                                                             <color key="textColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                         </textField>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入您的职务" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x1b-ts-eTN">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入您的职务" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x1b-ts-eTN">
                                                             <color key="textColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入您的行业" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ig-0F-pqE">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入您的行业" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ig-0F-pqE">
                                                             <color key="textColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -593,7 +593,7 @@
                                                         <constraint firstAttribute="height" constant="200" id="OqW-5g-4Ur"/>
                                                         <constraint firstItem="Xfm-fk-OP7" firstAttribute="leading" secondItem="zeH-Hh-tLI" secondAttribute="leading" id="PKu-mG-Gle"/>
                                                         <constraint firstItem="t2H-Cd-Dey" firstAttribute="top" secondItem="e73-Y1-icR" secondAttribute="top" constant="15" id="QW9-0g-R1a"/>
-                                                        <constraint firstItem="rne-3o-xvu" firstAttribute="trailing" secondItem="x1b-ts-eTN" secondAttribute="trailing" id="S00-gj-byY"/>
+                                                        <constraint firstItem="rne-3o-xvu" firstAttribute="leading" secondItem="x1b-ts-eTN" secondAttribute="trailing" id="S00-gj-byY"/>
                                                         <constraint firstItem="5n2-SL-QeU" firstAttribute="trailing" secondItem="P5Y-0v-c2O" secondAttribute="trailing" id="S0G-gq-qeC"/>
                                                         <constraint firstItem="x1b-ts-eTN" firstAttribute="centerY" secondItem="zeH-Hh-tLI" secondAttribute="centerY" id="UWm-2Y-SZe"/>
                                                         <constraint firstItem="409-xS-6fm" firstAttribute="width" secondItem="409-xS-6fm" secondAttribute="height" id="VBA-dP-Kzd"/>
@@ -601,7 +601,6 @@
                                                         <constraint firstItem="t2H-Cd-Dey" firstAttribute="leading" secondItem="e73-Y1-icR" secondAttribute="leading" constant="10" id="XFU-OU-CdN"/>
                                                         <constraint firstItem="0ig-0F-pqE" firstAttribute="centerY" secondItem="Xfm-fk-OP7" secondAttribute="centerY" id="Xhe-gg-EqS"/>
                                                         <constraint firstItem="P5Y-0v-c2O" firstAttribute="leading" secondItem="e73-Y1-icR" secondAttribute="leading" constant="10" id="aFe-h9-X1v"/>
-                                                        <constraint firstAttribute="trailing" secondItem="x1b-ts-eTN" secondAttribute="trailing" constant="10" id="dwM-L1-JP5"/>
                                                         <constraint firstItem="5w9-eu-kaE" firstAttribute="trailing" secondItem="0ig-0F-pqE" secondAttribute="trailing" id="gM8-oR-Iqa"/>
                                                         <constraint firstItem="0ig-0F-pqE" firstAttribute="trailing" secondItem="x1b-ts-eTN" secondAttribute="trailing" id="gjI-a1-9dS"/>
                                                         <constraint firstItem="x1b-ts-eTN" firstAttribute="leading" secondItem="XxX-t2-IJ9" secondAttribute="leading" id="hdF-u8-kUn"/>
@@ -614,6 +613,7 @@
                                                         <constraint firstItem="zeH-Hh-tLI" firstAttribute="leading" secondItem="t2H-Cd-Dey" secondAttribute="leading" id="t0y-be-cGm"/>
                                                         <constraint firstItem="5w9-eu-kaE" firstAttribute="centerY" secondItem="FIq-cp-tq6" secondAttribute="centerY" id="ulV-SG-Wlq"/>
                                                         <constraint firstItem="409-xS-6fm" firstAttribute="bottom" secondItem="Xfm-fk-OP7" secondAttribute="bottom" id="vYW-K7-lMh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="rne-3o-xvu" secondAttribute="trailing" constant="10" id="ylb-Zk-sRo"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -624,11 +624,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="162" id="7PH-iM-reK">
-                                        <rect key="frame" x="0.0" y="468" width="375" height="162"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="111" id="7PH-iM-reK">
+                                        <rect key="frame" x="0.0" y="468" width="375" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7PH-iM-reK" id="ddj-OK-o7R">
-                                            <frame key="frameInset" width="375" height="162"/>
+                                            <frame key="frameInset" width="375" height="111"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JqS-qd-d8a">
@@ -664,7 +664,7 @@
                                                 <constraint firstItem="QE0-jf-G5c" firstAttribute="centerX" secondItem="JqS-qd-d8a" secondAttribute="centerX" constant="-30" id="7X8-cL-UPQ"/>
                                                 <constraint firstItem="dqa-hn-cRq" firstAttribute="leading" secondItem="QE0-jf-G5c" secondAttribute="trailing" constant="3" id="FQj-OA-q8q"/>
                                                 <constraint firstItem="JqS-qd-d8a" firstAttribute="trailing" secondItem="ddj-OK-o7R" secondAttribute="trailingMargin" id="Qax-Mm-hiQ"/>
-                                                <constraint firstItem="JqS-qd-d8a" firstAttribute="top" secondItem="ddj-OK-o7R" secondAttribute="topMargin" constant="32" id="Sp4-Xn-3lc"/>
+                                                <constraint firstItem="JqS-qd-d8a" firstAttribute="top" secondItem="ddj-OK-o7R" secondAttribute="topMargin" constant="17" id="Sp4-Xn-3lc"/>
                                                 <constraint firstItem="QE0-jf-G5c" firstAttribute="centerY" secondItem="dqa-hn-cRq" secondAttribute="centerY" id="eTp-OQ-DkT"/>
                                                 <constraint firstItem="QE0-jf-G5c" firstAttribute="top" secondItem="JqS-qd-d8a" secondAttribute="bottom" constant="14" id="t9C-Uu-sSK"/>
                                             </constraints>
@@ -851,15 +851,12 @@
                                         <color key="textColor" red="0.97401458019999998" green="0.4423997402" blue="0.15183952449999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Faz-rY-AMf">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="HLQ-Ib-eHj"/>
-                                        </constraints>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Faz-rY-AMf">
                                         <color key="textColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3c-DX-7Ec">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3c-DX-7Ec">
                                         <color key="textColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>

@@ -11,14 +11,15 @@
 #import "GYZChooseCityDelegate.h"
 
 
-#define     MIN_SPACE           8           // 城市button最小间隙
-#define     MAX_SPACE           10
+#define     MIN_SPACE           12          // 城市button最小间隙
+#define     MAX_SPACE           12
+#define     HEIGHT_SPACE        10          // 城市button上下最小间隙
 
-#define     WIDTH_LEFT          13.5        // button左边距
-#define     WIDTH_RIGHT         28          // button右边距
+#define     WIDTH_LEFT          12          // button左边距
+#define     WIDTH_RIGHT         27          // button右边距
 
-#define     MIN_WIDTH_BUTTON    75
-#define     HEIGHT_BUTTON       38
+#define     MIN_WIDTH_BUTTON    104
+#define     HEIGHT_BUTTON       36
 
 @interface GYZCityGroupCell : UITableViewCell
 @property (nonatomic,assign) id <GYZCityGroupCellDelegate> delegate;

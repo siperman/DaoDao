@@ -142,7 +142,7 @@
 - (void)updateTime
 {
     if (self.leftTime > 1) {
-
+        [self.btnAuthCode setTitleColor:TextColor];
         self.leftTime--;
 
         [UIView performWithoutAnimation:^{
@@ -150,6 +150,7 @@
             [self.btnAuthCode layoutIfNeeded];
         }];
     } else {
+        [self.btnAuthCode setTitleColor:SecondColor];
         [self resetTimer];
     }
 }
@@ -174,6 +175,7 @@
         DDMajorGradePickerView *pv = [DDMajorGradePickerView majorGradePickerWithDelegate:self];
         textField.inputView = pv;
         [pv pickedMajor:_user.major grade:_user.grade];
+        textField.tintColor = ClearColor;
         return YES;
     }
 

@@ -95,6 +95,7 @@
 
 - (IBAction)post:(UIButton *)sender
 {
+    [MobClick event:NewYueju_publishBtn_click];
     if (![self checkParams]) {
         return;
     }
@@ -113,7 +114,10 @@
                                       [vcs replaceObjectAtIndex:[vcs indexOfObject:self] withObject:vc];
                                       vc.ask = [DDAsk fromDict:response[kObjKey]];
 
-                                      [self.navigationController setViewControllers:vcs animated:YES];
+                                      [self.navigationController showNotice:@"发布需求成功"];
+                                      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDefaultHideNoticeIntervel * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                          [self.navigationController setViewControllers:vcs animated:YES];
+                                      });
                                   } else {
                                       [self.navigationController showRequestNotice:response];
                                   }

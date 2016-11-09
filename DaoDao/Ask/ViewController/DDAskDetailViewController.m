@@ -9,6 +9,7 @@
 #import "DDAskDetailViewController.h"
 #import "DDBaseTableViewCell.h"
 #import "DDAnswerInfoTableViewCell.h"
+#import "DDAskMeetDetailViewController.h"
 
 #import "UITableView+FDTemplateLayoutCell.h"
 
@@ -21,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [MobClick event:YuejuDtlBtn_click];
 
     [self.tableView registerNib:[DDAnswerInfoTableViewCell class]];
     if (self.ask.status.integerValue >= DDAskWaitingSendMeet) {
@@ -52,10 +54,7 @@
         return 0;
     }
 
-    NSInteger status = self.ask.status.integerValue;
-    if (status == DDAskPostSuccess ||
-        status == DDAskWaitingHandOut ||
-        status == DDAskWaitingAnswerInterest) {
+    if ([self isWaitingAnswer]) {
         return 2;
     } else {
         return self.answers.count + 1;
@@ -67,7 +66,6 @@
     Class class = [self cellClassForRowAtIndexPath:indexPath];
     DDBaseTableViewCell *cell = [tableView dequeueCell:class indexPath:indexPath];
 
-    NSInteger status = self.ask.status.integerValue;
     NSInteger section = indexPath.section;
 
     if (section == 0) {
@@ -75,9 +73,7 @@
         return cell;
     }
 
-    if (status == DDAskPostSuccess ||
-        status == DDAskWaitingHandOut ||
-        status == DDAskWaitingAnswerInterest) {
+    if ([self isWaitingAnswer]) {
         [cell configureCellWithData:self.ask];
     } else {
         DDAsk *ask = self.answers[section - 1];
@@ -89,48 +85,21 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger status = self.ask.status.integerValue;
     NSInteger section = indexPath.section;
 
     if (section == 0) {
-        if (self.showSmall) {
-            return [DDDemandInfoSmallTableViewCell cellHeight];
-        } else {
-            return [tableView fd_heightForCellWithIdentifier:NSStringFromClass([DDDemandInfoTableViewCell class]) cacheByIndexPath:indexPath configuration:^(DDBaseTableViewCell *cell) {
-                [cell configureCellWithData:self.ask];
-            }];
-        }
+        Class class = [self cellClassForRowAtIndexPath:indexPath];
+
+        return [tableView fd_heightForCellWithIdentifier:[class defaultReuseIdentifier] cacheByIndexPath:indexPath configuration:^(DDBaseTableViewCell *cell) {
+            [cell configureCellWithData:self.ask];
+        }];
     }
 
-    if (status == DDAskPostSuccess ||
-        status == DDAskWaitingHandOut ||
-        status == DDAskWaitingAnswerInterest) {
+    if ([self isWaitingAnswer]) {
         return [DDAskHandOutTableViewCell cellHeight];
     } else {
         DDAsk *ask = self.answers[section - 1];
         return [DDAnswerInfoTableViewCell cellHeightWithAsk:ask];
-    }
-}
-
-- (Class)cellClassForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSInteger status = self.ask.status.integerValue;
-    NSInteger section = indexPath.section;
-
-    if (section == 0) {
-        if (self.showSmall) {
-            return [DDDemandInfoSmallTableViewCell class];
-        } else {
-            return [DDDemandInfoTableViewCell class];
-        }
-    }
-
-    if (status == DDAskPostSuccess ||
-        status == DDAskWaitingHandOut ||
-        status == DDAskWaitingAnswerInterest) {
-        return [DDAskHandOutTableViewCell class];
-    } else {
-        return [DDAnswerInfoTableViewCell class];
     }
 }
 
@@ -141,7 +110,46 @@
     if (section == 0) {
         self.showSmall = !self.showSmall;
         [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else if (![self isWaitingAnswer]) {
+        DDAsk *ask = self.answers[section - 1];
+        DDAskMeetDetailViewController *vc = [[DDAskMeetDetailViewController alloc] init];
+        vc.ask = ask;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
+
+#pragma mark helper
+
+- (Class)cellClassForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger section = indexPath.section;
+
+    if (section == 0) {
+        if (self.showSmall) {
+            return [DDDemandInfoSmallTableViewCell class];
+        } else {
+            return [DDDemandInfoTableViewCell class];
+        }
+    }
+
+    if ([self isWaitingAnswer]) {
+        return [DDAskHandOutTableViewCell class];
+    } else {
+        return [DDAnswerInfoTableViewCell class];
+    }
+}
+
+- (BOOL)isWaitingAnswer
+{
+    NSInteger status = self.ask.status.integerValue;
+    if (status == DDAskPostSuccess ||
+        status == DDAskWaitingHandOut ||
+        status == DDAskWaitingAnswerInterest) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 
 @end

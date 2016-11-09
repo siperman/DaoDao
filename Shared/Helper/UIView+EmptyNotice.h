@@ -11,6 +11,10 @@
 typedef NS_ENUM(NSUInteger, SYEmptyNoticeType) {
     SYEmptyNoticeTypeNetworkError,
     SYEmptyNoticeTypeEmptyAsk,
+    SYEmptyNoticeTypeEmptyMessage,
+    SYEmptyNoticeTypeEmptyMyAsk,
+    SYEmptyNoticeTypeEmptyMyAnswer,
+
 };
 
 @interface UIView (EmptyNotice)

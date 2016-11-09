@@ -26,7 +26,7 @@
 - (void)updateConstraints {
     [super updateConstraints];
     [self.systemmessageContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        CGFloat offset = 8;
+        CGFloat offset = 5;
         make.top.equalTo(self.contentView.mas_top).with.offset(offset);
         make.bottom.equalTo(self.contentView.mas_bottom).with.offset(-offset);
         CGFloat width = [UIApplication sharedApplication].keyWindow.frame.size.width;

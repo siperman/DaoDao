@@ -11,6 +11,7 @@
 #import "DDFillJobIndustryViewController.h"
 #import "SYCameraManager.h"
 #import "DDWebViewController.h"
+#import "DDWelcome.h"
 
 @interface DDRegisterStepThreeViewController () <UITextFieldDelegate, DDChooseFavGoodViewControllerProtocol>
 
@@ -26,7 +27,7 @@
 
 @property (nonatomic, strong) NSString *topic; // 感兴趣话题
 @property (nonatomic, strong) NSString *expert; // 擅长领域
-
+@property (nonatomic, strong) NSString *time;
 @end
 
 @implementation DDRegisterStepThreeViewController
@@ -61,10 +62,13 @@
                                                     reduce:^id(NSString *name,NSString *job,NSString *industry,NSString *year){
                                                         return @(name.length && job.length && industry.length && year.length);
                                                     }];
+    self.time = [NSString stringWithFormat:@"%ld", [SYUtils currentTimestamp]];
 }
 
 - (IBAction)next:(UIButton *)sender
 {
+    [self.view endEditing:YES];
+
     DDChooseFavGoodViewController *vc = [DDChooseFavGoodViewController GoodVC];
 
     vc.delegete = self;
@@ -74,8 +78,16 @@
 
 - (IBAction)showWeb:(UIButton *)sender
 {
+    [self.view endEditing:YES];
+
     DDWebViewController *vc = [[DDWebViewController alloc] init];
-    vc.url = @"http://testadmin.daodaoclub.com/h5/company/announce.html";
+#if DEBUG
+    vc.url = [NSString stringWithFormat:@"http://devadmin.daodaoclub.com/h5/company/announce.html?xx=%@", self.time];
+#elif TEST
+    vc.url = [NSString stringWithFormat:@"http://testadmin.daodaoclub.com/h5/company/announce.html?xx=%@", self.time];
+#else
+    vc.url = [NSString stringWithFormat:@"http://admin.daodaoclub.com/h5/company/announce.html?xx=%@", self.time];
+#endif
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -85,6 +97,7 @@
     [self.view endEditing:YES];
     [[SYCameraManager sharedInstance] getAvatarInViewController:self callback:^(NSArray *photos) {
         [self.btnAvatar setImage:photos.lastObject forState:UIControlStateNormal];
+        self.labName.hidden = YES;
     }];
 }
 
@@ -105,15 +118,12 @@
         return NO;
     }
 
+//    if (textField == self.txtYear) {
+//        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+//    }
+
     return YES;
 }
-
-//- (void)textFieldDidBeginEditing:(UITextField *)textField
-//{
-//    if (textField == self.txtYear) {
-//        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-//    }
-//}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
@@ -156,7 +166,9 @@
                                    if (success) {
                                        DDUser *user = [DDUser fromDict:response[kObjKey]];
                                        [DDUserManager manager].user = user;
-                                       [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                                       [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                                           [DDWelcome show];
+                                       }];
                                    } else {
                                        [self.navigationController showRequestNotice:response];
                                    }

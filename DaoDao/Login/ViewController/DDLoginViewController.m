@@ -87,6 +87,7 @@
 - (void)updateTime
 {
     if (self.leftTime > 1) {
+        [self.btnAuthCode setTitleColor:TextColor];
 
         self.leftTime--;
 
@@ -95,6 +96,7 @@
             [self.btnAuthCode layoutIfNeeded];
         }];
     } else {
+        [self.btnAuthCode setTitleColor:SecondColor];
         [self resetTimer];
     }
 }

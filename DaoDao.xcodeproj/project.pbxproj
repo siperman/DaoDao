@@ -63,6 +63,7 @@
 		2B86A25E1DBDA24B00ED2253 /* DDMeetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B86A25D1DBDA24B00ED2253 /* DDMeetTableViewController.m */; };
 		2B86A2691DBE0A6400ED2253 /* DDUserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B86A2681DBE0A6400ED2253 /* DDUserFactory.m */; };
 		2B90B9071DB71440000B6FE1 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B90B9061DB71440000B6FE1 /* Shared.xcassets */; };
+		2B9E97871DD1BB0500ABE6A9 /* CustomizedChatKit.ChatKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B9E97861DD1BB0500ABE6A9 /* CustomizedChatKit.ChatKeyboard.bundle */; };
 		2BA3F2E31D911A4A00094E0A /* CityData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3F2D91D911A4A00094E0A /* CityData.plist */; };
 		2BA3F2E41D911A4A00094E0A /* GYZChooseCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3F2DB1D911A4A00094E0A /* GYZChooseCityController.m */; };
 		2BA3F2E51D911A4A00094E0A /* GYZCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3F2DE1D911A4A00094E0A /* GYZCity.m */; };
@@ -176,6 +177,8 @@
 		2BA714361DCC3C700072FB42 /* LCCKSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA713CC1DCC3C700072FB42 /* LCCKSwipeView.m */; };
 		2BA7143B1DCC689C0072FB42 /* CustomizedChatKit.MessageBubble.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2BA714391DCC689C0072FB42 /* CustomizedChatKit.MessageBubble.bundle */; };
 		2BA7143C1DCC689C0072FB42 /* CustomizedChatKit.Other.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2BA7143A1DCC689C0072FB42 /* CustomizedChatKit.Other.bundle */; };
+		2BA714401DCC8E190072FB42 /* DDAskMeetActionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7143E1DCC8E190072FB42 /* DDAskMeetActionTableViewCell.m */; };
+		2BA714411DCC8E190072FB42 /* DDAskMeetActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA7143F1DCC8E190072FB42 /* DDAskMeetActionTableViewCell.xib */; };
 		2BAE2BEB1DBF08DA003BC7B9 /* DDMeetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE2BEA1DBF08DA003BC7B9 /* DDMeetDetailViewController.m */; };
 		2BB23C771DC6F8F000FC5657 /* DDAskHandOutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB23C751DC6F8F000FC5657 /* DDAskHandOutTableViewCell.m */; };
 		2BB23C781DC6F8F000FC5657 /* DDAskHandOutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BB23C761DC6F8F000FC5657 /* DDAskHandOutTableViewCell.xib */; };
@@ -405,6 +408,14 @@
 		2BDB10311D9D087900F2C27C /* DDChessboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BDB10301D9D087900F2C27C /* DDChessboardView.xib */; };
 		2BDB10341D9D10CB00F2C27C /* DDChess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB10331D9D10CB00F2C27C /* DDChess.m */; };
 		2BDB10371D9E45C200F2C27C /* DDChessDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB10361D9E45C200F2C27C /* DDChessDetailViewController.m */; };
+		2BE8351B1DCF79260064A5A6 /* DDRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE835191DCF79260064A5A6 /* DDRateViewController.m */; };
+		2BE8351C1DCF79260064A5A6 /* DDRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8351A1DCF79260064A5A6 /* DDRateViewController.xib */; };
+		2BE835201DD06A3F0064A5A6 /* DDWelcome.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE8351F1DD06A3F0064A5A6 /* DDWelcome.m */; };
+		2BEC3AF71DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC3AF51DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.m */; };
+		2BEC3AF81DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BEC3AF61DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.xib */; };
+		2BEC3AFC1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC3AFA1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.m */; };
+		2BEC3AFD1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BEC3AFB1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.xib */; };
+		2BEC3B001DD3243A009DEDC0 /* DDRateViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC3AFF1DD3243A009DEDC0 /* DDRateViewModel.m */; };
 		2BEF03741D869F3A005372B6 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF03731D869F3A005372B6 /* UIView+Addition.m */; };
 		2BF86C7B1D9510A500E06BF8 /* DDCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C791D9510A500E06BF8 /* DDCalendarViewController.m */; };
 		2BF86C801D9511B700E06BF8 /* Shared.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF86C7F1D9511B700E06BF8 /* Shared.storyboard */; };
@@ -522,6 +533,7 @@
 		2B86A2681DBE0A6400ED2253 /* DDUserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserFactory.m; sourceTree = "<group>"; };
 		2B8D33FB1DBB851A00F02104 /* DaoDao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DaoDao.entitlements; sourceTree = "<group>"; };
 		2B90B9061DB71440000B6FE1 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
+		2B9E97861DD1BB0500ABE6A9 /* CustomizedChatKit.ChatKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CustomizedChatKit.ChatKeyboard.bundle; sourceTree = "<group>"; };
 		2BA3F2D91D911A4A00094E0A /* CityData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CityData.plist; sourceTree = "<group>"; };
 		2BA3F2DA1D911A4A00094E0A /* GYZChooseCityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZChooseCityController.h; sourceTree = "<group>"; };
 		2BA3F2DB1D911A4A00094E0A /* GYZChooseCityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZChooseCityController.m; sourceTree = "<group>"; };
@@ -745,6 +757,9 @@
 		2BA713CC1DCC3C700072FB42 /* LCCKSwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCKSwipeView.m; sourceTree = "<group>"; };
 		2BA714391DCC689C0072FB42 /* CustomizedChatKit.MessageBubble.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CustomizedChatKit.MessageBubble.bundle; sourceTree = "<group>"; };
 		2BA7143A1DCC689C0072FB42 /* CustomizedChatKit.Other.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CustomizedChatKit.Other.bundle; sourceTree = "<group>"; };
+		2BA7143D1DCC8E190072FB42 /* DDAskMeetActionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskMeetActionTableViewCell.h; sourceTree = "<group>"; };
+		2BA7143E1DCC8E190072FB42 /* DDAskMeetActionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskMeetActionTableViewCell.m; sourceTree = "<group>"; };
+		2BA7143F1DCC8E190072FB42 /* DDAskMeetActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDAskMeetActionTableViewCell.xib; sourceTree = "<group>"; };
 		2BAE2BE91DBF08DA003BC7B9 /* DDMeetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMeetDetailViewController.h; sourceTree = "<group>"; };
 		2BAE2BEA1DBF08DA003BC7B9 /* DDMeetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeetDetailViewController.m; sourceTree = "<group>"; };
 		2BB23C741DC6F8F000FC5657 /* DDAskHandOutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskHandOutTableViewCell.h; sourceTree = "<group>"; };
@@ -1210,6 +1225,19 @@
 		2BDB10331D9D10CB00F2C27C /* DDChess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChess.m; sourceTree = "<group>"; };
 		2BDB10351D9E45C200F2C27C /* DDChessDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChessDetailViewController.h; sourceTree = "<group>"; };
 		2BDB10361D9E45C200F2C27C /* DDChessDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChessDetailViewController.m; sourceTree = "<group>"; };
+		2BE835181DCF79260064A5A6 /* DDRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRateViewController.h; sourceTree = "<group>"; };
+		2BE835191DCF79260064A5A6 /* DDRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRateViewController.m; sourceTree = "<group>"; };
+		2BE8351A1DCF79260064A5A6 /* DDRateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDRateViewController.xib; sourceTree = "<group>"; };
+		2BE8351E1DD06A3F0064A5A6 /* DDWelcome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDWelcome.h; sourceTree = "<group>"; };
+		2BE8351F1DD06A3F0064A5A6 /* DDWelcome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDWelcome.m; sourceTree = "<group>"; };
+		2BEC3AF41DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskMeetSmallTableViewCell.h; sourceTree = "<group>"; };
+		2BEC3AF51DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskMeetSmallTableViewCell.m; sourceTree = "<group>"; };
+		2BEC3AF61DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDAskMeetSmallTableViewCell.xib; sourceTree = "<group>"; };
+		2BEC3AF91DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDemandInfoMeetTableViewCell.h; sourceTree = "<group>"; };
+		2BEC3AFA1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDemandInfoMeetTableViewCell.m; sourceTree = "<group>"; };
+		2BEC3AFB1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDDemandInfoMeetTableViewCell.xib; sourceTree = "<group>"; };
+		2BEC3AFE1DD3243A009DEDC0 /* DDRateViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRateViewModel.h; sourceTree = "<group>"; };
+		2BEC3AFF1DD3243A009DEDC0 /* DDRateViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRateViewModel.m; sourceTree = "<group>"; };
 		2BEF03721D869F3A005372B6 /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
 		2BEF03731D869F3A005372B6 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
 		2BF86C781D9510A500E06BF8 /* DDCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCalendarViewController.h; sourceTree = "<group>"; };
@@ -1310,12 +1338,21 @@
 				2BD6AE181DC2FB3C00626677 /* DDDemandInfoSmallTableViewCell.h */,
 				2BD6AE191DC2FB3C00626677 /* DDDemandInfoSmallTableViewCell.m */,
 				2BD6AE1A1DC2FB3C00626677 /* DDDemandInfoSmallTableViewCell.xib */,
+				2BEC3AF91DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.h */,
+				2BEC3AFA1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.m */,
+				2BEC3AFB1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.xib */,
 				2BB23C741DC6F8F000FC5657 /* DDAskHandOutTableViewCell.h */,
 				2BB23C751DC6F8F000FC5657 /* DDAskHandOutTableViewCell.m */,
 				2BB23C761DC6F8F000FC5657 /* DDAskHandOutTableViewCell.xib */,
 				2B8033421DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.h */,
 				2B8033431DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.m */,
 				2B8033441DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.xib */,
+				2BA7143D1DCC8E190072FB42 /* DDAskMeetActionTableViewCell.h */,
+				2BA7143E1DCC8E190072FB42 /* DDAskMeetActionTableViewCell.m */,
+				2BA7143F1DCC8E190072FB42 /* DDAskMeetActionTableViewCell.xib */,
+				2BEC3AF41DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.h */,
+				2BEC3AF51DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.m */,
+				2BEC3AF61DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1325,8 +1362,6 @@
 			children = (
 				2BD6AE121DC1B3B000626677 /* DDAskBaseViewController.h */,
 				2BD6AE131DC1B3B000626677 /* DDAskBaseViewController.m */,
-				2BBB7D7B1DA8C73A005E90A5 /* DDPostAskTableViewController.h */,
-				2BBB7D7C1DA8C73A005E90A5 /* DDPostAskTableViewController.m */,
 				2BBB7D8E1DAA2032005E90A5 /* DDAskDetailViewController.h */,
 				2BBB7D8F1DAA2032005E90A5 /* DDAskDetailViewController.m */,
 				2B8033471DC9D9CC0059FD28 /* DDAskMeetDetailViewController.h */,
@@ -1335,6 +1370,11 @@
 				2B86A25D1DBDA24B00ED2253 /* DDMeetTableViewController.m */,
 				2BAE2BE91DBF08DA003BC7B9 /* DDMeetDetailViewController.h */,
 				2BAE2BEA1DBF08DA003BC7B9 /* DDMeetDetailViewController.m */,
+				2BBB7D7B1DA8C73A005E90A5 /* DDPostAskTableViewController.h */,
+				2BBB7D7C1DA8C73A005E90A5 /* DDPostAskTableViewController.m */,
+				2BE835181DCF79260064A5A6 /* DDRateViewController.h */,
+				2BE835191DCF79260064A5A6 /* DDRateViewController.m */,
+				2BE8351A1DCF79260064A5A6 /* DDRateViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1344,6 +1384,8 @@
 			children = (
 				2BBB7D861DA9E290005E90A5 /* DDPostAskViewModel.h */,
 				2BBB7D871DA9E290005E90A5 /* DDPostAskViewModel.m */,
+				2BEC3AFE1DD3243A009DEDC0 /* DDRateViewModel.h */,
+				2BEC3AFF1DD3243A009DEDC0 /* DDRateViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1369,6 +1411,8 @@
 				2B144A991D9E5AFA00B70B0D /* DDAskInfoTableViewCell.h */,
 				2B144A9A1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.m */,
 				2B144A9B1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib */,
+				2BE8351E1DD06A3F0064A5A6 /* DDWelcome.h */,
+				2BE8351F1DD06A3F0064A5A6 /* DDWelcome.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1669,6 +1713,7 @@
 		2BA712D91DCC3C700072FB42 /* ChatKit */ = {
 			isa = PBXGroup;
 			children = (
+				2B9E97861DD1BB0500ABE6A9 /* CustomizedChatKit.ChatKeyboard.bundle */,
 				2BA714391DCC689C0072FB42 /* CustomizedChatKit.MessageBubble.bundle */,
 				2BA7143A1DCC689C0072FB42 /* CustomizedChatKit.Other.bundle */,
 				2BA712DA1DCC3C700072FB42 /* ChatKit */,
@@ -3302,6 +3347,7 @@
 				2BB3D7E81D7D6F8D00FFDC0E /* UMSocialLocalizable.strings in Resources */,
 				2B144A9D1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib in Resources */,
 				2BB3D7F21D7D6F8D00FFDC0E /* UMSocialSDKResourcesNew.bundle in Resources */,
+				2BA714411DCC8E190072FB42 /* DDAskMeetActionTableViewCell.xib in Resources */,
 				2BB3D7ED1D7D6F8D00FFDC0E /* UMShareEditViewController.xib in Resources */,
 				2BB23C801DC745C600FC5657 /* DDMineViewController.xib in Resources */,
 				2B6D12701D98B586003433D0 /* DDForgetCodeNoticeView.xib in Resources */,
@@ -3330,6 +3376,7 @@
 				2BA3F2E31D911A4A00094E0A /* CityData.plist in Resources */,
 				2BBB7D7A1DA89C89005E90A5 /* Ask.storyboard in Resources */,
 				2BB23C941DC8860000FC5657 /* DDMyAskTableViewCell.xib in Resources */,
+				2BEC3AF81DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.xib in Resources */,
 				2BBB7D851DA8F524005E90A5 /* DDReloadView.xib in Resources */,
 				2BB3D7D91D7D6F8D00FFDC0E /* TOCropViewControllerLocalizable.strings in Resources */,
 				2BB3D7A81D7D6F8C00FFDC0E /* lookup_miss_etikate.png in Resources */,
@@ -3342,17 +3389,20 @@
 				2BBB7D991DAA4443005E90A5 /* DDConversationListCell.xib in Resources */,
 				2BA7143B1DCC689C0072FB42 /* CustomizedChatKit.MessageBubble.bundle in Resources */,
 				2B75AB591D7FFF4E0074119E /* Assets.xcassets in Resources */,
+				2B9E97871DD1BB0500ABE6A9 /* CustomizedChatKit.ChatKeyboard.bundle in Resources */,
 				2BD6AE111DC1969900626677 /* DDDemandInfoTableViewCell.xib in Resources */,
 				2BA7140D1DCC3C700072FB42 /* MessageBubble.bundle in Resources */,
 				2BD6AE1C1DC2FB3C00626677 /* DDDemandInfoSmallTableViewCell.xib in Resources */,
 				2BA714071DCC3C700072FB42 /* ChatKeyboard.bundle in Resources */,
 				2BD6AE011DC0A77900626677 /* DDUserInfoTableViewCell.xib in Resources */,
+				2BE8351C1DCF79260064A5A6 /* DDRateViewController.xib in Resources */,
 				2BB3D7AC1D7D6F8C00FFDC0E /* city.plist in Resources */,
 				2BCDD69A1D79597000BADD43 /* Main.storyboard in Resources */,
 				2BB3D78E1D7D6F8C00FFDC0E /* DBCamera.strings in Resources */,
 				2BBB7D781DA892A0005E90A5 /* DDLoadingMoreCollectionViewCell.xib in Resources */,
 				2BB23C781DC6F8F000FC5657 /* DDAskHandOutTableViewCell.xib in Resources */,
 				2BA7140B1DCC3C700072FB42 /* LCCKPhotoBrowser.bundle in Resources */,
+				2BEC3AFD1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.xib in Resources */,
 				2BB3D7EC1D7D6F8D00FFDC0E /* UMSCommentInputControlleriPad.xib in Resources */,
 				2BB3D7EE1D7D6F8D00FFDC0E /* UMShareEditViewControlleriPad.xib in Resources */,
 				2BA7143C1DCC689C0072FB42 /* CustomizedChatKit.Other.bundle in Resources */,
@@ -3477,6 +3527,7 @@
 				2BA713FE1DCC3C700072FB42 /* LCCKChatVoiceMessageCell.m in Sources */,
 				2BF86C891D95179600E06BF8 /* NSCalendar+NSCalendarExtension.m in Sources */,
 				2B75AB5E1D7FFF4E0074119E /* LCCKContactManager.m in Sources */,
+				2BE8351B1DCF79260064A5A6 /* DDRateViewController.m in Sources */,
 				2BB3D7841D7D6F8C00FFDC0E /* UIImage+Asset.m in Sources */,
 				2BB3D7B51D7D6F8C00FFDC0E /* MBProgressHUD+Add.m in Sources */,
 				2BB3D7851D7D6F8C00FFDC0E /* UIImage+Crop.m in Sources */,
@@ -3552,6 +3603,7 @@
 				2BB3D7461D7D6F8C00FFDC0E /* NSString+SYAddition.m in Sources */,
 				2BB3D7571D7D6F8C00FFDC0E /* UIImage+SYScale.m in Sources */,
 				2BA714341DCC3C700072FB42 /* LCCKConversationRefreshHeader.m in Sources */,
+				2BEC3AF71DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.m in Sources */,
 				2BB3D7A11D7D6F8C00FFDC0E /* FSImageScrollView.m in Sources */,
 				2BDB10371D9E45C200F2C27C /* DDChessDetailViewController.m in Sources */,
 				2BA714121DCC3C700072FB42 /* NSFileManager+LCCKExtension.m in Sources */,
@@ -3611,6 +3663,7 @@
 				2BA714271DCC3C700072FB42 /* LCCKCaptionView.m in Sources */,
 				2BA3F2E71D911A4A00094E0A /* GYZCityHeaderView.m in Sources */,
 				2B311C541D7E6A5E007CE4DD /* SepView.m in Sources */,
+				2BEC3AFC1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.m in Sources */,
 				2BAE2BEB1DBF08DA003BC7B9 /* DDMeetDetailViewController.m in Sources */,
 				2BA713F41DCC3C700072FB42 /* LCCKInputViewPlugin.m in Sources */,
 				2BCDD6941D79597000BADD43 /* AppDelegate.m in Sources */,
@@ -3672,6 +3725,7 @@
 				2BB3D7C71D7D6F8C00FFDC0E /* SKTagButton.m in Sources */,
 				2BA7141A1DCC3C700072FB42 /* NSObject+LCCKIsFirstLaunch.m in Sources */,
 				2BB3D7711D7D6F8C00FFDC0E /* UIImage+ScreenShot.m in Sources */,
+				2BA714401DCC8E190072FB42 /* DDAskMeetActionTableViewCell.m in Sources */,
 				2BA713D11DCC3C700072FB42 /* AVIMTypedMessage+LCCKExtension.m in Sources */,
 				2BA714221DCC3C700072FB42 /* LCCKError.m in Sources */,
 				2BB3D75B1D7D6F8C00FFDC0E /* UINavigationController+DMNavigation.m in Sources */,
@@ -3684,6 +3738,7 @@
 				2BB3D75F1D7D6F8C00FFDC0E /* UIView+EmptyNotice.m in Sources */,
 				2BA713E51DCC3C700072FB42 /* NSMutableDictionary+LCCKWeakReference.m in Sources */,
 				2BB3D7591D7D6F8C00FFDC0E /* UIImageView+WebCache.m in Sources */,
+				2BE835201DD06A3F0064A5A6 /* DDWelcome.m in Sources */,
 				2BB41A241D8153B6000C98F3 /* UIViewController+Analytics.m in Sources */,
 				2BB23C8C1DC871D000FC5657 /* MJRefreshHeader+Addtion.m in Sources */,
 				2BB3D7A51D7D6F8C00FFDC0E /* FSPlaceholderImages.m in Sources */,
@@ -3715,6 +3770,7 @@
 				2BB3D7541D7D6F8C00FFDC0E /* UIButton+WebCache.m in Sources */,
 				2B6D126B1D98B586003433D0 /* DDHomeViewController.m in Sources */,
 				2BD6AE171DC1E06900626677 /* DDWebViewController.m in Sources */,
+				2BEC3B001DD3243A009DEDC0 /* DDRateViewModel.m in Sources */,
 				2BA713FD1DCC3C700072FB42 /* LCCKChatTextMessageCell.m in Sources */,
 				2B49A9AF1D893EF800CD14AB /* UITextField+Addition.m in Sources */,
 				2B75AB4A1D7FFF4E0074119E /* LCCKInputViewPluginConversationBackground.m in Sources */,

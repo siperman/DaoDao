@@ -48,7 +48,7 @@
     [self addSubview:_shandow];
 
     CGRect rect = self.bounds;
-    _lab = [[UILabel alloc] initWithFrame:CGRectInset(rect, 20, 20)];
+    _lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 60)];
     if ([_chess.cid isEqualToString:@"all@industry"]) {
         _lab.text = @"我的行业";
     } else {
@@ -85,6 +85,7 @@
     _light1.hidden = YES;
     _light2.hidden = YES;
     [self addSubview:_lab];
+    _lab.center = self.center;
 }
 
 - (void)lighting

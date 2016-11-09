@@ -12,8 +12,9 @@
 - (id) initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
-        [self addSubview:self.titleLabel];
+        [self.contentView addSubview:self.titleLabel];
     }
+    [self.contentView setBackgroundColor:BackgroundColor];
     return self;
 }
 - (void) layoutSubviews
@@ -26,8 +27,9 @@
 {
     if (_titleLabel == nil) {
         _titleLabel = [[UILabel alloc] init];
-        [_titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
-        [_titleLabel setTextColor:[UIColor blackColor]];
+        [_titleLabel setFont:SmallTextFont];
+        [_titleLabel setTextColor:MainColor];
+
     }
     return _titleLabel;
 }

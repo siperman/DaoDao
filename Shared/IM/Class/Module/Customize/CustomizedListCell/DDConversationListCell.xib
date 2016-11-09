@@ -20,10 +20,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D92-dR-jIU">
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kae-rv-1BC">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="262" id="7h2-5f-yLv"/>
-                                    <constraint firstAttribute="height" constant="40" id="snS-Sy-KmF"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.2450951338" green="0.14873373509999999" blue="0.135093987" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -84,7 +80,7 @@
                             <constraint firstItem="ciN-0J-W8X" firstAttribute="leading" secondItem="MKK-Lp-Rhc" secondAttribute="leading" id="Pnf-kx-IFa"/>
                             <constraint firstItem="XSh-PC-Vtf" firstAttribute="leading" secondItem="ciN-0J-W8X" secondAttribute="trailing" constant="8" symbolic="YES" id="aFH-cF-jTn"/>
                             <constraint firstItem="ciN-0J-W8X" firstAttribute="top" secondItem="MKK-Lp-Rhc" secondAttribute="bottom" constant="8" id="acW-fj-YJ5"/>
-                            <constraint firstItem="Kae-rv-1BC" firstAttribute="top" secondItem="D92-dR-jIU" secondAttribute="top" id="adP-Lu-beV"/>
+                            <constraint firstItem="Kae-rv-1BC" firstAttribute="top" secondItem="D92-dR-jIU" secondAttribute="top" constant="16" id="adP-Lu-beV"/>
                             <constraint firstItem="MKK-Lp-Rhc" firstAttribute="top" secondItem="D92-dR-jIU" secondAttribute="top" constant="40" id="b7U-R1-DBP"/>
                             <constraint firstItem="XSh-PC-Vtf" firstAttribute="top" secondItem="ciN-0J-W8X" secondAttribute="top" id="gXB-Dm-AgG"/>
                             <constraint firstItem="ABc-Oa-XEp" firstAttribute="bottom" secondItem="ciN-0J-W8X" secondAttribute="bottom" id="mYw-bT-XXT"/>
@@ -92,6 +88,7 @@
                             <constraint firstItem="Vrc-Ma-TEm" firstAttribute="bottom" secondItem="ciN-0J-W8X" secondAttribute="bottom" constant="-5" id="rzh-XU-HKQ"/>
                             <constraint firstAttribute="trailing" secondItem="MKK-Lp-Rhc" secondAttribute="trailing" constant="10" id="uAv-fR-Fmy"/>
                             <constraint firstAttribute="bottom" secondItem="MKK-Lp-Rhc" secondAttribute="bottom" constant="59" id="vph-VH-Jgv"/>
+                            <constraint firstAttribute="trailing" secondItem="Kae-rv-1BC" secondAttribute="trailing" constant="40" id="xAe-tN-bfh"/>
                             <constraint firstAttribute="trailing" secondItem="XSh-PC-Vtf" secondAttribute="trailing" constant="97" id="zfx-pJ-RcJ"/>
                         </constraints>
                     </view>

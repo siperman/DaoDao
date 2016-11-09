@@ -19,6 +19,10 @@ static char kNoticeViewKey;
     return @[
              @"img_network_error",
              @"img_kong",
+             @"img_kong",
+             @"img_kong",
+             @"img_kong",
+
              ][type];
 }
 
@@ -27,6 +31,9 @@ static char kNoticeViewKey;
     return @[
              @"哎呀，网络加载失败",
              @"暂无新的邀请",
+             @"暂无新的消息",
+             @"暂无发布的需求",
+             @"暂无响应的约局",
              ][type];
 }
 
@@ -70,6 +77,21 @@ static char kNoticeViewKey;
             make.bottom.equalTo(imgNotice.mas_top).with.offset(-40.0);
         }];
 
+        if (type == SYEmptyNoticeTypeEmptyMyAsk) {
+            UIButton *btn = [[UIButton alloc] init];
+            [btn setTitle:@"发布需求"];
+            [btn actionStyle];
+            btn.titleLabel.font = Font(17.0);
+            [noticeView addSubview:btn];
+            [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(180);
+                make.height.mas_equalTo(50);
+                make.centerX.equalTo(noticeView);
+                make.top.equalTo(imgNotice.mas_bottom).with.offset(50);
+            }];
+            [btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
+        }
+
         noticeView.backgroundColor = BackgroundColor;
 
         [self addSubview:noticeView];
@@ -100,6 +122,11 @@ static char kNoticeViewKey;
             [self showEmptyNotice:type];
         }
     }
+}
+
+- (void)clickBtn
+{
+    POST_NOTIFICATION(kClickEmptyViewNotification, nil);
 }
 
 @end

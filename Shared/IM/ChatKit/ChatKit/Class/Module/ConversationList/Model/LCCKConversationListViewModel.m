@@ -66,6 +66,8 @@
 #pragma mark - table view
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    [tableView configureEmptyNoticeForDataSource:self.dataArray type:SYEmptyNoticeTypeEmptyMessage];
+
     return [self.dataArray count];
 }
 

@@ -107,12 +107,12 @@ NSMutableArray const *LCCKInputViewPluginArray = nil;
     [self.button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).with.offset(4);
         make.centerX.equalTo(self);
-        make.width.equalTo(@50);
-        make.height.equalTo(@50);
+        make.width.equalTo(@60);
+        make.height.equalTo(@60);
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.button.mas_bottom).with.offset(3);
+        make.top.equalTo(self.button.mas_bottom).with.offset(6);
         make.centerX.equalTo(self.mas_centerX);
     }];
 }
@@ -159,8 +159,8 @@ NSMutableArray const *LCCKInputViewPluginArray = nil;
 - (UILabel *)titleLabel{
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:13.0f];
-        _titleLabel.textColor = self.messageInputViewMorePanelTextColor;
+        _titleLabel.font = SmallTextFont;
+        _titleLabel.textColor = TextColor;
     }
     return _titleLabel;
 }

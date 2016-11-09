@@ -54,14 +54,13 @@
 
 - (IBAction)logout:(UIButton *)sender
 {
+    [MobClick event:Mine_logOutBtn_click];
     UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"" message:@"退出后不会删除任何数据，下次登录依然可以使用本账号" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *logout = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [SYRequestEngine userLogout:^(BOOL success, id response) {
             debugLog(@"reponse %@", response);
         }];
         [DDUserManager manager].user = nil;
-
-        [self checkLogin];
         [self.navigationController popViewControllerAnimated:NO];
 
         [SYUtils showWindowLevelNotice:kLogoutSuccessNotice];

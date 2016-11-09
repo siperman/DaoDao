@@ -64,7 +64,11 @@
         if (strs.count > idx) {
             textField.text = strs[idx];
         }
-        textField.autoCompleteTableBorderColor = SecondColor;
+        [textField normalStyle];
+        textField.autoCompleteTableBorderColor = SepColor;
+        textField.autoCompleteTableCellTextColor = TextColor;
+        textField.autoCompleteTableBackgroundColor = WhiteColor;
+        textField.maximumNumberOfAutoCompleteRows = 4;
     }];
 
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(fillDone)];

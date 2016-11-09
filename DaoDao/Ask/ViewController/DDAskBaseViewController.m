@@ -8,6 +8,7 @@
 
 #import "DDAskBaseViewController.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "DDAskDetailViewController.h"
 
 @interface DDAskBaseViewController ()
 
@@ -19,6 +20,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.title = @"详情";
 
     [self.tableView registerNib:[DDUserInfoTableViewCell class]];
@@ -32,16 +34,34 @@
 {
     [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
-    BOOL hasHead = NO;
+    NSInteger offsetTop = 64;
+    BOOL hasHead = self.showHead;
     if (hasHead) {
         [self.view addSubview:self.labHead];
         [self.labHead mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.leading.trailing.equalTo(self.view);
+            make.leading.trailing.equalTo(self.view);
+            make.top.equalTo(self.view).offset(offsetTop);
             make.height.mas_equalTo(@50);
         }];
+        if (_ask.status.integerValue == DDAskWaitingAgreeMeet) {
+            self.labHead.text = @"已发邀请函，请等待对方确认赴约";
+        } else if (_ask.status.integerValue == DDAskWaitingMeet) {
+            NSCalendar *cal = [NSCalendar currentCalendar];
+            NSDateComponents *components = [cal components:( kCFCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute ) fromDate:[NSDate date] toDate:[NSDate dateWithTimeIntervalSince1970:_ask.answer.meet.time.doubleValue] options:0];
+
+            NSString *timeStr = [NSString stringWithFormat:@"距离见面时间：%ld天%ld小时%ld分", components.day, components.hour, components.minute];
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:timeStr];
+            [attrStr setAttributes:@{NSForegroundColorAttributeName : SecondColor} range:NSMakeRange(7, timeStr.length - 7)];
+            self.labHead.attributedText = attrStr;
+        } else if (_ask.status.integerValue >= DDAskAskerRate) {
+            self.labHead.text = @"已完成评价，约见结束";
+        } else {
+            hasHead = NO;
+            self.labHead.hidden = YES;
+        }
     }
     [self.view addSubview:self.tableView];
-    UIEdgeInsets edge = UIEdgeInsetsMake(hasHead ? 50 : 0, 0, 50, 0);
+    UIEdgeInsets edge = UIEdgeInsetsMake(hasHead ? 50 + offsetTop : offsetTop, 0, 50, 0);
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).insets(edge);
     }];
@@ -52,7 +72,7 @@
         make.height.mas_equalTo(@50);
     }];
 
-    BOOL hasTwoBtn = NO;
+    BOOL hasTwoBtn = self.showHead;
     if (hasTwoBtn) {
         UIButton *btn1 = [self getBtnTitle:@"查看其它响应者" action:@selector(checkOtherAsk)];
         btn1.alpha = 0.7;
@@ -87,7 +107,16 @@
 
 - (void)checkOtherAsk
 {
+    NSArray *vcs = self.navigationController.viewControllers;
 
+    if (vcs.count > 2 &&
+        [vcs[vcs.count - 2] isKindOfClass:[DDAskDetailViewController class]]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        DDAskDetailViewController *vc = [[DDAskDetailViewController alloc] init];
+        vc.ask = self.ask;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (UIButton *)getBtnTitle:(NSString *)title action:(SEL)action
@@ -180,6 +209,7 @@
         _labHead.textColor = MainColor;
         _labHead.textAlignment = NSTextAlignmentCenter;
         _labHead.font = NormalTextFont;
+        _labHead.backgroundColor = WhiteColor;
     }
     return _labHead;
 }

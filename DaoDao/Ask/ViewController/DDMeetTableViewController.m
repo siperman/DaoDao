@@ -9,6 +9,7 @@
 #import "DDMeetTableViewController.h"
 #import "DDCalendarViewController.h"
 #import "GYZChooseCityController.h"
+#import "DDAskChatManager.h"
 
 @interface DDMeetTableViewController () <UITextFieldDelegate, GYZChooseCityDelegate, DDChooseTimeProtocol>
 @property (weak, nonatomic) IBOutlet UIButton *btnPost;
@@ -33,21 +34,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [MobClick event:YuejuIm_meetBtn_click];
     
     self.title = @"约见面";
     self.view.backgroundColor = BackgroundColor;
     [self.btnPost actionStyle];
     [self.label normalTextStyle];
+    [@[self.txtAddr, self.txtTime, self.txtCity] makeObjectsPerformSelector:@selector(normalStyle)];
 }
 
 - (IBAction)post:(UIButton *)sender
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//    if (self.callback) {
-//        self.callback();
-//    }
-//}
 {
+    [MobClick event:Meet_publishBtn_click];
     if (self.txtTime.text.length == 0) {
         [self showNotice:@"还未选择见面时间喔！"];
         return;
@@ -69,6 +67,10 @@
     [SYRequestEngine inviteAnswerWithParams:params callback:^(BOOL success, id response) {
         [self hideAllHUD];
         if (success) {
+            _ask = [DDAsk fromDict:response[kObjKey]];
+            // 缓存约局信息
+            [[DDAskChatManager sharedInstance] cacheAsk:_ask ForConversationId:_ask.answer.conversionId];
+
             [self.navigationController popViewControllerAnimated:YES];
             if (self.callback) {
                 self.callback();

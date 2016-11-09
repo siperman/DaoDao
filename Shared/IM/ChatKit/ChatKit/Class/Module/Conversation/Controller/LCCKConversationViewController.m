@@ -39,6 +39,13 @@
 #import <MLeaksFinder/MLeaksFinder.h>
 #endif
 
+#import "LCCKVCardMessage.h"
+#import "DDAskChatManager.h"
+#import "DDMeetTableViewController.h"
+#import "DDMeetDetailViewController.h"
+#import "DDAskMeetDetailViewController.h"
+#import "DDAnswerDetailViewController.h"
+
 NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationViewControllerErrorDomain";
 
 @interface LCCKConversationViewController () <LCCKChatBarDelegate, LCCKChatMessageCellDelegate, LCCKConversationViewModelDelegate, LCCKPhotoBrowserDelegate>
@@ -224,6 +231,8 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
     [self.chatViewModel setDefaultBackgroundImage];
     self.title = @"聊天";
     !self.viewDidLoadBlock ?: self.viewDidLoadBlock(self);
+    // 订阅通知 改变顶部按钮
+    [self.view subscribeNotication:kUpdateAskInfoNotification selector:@selector(setNeedsUpdateConstraints)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -277,7 +286,101 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
     !self.didReceiveMemoryWarningBlock ?: self.didReceiveMemoryWarningBlock(self);
 }
 
-#pragma mark -
+#pragma mark - for header button
+
+- (void)updateViewConstraints
+{
+    [super updateViewConstraints];
+    DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:self.conversationId];
+    if (ask.status.integerValue == DDAskWaitingSendMeet && ask.isMyAsk) {
+        [self setHeaderTitle:@"约见面"];
+    } else if (ask.status.integerValue == DDAskWaitingAgreeMeet) {
+        [self setHeaderTitle:@"查看邀请函"];
+    } else if (ask.status.integerValue == DDAskWaitingMeet) {
+        [self setHeaderTitle:@"打电话"];
+    } else {
+        [self setHeaderTitle:nil];
+    }
+}
+
+- (void)setHeaderTitle:(NSString *)title
+{
+    if (title.length > 0) {
+        [self.btnHeader mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(@44);
+        }];
+    } else {
+        [self.btnHeader mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(@0);
+        }];
+    }
+    [self.btnHeader setTitle:title];
+}
+
+- (void)actionTapHeader
+{
+    DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:self.conversationId];
+    if (ask.status.integerValue == DDAskWaitingSendMeet && ask.isMyAsk) {
+        [self pushMeetViewController];
+    } else if (ask.status.integerValue == DDAskWaitingAgreeMeet) {
+        [self pushMeetDetail];
+    } else if (ask.status.integerValue == DDAskWaitingMeet) {
+        if (ask.isMyAsk) {
+            [self makeCall:ask.answer.user.mobilePhone];
+        } else {
+            [self makeCall:ask.user.mobilePhone];
+        }
+    }
+}
+
+- (void)pushMeetViewController {
+    DDMeetTableViewController *vc = [DDMeetTableViewController viewController];
+    DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:self.conversationId];
+    vc.ask = ask;
+    WeakSelf;
+    [vc setCallback:^(){
+        LCCKVCardMessage *vCardMessage = [LCCKVCardMessage vCardMessageWithClientId:nil conversationType:[self getConversationIfExists].lcck_type];
+        [weakSelf sendCustomMessage:vCardMessage progressBlock:^(NSInteger percentDone) {
+        } success:^(BOOL succeeded, NSError *error) {
+            [weakSelf sendLocalFeedbackTextMessge:@"邀请函发送成功"];
+        } failed:^(BOOL succeeded, NSError *error) {
+            [weakSelf sendLocalFeedbackTextMessge:@"邀请函发送失败"];
+        }];
+    }];
+
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)pushMeetDetail
+{
+    DDMeetDetailViewController *vc = [DDMeetDetailViewController viewController];
+    vc.conversationId = self.conversationId;
+    WeakSelf;
+    vc.callback = ^(NSString *text) {
+        if (weakSelf.isAvailable) {
+            [weakSelf sendTextMessage:text];
+        }
+    };
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - detail
+
+- (void)clickedBarButtonItemAction:(UIBarButtonItem *)sender event:(UIEvent *)event
+{
+    DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:self.conversationId];
+
+    if (ask.isMyAsk) {
+        DDAskMeetDetailViewController *vc = [[DDAskMeetDetailViewController alloc] init];
+        vc.ask = ask;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        DDAnswerDetailViewController *vc = [[DDAnswerDetailViewController alloc] init];
+        vc.ask = ask;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
 #pragma mark - public Methods
 
 - (void)sendTextMessage:(NSString *)text {

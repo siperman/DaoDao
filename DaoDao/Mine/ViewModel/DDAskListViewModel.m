@@ -28,6 +28,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (self.isMyAsk) {
+        [tableView configureEmptyNoticeForDataSource:self.dataArray type:SYEmptyNoticeTypeEmptyMyAsk];
+    } else {
+        [tableView configureEmptyNoticeForDataSource:self.dataArray type:SYEmptyNoticeTypeEmptyMyAnswer];
+    }
     return [self.dataArray count];
 }
 
