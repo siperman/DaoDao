@@ -22,6 +22,8 @@
 
 + (NSString *)dateDetailFormInterval:(NSNumber *)interval;
 
++ (NSString *)dateDetailSinceNowFormInterval:(NSNumber *)interval;
+
 + (NSNumber *)timeIntervalFromDateString:(NSString *)dateString;
 
 + (NSString *)timestampFromInterval:(NSNumber *)interval;

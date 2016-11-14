@@ -91,6 +91,27 @@
     return @(interval);
 }
 
++ (NSString *)dateDetailSinceNowFormInterval:(NSNumber *)interval
+{
+//    NSCalendar *cal = [NSCalendar currentCalendar];
+//    NSDateComponents *components = [cal components:( kCFCalendarUnitMonth | kCFCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute ) fromDate:[NSDate dateWithTimeIntervalSince1970:interval.doubleValue]];
+
+    NSDate *future = [NSDate dateWithTimeIntervalSince1970:interval.doubleValue];
+    NSInteger interval_ = [future timeIntervalSinceNow];
+
+    NSInteger minute = interval_ % (60 * 60);
+    interval_ -= minute;
+    minute /= 60;
+    NSInteger hour = interval_ % (60 * 60 * 24);
+    interval_ -= hour;
+    hour /= (60 * 60);
+    NSInteger day = interval_ / (60 * 60 * 24);
+
+    NSString *timeStr = [NSString stringWithFormat:@"%ld天%ld小时%ld分", day, hour, minute];
+
+    return timeStr;
+}
+
 static NSDateFormatter *timestampFormatter = nil;
 + (NSString *)timestampFromInterval:(NSNumber *)interval
 {

@@ -23,9 +23,9 @@
 #pragma mark -
 #pragma mark - LCCKInputViewPluginSubclassing Method
 
-+ (void)load {
-    [self registerCustomInputViewPlugin];
-}
+//+ (void)load {
+//    [self registerCustomInputViewPlugin];
+//}
 
 + (LCCKInputViewPluginType)classPluginType {
     return LCCKInputViewPluginTypeVCard;

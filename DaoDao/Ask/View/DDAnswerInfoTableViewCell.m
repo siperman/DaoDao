@@ -68,10 +68,7 @@
         self.labStatus.text = @"等待见面";
         self.labStatus.textColor = MainColor;
 
-        NSCalendar *cal = [NSCalendar currentCalendar];
-        NSDateComponents *components = [cal components:( kCFCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute ) fromDate:[NSDate dateWithTimeIntervalSince1970:ask.answer.meet.time.doubleValue]];
-
-        NSString *timeStr = [NSString stringWithFormat:@"距离见面时间：%ld天%ld小时%ld分", components.day, components.hour, components.minute];
+        NSString *timeStr = [NSString stringWithFormat:@"距离见面时间：%@", [SYUtils dateDetailSinceNowFormInterval:ask.answer.meet.time]];
         self.labMeetTime.text = timeStr;
     } else if (status == DDAskBothUnRate ||
                status == DDAskAnswerRate) {

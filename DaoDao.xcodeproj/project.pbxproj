@@ -10,6 +10,14 @@
 		0098F4637878457F898BC9ED /* libPods-DaoDao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F393DEFF642AFC9F74740E /* libPods-DaoDao.a */; };
 		2B144A9C1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B144A9A1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.m */; };
 		2B144A9D1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B144A9B1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib */; };
+		2B29FA9F1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B29FA9D1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.m */; };
+		2B29FAA01DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B29FA9E1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.xib */; };
+		2B29FAA41DD41A8800AE432F /* DDAskerInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B29FAA21DD41A8800AE432F /* DDAskerInfoTableViewCell.m */; };
+		2B29FAA51DD41A8800AE432F /* DDAskerInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B29FAA31DD41A8800AE432F /* DDAskerInfoTableViewCell.xib */; };
+		2B29FAA91DD41AFE00AE432F /* DDInvitationInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B29FAA71DD41AFE00AE432F /* DDInvitationInfoTableViewCell.m */; };
+		2B29FAAA1DD41AFE00AE432F /* DDInvitationInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B29FAA81DD41AFE00AE432F /* DDInvitationInfoTableViewCell.xib */; };
+		2B29FAAE1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B29FAAC1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.m */; };
+		2B29FAAF1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B29FAAD1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.xib */; };
 		2B311C4E1D7E631D007CE4DD /* SYNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B311C461D7E631D007CE4DD /* SYNetworkManager.m */; };
 		2B311C4F1D7E631D007CE4DD /* SYRequestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B311C481D7E631D007CE4DD /* SYRequestEngine.m */; };
 		2B311C501D7E631D007CE4DD /* SYRequestEngine+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B311C4A1D7E631D007CE4DD /* SYRequestEngine+Common.m */; };
@@ -44,6 +52,8 @@
 		2B6D128A1D9A66D3003433D0 /* DDMajorGradePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D12891D9A66D3003433D0 /* DDMajorGradePickerView.m */; };
 		2B6D128C1D9A66E9003433D0 /* DDMajorGradePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D128B1D9A66E9003433D0 /* DDMajorGradePickerView.xib */; };
 		2B6D128F1D9A7596003433D0 /* DDConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D128E1D9A7596003433D0 /* DDConfig.m */; };
+		2B6D45D71DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D45D51DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.m */; };
+		2B6D45D81DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D45D61DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.xib */; };
 		2B75AB0B1D7FF8F90074119E /* DDChatKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB0A1D7FF8F90074119E /* DDChatKitManager.m */; };
 		2B75AB491D7FFF4E0074119E /* LCCKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB0F1D7FFF4E0074119E /* LCCKUser.m */; };
 		2B75AB4A1D7FFF4E0074119E /* LCCKInputViewPluginConversationBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB141D7FFF4E0074119E /* LCCKInputViewPluginConversationBackground.m */; };
@@ -422,6 +432,8 @@
 		2BF86C891D95179600E06BF8 /* NSCalendar+NSCalendarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C831D95179600E06BF8 /* NSCalendar+NSCalendarExtension.m */; };
 		2BF86C8A1D95179600E06BF8 /* NSDateComponents+NSCalendarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C861D95179600E06BF8 /* NSDateComponents+NSCalendarExtension.m */; };
 		2BF86C8B1D95179600E06BF8 /* NSString+NSCalendarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C881D95179600E06BF8 /* NSString+NSCalendarExtension.m */; };
+		2BFED1151DD559A0002D37AE /* DDMineInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFED1141DD559A0002D37AE /* DDMineInfoTableViewController.m */; };
+		2BFED1181DD55AA8002D37AE /* DDUserHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFED1171DD55AA8002D37AE /* DDUserHomePageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -429,6 +441,18 @@
 		2B144A991D9E5AFA00B70B0D /* DDAskInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskInfoTableViewCell.h; sourceTree = "<group>"; };
 		2B144A9A1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskInfoTableViewCell.m; sourceTree = "<group>"; };
 		2B144A9B1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDAskInfoTableViewCell.xib; sourceTree = "<group>"; };
+		2B29FA9C1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDemandInfoAnswerTableViewCell.h; sourceTree = "<group>"; };
+		2B29FA9D1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDemandInfoAnswerTableViewCell.m; sourceTree = "<group>"; };
+		2B29FA9E1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDDemandInfoAnswerTableViewCell.xib; sourceTree = "<group>"; };
+		2B29FAA11DD41A8800AE432F /* DDAskerInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskerInfoTableViewCell.h; sourceTree = "<group>"; };
+		2B29FAA21DD41A8800AE432F /* DDAskerInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskerInfoTableViewCell.m; sourceTree = "<group>"; };
+		2B29FAA31DD41A8800AE432F /* DDAskerInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDAskerInfoTableViewCell.xib; sourceTree = "<group>"; };
+		2B29FAA61DD41AFE00AE432F /* DDInvitationInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInvitationInfoTableViewCell.h; sourceTree = "<group>"; };
+		2B29FAA71DD41AFE00AE432F /* DDInvitationInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInvitationInfoTableViewCell.m; sourceTree = "<group>"; };
+		2B29FAA81DD41AFE00AE432F /* DDInvitationInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDInvitationInfoTableViewCell.xib; sourceTree = "<group>"; };
+		2B29FAAB1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMeetNoticeTableViewCell.h; sourceTree = "<group>"; };
+		2B29FAAC1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeetNoticeTableViewCell.m; sourceTree = "<group>"; };
+		2B29FAAD1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDMeetNoticeTableViewCell.xib; sourceTree = "<group>"; };
 		2B311C451D7E631D007CE4DD /* SYNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkManager.h; sourceTree = "<group>"; };
 		2B311C461D7E631D007CE4DD /* SYNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkManager.m; sourceTree = "<group>"; };
 		2B311C471D7E631D007CE4DD /* SYRequestEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYRequestEngine.h; sourceTree = "<group>"; };
@@ -494,6 +518,9 @@
 		2B6D128B1D9A66E9003433D0 /* DDMajorGradePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDMajorGradePickerView.xib; sourceTree = "<group>"; };
 		2B6D128D1D9A7596003433D0 /* DDConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDConfig.h; sourceTree = "<group>"; };
 		2B6D128E1D9A7596003433D0 /* DDConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDConfig.m; sourceTree = "<group>"; };
+		2B6D45D41DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskRateInfoTableViewCell.h; sourceTree = "<group>"; };
+		2B6D45D51DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskRateInfoTableViewCell.m; sourceTree = "<group>"; };
+		2B6D45D61DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDAskRateInfoTableViewCell.xib; sourceTree = "<group>"; };
 		2B75AB051D7FABA40074119E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		2B75AB091D7FF8F90074119E /* DDChatKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatKitManager.h; sourceTree = "<group>"; };
 		2B75AB0A1D7FF8F90074119E /* DDChatKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatKitManager.m; sourceTree = "<group>"; };
@@ -1250,6 +1277,10 @@
 		2BF86C861D95179600E06BF8 /* NSDateComponents+NSCalendarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateComponents+NSCalendarExtension.m"; sourceTree = "<group>"; };
 		2BF86C871D95179600E06BF8 /* NSString+NSCalendarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSCalendarExtension.h"; sourceTree = "<group>"; };
 		2BF86C881D95179600E06BF8 /* NSString+NSCalendarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSCalendarExtension.m"; sourceTree = "<group>"; };
+		2BFED1131DD559A0002D37AE /* DDMineInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMineInfoTableViewController.h; sourceTree = "<group>"; };
+		2BFED1141DD559A0002D37AE /* DDMineInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMineInfoTableViewController.m; sourceTree = "<group>"; };
+		2BFED1161DD55AA8002D37AE /* DDUserHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserHomePageViewController.h; sourceTree = "<group>"; };
+		2BFED1171DD55AA8002D37AE /* DDUserHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserHomePageViewController.m; sourceTree = "<group>"; };
 		57F393DEFF642AFC9F74740E /* libPods-DaoDao.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DaoDao.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3CE64E83C12BD5D621A5C9 /* Pods-DaoDao.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaoDao.test.xcconfig"; path = "Pods/Target Support Files/Pods-DaoDao/Pods-DaoDao.test.xcconfig"; sourceTree = "<group>"; };
 		F7E6478744817CF6FE556625 /* Pods-DaoDao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaoDao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaoDao/Pods-DaoDao.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1293,6 +1324,18 @@
 		2B6D12331D98B586003433D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2B29FA9C1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.h */,
+				2B29FA9D1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.m */,
+				2B29FA9E1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.xib */,
+				2B29FAA11DD41A8800AE432F /* DDAskerInfoTableViewCell.h */,
+				2B29FAA21DD41A8800AE432F /* DDAskerInfoTableViewCell.m */,
+				2B29FAA31DD41A8800AE432F /* DDAskerInfoTableViewCell.xib */,
+				2B29FAA61DD41AFE00AE432F /* DDInvitationInfoTableViewCell.h */,
+				2B29FAA71DD41AFE00AE432F /* DDInvitationInfoTableViewCell.m */,
+				2B29FAA81DD41AFE00AE432F /* DDInvitationInfoTableViewCell.xib */,
+				2B29FAAB1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.h */,
+				2B29FAAC1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.m */,
+				2B29FAAD1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1353,6 +1396,9 @@
 				2BEC3AF41DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.h */,
 				2BEC3AF51DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.m */,
 				2BEC3AF61DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.xib */,
+				2B6D45D41DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.h */,
+				2B6D45D51DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.m */,
+				2B6D45D61DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1537,6 +1583,10 @@
 				2BB23C821DC843FC00FC5657 /* DDMyAskTableViewController.m */,
 				2BB23C841DC8441100FC5657 /* DDMyAnswerTableViewController.h */,
 				2BB23C851DC8441100FC5657 /* DDMyAnswerTableViewController.m */,
+				2BFED1131DD559A0002D37AE /* DDMineInfoTableViewController.h */,
+				2BFED1141DD559A0002D37AE /* DDMineInfoTableViewController.m */,
+				2BFED1161DD55AA8002D37AE /* DDUserHomePageViewController.h */,
+				2BFED1171DD55AA8002D37AE /* DDUserHomePageViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3348,6 +3398,7 @@
 				2B144A9D1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib in Resources */,
 				2BB3D7F21D7D6F8D00FFDC0E /* UMSocialSDKResourcesNew.bundle in Resources */,
 				2BA714411DCC8E190072FB42 /* DDAskMeetActionTableViewCell.xib in Resources */,
+				2B29FAAA1DD41AFE00AE432F /* DDInvitationInfoTableViewCell.xib in Resources */,
 				2BB3D7ED1D7D6F8D00FFDC0E /* UMShareEditViewController.xib in Resources */,
 				2BB23C801DC745C600FC5657 /* DDMineViewController.xib in Resources */,
 				2B6D12701D98B586003433D0 /* DDForgetCodeNoticeView.xib in Resources */,
@@ -3360,6 +3411,7 @@
 				2BB3D7A91D7D6F8C00FFDC0E /* lookup_soft_elegance_1.png in Resources */,
 				2BA7140C1DCC3C700072FB42 /* MBProgressHUD.bundle in Resources */,
 				2B6D128C1D9A66E9003433D0 /* DDMajorGradePickerView.xib in Resources */,
+				2B29FAAF1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.xib in Resources */,
 				2BB3D7EF1D7D6F8D00FFDC0E /* UMSLoginViewController.xib in Resources */,
 				2BA7140F1DCC3C700072FB42 /* Placeholder.bundle in Resources */,
 				2B6D12721D98B586003433D0 /* DDNoInviteCodeView.xib in Resources */,
@@ -3368,6 +3420,7 @@
 				2BB3D7B71D7D6F8C00FFDC0E /* MJPhotoBrowser.bundle in Resources */,
 				2BDB10311D9D087900F2C27C /* DDChessboardView.xib in Resources */,
 				2BB23C991DC8861C00FC5657 /* DDMyAnswerTableViewCell.xib in Resources */,
+				2B6D45D81DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.xib in Resources */,
 				2BB3D7F01D7D6F8D00FFDC0E /* UMSnsAccountViewController.xib in Resources */,
 				2BCDD69C1D79597000BADD43 /* Assets.xcassets in Resources */,
 				2BB3D7A61D7D6F8C00FFDC0E /* lookup.png in Resources */,
@@ -3375,6 +3428,7 @@
 				2BA714061DCC3C700072FB42 /* BarButtonIcon.bundle in Resources */,
 				2BA3F2E31D911A4A00094E0A /* CityData.plist in Resources */,
 				2BBB7D7A1DA89C89005E90A5 /* Ask.storyboard in Resources */,
+				2B29FAA51DD41A8800AE432F /* DDAskerInfoTableViewCell.xib in Resources */,
 				2BB23C941DC8860000FC5657 /* DDMyAskTableViewCell.xib in Resources */,
 				2BEC3AF81DD30442009DEDC0 /* DDAskMeetSmallTableViewCell.xib in Resources */,
 				2BBB7D851DA8F524005E90A5 /* DDReloadView.xib in Resources */,
@@ -3405,6 +3459,7 @@
 				2BEC3AFD1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.xib in Resources */,
 				2BB3D7EC1D7D6F8D00FFDC0E /* UMSCommentInputControlleriPad.xib in Resources */,
 				2BB3D7EE1D7D6F8D00FFDC0E /* UMShareEditViewControlleriPad.xib in Resources */,
+				2B29FAA01DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.xib in Resources */,
 				2BA7143C1DCC689C0072FB42 /* CustomizedChatKit.Other.bundle in Resources */,
 				2B6D126E1D98B586003433D0 /* DDChooseImageCollectionViewCell.xib in Resources */,
 			);
@@ -3505,6 +3560,7 @@
 				2BB3D7491D7D6F8C00FFDC0E /* SYCameraManager.m in Sources */,
 				2BA7142B1DCC3C700072FB42 /* LCCKTapDetectingView.m in Sources */,
 				2BA713F31DCC3C700072FB42 /* LCCKFacePageView.m in Sources */,
+				2B29FAAE1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.m in Sources */,
 				2BB3D7F51D7D6F8D00FFDC0E /* YIInnerShadowView.m in Sources */,
 				2BB3D7E71D7D6F8D00FFDC0E /* UIView+HidingView.m in Sources */,
 				2BA714051DCC3C700072FB42 /* LCCKConversationListCell.m in Sources */,
@@ -3608,6 +3664,7 @@
 				2BDB10371D9E45C200F2C27C /* DDChessDetailViewController.m in Sources */,
 				2BA714121DCC3C700072FB42 /* NSFileManager+LCCKExtension.m in Sources */,
 				2BDB102F1D9D086300F2C27C /* DDChessboardView.m in Sources */,
+				2B29FAA91DD41AFE00AE432F /* DDInvitationInfoTableViewCell.m in Sources */,
 				2BA7142D1DCC3C700072FB42 /* LCCKSafariActivity.m in Sources */,
 				2BB3D7811D7D6F8C00FFDC0E /* NSBundle+CTAssetsPickerController.m in Sources */,
 				2BA713D31DCC3C700072FB42 /* NSMutableArray+LCCKMessageExtention.m in Sources */,
@@ -3634,6 +3691,7 @@
 				2BB3D74E1D7D6F8C00FFDC0E /* SYScrollViewDelegateWrapper.m in Sources */,
 				2BB3D7801D7D6F8C00FFDC0E /* CTAssetsViewControllerTransition.m in Sources */,
 				2BA7142C1DCC3C700072FB42 /* LCCKZoomingScrollView.m in Sources */,
+				2BFED1181DD55AA8002D37AE /* DDUserHomePageViewController.m in Sources */,
 				2BB3D7441D7D6F8C00FFDC0E /* NSObject+Addition.m in Sources */,
 				2BB3D7A41D7D6F8C00FFDC0E /* FSImageViewerViewController.m in Sources */,
 				2BB3D7D81D7D6F8D00FFDC0E /* SSUUID.m in Sources */,
@@ -3658,9 +3716,11 @@
 				2BB3D76E1D7D6F8C00FFDC0E /* UIImage+ImageEffects.m in Sources */,
 				2BBB7D881DA9E290005E90A5 /* DDPostAskViewModel.m in Sources */,
 				2BA713E11DCC3C700072FB42 /* LCCKConversationViewModel.m in Sources */,
+				2B6D45D71DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.m in Sources */,
 				2BA714231DCC3C700072FB42 /* NSDate+LCCKDateTools.m in Sources */,
 				2BA7141F1DCC3C700072FB42 /* LCCKSignatureService.m in Sources */,
 				2BA714271DCC3C700072FB42 /* LCCKCaptionView.m in Sources */,
+				2B29FAA41DD41A8800AE432F /* DDAskerInfoTableViewCell.m in Sources */,
 				2BA3F2E71D911A4A00094E0A /* GYZCityHeaderView.m in Sources */,
 				2B311C541D7E6A5E007CE4DD /* SepView.m in Sources */,
 				2BEC3AFC1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.m in Sources */,
@@ -3682,6 +3742,7 @@
 				2BB3D7521D7D6F8C00FFDC0E /* UIButton+Addition.m in Sources */,
 				2B144A9C1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.m in Sources */,
 				2BA7141B1DCC3C700072FB42 /* LCCKConversationListService.m in Sources */,
+				2B29FA9F1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.m in Sources */,
 				2BA713E91DCC3C700072FB42 /* LCCKCellIdentifierFactory.m in Sources */,
 				2B75AB0B1D7FF8F90074119E /* DDChatKitManager.m in Sources */,
 				2BDB10261D9BBC9500F2C27C /* DDFillJobIndustryViewController.m in Sources */,
@@ -3720,6 +3781,7 @@
 				2BA713CF1DCC3C700072FB42 /* LCChatKit.m in Sources */,
 				2BA713DE1DCC3C700072FB42 /* LCCKLocationController.m in Sources */,
 				2BB3D77C1D7D6F8C00FFDC0E /* CTAssetsPickerController.m in Sources */,
+				2BFED1151DD559A0002D37AE /* DDMineInfoTableViewController.m in Sources */,
 				2BB3D7531D7D6F8C00FFDC0E /* UIButton+EnlargeTouchArea.m in Sources */,
 				2BA714261DCC3C700072FB42 /* NSObject+LCCKDeallocBlockExecutor.m in Sources */,
 				2BB3D7C71D7D6F8C00FFDC0E /* SKTagButton.m in Sources */,

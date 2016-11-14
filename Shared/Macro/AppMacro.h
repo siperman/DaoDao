@@ -65,6 +65,8 @@ static NSString * const kTelKey                                   = @"tel";
 static NSString * const kTitleKey                                 = @"title";
 static NSString * const kModelKey                                 = @"_model";
 static NSString * const kLeaveMessageKey                          = @"leaveMessage";
+static NSString * const kOldAskKey                                = @"oldAsk";
+static NSString * const kNewAskKey                                = @"newAsk";
 
 
 static NSString * const kKeywordKey                               = @"keyWord";
@@ -135,6 +137,7 @@ static NSString * const kUpdateUnreadCountNotification         = @"kUpdateUnread
 static NSString * const kUpdateUserInfoNotification            = @"kUpdateUserInfoNotification"; //更新用户信息
 static NSString * const kShowWelcomeNotification               = @"kShowWelcomeNotification"; //欢迎界面
 static NSString * const kUpdateAskInfoNotification             = @"kUpdateAskInfoNotification"; //更新约局信息
+static NSString * const kUpdateIMAskInfoNotification             = @"kUpdateIMAskInfoNotification"; //更新IM约局信息
 static NSString * const kClickEmptyViewNotification            = @"kClickEmptyViewNotification"; //点击空视图按钮
 
 // Cache

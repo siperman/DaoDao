@@ -94,9 +94,8 @@
         if (self.ask.status.integerValue == DDAskWaitingAgreeMeet ||
             self.ask.status.integerValue == DDAskWaitingMeet) {
             return [DDAskMeetActionTableViewCell class];
-        } else if (self.ask.status.integerValue > DDAskAskerRate) {
-            // TODO:
-            return [DDDemandInfoSmallTableViewCell class];
+        } else if (self.ask.status.integerValue >= DDAskAskerRate) {
+            return [DDAskRateInfoTableViewCell class];
         } else {
             // 只有一个按钮的cell
             return [DDAskMeetSmallTableViewCell class];

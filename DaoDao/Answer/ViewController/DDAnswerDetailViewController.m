@@ -7,6 +7,12 @@
 //
 
 #import "DDAnswerDetailViewController.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+#import "DDDemandInfoAnswerTableViewCell.h"
+#import "DDAskerInfoTableViewCell.h"
+#import "DDInvitationInfoTableViewCell.h"
+#import "DDMeetNoticeTableViewCell.h"
+#import "DDAskMeetSmallTableViewCell.h"
 
 @interface DDAnswerDetailViewController ()
 
@@ -18,6 +24,12 @@
     [super viewDidLoad];
 
     [MobClick event:YingjuDtlBtn_click];
+    self.showHead = YES;
+    [self.tableView registerNib:[DDDemandInfoAnswerTableViewCell class]];
+    [self.tableView registerNib:[DDAskerInfoTableViewCell class]];
+    [self.tableView registerNib:[DDInvitationInfoTableViewCell class]];
+    [self.tableView registerNib:[DDMeetNoticeTableViewCell class]];
+    [self.tableView registerNib:[DDAskMeetSmallTableViewCell class]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -27,41 +39,69 @@
     }
 
     NSInteger status = self.ask.status.integerValue;
-    if (status == DDAskPostSuccess ||
-        status == DDAskWaitingHandOut ||
-        status == DDAskWaitingAnswerInterest) {
+    if (status == DDAskAnswerDisagreeMeet ||
+        status == DDAskWaitingSendMeet) {
         return 2;
     }
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (!self.ask) {
-        return 0;
-    }
-
-    NSInteger status = self.ask.status.integerValue;
-    if (status == DDAskPostSuccess ||
-        status == DDAskWaitingHandOut ||
-        status == DDAskWaitingAnswerInterest) {
-        return 1;
-    }
-    return 0;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger status = self.ask.status.integerValue;
+    Class class = [self cellClassForRowAtIndexPath:indexPath];
+    DDBaseTableViewCell *cell = [tableView dequeueCell:class indexPath:indexPath];
+
+    [cell configureCellWithData:self.ask];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return [DDAskerInfoTableViewCell cellHeightWithAsk:self.ask];
+    }
+    Class class = [self cellClassForRowAtIndexPath:indexPath];
+
+    return [tableView fd_heightForCellWithIdentifier:[class defaultReuseIdentifier] cacheByIndexPath:indexPath configuration:^(DDBaseTableViewCell *cell) {
+        [cell configureCellWithData:self.ask];
+    }];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1) {
+        self.showSmall = !self.showSmall;
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+#pragma mark helper
+
+- (Class)cellClassForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
 
-    if (status == DDAskPostSuccess ||
-        status == DDAskWaitingHandOut) {
-
+    if (section == 0) {
+        return [DDAskerInfoTableViewCell class];
+    } else if (section == 1) {
+        if (self.showSmall) {
+            return [DDDemandInfoSmallTableViewCell class];
+        } else {
+            return [DDDemandInfoAnswerTableViewCell class];
+        }
+    } else {
+        if (self.ask.status.integerValue == DDAskWaitingAgreeMeet) {
+            return [DDInvitationInfoTableViewCell class];
+        } else if (self.ask.status.integerValue == DDAskWaitingMeet) {
+            return [DDMeetNoticeTableViewCell class];
+        } else if (self.ask.status.integerValue >= DDAskAnswerRate) {
+            return [DDAskRateInfoTableViewCell class];
+        } else {
+            return [DDAskMeetSmallTableViewCell class];
+        }
     }
 
-    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    return [DDDemandInfoSmallTableViewCell class];
 }
 
 @end

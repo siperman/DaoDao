@@ -13,4 +13,5 @@
 @property (nonatomic, strong) NSNumber *useful;
 @property (nonatomic, strong) NSNumber *happy;
 @property (nonatomic, strong) NSString *impress;
+@property (nonatomic, strong) NSArray <NSDictionary*>*rateArray;
 @end

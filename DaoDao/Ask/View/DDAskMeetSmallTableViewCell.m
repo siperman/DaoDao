@@ -29,19 +29,26 @@
     DDAsk *ask = (DDAsk *)data;
     _ask = ask;
 
-    if (ask.status.integerValue == DDAskBothUnRate ||
-        ask.status.integerValue == DDAskAnswerRate) {
+    if ([self isToRate]) {
         [self.button setTitle:@"去评价"];
     } else {
         [self.button setTitle:@"聊一下"];
     }
 }
 
+- (BOOL)isToRate
+{
+    DDAsk *ask = self.ask;
+    if (ask.isMyAsk) {
+        return (ask.status.integerValue == DDAskBothUnRate || ask.status.integerValue == DDAskAnswerRate);
+    } else {
+        return (ask.status.integerValue == DDAskBothUnRate || ask.status.integerValue == DDAskAskerRate);
+    }
+}
+
 - (IBAction)action:(UIButton *)sender
 {
-    if (_ask.status.integerValue == DDAskBothUnRate ||
-        _ask.status.integerValue == DDAskAnswerRate) {
-        // TODO
+    if ([self isToRate]) {
         DDRateViewController *vc = [[DDRateViewController alloc] init];
         vc.ask = self.ask;
         [self.viewController.navigationController pushViewController:vc animated:YES];

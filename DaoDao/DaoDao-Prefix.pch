@@ -48,5 +48,6 @@
 #import "DDAnswer.h"
 #import "DDLoadingMoreTableViewCell.h"
 #import "DDLoadingMoreCollectionViewCell.h"
+#import "DDAskChatManager.h"
 
 #endif /* DaoDao_Prefix_pch */

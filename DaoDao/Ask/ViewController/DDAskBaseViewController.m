@@ -27,7 +27,21 @@
     [self.tableView registerNib:[DDDemandInfoTableViewCell class]];
     [self.tableView registerNib:[DDDemandInfoSmallTableViewCell class]];
     [self.tableView registerNib:[DDAskHandOutTableViewCell class]];
+    [self.tableView registerNib:[DDAskRateInfoTableViewCell class]];
 
+    [self subscribeNotication:kUpdateAskInfoNotification selector:@selector(handleNotification:)];
+}
+
+- (void)handleNotification:(NSNotification*) notification
+{
+    NSDictionary *userInfo = [notification object];
+    if ([userInfo isKindOfClass:[NSDictionary class]]) {
+        DDAsk *oldAsk = userInfo[kOldAskKey];
+        DDAsk *newAsk = userInfo[kNewAskKey];
+        if (oldAsk == _ask) {
+            [self setAsk:newAsk];
+        }
+    }
 }
 
 - (void)refresh
@@ -43,21 +57,30 @@
             make.top.equalTo(self.view).offset(offsetTop);
             make.height.mas_equalTo(@50);
         }];
-        if (_ask.status.integerValue == DDAskWaitingAgreeMeet) {
-            self.labHead.text = @"已发邀请函，请等待对方确认赴约";
-        } else if (_ask.status.integerValue == DDAskWaitingMeet) {
-            NSCalendar *cal = [NSCalendar currentCalendar];
-            NSDateComponents *components = [cal components:( kCFCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute ) fromDate:[NSDate date] toDate:[NSDate dateWithTimeIntervalSince1970:_ask.answer.meet.time.doubleValue] options:0];
-
-            NSString *timeStr = [NSString stringWithFormat:@"距离见面时间：%ld天%ld小时%ld分", components.day, components.hour, components.minute];
-            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:timeStr];
-            [attrStr setAttributes:@{NSForegroundColorAttributeName : SecondColor} range:NSMakeRange(7, timeStr.length - 7)];
-            self.labHead.attributedText = attrStr;
-        } else if (_ask.status.integerValue >= DDAskAskerRate) {
-            self.labHead.text = @"已完成评价，约见结束";
+        if (_ask.isMyAsk) {
+            if (_ask.status.integerValue == DDAskWaitingAgreeMeet) {
+                self.labHead.text = @"已发邀请函，请等待对方确认赴约";
+            } else if (_ask.status.integerValue == DDAskWaitingMeet) {
+                NSString *timeStr = [NSString stringWithFormat:@"距离见面时间：%@", [SYUtils dateDetailSinceNowFormInterval:_ask.answer.meet.time]];
+                NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:timeStr];
+                [attrStr setAttributes:@{NSForegroundColorAttributeName : SecondColor} range:NSMakeRange(7, timeStr.length - 7)];
+                self.labHead.attributedText = attrStr;
+            } else if (_ask.status.integerValue >= DDAskAskerRate) {
+                self.labHead.text = @"已完成评价，约见结束";
+            } else {
+                hasHead = NO;
+                self.labHead.hidden = YES;
+            }
         } else {
-            hasHead = NO;
-            self.labHead.hidden = YES;
+            if (_ask.status.integerValue == DDAskAnswerDisagreeMeet) {
+                self.labHead.text = @"已失效！您拒绝了赴约对方的邀请";
+                self.labHead.textColor = SecondColor;
+            } else if (_ask.status.integerValue >= DDAskAnswerRate) {
+                self.labHead.text = @"已完成评价，约见结束";
+            } else {
+                hasHead = NO;
+                self.labHead.hidden = YES;
+            }
         }
     }
     [self.view addSubview:self.tableView];
@@ -73,7 +96,7 @@
     }];
 
     BOOL hasTwoBtn = self.showHead;
-    if (hasTwoBtn) {
+    if (hasTwoBtn && _ask.isMyAsk) {
         UIButton *btn1 = [self getBtnTitle:@"查看其它响应者" action:@selector(checkOtherAsk)];
         btn1.alpha = 0.7;
         [self.bottomView addSubview:btn1];

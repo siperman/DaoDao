@@ -15,8 +15,8 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setBackgroundColor:BackgroundColor];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [self addSubview:self.titleLabel];
-        [self addSubview:self.noDataLabel];
+        [self.contentView addSubview:self.titleLabel];
+        [self.contentView addSubview:self.noDataLabel];
     }
     return self;
 }
@@ -68,7 +68,7 @@
             [button.layer setCornerRadius:kCornerRadius];
             [button addTarget:self action:@selector(cityButtonDown:) forControlEvents:UIControlEventTouchUpInside];
             [self.arrayCityButtons addObject:button];
-            [self addSubview:button];
+            [self.contentView addSubview:button];
         }
         [button setTitle:city.shortName forState:UIControlStateNormal];
         button.tag = i;

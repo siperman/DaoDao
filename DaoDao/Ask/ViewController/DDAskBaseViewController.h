@@ -11,6 +11,7 @@
 #import "DDDemandInfoTableViewCell.h"
 #import "DDDemandInfoSmallTableViewCell.h"
 #import "DDAskHandOutTableViewCell.h"
+#import "DDAskRateInfoTableViewCell.h"
 
 @interface DDAskBaseViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

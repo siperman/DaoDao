@@ -232,7 +232,7 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
     self.title = @"聊天";
     !self.viewDidLoadBlock ?: self.viewDidLoadBlock(self);
     // 订阅通知 改变顶部按钮
-    [self.view subscribeNotication:kUpdateAskInfoNotification selector:@selector(setNeedsUpdateConstraints)];
+    [self.view subscribeNotication:kUpdateIMAskInfoNotification selector:@selector(setNeedsUpdateConstraints)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

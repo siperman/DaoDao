@@ -44,8 +44,20 @@ static NSString * const SYCachedAskInfoFileName = @"conv_ask";
     }
 
 //    _updateAskInfoQueue = dispatch_queue_create("com.daodao.daodao", DISPATCH_QUEUE_SERIAL);
+    [self subscribeNotication:kUpdateAskInfoNotification selector:@selector(handleNotification:)];
 
     return self;
+}
+
+- (void)handleNotification:(NSNotification*) notification
+{
+    NSDictionary *userInfo = [notification object];
+    if ([userInfo isKindOfClass:[NSDictionary class]]) {
+        DDAsk *newAsk = userInfo[kNewAskKey];
+        if (newAsk) {
+            [self cacheAsk:newAsk ForConversationId:newAsk.answer.conversionId];
+        }
+    }
 }
 
 - (void)cacheAsk:(DDAsk *)ask ForConversationId:(NSString *)conversationId
@@ -59,7 +71,7 @@ static NSString * const SYCachedAskInfoFileName = @"conv_ask";
         OSSpinLockUnlock(&_spinlock);
 
         [[SYCache sharedInstance] saveItem:tempAsks forKey:SYCachedAskInfoFileName];
-        POST_NOTIFICATION(kUpdateAskInfoNotification, nil);
+        POST_NOTIFICATION(kUpdateIMAskInfoNotification, nil);
     }
 }
 

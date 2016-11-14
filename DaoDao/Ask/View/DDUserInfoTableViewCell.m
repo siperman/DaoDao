@@ -31,7 +31,7 @@
     if (_user != user) {
         _user = user;
         [self.imgHead sy_setThumbnailImageWithUrl:user.headUrl];
-        [self.imgGender setImage:([user.gender boolValue] ? Image(@"icon_woman") : Image(@"icon_man"))];
+        [self.imgGender setImage:user.genderImage];
 
         self.labName.text = user.nickName;
         self.labGrade.text = MajorGrade(user.major, user.grade);
