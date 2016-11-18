@@ -72,16 +72,4 @@
  */
 + (void)exampleOpenConversationViewControllerWithConversaionId:(NSString *)conversationId fromNavigationController:(UINavigationController *)navigationController;
 
-/*!
- *  打开单聊页面
- */
-+ (void)exampleOpenConversationViewControllerWithPeerId:(NSString *)peerId fromNavigationController:(UINavigationController *)navigationController;
-
-/*!
- * 拉群
- */
-+ (void)exampleCreateGroupConversationFromViewController:(UIViewController *)viewController;
-
-+ (void)exampleChangeGroupAvatarURLsForConversationId:(NSString *)conversationId;
-
 @end

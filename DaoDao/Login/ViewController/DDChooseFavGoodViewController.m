@@ -150,6 +150,7 @@
 
     if (self.isChooseFav) {
         self.btnNext.enabled = (_selectCount >= 3);
+        self.navigationItem.rightBarButtonItem.enabled = self.btnNext.enabled;
     } else {
         self.btnNext.enabled = (_selectCount > 0 && _selectCount <= 3);
         self.navigationItem.rightBarButtonItem.enabled = self.btnNext.enabled;

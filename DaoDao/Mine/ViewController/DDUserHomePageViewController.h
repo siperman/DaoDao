@@ -11,4 +11,7 @@
 // 个人主页
 @interface DDUserHomePageViewController : UIViewController
 
+@property (nonatomic, strong) NSString *userId;
++ (instancetype)viewController;
+
 @end

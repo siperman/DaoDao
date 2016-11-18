@@ -56,6 +56,13 @@
     [self layoutIfNeeded];
 }
 
+- (IBAction)goUserPage:(UIButton *)sender
+{
+    DDUserHomePageViewController *vc = [DDUserHomePageViewController viewController];
+    vc.userId = self.askInfo.user.uid;
+    [self.viewController.navigationController pushViewController:vc animated:YES];
+}
+
 - (IBAction)disinterest:(UIButton *)sender
 {
     [MobClick event:PieceDtl_uninterestBtn_click];

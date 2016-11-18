@@ -51,7 +51,7 @@ static NSString * const SYCachedAskInfoFileName = @"conv_ask";
 
 - (void)handleNotification:(NSNotification*) notification
 {
-    NSDictionary *userInfo = [notification object];
+    NSDictionary *userInfo = [notification userInfo];
     if ([userInfo isKindOfClass:[NSDictionary class]]) {
         DDAsk *newAsk = userInfo[kNewAskKey];
         if (newAsk) {
@@ -64,7 +64,7 @@ static NSString * const SYCachedAskInfoFileName = @"conv_ask";
 {
     NSDictionary *tempAsks = nil;
 
-    if (conversationId) {
+    if (conversationId && ask) {
         OSSpinLockLock(&_spinlock);
         [self.cachedAsks setObject:ask forKey:conversationId];
         tempAsks = [NSDictionary dictionaryWithDictionary:self.cachedAsks];

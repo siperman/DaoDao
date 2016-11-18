@@ -34,7 +34,7 @@
 
 - (void)handleNotification:(NSNotification*) notification
 {
-    NSDictionary *userInfo = [notification object];
+    NSDictionary *userInfo = [notification userInfo];
     if ([userInfo isKindOfClass:[NSDictionary class]]) {
         DDAsk *oldAsk = userInfo[kOldAskKey];
         DDAsk *newAsk = userInfo[kNewAskKey];
@@ -47,6 +47,8 @@
 - (void)refresh
 {
     [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    _labHead = nil;
+    _bottomView = nil;
 
     NSInteger offsetTop = 64;
     BOOL hasHead = self.showHead;
@@ -221,6 +223,7 @@
 {
     if (_ask != ask) {
         _ask = ask;
+        [_tableView reloadData];
         [self refresh];
     }
 }

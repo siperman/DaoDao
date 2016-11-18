@@ -10,6 +10,7 @@
 #import "UIButton+WebCache.h"
 #import "DDMyAskTableViewController.h"
 #import "DDMyAnswerTableViewController.h"
+#import "DDMineInfoTableViewController.h"
 
 @interface DDMineViewController ()
 
@@ -71,6 +72,12 @@
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
+- (IBAction)goMineInfo:(UIButton *)sender
+{
+    DDMineInfoTableViewController *vc = [DDMineInfoTableViewController viewController];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (IBAction)call:(UIButton *)sender
 {
     [self makeCall:kServiceCall];
@@ -78,6 +85,9 @@
 
 - (IBAction)goMineDetail:(UIButton *)sender
 {
+    DDUserHomePageViewController *vc = [DDUserHomePageViewController viewController];
+    vc.userId = [DDUserManager manager].user.uid;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)goAskList:(UIButton *)sender

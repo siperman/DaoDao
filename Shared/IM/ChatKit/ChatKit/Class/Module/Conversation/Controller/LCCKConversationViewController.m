@@ -368,17 +368,24 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
 
 - (void)clickedBarButtonItemAction:(UIBarButtonItem *)sender event:(UIEvent *)event
 {
-    DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:self.conversationId];
+    DDAsk *ask_ = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:self.conversationId];
 
-    if (ask.isMyAsk) {
-        DDAskMeetDetailViewController *vc = [[DDAskMeetDetailViewController alloc] init];
-        vc.ask = ask;
-        [self.navigationController pushViewController:vc animated:YES];
-    } else {
-        DDAnswerDetailViewController *vc = [[DDAnswerDetailViewController alloc] init];
-        vc.ask = ask;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
+    [self showLoadingHUD];
+    [[DDAskChatManager sharedInstance] getProfilesInBackgroundForConversationId:self.conversationId callback:^(DDAsk *ask) {
+        [self hideAllHUD];
+        if (!ask) {
+            ask = ask_;
+        }
+        if (ask.isMyAsk) {
+            DDAskMeetDetailViewController *vc = [[DDAskMeetDetailViewController alloc] init];
+            vc.ask = ask;
+            [self.navigationController pushViewController:vc animated:YES];
+        } else {
+            DDAnswerDetailViewController *vc = [[DDAnswerDetailViewController alloc] init];
+            vc.ask = ask;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }];
 }
 
 #pragma mark - public Methods
@@ -731,7 +738,7 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
     [self.chatViewModel loadMessagesFirstTimeWithCallback:^(BOOL succeeded, id object, NSError *error) {
         dispatch_async(dispatch_get_main_queue(),^{
             [weakSelf loadLatestMessagesHandler:succeeded error:error];
-            BOOL isFirstTimeMeet = (([object count] == 0) && succeeded);
+            BOOL isFirstTimeMeet = (([(NSArray *)object count] == 0) && succeeded);
             [self sendWelcomeMessageIfNeeded:isFirstTimeMeet];
         });
     }];

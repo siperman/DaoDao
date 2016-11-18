@@ -38,6 +38,7 @@
 
 @property (nonatomic, strong) NSNumber *lastMeetTime;//最后一次见面时间
 @property (nonatomic, strong) NSNumber *meetTimes;//见过次数
+@property (nonatomic, strong) NSNumber *isMeeting;//是否正在约见
 @property (nonatomic, strong) NSNumber *integrity;//完整率
 @property (nonatomic, readonly) NSString *relation;//关系
 
@@ -47,4 +48,6 @@
 // 评价
 @interface DDRateTag : MTLModel <MTLJSONSerializing>
 
+@property (nonatomic, copy) NSString *tag;
+@property (nonatomic, strong) NSNumber *count;
 @end

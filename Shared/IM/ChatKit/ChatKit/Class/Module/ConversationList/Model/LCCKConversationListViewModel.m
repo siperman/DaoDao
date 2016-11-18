@@ -33,7 +33,6 @@
 #import "LCCKDeallocBlockExecutor.h"
 
 
-
 @interface LCCKConversationListViewModel ()
 
 @property (nonatomic, weak) LCCKConversationListViewController *conversationListViewController;
@@ -226,6 +225,7 @@
             self.freshing = NO;
             if ([self.conversationListViewController filterAVIMError:error]) {
                 self.dataArray = [NSMutableArray arrayWithArray:conversations];
+                [[SYCache sharedInstance] saveItem:conversations forKey:ConversationListCacheKey];
                 [self.conversationListViewController.tableView reloadData];
                 [self selectConversationIfHasRemoteNotificatoinConvid];
                 LCCKMarkBadgeWithTotalUnreadCountBlock markBadgeWithTotalUnreadCountBlock = [LCCKConversationListService sharedInstance].markBadgeWithTotalUnreadCountBlock;
@@ -293,7 +293,12 @@
  */
 - (NSMutableArray *)dataArray {
     if (_dataArray == nil) {
-        _dataArray = @[].mutableCopy;
+        NSArray *cache = [[SYCache sharedInstance] itemForKey:ConversationListCacheKey];
+        if (cache) {
+            _dataArray = [cache mutableCopy];
+        } else {
+            _dataArray = [NSMutableArray array];
+        }
     }
     return _dataArray;
 }

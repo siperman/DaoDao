@@ -10,6 +10,7 @@
 #import "SYCache.h"
 
 static NSString *kSysConfigFileName = @"sysConfig";
+NSString *kServiceCall = @""; //服务电话
 
 @implementation DDConfig
 
@@ -58,6 +59,9 @@ static NSString *kSysConfigFileName = @"sysConfig";
 + (void)saveConfigDict:(NSDictionary *)dict
 {
     [[SYCache sharedInstance] saveItem:dict forKey:kSysConfigFileName];
+    if (dict[@"customerServiceNumber"]) {
+        kServiceCall = [dict[@"customerServiceNumber"] copy];
+    }
 }
 
 + (NSDictionary *)configDict

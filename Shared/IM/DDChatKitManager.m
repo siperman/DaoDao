@@ -178,12 +178,14 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 
         NSMutableArray *users_ = [NSMutableArray array];
         NSMutableArray *userIds_ = [userIds mutableCopy];
+        NSMutableArray *locUserIds_ = [NSMutableArray array];
         for (NSString *uid in userIds) {
             // 先本地取
             LCCKUser *user = [LCCKUser loadFromDiskWithKey:uid];
             if (user) {
                 [users_ addObject:user];
                 [userIds_ removeObject:uid];
+                [locUserIds_ addObject:uid];
             }
         }
 
@@ -212,6 +214,20 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         } else {
             !completionHandler ?: completionHandler([users_ copy], nil);
         }
+
+        if (locUserIds_.count > 0) {
+            // 更新本地user
+            NSString *uids = [locUserIds_ componentsJoinedByString:@","];
+            [SYRequestEngine requestUserWithIds:uids callback:^(BOOL success, id response) {
+                if (success) {
+                    NSArray *users = [LCCKUser parseFromDicts:response[kPageKey][kResultKey]];
+                    for (LCCKUser *user in users) {
+                        // 缓存到本地
+                        [user saveToDiskWithKey:user.userId];
+                    }
+                }
+            }];
+        }
     }];
 
     [[LCChatKit sharedInstance] setDidSelectConversationsListCellBlock:^(NSIndexPath *indexPath, AVIMConversation *conversation, LCCKConversationListViewController *controller) {
@@ -226,24 +242,7 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         if (!conversation.createAt) {
             return;
         }
-//        [[self class] lcck_showMessage:@"加载历史记录..." toView:aConversationController.view];
-        if (conversation.members.count > 2) {
-//            [aConversationController configureBarButtonItemStyle:LCCKBarButtonItemStyleGroupProfile action:^(UIBarButtonItem *sender, UIEvent *event) {
-//                NSString *title = @"打开群聊详情";
-//                NSString *subTitle = [NSString stringWithFormat:@"群聊id：%@", conversation.conversationId];
-//                [LCCKUtil showNotificationWithTitle:title subtitle:subTitle type:LCCKMessageNotificationTypeMessage];
-//            }];
-        } else {
-            [aConversationController configureBarButtonItemStyle:LCCKBarButtonItemStyleSingleProfile action:^(UIBarButtonItem *sender, UIEvent *event) {
-                // 点击详情按钮事件
-                NSString *title = @"打开用户详情";
-                NSArray *members = conversation.members;
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT (SELF IN %@)", @[ [LCChatKit sharedInstance].clientId ]];
-                NSString *peerId = [members filteredArrayUsingPredicate:predicate][0];
-                NSString *subTitle = [NSString stringWithFormat:@"用户id：%@", peerId];
-                [LCCKUtil showNotificationWithTitle:title subtitle:subTitle type:LCCKMessageNotificationTypeMessage];
-            }];
-        }
+        [aConversationController configureBarButtonItemStyle:LCCKBarButtonItemStyleSingleProfile action:nil];
     }];
 
     [[LCChatKit sharedInstance] setConversationInvalidedHandler:^(NSString *conversationId, LCCKConversationViewController *conversationController, id<LCCKUserDelegate> administrator, NSError *error) {
@@ -338,10 +337,10 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
 
     [[LCChatKit sharedInstance] setOpenProfileBlock:^(NSString *userId, id<LCCKUserDelegate> user, __kindof UIViewController *parentController) {
         if (!userId) {
-            [LCCKUtil showNotificationWithTitle:@"用户不存在" subtitle:nil type:LCCKMessageNotificationTypeError];
+            [parentController showNotice:@"用户不存在"];
             return;
         }
-//        [self exampleOpenProfileForUser:user userId:userId parentController:parentController];
+        [self exampleOpenProfileForUser:user userId:userId parentController:parentController];
     }];
 
     //    开启圆角可能导致4S等低端机型卡顿，谨慎开启。
@@ -524,32 +523,6 @@ typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSInde
     [aNavigationController pushViewController:conversationViewController animated:YES];
 }
 
-+ (void)exampleCreateGroupConversationFromViewController:(UIViewController *)fromViewController {
-    //FIXME: add more to allPersonIds
-    NSArray *allPersonIds = [[LCCKContactManager defaultManager] fetchContactPeerIds];
-    NSArray *users = [[LCChatKit sharedInstance] getCachedProfilesIfExists:allPersonIds shouldSameCount:YES error:nil];
-    NSString *currentClientID = [[LCChatKit sharedInstance] clientId];
-    LCCKContactListViewController *contactListViewController = [[LCCKContactListViewController alloc] initWithContacts:[NSSet setWithArray:users] userIds:[NSSet setWithArray:allPersonIds] excludedUserIds:[NSSet setWithArray:@[currentClientID]] mode:LCCKContactListModeMultipleSelection];
-    contactListViewController.title = @"创建群聊";
-    [contactListViewController setSelectedContactsCallback:^(UIViewController *viewController, NSArray<NSString *> *peerIds) {
-        if (!peerIds || peerIds.count == 0) {
-            return;
-        }
-        [self lcck_showMessage:@"创建群聊..." toView:fromViewController.view];
-        [[LCChatKit sharedInstance] createConversationWithMembers:peerIds type:LCCKConversationTypeGroup unique:YES callback:^(AVIMConversation *conversation, NSError *error) {
-            [self lcck_hideHUDForView:fromViewController.view];
-            if (conversation) {
-                [self lcck_showSuccess:@"创建成功" toView:fromViewController.view];
-                [self exampleOpenConversationViewControllerWithConversaionId:conversation.conversationId fromNavigationController:viewController.navigationController];
-            } else {
-                [self lcck_showError:@"创建失败" toView:fromViewController.view];
-            }
-        }];
-    }];
-    UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:contactListViewController];
-    [fromViewController presentViewController:navigationViewController animated:YES completion:nil];
-}
-
 + (void)pushToViewController:(UIViewController *)viewController {
     id<UIApplicationDelegate> delegate = ((id<UIApplicationDelegate>)[[UIApplication sharedApplication] delegate]);
     UIWindow *window = delegate.window;
@@ -730,18 +703,9 @@ void dispatch_async_limit(dispatch_queue_t queue, NSUInteger limitSemaphoreCount
 }
 
 - (void)exampleOpenProfileForUser:(id<LCCKUserDelegate>)user userId:(NSString *)userId parentController:(__kindof UIViewController *)parentController {
-    NSString *currentClientId = [LCChatKit sharedInstance].clientId;
-    NSString *title = [NSString stringWithFormat:@"打开用户主页 \nClientId是 : %@", userId];
-    NSString *subtitle = [NSString stringWithFormat:@"name是 : %@", user.name];
-    if ([userId isEqualToString:currentClientId]) {
-        title = [NSString stringWithFormat:@"打开自己的主页 \nClientId是 : %@", userId];
-        subtitle = [NSString stringWithFormat:@"我自己的name是 : %@", user.name];
-    } else if ([parentController isKindOfClass:[LCCKConversationViewController class]] ) {
-        LCCKConversationViewController *conversationViewController_ = [[LCCKConversationViewController alloc] initWithPeerId:user.clientId ?: userId];
-        [[self class] pushToViewController:conversationViewController_];
-        return;
-    }
-    [LCCKUtil showNotificationWithTitle:title subtitle:subtitle type:LCCKMessageNotificationTypeMessage];
+    DDUserHomePageViewController *vc = [DDUserHomePageViewController viewController];
+    vc.userId = userId;
+    [parentController.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)exampleShowNotificationWithTitle:(NSString *)title subtitle:(NSString *)subtitle type:(LCCKMessageNotificationType)type {

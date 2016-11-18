@@ -16,7 +16,7 @@
 @interface DDRegisterStepThreeViewController () <UITextFieldDelegate, DDChooseFavGoodViewControllerProtocol>
 
 @property (weak, nonatomic) IBOutlet UIButton *btnAvatar;
-@property (weak, nonatomic) IBOutlet UILabel *labName;
+@property (weak, nonatomic) IBOutlet UIButton *btnAddAvatar;
 @property (weak, nonatomic) IBOutlet UIView *bigView;
 @property (weak, nonatomic) IBOutlet UIButton *btnNext;
 
@@ -44,7 +44,6 @@
     [super viewDidLoad];
 
     self.title = @"注册道道";
-    [self.labName normalTextStyle];
     [self.bigView shadowStyle];
     [self.btnNext actionStyle];
 
@@ -97,7 +96,7 @@
     [self.view endEditing:YES];
     [[SYCameraManager sharedInstance] getAvatarInViewController:self callback:^(NSArray *photos) {
         [self.btnAvatar setImage:photos.lastObject forState:UIControlStateNormal];
-        self.labName.hidden = YES;
+        self.btnAddAvatar.hidden = YES;
     }];
 }
 
@@ -112,6 +111,7 @@
         vc.isFillJob = (textField == self.txtJob);
         vc.callback = ^(NSString *str) {
             textField.text = str;
+            [self.navigationController popViewControllerAnimated:YES];
         };
         vc.fillStr = textField.text;
         [self.navigationController pushViewController:vc animated:YES];

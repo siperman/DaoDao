@@ -110,6 +110,7 @@
 {
     //移除文件缓存
     [[SYCache sharedInstance] saveItem:nil forKey:FILE_NAME];
+    [[SYCache sharedInstance] saveItem:nil forKey:ConversationListCacheKey];
 
     self.notificationManager = nil;
     self.userId = nil;

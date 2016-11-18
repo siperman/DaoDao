@@ -70,6 +70,7 @@
         vc.callback = ^(NSString *str) {
             self.postAskModel.industry = [str stringByReplacingOccurrencesOfString:@"，" withString:@","];
             self.txtIndustry.text = str;
+            [self.navigationController popViewControllerAnimated:YES];
         };
         vc.fillStr = self.txtIndustry.text;
         [self.navigationController pushViewController:vc animated:YES];
@@ -80,6 +81,7 @@
         vc.callback = ^(NSString *str) {
             self.postAskModel.job = [str stringByReplacingOccurrencesOfString:@"，" withString:@","];
             self.txtJob.text = str;
+            [self.navigationController popViewControllerAnimated:YES];
         };
         vc.fillStr = self.txtJob.text;
 

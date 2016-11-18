@@ -164,8 +164,8 @@
 
 - (BOOL)calendar:(FSCalendar *)calendar shouldSelectDate:(NSDate *)date
 {
-    // 只能选大于今天的日期
-    return [date compare:[NSDate date]] == NSOrderedDescending;
+    // 不能选小于今天的日期
+    return [date timeIntervalSinceNow] > - 24 * 60 * 60;
 }
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date
@@ -174,8 +174,12 @@
     CGRect frame = [self.calendar frameForDate:date];
     NSLog(@"%@",NSStringFromCGRect(frame));
 
-    [self.datePicker setDate:date animated:YES];
-    [self changeTime:date];
+    NSDate *date_ = [date dateByAddingTimeInterval:10 * 60 * 60]; // 上午10点
+    if ([date timeIntervalSinceNow] < 0) {
+        date_ = [NSDate date];
+    }
+    [self.datePicker setDate:date_ animated:YES];
+    [self changeTime:date_];
     if (self.datePicker.alpha == 0) {
         [UIView animateWithDuration:kAnimationDuration animations:^{
             self.datePicker.alpha = 1;
@@ -290,13 +294,13 @@
         _datePicker.minuteInterval = 10;
         [_datePicker addTarget:self action:@selector(pickTime:) forControlEvents:UIControlEventValueChanged]; //为UIDatePicker添加一个事件当UIDatePicker的值被改变时触发
 
-        NSCalendar *cal = [NSCalendar currentCalendar];
-        NSDateComponents *components = [cal components:( NSCalendarUnitDay | NSCalendarUnitHour ) fromDate:[NSDate date]];
-        [components setDay:1];
-        [components setHour:-components.hour];
-
-        NSDate *minDate = [cal dateByAddingComponents:components toDate:[NSDate date] options:0];
-        _datePicker.minimumDate = minDate;
+//        NSCalendar *cal = [NSCalendar currentCalendar];
+//        NSDateComponents *components = [cal components:( NSCalendarUnitDay | NSCalendarUnitHour ) fromDate:[NSDate date]];
+//        [components setDay:1];
+//        [components setHour:-components.hour];
+//
+//        NSDate *minDate = [cal dateByAddingComponents:components toDate:[NSDate date] options:0];
+        _datePicker.minimumDate = [NSDate date];
 
     }
     return _datePicker;

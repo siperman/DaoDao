@@ -13,6 +13,7 @@
 #import "DDInvitationInfoTableViewCell.h"
 #import "DDMeetNoticeTableViewCell.h"
 #import "DDAskMeetSmallTableViewCell.h"
+#import "DDDemandDescTableViewCell.h"
 
 @interface DDAnswerDetailViewController ()
 
@@ -30,6 +31,8 @@
     [self.tableView registerNib:[DDInvitationInfoTableViewCell class]];
     [self.tableView registerNib:[DDMeetNoticeTableViewCell class]];
     [self.tableView registerNib:[DDAskMeetSmallTableViewCell class]];
+    [self.tableView registerNib:[DDDemandDescTableViewCell class]];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -84,6 +87,9 @@
     if (section == 0) {
         return [DDAskerInfoTableViewCell class];
     } else if (section == 1) {
+        if (self.ask.status.integerValue == DDAskWaitingSendMeet) {
+            return [DDDemandDescTableViewCell class]; // 无见面时间
+        }
         if (self.showSmall) {
             return [DDDemandInfoSmallTableViewCell class];
         } else {

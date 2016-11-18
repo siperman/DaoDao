@@ -37,8 +37,15 @@
              @"lastMeetTime" : @"lastMeetTime",
              @"meetTimes" : @"meetTimes",
              @"integrity" : @"integrity",
+             @"isMeeting" : @"isMeeting",
              };
 }
+
++ (NSValueTransformer *)tagsJSONTransformer
+{
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[DDRateTag class]];
+}
+
 
 - (NSString *)relation
 {
@@ -50,4 +57,13 @@
     return [self.gender boolValue] ? Image(@"icon_woman") : Image(@"icon_man");
 }
 
+@end
+
+@implementation DDRateTag
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{ @"tag" : @"tag",
+              @"count" : @"count"};
+}
 @end

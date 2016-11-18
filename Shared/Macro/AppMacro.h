@@ -92,7 +92,7 @@ static NSString * const kMaxThumbnailResolution                   = @"@300w_300h
 static NSString * const kPictureQuality                           = @"_80Q";
 
 //服务电话
-static NSString * const kServiceCall                              = @"020-12345678";
+OBJC_EXPORT NSString * kServiceCall;
 
 //通用常量
 static CGFloat kAnimationDuration                                 = 0.25;//动画时长
@@ -142,6 +142,7 @@ static NSString * const kClickEmptyViewNotification            = @"kClickEmptyVi
 
 // Cache
 static NSString * const kLastSysNotificationsCacheKey    = @"kLastSysNotificationsCacheKey"; //最后一条系统消息
+static NSString * const ConversationListCacheKey         = @"LCCKConversationListViewModel"; //消息列表
 
 
 

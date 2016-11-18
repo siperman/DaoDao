@@ -24,6 +24,32 @@
 
 @implementation DDAskListViewModel
 
+- (instancetype)init
+{
+    self = [super init];
+
+    [self subscribeNotication:kUpdateAskInfoNotification selector:@selector(handleNotification:)];
+    return self;
+}
+
+- (void)handleNotification:(NSNotification*) notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    if ([userInfo isKindOfClass:[NSDictionary class]]) {
+        DDAsk *oldAsk = userInfo[kOldAskKey];
+        DDAsk *newAsk = userInfo[kNewAskKey];
+        for (DDAsk *ask in self.dataArray) {
+            if (oldAsk == ask) {
+                NSInteger idx = [self.dataArray indexOfObject:oldAsk];
+                [self.dataArray replaceObjectAtIndex:idx withObject:newAsk];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:idx];
+                [self.viewController.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                break;
+            }
+        }
+    }
+}
+
 #pragma mark - table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -68,7 +68,7 @@
         textField.autoCompleteTableBorderColor = SepColor;
         textField.autoCompleteTableCellTextColor = TextColor;
         textField.autoCompleteTableBackgroundColor = WhiteColor;
-        textField.maximumNumberOfAutoCompleteRows = 4;
+        textField.maximumNumberOfAutoCompleteRows = 5;
     }];
 
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(fillDone)];
@@ -98,7 +98,6 @@
         !str.length ?: [str deleteCharactersInRange:NSMakeRange(str.length - 1, 1)];
         self.callback(str);
     }
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)clickBtn:(UIButton *)sender

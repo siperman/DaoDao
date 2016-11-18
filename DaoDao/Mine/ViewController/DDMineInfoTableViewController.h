@@ -11,4 +11,6 @@
 // 个人信息
 @interface DDMineInfoTableViewController : UITableViewController
 
++ (instancetype)viewController;
+
 @end

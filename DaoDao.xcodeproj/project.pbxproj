@@ -10,6 +10,8 @@
 		0098F4637878457F898BC9ED /* libPods-DaoDao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F393DEFF642AFC9F74740E /* libPods-DaoDao.a */; };
 		2B144A9C1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B144A9A1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.m */; };
 		2B144A9D1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B144A9B1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib */; };
+		2B1516CB1DDC31ED009CC92E /* DDChangeAvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1516CA1DDC31ED009CC92E /* DDChangeAvatarViewController.m */; };
+		2B1516CE1DDC4A89009CC92E /* DDUserPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1516CD1DDC4A89009CC92E /* DDUserPageTableViewController.m */; };
 		2B29FA9F1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B29FA9D1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.m */; };
 		2B29FAA01DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B29FA9E1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.xib */; };
 		2B29FAA41DD41A8800AE432F /* DDAskerInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B29FAA21DD41A8800AE432F /* DDAskerInfoTableViewCell.m */; };
@@ -54,6 +56,9 @@
 		2B6D128F1D9A7596003433D0 /* DDConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D128E1D9A7596003433D0 /* DDConfig.m */; };
 		2B6D45D71DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D45D51DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.m */; };
 		2B6D45D81DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D45D61DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.xib */; };
+		2B6D45DC1DDB03A600FF2E04 /* DDDemandDescTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D45DA1DDB03A600FF2E04 /* DDDemandDescTableViewCell.m */; };
+		2B6D45DD1DDB03A600FF2E04 /* DDDemandDescTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D45DB1DDB03A600FF2E04 /* DDDemandDescTableViewCell.xib */; };
+		2B6D45E01DDB082D00FF2E04 /* DDUpdateUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D45DF1DDB082D00FF2E04 /* DDUpdateUserInfoViewController.m */; };
 		2B75AB0B1D7FF8F90074119E /* DDChatKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB0A1D7FF8F90074119E /* DDChatKitManager.m */; };
 		2B75AB491D7FFF4E0074119E /* LCCKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB0F1D7FFF4E0074119E /* LCCKUser.m */; };
 		2B75AB4A1D7FFF4E0074119E /* LCCKInputViewPluginConversationBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AB141D7FFF4E0074119E /* LCCKInputViewPluginConversationBackground.m */; };
@@ -213,7 +218,6 @@
 		2BB3D7471D7D6F8C00FFDC0E /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D58B1D7D6F8C00FFDC0E /* NSTimer+Addition.m */; };
 		2BB3D7481D7D6F8C00FFDC0E /* SYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D58D1D7D6F8C00FFDC0E /* SYCache.m */; };
 		2BB3D7491D7D6F8C00FFDC0E /* SYCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D58F1D7D6F8C00FFDC0E /* SYCameraManager.m */; };
-		2BB3D74A1D7D6F8C00FFDC0E /* SYCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D5911D7D6F8C00FFDC0E /* SYCollectionViewFlowLayout.m */; };
 		2BB3D74B1D7D6F8C00FFDC0E /* SYImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D5931D7D6F8C00FFDC0E /* SYImageCache.m */; };
 		2BB3D74D1D7D6F8C00FFDC0E /* SYPrefManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D5971D7D6F8C00FFDC0E /* SYPrefManager.m */; };
 		2BB3D74E1D7D6F8C00FFDC0E /* SYScrollViewDelegateWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3D5991D7D6F8C00FFDC0E /* SYScrollViewDelegateWrapper.m */; };
@@ -441,6 +445,10 @@
 		2B144A991D9E5AFA00B70B0D /* DDAskInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskInfoTableViewCell.h; sourceTree = "<group>"; };
 		2B144A9A1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskInfoTableViewCell.m; sourceTree = "<group>"; };
 		2B144A9B1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDAskInfoTableViewCell.xib; sourceTree = "<group>"; };
+		2B1516C91DDC31ED009CC92E /* DDChangeAvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChangeAvatarViewController.h; sourceTree = "<group>"; };
+		2B1516CA1DDC31ED009CC92E /* DDChangeAvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChangeAvatarViewController.m; sourceTree = "<group>"; };
+		2B1516CC1DDC4A89009CC92E /* DDUserPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserPageTableViewController.h; sourceTree = "<group>"; };
+		2B1516CD1DDC4A89009CC92E /* DDUserPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserPageTableViewController.m; sourceTree = "<group>"; };
 		2B29FA9C1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDemandInfoAnswerTableViewCell.h; sourceTree = "<group>"; };
 		2B29FA9D1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDemandInfoAnswerTableViewCell.m; sourceTree = "<group>"; };
 		2B29FA9E1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDDemandInfoAnswerTableViewCell.xib; sourceTree = "<group>"; };
@@ -521,6 +529,11 @@
 		2B6D45D41DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAskRateInfoTableViewCell.h; sourceTree = "<group>"; };
 		2B6D45D51DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAskRateInfoTableViewCell.m; sourceTree = "<group>"; };
 		2B6D45D61DD95E4800FF2E04 /* DDAskRateInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDAskRateInfoTableViewCell.xib; sourceTree = "<group>"; };
+		2B6D45D91DDB03A600FF2E04 /* DDDemandDescTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDemandDescTableViewCell.h; sourceTree = "<group>"; };
+		2B6D45DA1DDB03A600FF2E04 /* DDDemandDescTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDemandDescTableViewCell.m; sourceTree = "<group>"; };
+		2B6D45DB1DDB03A600FF2E04 /* DDDemandDescTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDDemandDescTableViewCell.xib; sourceTree = "<group>"; };
+		2B6D45DE1DDB082D00FF2E04 /* DDUpdateUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUpdateUserInfoViewController.h; sourceTree = "<group>"; };
+		2B6D45DF1DDB082D00FF2E04 /* DDUpdateUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUpdateUserInfoViewController.m; sourceTree = "<group>"; };
 		2B75AB051D7FABA40074119E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		2B75AB091D7FF8F90074119E /* DDChatKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatKitManager.h; sourceTree = "<group>"; };
 		2B75AB0A1D7FF8F90074119E /* DDChatKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatKitManager.m; sourceTree = "<group>"; };
@@ -831,8 +844,6 @@
 		2BB3D58D1D7D6F8C00FFDC0E /* SYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCache.m; sourceTree = "<group>"; };
 		2BB3D58E1D7D6F8C00FFDC0E /* SYCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCameraManager.h; sourceTree = "<group>"; };
 		2BB3D58F1D7D6F8C00FFDC0E /* SYCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCameraManager.m; sourceTree = "<group>"; };
-		2BB3D5901D7D6F8C00FFDC0E /* SYCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		2BB3D5911D7D6F8C00FFDC0E /* SYCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		2BB3D5921D7D6F8C00FFDC0E /* SYImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYImageCache.h; sourceTree = "<group>"; };
 		2BB3D5931D7D6F8C00FFDC0E /* SYImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYImageCache.m; sourceTree = "<group>"; };
 		2BB3D5961D7D6F8C00FFDC0E /* SYPrefManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPrefManager.h; sourceTree = "<group>"; };
@@ -1324,6 +1335,9 @@
 		2B6D12331D98B586003433D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2B6D45D91DDB03A600FF2E04 /* DDDemandDescTableViewCell.h */,
+				2B6D45DA1DDB03A600FF2E04 /* DDDemandDescTableViewCell.m */,
+				2B6D45DB1DDB03A600FF2E04 /* DDDemandDescTableViewCell.xib */,
 				2B29FA9C1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.h */,
 				2B29FA9D1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.m */,
 				2B29FA9E1DD4191F00AE432F /* DDDemandInfoAnswerTableViewCell.xib */,
@@ -1585,8 +1599,14 @@
 				2BB23C851DC8441100FC5657 /* DDMyAnswerTableViewController.m */,
 				2BFED1131DD559A0002D37AE /* DDMineInfoTableViewController.h */,
 				2BFED1141DD559A0002D37AE /* DDMineInfoTableViewController.m */,
+				2B6D45DE1DDB082D00FF2E04 /* DDUpdateUserInfoViewController.h */,
+				2B6D45DF1DDB082D00FF2E04 /* DDUpdateUserInfoViewController.m */,
+				2B1516C91DDC31ED009CC92E /* DDChangeAvatarViewController.h */,
+				2B1516CA1DDC31ED009CC92E /* DDChangeAvatarViewController.m */,
 				2BFED1161DD55AA8002D37AE /* DDUserHomePageViewController.h */,
 				2BFED1171DD55AA8002D37AE /* DDUserHomePageViewController.m */,
+				2B1516CC1DDC4A89009CC92E /* DDUserPageTableViewController.h */,
+				2B1516CD1DDC4A89009CC92E /* DDUserPageTableViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2304,8 +2324,6 @@
 				2BB3D58D1D7D6F8C00FFDC0E /* SYCache.m */,
 				2BB3D58E1D7D6F8C00FFDC0E /* SYCameraManager.h */,
 				2BB3D58F1D7D6F8C00FFDC0E /* SYCameraManager.m */,
-				2BB3D5901D7D6F8C00FFDC0E /* SYCollectionViewFlowLayout.h */,
-				2BB3D5911D7D6F8C00FFDC0E /* SYCollectionViewFlowLayout.m */,
 				2BB3D5921D7D6F8C00FFDC0E /* SYImageCache.h */,
 				2BB3D5931D7D6F8C00FFDC0E /* SYImageCache.m */,
 				2BB3D5961D7D6F8C00FFDC0E /* SYPrefManager.h */,
@@ -3404,6 +3422,7 @@
 				2B6D12701D98B586003433D0 /* DDForgetCodeNoticeView.xib in Resources */,
 				2BB3D7951D7D6F8C00FFDC0E /* DBCameraImages.xcassets in Resources */,
 				2B90B9071DB71440000B6FE1 /* Shared.xcassets in Resources */,
+				2B6D45DD1DDB03A600FF2E04 /* DDDemandDescTableViewCell.xib in Resources */,
 				2BB3D7AA1D7D6F8C00FFDC0E /* lookup_soft_elegance_2.png in Resources */,
 				2B8033461DC9CC8F0059FD28 /* DDAnswerInfoTableViewCell.xib in Resources */,
 				2BB3D7EB1D7D6F8D00FFDC0E /* UMSCommentInputController.xib in Resources */,
@@ -3533,6 +3552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B6D45E01DDB082D00FF2E04 /* DDUpdateUserInfoViewController.m in Sources */,
 				2BB3D7B31D7D6F8C00FFDC0E /* MGSwipeButton.m in Sources */,
 				2BB3D7791D7D6F8C00FFDC0E /* CTAssetsGroupViewCell.m in Sources */,
 				2BB3D7A31D7D6F8C00FFDC0E /* FSImageView.m in Sources */,
@@ -3569,6 +3589,7 @@
 				2B6D12871D9A1C3C003433D0 /* SYRequestEngine+Ask.m in Sources */,
 				2BDB10221D9B98E700F2C27C /* ChooseImageViewModel.m in Sources */,
 				2B6D12751D98B586003433D0 /* DDLoginViewController.m in Sources */,
+				2B1516CE1DDC4A89009CC92E /* DDUserPageTableViewController.m in Sources */,
 				2BB3D7DA1D7D6F8D00FFDC0E /* TOActivityCroppedImageProvider.m in Sources */,
 				2BB3D7D71D7D6F8D00FFDC0E /* SSProcessorInfo.m in Sources */,
 				2BA713DF1DCC3C700072FB42 /* LCCKTextFullScreenViewController.m in Sources */,
@@ -3620,6 +3641,7 @@
 				2BB3D7B11D7D6F8C00FFDC0E /* LPlaceholderTextView.m in Sources */,
 				2BA713D81DCC3C700072FB42 /* LCCKBaseViewController.m in Sources */,
 				2BA713E01DCC3C700072FB42 /* AVIMConversation+LCCKExtension.m in Sources */,
+				2B1516CB1DDC31ED009CC92E /* DDChangeAvatarViewController.m in Sources */,
 				2B6D127B1D98B586003433D0 /* DDRegisterStepTwoViewController.m in Sources */,
 				2BB3D78D1D7D6F8C00FFDC0E /* DBCameraViewController.m in Sources */,
 				2BB3D7C11D7D6F8C00FFDC0E /* NJKWebViewProgressView.m in Sources */,
@@ -3635,6 +3657,7 @@
 				2BB3D7961D7D6F8C00FFDC0E /* DBCameraCropView.m in Sources */,
 				2BA713DB1DCC3C700072FB42 /* LCCKContactCell.m in Sources */,
 				2BB3D7C81D7D6F8D00FFDC0E /* SKTagView.m in Sources */,
+				2B6D45DC1DDB03A600FF2E04 /* DDDemandDescTableViewCell.m in Sources */,
 				2B6D128A1D9A66D3003433D0 /* DDMajorGradePickerView.m in Sources */,
 				2BB3D7761D7D6F8C00FFDC0E /* ALAssetsGroup+isEqual.m in Sources */,
 				2BB3D7B61D7D6F8C00FFDC0E /* MJPhoto.m in Sources */,
@@ -3668,7 +3691,6 @@
 				2BA7142D1DCC3C700072FB42 /* LCCKSafariActivity.m in Sources */,
 				2BB3D7811D7D6F8C00FFDC0E /* NSBundle+CTAssetsPickerController.m in Sources */,
 				2BA713D31DCC3C700072FB42 /* NSMutableArray+LCCKMessageExtention.m in Sources */,
-				2BB3D74A1D7D6F8C00FFDC0E /* SYCollectionViewFlowLayout.m in Sources */,
 				2BB3D77D1D7D6F8C00FFDC0E /* CTAssetsSupplementaryView.m in Sources */,
 				2BA714041DCC3C700072FB42 /* LCCKConversationListViewModel.m in Sources */,
 				2B6D127A1D98B586003433D0 /* DDRegisterStepThreeViewController.m in Sources */,

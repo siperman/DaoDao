@@ -57,12 +57,6 @@
     return YES;
 }
 
-//- (void)viewDidLayoutSubviews
-//{
-//    [super viewDidLayoutSubviews];
-//    [self layoutScrollView];
-//}
-
 - (void)layoutScrollView
 {
     if (self.scrollView.subviews.count > 0) {

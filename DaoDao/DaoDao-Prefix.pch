@@ -26,6 +26,7 @@
 #import "CategoryHeaders.h"
 #import "SYStoryboardManager.h"
 #import "ChatKitHeaders.h"
+#import "SYCache.h"
 
 #import <Masonry/Masonry.h>
 #import <MBProgressHUD/MBProgressHUD.h>
@@ -49,5 +50,6 @@
 #import "DDLoadingMoreTableViewCell.h"
 #import "DDLoadingMoreCollectionViewCell.h"
 #import "DDAskChatManager.h"
+#import "DDUserHomePageViewController.h"
 
 #endif /* DaoDao_Prefix_pch */

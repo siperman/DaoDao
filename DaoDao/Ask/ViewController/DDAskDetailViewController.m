@@ -15,7 +15,7 @@
 
 @interface DDAskDetailViewController ()
 
-@property (nonatomic, strong) NSArray <DDAsk *>*answers;
+@property (nonatomic, strong) NSMutableArray <DDAsk *>*answers;
 @end
 
 @implementation DDAskDetailViewController
@@ -27,6 +27,7 @@
     [self.tableView registerNib:[DDAnswerInfoTableViewCell class]];
     if (self.ask.status.integerValue >= DDAskWaitingSendMeet) {
         [self requestAnswers];
+        [self subscribeNotication:kUpdateAskInfoNotification selector:@selector(handleNotification:)];
     }
 }
 
@@ -38,12 +39,30 @@
     [SYRequestEngine requestAnswerListWithAskId:self.ask.aid callback:^(BOOL success, id response) {
         [self hideAllHUD];
         if (success) {
-            self.answers = [DDAsk parseFromDicts:response[kPageKey][kResultKey]];
+            self.answers = [[DDAsk parseFromDicts:response[kPageKey][kResultKey]] mutableCopy];
             [self.tableView reloadData];
         } else {
             [self showRequestNotice:response];
         }
     }];
+}
+
+- (void)handleNotification:(NSNotification*) notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    if ([userInfo isKindOfClass:[NSDictionary class]]) {
+        DDAsk *oldAsk = userInfo[kOldAskKey];
+        DDAsk *newAsk = userInfo[kNewAskKey];
+        for (DDAsk *ask in self.answers) {
+            if (oldAsk == ask) {
+                NSInteger idx = [self.answers indexOfObject:oldAsk];
+                [self.answers replaceObjectAtIndex:idx withObject:newAsk];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:idx + 1];
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                break;
+            }
+        }
+    }
 }
 
 #pragma mark tableView
