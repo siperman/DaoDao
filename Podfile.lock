@@ -33,7 +33,10 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (3.0.0):
     - CocoaLumberjack/Default
+  - Crashlytics (3.8.3):
+    - Fabric (~> 1.6.3)
   - DACircularProgress (2.3.1)
+  - Fabric (1.6.10)
   - FDFullscreenPopGesture (1.1)
   - FDStackView (1.0)
   - FMDB (2.6.2):
@@ -77,7 +80,9 @@ DEPENDENCIES:
   - AVOSCloud (~> 3.6.0)
   - AVOSCloudIM (~> 3.6.0)
   - CocoaLumberjack
+  - Crashlytics
   - DACircularProgress (~> 2.3.1)
+  - Fabric
   - FDFullscreenPopGesture
   - FDStackView (~> 1.0)
   - FMDB (~> 2.6.2)
@@ -105,7 +110,9 @@ SPEC CHECKSUMS:
   AVOSCloud: be838e80e13c3247abf24d95e325b3fd515f9d12
   AVOSCloudIM: 7044ffb9c883fedb8d9055db12e4f28c5160795d
   CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FDStackView: 3a4bbe0ce9c35e974246a585168b9da8c32213f1
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
@@ -128,6 +135,6 @@ SPEC CHECKSUMS:
   UIView+Borders: d632c8bef679e7f98e913b569e972858742841ce
   UMengAnalytics: 8d95752776c32f5b954d40edc7f23944882a7c14
 
-PODFILE CHECKSUM: 62453342176be334cb2dfdff19d0c2f9e7bc2778
+PODFILE CHECKSUM: 3e4e944c778450ced70f3cb57a7a05ac7c9770bd
 
 COCOAPODS: 1.1.1

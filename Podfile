@@ -32,4 +32,8 @@ target 'DaoDao' do
     pod 'DACircularProgress' , '~> 2.3.1'
     pod 'MLLabel' , '~> 1.9.2'
     pod 'MWPhotoBrowser', '~> 2.1.2'
+
+    # Fabric
+    pod 'Fabric'
+    pod 'Crashlytics'
 end

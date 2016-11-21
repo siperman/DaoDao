@@ -15,6 +15,8 @@
 #import "LCCKBadgeView.h"
 #import "SYUtils.h"
 #import <UserNotifications/UserNotifications.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -31,6 +33,7 @@
     // Setting
     {
         [[SYImageCache sharedInstance] setup];
+        [Fabric with:@[[Crashlytics class]]];
     }
 
     // LeanCloud

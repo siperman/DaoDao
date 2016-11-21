@@ -11,6 +11,9 @@
 #import "SYUtils.h"
 #import "SYPrefManager.h"
 #import "DDChatKitManager.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 #ifdef DEBUG
 #define FILE_NAME @"edf_local_v2.data" // user data
@@ -91,6 +94,13 @@
     }];
 }
 
+- (void) logUser {
+    // crash 跟踪
+    [CrashlyticsKit setUserIdentifier:_user.uid];
+    [CrashlyticsKit setUserEmail:_user.mobilePhone];
+    [CrashlyticsKit setUserName:_user.realName];
+}
+
 - (void)updateUser
 {
     // 获取系统消息
@@ -113,6 +123,8 @@
         } failed:^(NSError *error) {
             debugLog(@"登入失败 %@", error);
         }];
+
+        [self logUser];
     }
 }
 
