@@ -225,7 +225,7 @@
             self.freshing = NO;
             if ([self.conversationListViewController filterAVIMError:error]) {
                 self.dataArray = [NSMutableArray arrayWithArray:conversations];
-                [[SYCache sharedInstance] saveItem:conversations forKey:ConversationListCacheKey];
+                [[SYCache sharedInstance] saveItem:self.dataArray forKey:ConversationListCacheKey];
                 [self.conversationListViewController.tableView reloadData];
                 [self selectConversationIfHasRemoteNotificatoinConvid];
                 LCCKMarkBadgeWithTotalUnreadCountBlock markBadgeWithTotalUnreadCountBlock = [LCCKConversationListService sharedInstance].markBadgeWithTotalUnreadCountBlock;

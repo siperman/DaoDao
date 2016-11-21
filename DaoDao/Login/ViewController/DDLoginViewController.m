@@ -119,7 +119,8 @@
 
     [SYRequestEngine userLoginWithPhone:self.viewModel.phone code:self.viewModel.code callback:^(BOOL success, id response) {
         if (success) {
-            [DDUserManager manager].user = [DDUser fromDict:response[kObjKey]];
+            DDUser *user = [DDUser fromDict:response[kObjKey]];
+            [DDUserManager manager].user = user;
             [self showNotice:kLoginSuccessNotice];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDefaultHideNoticeIntervel * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.navigationController dismissViewControllerAnimated:YES completion:nil];

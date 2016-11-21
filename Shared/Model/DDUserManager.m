@@ -81,6 +81,16 @@
     }
 }
 
+
+- (void)touchUser
+{
+    [SYRequestEngine updateUser:^(BOOL success, id response) {
+        if (success) {
+            self.user = [DDUser fromDict:response[kObjKey]];
+        }
+    }];
+}
+
 - (void)updateUser
 {
     // 获取系统消息

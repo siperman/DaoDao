@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+// 基类cell
 @interface DDBaseTableViewCell : UITableViewCell
 
 - (void)configureCellWithData:(id)data;

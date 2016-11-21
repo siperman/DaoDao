@@ -40,6 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"个人信息";
     [self freshView];
     [self subscribeNotication:kUpdateUserInfoNotification selector:@selector(freshView)];
 }

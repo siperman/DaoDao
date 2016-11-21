@@ -72,7 +72,7 @@
     }];
 
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(fillDone)];
-    [item setTintColor:SecondColor];
+//    [item setTintColor:SecondColor];
 
     RAC(item, enabled) =  [RACSignal combineLatest:@[self.txtOne.rac_textSignal,
                                                      self.txtTwo.rac_textSignal,

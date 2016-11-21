@@ -15,8 +15,7 @@ OBJC_EXPORT NSString * kPicHostUrl;
 @interface SYRequestEngine : NSObject
 
 // 未读消息红点数
-+ (void)requestCountWithParams:(NSDictionary *)params
-                       callback:(AZNetworkResultBlock)callback;
++ (void)requestCountCallback:(AZNetworkResultBlock)callback;
 
 // 系统配置
 + (void)requestConfigCallback:(AZNetworkResultBlock)callback;

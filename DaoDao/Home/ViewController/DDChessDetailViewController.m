@@ -11,6 +11,7 @@
 #import "DDReloadView.h"
 #import "DDChatKitManager.h"
 #import "LCCKUser.h"
+#import "DDAnswerDetailViewController.h"
 
 @interface DDChessDetailViewController () <DDAskInfoProtocol>
 
@@ -35,6 +36,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    /*
+     *  all@industry : 我的行业 集合
+     */
     if ([self.cid isEqualToString:@"all@industry"]) {
         self.title = @"我的行业";
     } else {
@@ -153,6 +157,17 @@
     return 5.0;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = indexPath.row;
+
+    if (row < self.answerList.count) {
+        DDAnswerDetailViewController *vc = [[DDAnswerDetailViewController alloc] init];
+        vc.ask= self.answerList[row];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
 #pragma mark DDAskInfoProtocol
 
 - (void)interest:(DDAsk *)askInfo
@@ -163,6 +178,7 @@
 
     // 缓存聊天用户信息
     [LCCKUser saveToDisk:askInfo.answer.user];
+    [LCCKUser saveToDisk:askInfo.user];
 
     // 去聊天室
     [DDChatKitManager exampleOpenConversationViewControllerWithConversaionId:askInfo.answer.conversionId fromNavigationController:self.navigationController];

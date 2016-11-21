@@ -38,6 +38,12 @@
     NSString *tel = [NSString stringWithFormat:@"客服帮助请点击：%@", kServiceCall];
     [self.btnCall setTitle:tel];
 
+    [self freshView];
+    [self subscribeNotication:kUpdateUserInfoNotification selector:@selector(freshView)];
+}
+
+- (void)freshView
+{
     DDUser *user = [DDUserManager manager].user;
     self.labName.text = user.nickName;
 

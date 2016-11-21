@@ -34,8 +34,11 @@
 
     DDUser *user = [DDUserManager manager].user;
     if ([user.uid isEqualToString:self.userId]) {
-        [self.containerVC freshWithUser:user];
+//        [self.containerVC freshWithUser:user];
         self.btnMenu.hidden = YES;
+        self.containerVC.view.hidden = YES;
+        self.bottomView.hidden = YES;
+        [self requestUser];
     } else {
         self.containerVC.view.hidden = YES;
         [self requestUser];
@@ -49,6 +52,12 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 - (IBAction)back:(UIButton *)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -56,7 +65,7 @@
 
 - (IBAction)popMenu:(UIButton *)sender
 {
-    UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *vc = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *logout = [UIAlertAction actionWithTitle:@"举报" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [self showNotice:@"举报成功！"];
     }];

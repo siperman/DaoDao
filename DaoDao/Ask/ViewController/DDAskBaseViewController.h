@@ -13,6 +13,7 @@
 #import "DDAskHandOutTableViewCell.h"
 #import "DDAskRateInfoTableViewCell.h"
 
+// 详情基类vc
 @interface DDAskBaseViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UILabel *labHead;

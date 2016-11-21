@@ -21,7 +21,7 @@ NSString * kHostUrl = @"http://apidaodao.soouya.com/v1";
 NSString * kPicHostUrl = @"http://img.daodaoclub.com";
 
 // 剩余次数
-static NSString * const kCountPath                             = @"/count/{_model}";
+static NSString * const kCountPath                             = @"/count/AskAnswer";
 
 //搜索
 static NSString * const kConfigPath                            = @"/config/my";
@@ -37,11 +37,11 @@ static NSString * const kFeedbackPath                          = @"/feedback";
 
 @implementation SYRequestEngine
 
-+ (void)requestCountWithParams:(NSDictionary *)params callback:(AZNetworkResultBlock)callback
++ (void)requestCountCallback:(AZNetworkResultBlock)callback
 {
     [SYNetworkManager startRequestWithUrl:RequestUrlFactory(kCountPath)
                        method:SYRequestMethodGet
-                       params:params
+                       params:nil
                          body:nil
                      callback:callback];
 }

@@ -7,6 +7,7 @@
 //
 
 #import "DDAskInfoTableViewCell.h"
+#import "SepView.h"
 
 @interface DDAskInfoTableViewCell ()
 
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgGender;
 @property (weak, nonatomic) IBOutlet UIButton *btnLeft;
 @property (weak, nonatomic) IBOutlet UIButton *btnRight;
+@property (weak, nonatomic) IBOutlet UILabel *labStatus;
 
 @property (weak, nonatomic) IBOutlet UILabel *labName; // 花名
 @property (weak, nonatomic) IBOutlet UILabel *labGrade; // 届别
@@ -36,21 +38,43 @@
 {
     _askInfo = askInfo;
     [self.imgHead sy_setThumbnailImageWithUrl:askInfo.user.headUrl];
-    [self.imgGender setImage:([askInfo.user.gender boolValue] ? Image(@"icon_woman") : Image(@"icon_man"))];
+    [self.imgGender setImage:askInfo.user.genderImage];
 
     self.labName.text = askInfo.user.nickName;
     self.labGrade.text = MajorGrade(askInfo.user.major, askInfo.user.grade);
     self.labDemand.text = askInfo.demand;
     self.labRelation.text = askInfo.user.relation;
 
-    if (askInfo.status.integerValue >= DDAskWaitingSendMeet) {
-        [self.btnRight setTitle:@"您已感兴趣"];
-        self.btnLeft.enabled = NO;
-        self.btnRight.enabled = NO;
-    } else if (askInfo.status.integerValue < DDAskPostSuccess) {
-        [self.btnLeft setTitle:@"您已不感兴趣"];
-        self.btnLeft.enabled = NO;
-        self.btnRight.enabled = NO;
+    if (askInfo.status.integerValue  == DDAskWaitingAnswerInterest) {
+        self.labStatus.hidden = YES;
+        self.btnLeft.hidden = NO;
+        self.btnRight.hidden = NO;
+    } else {
+        self.labStatus.hidden = NO;
+        self.btnLeft.hidden = YES;
+        self.btnRight.hidden = YES;
+        self.labStatus.textColor = ColorHex(@"707070");
+        NSInteger status = askInfo.status.integerValue;
+
+        if (status == DDAskWaitingSendMeet) {
+            self.labStatus.text = @"您已感兴趣";
+        } else if (status == DDAskWaitingAgreeMeet) {
+            self.labStatus.text = @"待赴约";
+        } else if (status == DDAskWaitingMeet) {
+            self.labStatus.text = @"待见面";
+        } else if (status == DDAskAskerRate ||
+                   status == DDAskBothUnRate) {
+            self.labStatus.text = @"待评价";
+        } else if (status == DDAskAnswerRate ||
+                   status == DDAskBothRate) {
+            self.labStatus.text = @"已完成";
+        } else if (status == DDAskAnswerDisagreeMeet) {
+            self.labStatus.text = @"您已不感兴趣";
+            self.labStatus.textColor = CCCColor;
+        } else {
+            self.labStatus.text = @"已失效";
+            self.labStatus.textColor = CCCColor;
+        }
     }
 
     [self layoutIfNeeded];

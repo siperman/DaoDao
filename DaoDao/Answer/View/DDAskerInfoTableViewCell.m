@@ -56,6 +56,15 @@
     }
 }
 
+- (IBAction)goUserPage:(UIButton *)sender
+{
+    DDUser *user = _ask.user;
+
+    DDUserHomePageViewController *vc = [DDUserHomePageViewController viewController];
+    vc.userId = user.uid;
+    [self.viewController.navigationController pushViewController:vc animated:YES];
+}
+
 - (IBAction)chat:(UIButton *)sender
 {
     [MobClick event:ChatBtn_click];

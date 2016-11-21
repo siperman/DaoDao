@@ -62,8 +62,8 @@
     [self.btnNext actionStyle];
 
     if (_user) {
-        self.txtName.text = _user.realName;
-        self.txtSchool.text = MajorGrade(_user.major, _user.grade);
+//        self.txtName.text = _user.realName;
+//        self.txtSchool.text = MajorGrade(_user.major, _user.grade);
     } else {
         _user = [[DDUser alloc] init];
     }

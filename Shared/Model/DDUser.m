@@ -38,6 +38,8 @@
              @"meetTimes" : @"meetTimes",
              @"integrity" : @"integrity",
              @"isMeeting" : @"isMeeting",
+             @"askReds" : @"askReds",
+             @"answerReds" : @"answerReds",
              };
 }
 

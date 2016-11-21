@@ -51,7 +51,7 @@
     [self.labGrade setText:MajorGrade(user.major, user.grade)];
     [self.labAddr setText:user.city];
     _user = user;
-//    [self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -154,7 +154,7 @@
         if (_user.tags.count % maxRowCount == 0) {
             rows = 1 + _user.tags.count / maxRowCount;
         } else {
-            rows = 1 + _user.tags.count / maxRowCount;
+            rows = 2 + _user.tags.count / maxRowCount;
         }
         self.rateRows = rows;
         // 分割线

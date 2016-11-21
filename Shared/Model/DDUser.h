@@ -40,6 +40,9 @@
 @property (nonatomic, strong) NSNumber *meetTimes;//见过次数
 @property (nonatomic, strong) NSNumber *isMeeting;//是否正在约见
 @property (nonatomic, strong) NSNumber *integrity;//完整率
+@property (nonatomic, strong) NSNumber *askReds;   //约局红点数
+@property (nonatomic, strong) NSNumber *answerReds;//应局红点数
+
 @property (nonatomic, readonly) NSString *relation;//关系
 
 - (UIImage *)genderImage;

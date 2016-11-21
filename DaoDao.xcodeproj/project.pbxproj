@@ -436,6 +436,7 @@
 		2BF86C891D95179600E06BF8 /* NSCalendar+NSCalendarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C831D95179600E06BF8 /* NSCalendar+NSCalendarExtension.m */; };
 		2BF86C8A1D95179600E06BF8 /* NSDateComponents+NSCalendarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C861D95179600E06BF8 /* NSDateComponents+NSCalendarExtension.m */; };
 		2BF86C8B1D95179600E06BF8 /* NSString+NSCalendarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C881D95179600E06BF8 /* NSString+NSCalendarExtension.m */; };
+		2BFD57301DDEEB460000311B /* AVIMConversation+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD572F1DDEEB460000311B /* AVIMConversation+Coder.m */; };
 		2BFED1151DD559A0002D37AE /* DDMineInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFED1141DD559A0002D37AE /* DDMineInfoTableViewController.m */; };
 		2BFED1181DD55AA8002D37AE /* DDUserHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFED1171DD55AA8002D37AE /* DDUserHomePageViewController.m */; };
 /* End PBXBuildFile section */
@@ -1288,6 +1289,8 @@
 		2BF86C861D95179600E06BF8 /* NSDateComponents+NSCalendarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateComponents+NSCalendarExtension.m"; sourceTree = "<group>"; };
 		2BF86C871D95179600E06BF8 /* NSString+NSCalendarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSCalendarExtension.h"; sourceTree = "<group>"; };
 		2BF86C881D95179600E06BF8 /* NSString+NSCalendarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSCalendarExtension.m"; sourceTree = "<group>"; };
+		2BFD572E1DDEEB460000311B /* AVIMConversation+Coder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVIMConversation+Coder.h"; sourceTree = "<group>"; };
+		2BFD572F1DDEEB460000311B /* AVIMConversation+Coder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVIMConversation+Coder.m"; sourceTree = "<group>"; };
 		2BFED1131DD559A0002D37AE /* DDMineInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMineInfoTableViewController.h; sourceTree = "<group>"; };
 		2BFED1141DD559A0002D37AE /* DDMineInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMineInfoTableViewController.m; sourceTree = "<group>"; };
 		2BFED1161DD55AA8002D37AE /* DDUserHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserHomePageViewController.h; sourceTree = "<group>"; };
@@ -1635,6 +1638,8 @@
 			children = (
 				2B75AB0E1D7FFF4E0074119E /* LCCKUser.h */,
 				2B75AB0F1D7FFF4E0074119E /* LCCKUser.m */,
+				2BFD572E1DDEEB460000311B /* AVIMConversation+Coder.h */,
+				2BFD572F1DDEEB460000311B /* AVIMConversation+Coder.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3643,6 +3648,7 @@
 				2BA713E01DCC3C700072FB42 /* AVIMConversation+LCCKExtension.m in Sources */,
 				2B1516CB1DDC31ED009CC92E /* DDChangeAvatarViewController.m in Sources */,
 				2B6D127B1D98B586003433D0 /* DDRegisterStepTwoViewController.m in Sources */,
+				2BFD57301DDEEB460000311B /* AVIMConversation+Coder.m in Sources */,
 				2BB3D78D1D7D6F8C00FFDC0E /* DBCameraViewController.m in Sources */,
 				2BB3D7C11D7D6F8C00FFDC0E /* NJKWebViewProgressView.m in Sources */,
 				2BA713F51DCC3C700072FB42 /* LCCKInputViewPluginLocation.m in Sources */,

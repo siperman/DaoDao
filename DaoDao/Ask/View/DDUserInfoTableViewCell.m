@@ -54,6 +54,12 @@
     }
 }
 
+- (IBAction)goUserPage:(UIButton *)sender
+{
+    DDUserHomePageViewController *vc = [DDUserHomePageViewController viewController];
+    vc.userId = self.user.uid;
+    [self.viewController.navigationController pushViewController:vc animated:YES];
+}
 
 + (CGFloat)cellHeight
 {

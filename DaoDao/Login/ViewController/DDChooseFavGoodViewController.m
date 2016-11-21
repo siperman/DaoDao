@@ -73,14 +73,13 @@
     [self.btnNext setBackgroundImage:[UIImage imageWithColor:TextColor] forState:UIControlStateDisabled];
     self.btnNext.enabled = NO;
 
-    [self setBackButtonSelector:@selector(back)];
     if (self.navigationController.presentingViewController) {
-        self.navigationController.fd_viewControllerBasedNavigationBarAppearanceEnabled = NO;
+        [self.navigationItem setHidesBackButton:YES];
+        self.fd_interactivePopDisabled = YES;
     } else {
         self.btnNext.hidden = YES;
 
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(next:)];
-        [item setTintColor:SecondColor];
         item.enabled = NO;
         self.navigationItem.rightBarButtonItem = item;
     }
@@ -99,15 +98,6 @@
 
         self.chooseValues = str;
         [self.delegete chooseFavGood:self];
-    }
-}
-
-- (void)back
-{
-    if (self.navigationController.presentingViewController) {
-        return;
-    } else {
-        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

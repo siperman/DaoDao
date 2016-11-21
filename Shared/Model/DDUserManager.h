@@ -13,6 +13,10 @@
 @interface DDUserManager : NSObject
 
 + (instancetype)manager;
+/*
+ *  更新全局user对象
+ */
+- (void)touchUser;
 
 @property (nonatomic, readonly) BOOL isLogined;
 @property (nonatomic, strong) DDUser *user;

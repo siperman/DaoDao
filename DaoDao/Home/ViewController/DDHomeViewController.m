@@ -54,7 +54,6 @@
 
     [self subscribeNotication:kNewIMMessageNotification selector:@selector(newIMMessage)]; // 订阅新聊天消息推送
     [self subscribeNotication:kUpdateUnreadCountNotification selector:@selector(refreshIM)]; // 订阅未读聊天消息数推送
-//    [self subscribeNotication:kShowWelcomeNotification selector:@selector(showWelcome)];
 
     self.countDownTimer = [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(requestChess) userInfo:nil repeats:YES];
 }
@@ -64,6 +63,7 @@
     [super viewWillAppear:animated];
     if ([self checkLogin] && !self.isLoading) {
         [self requestChess];
+        [[DDUserManager manager] touchUser];
     }
 }
 
