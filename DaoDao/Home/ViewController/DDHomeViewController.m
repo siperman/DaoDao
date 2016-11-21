@@ -169,7 +169,7 @@
     if (_badgeView == nil) {
         LCCKBadgeView *badgeView = [[LCCKBadgeView alloc] initWithParentView:self.navigationController.navigationBar
                                                                    alignment:LCCKBadgeViewAlignmentTopRight];
-        badgeView.badgeBackgroundColor = ColorHex(@"f6634a");
+        badgeView.badgeBackgroundColor = BadgeColor;
         badgeView.badgeTextColor = WhiteColor;
         badgeView.badgePositionAdjustment = CGPointMake(-16, 8);
         _badgeView = badgeView;

@@ -11,6 +11,7 @@
 #import "DDMyAskTableViewController.h"
 #import "DDMyAnswerTableViewController.h"
 #import "DDMineInfoTableViewController.h"
+#import "LCCKBadgeView.h"
 
 @interface DDMineViewController ()
 
@@ -19,6 +20,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnLogout;
 @property (weak, nonatomic) IBOutlet UILabel *labName;
 @property (weak, nonatomic) IBOutlet UILabel *labDesc;
+@property (weak, nonatomic) IBOutlet UIButton *btnMyAsk;
+@property (weak, nonatomic) IBOutlet UIButton *btnMyAnswer;
+
+@property (nonatomic, strong) LCCKBadgeView *badgeAsk;
+@property (nonatomic, strong) LCCKBadgeView *badgeAnswer;
 
 @end
 
@@ -46,6 +52,19 @@
 {
     DDUser *user = [DDUserManager manager].user;
     self.labName.text = user.nickName;
+    if (user.askReds.integerValue > 0) {
+        self.badgeAsk.badgeText = [user.askReds stringValue];
+        self.badgeAsk.hidden = NO;
+    } else {
+        self.badgeAsk.hidden = YES;
+    }
+    if (user.answerReds.integerValue > 0) {
+        self.badgeAnswer.badgeText = [user.answerReds stringValue];
+        self.badgeAnswer.hidden = NO;
+    } else {
+        self.badgeAnswer.hidden = YES;
+    }
+
 
     if (user.integrity.integerValue >= 100) {
         self.labDesc.text = @"个人资料完善度100%，更多靠谱的人会靠近您";
@@ -106,6 +125,34 @@
 {
     DDMyAnswerTableViewController *vc = [[DDMyAnswerTableViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark Getter
+
+- (LCCKBadgeView *)badgeAsk {
+    if (_badgeAsk == nil) {
+        LCCKBadgeView *badgeView = [[LCCKBadgeView alloc] initWithParentView:self.btnMyAsk
+                                                                   alignment:LCCKBadgeViewAlignmentCenterRight];
+        badgeView.badgeBackgroundColor = BadgeColor;
+        badgeView.badgeTextColor = WhiteColor;
+        badgeView.badgePositionAdjustment = CGPointMake(-36, 0);
+        badgeView.hidden = YES;
+        _badgeAsk = badgeView;
+    }
+    return _badgeAsk;
+}
+
+- (LCCKBadgeView *)badgeAnswer {
+    if (_badgeAnswer == nil) {
+        LCCKBadgeView *badgeView = [[LCCKBadgeView alloc] initWithParentView:self.btnMyAnswer
+                                                                   alignment:LCCKBadgeViewAlignmentCenterRight];
+        badgeView.badgeBackgroundColor = BadgeColor;
+        badgeView.badgeTextColor = WhiteColor;
+        badgeView.badgePositionAdjustment = CGPointMake(-36, 0);
+        badgeView.hidden = YES;
+        _badgeAnswer = badgeView;
+    }
+    return _badgeAnswer;
 }
 
 @end

@@ -14,7 +14,7 @@
 
 @interface DDPostAskTableViewController () <UITextViewDelegate, UITextFieldDelegate, DDChooseFavGoodViewControllerProtocol>
 
-
+@property (nonatomic) NSInteger time_;
 @property (weak, nonatomic) IBOutlet UILabel *labPlaceHolder;
 @property (weak, nonatomic) IBOutlet UILabel *labResidue;
 @property (weak, nonatomic) IBOutlet UITextView *txtDemand;
@@ -46,6 +46,7 @@
 
     self.txtDemand.delegate = self;
     self.postAskModel = [[DDPostAskViewModel alloc] init];
+    self.time_ = [SYUtils currentTimestamp];
 //    RAC(self.btnPost, enabled) = self.postAskModel.enablePostSignal;
 }
 
@@ -105,7 +106,8 @@
     id params = @{ kDemandKey : _postAskModel.demand,
                    kIndustryKey : _postAskModel.industry,
                    kJobKey : _postAskModel.job,
-                   kExpertKey : _postAskModel.expert
+                   kExpertKey : _postAskModel.expert,
+                   @"_time" : @(self.time_)
                     };
     [SYRequestEngine sendAskWithParams:params
                               callback:^(BOOL success, id response) {

@@ -132,7 +132,8 @@
         return year.integerValue <= 60;
     }
     if (textField == self.txtName) {
-        return textField.text.length + string.length <= 8;
+        NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        return text.length <= 8;
     }
     return YES;
 }

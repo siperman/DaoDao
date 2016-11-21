@@ -115,7 +115,8 @@
         NSString *year = [textField.text stringByReplacingCharactersInRange:range withString:string];
         return year.integerValue <= 60;
     } else {
-        return textField.text.length + string.length <= 8;
+        NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        return text.length <= 8;
     }
 }
 

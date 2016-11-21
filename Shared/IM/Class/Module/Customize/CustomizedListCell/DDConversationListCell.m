@@ -111,7 +111,7 @@
             // 只有未读的语音和邀请函消息时橘黄色，其他未读消息均是普通灰色
             NSMutableAttributedString *str = [self.messageTextLabel.attributedText mutableCopy];
 
-            [str setAttributes:@{ NSForegroundColorAttributeName: ColorHex(@"f6634a")} range:NSMakeRange(0, str.length)];
+            [str setAttributes:@{ NSForegroundColorAttributeName: BadgeColor} range:NSMakeRange(0, str.length)];
             self.messageTextLabel.attributedText = str;
         }
     }

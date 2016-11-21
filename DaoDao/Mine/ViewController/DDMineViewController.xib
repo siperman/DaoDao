@@ -15,6 +15,8 @@
                 <outlet property="btnAvatar" destination="6zS-2o-VsR" id="Kag-UB-oCl"/>
                 <outlet property="btnCall" destination="lZz-Yd-eJ0" id="nIU-eW-64Q"/>
                 <outlet property="btnLogout" destination="3Rb-Vi-S9c" id="xRr-8a-NkW"/>
+                <outlet property="btnMyAnswer" destination="4It-qh-DzB" id="KoM-LJ-nIW"/>
+                <outlet property="btnMyAsk" destination="b3D-u3-zKt" id="3bR-7j-CyA"/>
                 <outlet property="labDesc" destination="aTl-Fj-aJj" id="qLG-hb-DuV"/>
                 <outlet property="labName" destination="72Y-Qf-215" id="odP-2X-n6z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

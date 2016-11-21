@@ -118,7 +118,8 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    return textField.text.length + string.length <= 10;
+    NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    return text.length <= 10;
 }
 
 #pragma mark - MLPAutoCompleteTextField Delegate

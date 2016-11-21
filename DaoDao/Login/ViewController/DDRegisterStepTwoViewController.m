@@ -187,7 +187,8 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if (textField == self.txtName) {
-        return textField.text.length + string.length <= 8;
+        NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        return text.length <= 8;
     }
     return YES;
 }
