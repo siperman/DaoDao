@@ -33,6 +33,7 @@ return; \
 #define SepColor ColorHex(@"e9e9e9")
 #define BarTintColor ColorHex(@"c2a05f")
 #define BadgeColor  ColorHex(@"f6634a")
+#define LittleBadgeSize 10
 
 // Font
 #define TitleTextFont Font(18)

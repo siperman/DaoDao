@@ -17,6 +17,7 @@
 @property (nonatomic, strong) DDChessboardView *chessboard;
 @property (nonatomic, strong) UIButton *btnPost;
 @property (nonatomic, strong) NSTimer *countDownTimer;
+@property (nonatomic, strong) UIView *leftBadgeView;
 
 @property (nonatomic) BOOL isLoading;
 
@@ -71,12 +72,14 @@
 {
     [super viewDidAppear:animated];
     self.badgeView.hidden = NO;
+    [self layoutLeftBadgeView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.badgeView.hidden = YES;
+    self.leftBadgeView.hidden = YES;
 }
 
 - (void)requestChess
@@ -92,6 +95,18 @@
         }
         self.isLoading = NO;
     }];
+}
+
+- (void)layoutLeftBadgeView
+{
+    DDUser *user = [DDUserManager manager].user;
+    if (user.askReds.integerValue > 0 ||
+        user.answerReds.integerValue > 0 ||
+        user.integrity.integerValue < 100) {
+        self.leftBadgeView.hidden = NO;
+    } else {
+        self.leftBadgeView.hidden = YES;
+    }
 }
 
 - (void)refreshIM
@@ -177,5 +192,19 @@
     }
     return _badgeView;
 }
+
+- (UIView *)leftBadgeView {
+    if (_leftBadgeView == nil) {
+        UIView *litteBadgeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, LittleBadgeSize, LittleBadgeSize)];
+        litteBadgeView.layer.cornerRadius = LittleBadgeSize / 2;
+        litteBadgeView.center = CGPointMake(40, 10);
+        litteBadgeView.hidden = YES;
+        litteBadgeView.backgroundColor = BadgeColor;
+        [self.navigationController.navigationBar addSubview:litteBadgeView];
+        _leftBadgeView = litteBadgeView;
+    }
+    return _leftBadgeView;
+}
+
 
 @end

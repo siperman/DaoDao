@@ -22,9 +22,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *labDesc;
 @property (weak, nonatomic) IBOutlet UIButton *btnMyAsk;
 @property (weak, nonatomic) IBOutlet UIButton *btnMyAnswer;
+@property (weak, nonatomic) IBOutlet UIButton *btnMine;
 
 @property (nonatomic, strong) LCCKBadgeView *badgeAsk;
 @property (nonatomic, strong) LCCKBadgeView *badgeAnswer;
+@property (nonatomic, strong) UIView *mineBadgeView;
 
 @end
 
@@ -67,8 +69,10 @@
 
 
     if (user.integrity.integerValue >= 100) {
+        self.mineBadgeView.hidden = YES;
         self.labDesc.text = @"个人资料完善度100%，更多靠谱的人会靠近您";
     } else {
+        self.mineBadgeView.hidden = NO;
         self.labDesc.text = [NSString stringWithFormat:@"个人资料完善度%@%%，丰富资料更精确找到靠谱人", user.integrity];
     }
     if (user.headUrl.length > 0) {
@@ -153,6 +157,23 @@
         _badgeAnswer = badgeView;
     }
     return _badgeAnswer;
+}
+
+- (UIView *)mineBadgeView {
+    if (_mineBadgeView == nil) {
+        UIView *litteBadgeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, LittleBadgeSize, LittleBadgeSize)];
+        litteBadgeView.layer.cornerRadius = LittleBadgeSize / 2;
+        litteBadgeView.hidden = YES;
+        litteBadgeView.backgroundColor = BadgeColor;
+        [self.btnMine addSubview:litteBadgeView];
+        [litteBadgeView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.btnMine);
+            make.trailing.equalTo(self.btnMine).offset(3);
+            make.width.height.mas_equalTo(LittleBadgeSize);
+        }];
+        _mineBadgeView = litteBadgeView;
+    }
+    return _mineBadgeView;
 }
 
 @end
