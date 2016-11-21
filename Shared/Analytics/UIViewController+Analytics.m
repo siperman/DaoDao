@@ -61,9 +61,9 @@ void swizzleMethod(Class class, SEL originalSelector, SEL swizzledSelector)
     NSString *className = NSStringFromClass([self class]);
     debugLog(@"=========[%@] viewDidAppear", className);
     
-//    if ([self shouldLogPageView:className]) {
-//        [MobClick beginLogPageView:className];
-//    }
+    if ([self shouldLogPageView:className]) {
+        [MobClick beginLogPageView:className];
+    }
 }
 
 - (void)soouya_viewDidDisappear:(BOOL)animated
@@ -73,9 +73,9 @@ void swizzleMethod(Class class, SEL originalSelector, SEL swizzledSelector)
     NSString *className = NSStringFromClass([self class]);
     debugLog(@"=========[%@] viewDidDisappear", className);
 
-//    if ([self shouldLogPageView:className]) {
-//        [MobClick endLogPageView:className];
-//    }
+    if ([self shouldLogPageView:className]) {
+        [MobClick endLogPageView:className];
+    }
 }
 
 

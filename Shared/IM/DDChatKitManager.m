@@ -343,16 +343,6 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         [self exampleOpenProfileForUser:user userId:userId parentController:parentController];
     }];
 
-    //    开启圆角可能导致4S等低端机型卡顿，谨慎开启。
-    [[LCChatKit sharedInstance] setAvatarImageViewCornerRadiusBlock:^CGFloat(CGSize avatarImageViewSize) {
-        if (avatarImageViewSize.height > 0) {
-            return avatarImageViewSize.height/2;
-        }
-        return 5;
-    }];
-
-
-
     // 自定义Cell菜单
 //    [[LCChatKit sharedInstance] setConversationEditActionBlock:^NSArray *(NSIndexPath *indexPath, NSArray<UITableViewRowAction *> *editActions, AVIMConversation *conversation, LCCKConversationListViewController *controller) {
 //        return [self exampleConversationEditActionAtIndexPath:indexPath conversation:conversation controller:controller];

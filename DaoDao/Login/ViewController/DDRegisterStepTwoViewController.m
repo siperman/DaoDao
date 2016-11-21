@@ -174,7 +174,9 @@
     if (textField == self.txtSchool) {
         DDMajorGradePickerView *pv = [DDMajorGradePickerView majorGradePickerWithDelegate:self];
         textField.inputView = pv;
-        [pv pickedMajor:_user.major grade:_user.grade];
+        if (textField.text.length > 0) {
+            [pv pickedMajor:_user.major grade:_user.grade];
+        }
         textField.tintColor = ClearColor;
         return YES;
     }
