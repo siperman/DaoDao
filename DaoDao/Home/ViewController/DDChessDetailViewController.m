@@ -162,9 +162,14 @@
     NSInteger row = indexPath.row;
 
     if (row < self.answerList.count) {
-        DDAnswerDetailViewController *vc = [[DDAnswerDetailViewController alloc] init];
-        vc.ask= self.answerList[row];
-        [self.navigationController pushViewController:vc animated:YES];
+        DDAsk *ask = self.answerList[row];
+        if (ask.status.integerValue == DDAskAnswerUninterested) {
+            [self showNotice:@"您已不感兴趣"];
+        } else if (ask.status.integerValue != DDAskWaitingAnswerInterest) {
+            DDAnswerDetailViewController *vc = [[DDAnswerDetailViewController alloc] init];
+            vc.ask= self.answerList[row];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
 }
 

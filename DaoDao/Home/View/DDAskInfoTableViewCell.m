@@ -68,7 +68,7 @@
         } else if (status == DDAskAnswerRate ||
                    status == DDAskBothRate) {
             self.labStatus.text = @"已完成";
-        } else if (status == DDAskAnswerDisagreeMeet) {
+        } else if (status == DDAskAnswerUninterested) {
             self.labStatus.text = @"您已不感兴趣";
             self.labStatus.textColor = CCCColor;
         } else {
@@ -95,8 +95,8 @@
                                  callback:^(BOOL success, id response) {
                                      [self.viewController hideAllHUD];
                                      if (success) {
-                                         _askInfo.status = @(-1);
-                                         if ([self.delegete respondsToSelector:@selector(disinterestAskWithId:callback:)]) {
+                                         _askInfo.status = @(DDAskAnswerUninterested);
+                                         if ([self.delegete respondsToSelector:@selector(disinterest:)]) {
                                              [self.delegete disinterest:_askInfo];
                                          }
                                      } else {

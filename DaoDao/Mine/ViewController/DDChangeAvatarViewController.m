@@ -31,9 +31,16 @@
 
 - (void)popMenu
 {
-    [[SYCameraManager sharedInstance] getAvatarInViewController:self callback:^(NSArray *photos) {
-        [self.imageView setImage:photos.lastObject];
-        [self uploadAvatar];
+    [[SYCameraManager sharedInstance] getOrSaveAvatarInViewController:self callback:^(NSArray *photos) {
+        if (!photos) {
+            if (self.imageView.image) {
+                UIImageWriteToSavedPhotosAlbum(self.imageView.image, nil, nil, nil);
+                [self showNotice:@"保存成功"];
+            }
+        } else {
+            [self.imageView setImage:photos.lastObject];
+            [self uploadAvatar];
+        }
     }];
 }
 

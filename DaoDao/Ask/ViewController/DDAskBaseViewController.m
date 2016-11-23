@@ -117,7 +117,7 @@
     } else {
         NSString *title = [NSString stringWithFormat:@"客服帮助请点击%@", kServiceCall];
         UIButton *btn1 = [self getBtnTitle:title action:@selector(call)];
-        btn1.alpha = 0.7;
+        btn1.alpha = 0.8;
         [self.bottomView addSubview:btn1];
         [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.bottomView).insets(UIEdgeInsetsZero);

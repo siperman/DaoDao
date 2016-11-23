@@ -84,7 +84,7 @@
 
     self.lunarCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
     self.lunarCalendar.locale = chinese;
-    self.lunarChars = @[@"初一",@"初二",@"初三",@"初四",@"初五",@"初六",@"初七",@"初八",@"初九",@"初十",@"十一",@"十二",@"十三",@"十四",@"十五",@"十六",@"十七",@"十八",@"十九",@"二十",@"二一",@"二二",@"二三",@"二四",@"二五",@"二六",@"二七",@"二八",@"二九",@"三十"];
+    self.lunarChars = @[@"初一",@"初二",@"初三",@"初四",@"初五",@"初六",@"初七",@"初八",@"初九",@"初十",@"十一",@"十二",@"十三",@"十四",@"十五",@"十六",@"十七",@"十八",@"十九",@"二十",@"廿一",@"廿二",@"廿三",@"廿四",@"廿五",@"廿六",@"廿七",@"廿八",@"廿九",@"三十"];
 
     [self configureCalendar];
 
@@ -176,7 +176,7 @@
 
     NSDate *date_ = [date dateByAddingTimeInterval:10 * 60 * 60]; // 上午10点
     if ([date timeIntervalSinceNow] < 0) {
-        date_ = [NSDate date];
+        date_ = [self cutDate];
     }
     [self.datePicker setDate:date_ animated:YES];
     [self changeTime:date_];
@@ -242,6 +242,13 @@
     _time = [date timeIntervalSince1970];
 }
 
+- (NSDate *)cutDate
+{
+    long time = [SYUtils currentTimestamp];
+    time = time - time % 600 + 600; // 向上取10分整
+    return [NSDate dateWithTimeIntervalSince1970:time];
+}
+
 #pragma mark Getter / Setter
 
 - (FSCalendar *)calendar
@@ -294,14 +301,7 @@
         _datePicker.minuteInterval = 10;
         [_datePicker addTarget:self action:@selector(pickTime:) forControlEvents:UIControlEventValueChanged]; //为UIDatePicker添加一个事件当UIDatePicker的值被改变时触发
 
-//        NSCalendar *cal = [NSCalendar currentCalendar];
-//        NSDateComponents *components = [cal components:( NSCalendarUnitDay | NSCalendarUnitHour ) fromDate:[NSDate date]];
-//        [components setDay:1];
-//        [components setHour:-components.hour];
-//
-//        NSDate *minDate = [cal dateByAddingComponents:components toDate:[NSDate date] options:0];
-        _datePicker.minimumDate = [NSDate date];
-
+        _datePicker.minimumDate = [self cutDate];
     }
     return _datePicker;
 }

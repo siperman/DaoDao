@@ -87,9 +87,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rb-Vi-S9c">
-                    <rect key="frame" x="12" y="551" width="351" height="50"/>
+                    <rect key="frame" x="12" y="557" width="351" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="im2-6d-oTZ"/>
+                        <constraint firstAttribute="height" constant="44" id="im2-6d-oTZ"/>
                     </constraints>
                     <state key="normal" title="退出登录">
                         <color key="titleColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>

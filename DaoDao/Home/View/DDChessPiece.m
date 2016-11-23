@@ -28,8 +28,8 @@
  */
 @implementation DDChessPiece
 
-#define BigChessRect CGRectMake(0, 0, 90, 90)
-#define SmallChessRect CGRectMake(0, 0, 80, 80)
+#define BigChessRect CGRectMake(0, 0, 107, 107)
+#define SmallChessRect CGRectMake(0, 0, 90, 90)
 + (instancetype)chessPiece:(DDChess *)chess
 {
     DDChessPiece *cp = [[self alloc] initWithFrame:chess.isBig ? BigChessRect : SmallChessRect];
@@ -37,7 +37,7 @@
     [cp setUpView];
     !chess.isLighting ?: [cp lighting];
     [cp addTarget:cp action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
-
+//[cp lighting];
     return cp;
 }
 
@@ -62,11 +62,14 @@
         imgView.image = Image(@"chess-white");
         [self addSubview:imgView];
 
-        _light1 = nil;
+        _light1 = [[UIImageView alloc] initWithFrame:rect];
+        _light1.image = Image(@"baizi－light1");
+        [self addSubview:_light1];
 
-        _light2 = [[UIImageView alloc] initWithFrame:rect];
-        _light2.image = Image(@"light-hei");
-        [self addSubview:_light2];
+        _light2 = nil;
+//        _light2 = [[UIImageView alloc] initWithFrame:rect];
+//        _light2.image = Image(@"baizi－light2");
+//        [self addSubview:_light2];
         _lab.textColor = MainColor;
     } else {
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:rect];
@@ -94,10 +97,11 @@
     _light1.hidden = NO;
     _light2.hidden = NO;
 
+    CGFloat duration = 2.5;
     if (YES) {
         CAKeyframeAnimation *l1 = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
         l1.values = @[@0, @1, @0];
-        l1.duration = 3.0;
+        l1.duration = duration;
         l1.repeatCount = CGFLOAT_MAX;
 
         [_light1.layer addAnimation:l1 forKey:@"opacity"];
@@ -105,7 +109,7 @@
 
         CAKeyframeAnimation *l2 = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
         l2.values = @[@0, @1, @0, @0];
-        l2.duration = 3.0;
+        l2.duration = duration;
         l2.repeatCount = CGFLOAT_MAX;
 
         [_light2.layer addAnimation:l2 forKey:@"opacity"];
@@ -113,7 +117,7 @@
 
         CAKeyframeAnimation *shandow = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
         shandow.values = @[@1, @.5, @1];
-        shandow.duration = 3.0;
+        shandow.duration = duration;
         shandow.repeatCount = CGFLOAT_MAX;
 
         [_shandow.layer addAnimation:shandow forKey:@"opacity"];

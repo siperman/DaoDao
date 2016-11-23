@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnAvatar;
 @property (weak, nonatomic) IBOutlet UIImageView *imgGender;
+@property (weak, nonatomic) IBOutlet UIImageView *imgGps;
 
 @property (weak, nonatomic) IBOutlet UILabel *labName; // 花名
 @property (weak, nonatomic) IBOutlet UILabel *labGrade; // 届别
@@ -34,6 +35,12 @@
 
 @implementation DDUserPageTableViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = BackgroundColor;
+}
+
 - (void)freshWithUser:(DDUser *)user
 {
 
@@ -48,8 +55,11 @@
     [self.labIndustry setText:[user.industry componentsJoinedByString:@" / "]];
     [self.labYear setText:[NSString stringWithFormat:@"%@年", user.year]];
     [self.labName setText:user.title];
-    [self.labGrade setText:MajorGrade(user.major, user.grade)];
+    [self.labGrade setText:[NSString stringWithFormat:@"%@ %@期", user.major, user.grade]];
     [self.labAddr setText:user.city];
+    if (user.city.length == 0) {
+        self.imgGps.hidden = YES;
+    }
     _user = user;
     [self.tableView reloadData];
 }

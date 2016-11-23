@@ -80,7 +80,6 @@
     if ([UINavigationBar conformsToProtocol:@protocol(UIAppearanceContainer)]) {
         [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : TitleTextFont, NSForegroundColorAttributeName : TitleColor}];
         [[UINavigationBar appearance] setBarTintColor:ColorHex(@"100402")];
-        [[UINavigationBar appearance] setTranslucent:YES];
         [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     }
 

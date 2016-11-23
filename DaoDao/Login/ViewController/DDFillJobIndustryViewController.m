@@ -69,6 +69,7 @@
         textField.autoCompleteTableCellTextColor = TextColor;
         textField.autoCompleteTableBackgroundColor = WhiteColor;
         textField.maximumNumberOfAutoCompleteRows = 5;
+        textField.showTextFieldDropShadowWhenAutoCompleteTableIsOpen = NO;
     }];
 
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(fillDone)];
@@ -82,6 +83,8 @@
                                             }];
 
     self.navigationItem.rightBarButtonItem = item;
+
+    [self.txtOne becomeFirstResponder];
 }
 
 - (void)fillDone

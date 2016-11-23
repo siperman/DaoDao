@@ -11,6 +11,7 @@
 #import "DDPostAskTableViewController.h"
 #import "DDCalendarViewController.h"
 #import "DDMineViewController.h"
+#import "DDMeetTableViewController.h"
 
 @interface DDHomeViewController ()
 
@@ -150,6 +151,7 @@
     [MobClick event:Home_publishDemandBtn_click];
     DDPostAskTableViewController *vc = [DDPostAskTableViewController viewController];
 //    DDCalendarViewController *vc = [[DDCalendarViewController alloc] init];
+//    DDMeetTableViewController *vc = [DDMeetTableViewController viewController];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -197,7 +199,7 @@
     if (_leftBadgeView == nil) {
         UIView *litteBadgeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, LittleBadgeSize, LittleBadgeSize)];
         litteBadgeView.layer.cornerRadius = LittleBadgeSize / 2;
-        litteBadgeView.center = CGPointMake(40, 10);
+        litteBadgeView.center = CGPointMake(38, 12);
         litteBadgeView.hidden = YES;
         litteBadgeView.backgroundColor = BadgeColor;
         [self.navigationController.navigationBar addSubview:litteBadgeView];

@@ -249,7 +249,8 @@
             
             IBActionSheetButton *otherButton = [[IBActionSheetButton alloc] initWithBottomCornersRounded];
             [otherButton setTitle:[titles objectAtIndex:1] forState:UIControlStateAll];
-            
+            [self mainColorStyle:otherButton];
+
             IBActionSheetButton *secondButton;
             
             if (title) {
@@ -257,18 +258,20 @@
             } else {
                 secondButton = [[IBActionSheetButton alloc] initWithTopCornersRounded];
             }
-            
+            [self mainColorStyle:secondButton];
+
             [secondButton setTitle:[titles objectAtIndex:0] forState:UIControlStateAll];
             [self.buttons insertObject:secondButton atIndex:0];
             [self.buttons insertObject:otherButton atIndex:1];
-            
+
             break;
             
         } default: {
             
             IBActionSheetButton *bottomButton = [[IBActionSheetButton alloc] initWithBottomCornersRounded];
             [bottomButton setTitle:[titles lastObject] forState:UIControlStateAll];
-            
+            [self mainColorStyle:bottomButton];
+
             IBActionSheetButton *topButton;
             
             if (title) {
@@ -276,7 +279,8 @@
             } else {
                 topButton = [[IBActionSheetButton alloc] initWithTopCornersRounded];
             }
-            
+            [self mainColorStyle:topButton];
+
             [topButton setTitle:[titles objectAtIndex:0] forState:UIControlStateAll];
             [self.buttons insertObject:topButton atIndex:0];
             
@@ -284,6 +288,8 @@
             for (NSInteger i = 1; i < whereToStop; ++i) {
                 IBActionSheetButton *middleButton = [[IBActionSheetButton alloc] init];
                 [middleButton setTitle:[titles objectAtIndex:i] forState:UIControlStateAll];
+                [self mainColorStyle:middleButton];
+
                 [self.buttons insertObject:middleButton atIndex:i];
             }
             
@@ -313,7 +319,11 @@
     return self;
 }
 
-
+- (void)mainColorStyle:(IBActionSheetButton *)button
+{
+    [button setTextColor:MainColor];
+    [button setOriginalTextColor:MainColor];
+}
 
 - (void)setUpTheActionSheet {
     

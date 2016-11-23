@@ -44,6 +44,7 @@
     [super viewDidLoad];
 
     self.title = @"注册道道";
+    self.view.backgroundColor = BackgroundColor;
     [self.bigView shadowStyle];
     [self.btnNext actionStyle];
 

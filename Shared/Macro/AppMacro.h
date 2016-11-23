@@ -97,7 +97,7 @@ OBJC_EXPORT NSString * kServiceCall;
 //通用常量
 static CGFloat kAnimationDuration                                 = 0.25;//动画时长
 static CGFloat kCornerRadius                                      = 4.0; //圆角大小
-static CGFloat kShadowRadius                                      = 3.0; //阴影大小
+static CGFloat kShadowRadius                                      = 2.0; //阴影大小
 static CGFloat kBorderWidth                                       = 1.0; //边框宽度
 static CGFloat kAvatarCropMaxRatio                                = 5.0; //头像裁剪时的最大缩放比例
 static NSInteger kMaxSelectedFabricsCount                         = 9; //最多可选的面料数

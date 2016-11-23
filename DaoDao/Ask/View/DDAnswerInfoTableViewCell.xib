@@ -77,17 +77,27 @@
                                 <color key="textColor" red="0.97401458019999998" green="0.4423997402" blue="0.15183952449999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_enter" translatesAutoresizingMaskIntoConstraints="NO" id="pT2-Ir-7LA">
+                                <rect key="frame" x="264" y="25" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="HSf-gv-4Oc"/>
+                                    <constraint firstAttribute="width" secondItem="pT2-Ir-7LA" secondAttribute="height" id="jWz-xd-jni"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eGY-OI-IsH" firstAttribute="trailing" secondItem="v5d-Ve-heu" secondAttribute="trailing" id="02v-Eg-oUf"/>
+                            <constraint firstItem="pT2-Ir-7LA" firstAttribute="width" secondItem="pT2-Ir-7LA" secondAttribute="height" id="2oM-JH-8ci"/>
                             <constraint firstItem="Dgn-dg-fip" firstAttribute="leading" secondItem="qFD-UI-osI" secondAttribute="trailing" constant="10" id="5cX-td-On5"/>
+                            <constraint firstAttribute="trailing" secondItem="pT2-Ir-7LA" secondAttribute="trailing" constant="10" id="82w-tc-vVR"/>
                             <constraint firstItem="4tU-cx-vtv" firstAttribute="centerY" secondItem="vjI-1b-Ula" secondAttribute="centerY" id="BdP-NL-HAm"/>
                             <constraint firstItem="v5d-Ve-heu" firstAttribute="top" secondItem="6yw-rp-gV4" secondAttribute="top" constant="14" id="DOL-Ws-da0"/>
                             <constraint firstItem="eGY-OI-IsH" firstAttribute="leading" secondItem="v5d-Ve-heu" secondAttribute="leading" id="L8X-7D-FmV"/>
                             <constraint firstItem="v5d-Ve-heu" firstAttribute="leading" secondItem="6yw-rp-gV4" secondAttribute="leading" constant="14" id="LSg-Ly-CPL"/>
                             <constraint firstItem="eGY-OI-IsH" firstAttribute="top" secondItem="v5d-Ve-heu" secondAttribute="top" id="RPO-B0-qfF"/>
                             <constraint firstItem="qFD-UI-osI" firstAttribute="top" secondItem="vjI-1b-Ula" secondAttribute="bottom" constant="2" id="SE4-Sr-UMA"/>
+                            <constraint firstItem="pT2-Ir-7LA" firstAttribute="centerY" secondItem="6yw-rp-gV4" secondAttribute="centerY" id="Wls-rb-8GR"/>
                             <constraint firstItem="qFD-UI-osI" firstAttribute="leading" secondItem="vjI-1b-Ula" secondAttribute="leading" id="Y1J-Ab-d82"/>
                             <constraint firstItem="vjI-1b-Ula" firstAttribute="leading" secondItem="v5d-Ve-heu" secondAttribute="trailing" constant="14" id="adU-GI-l0O"/>
                             <constraint firstAttribute="height" constant="72" id="ge3-f1-oVN"/>
@@ -173,4 +183,7 @@
             <point key="canvasLocation" x="13" y="48"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="btn_enter" width="22" height="22"/>
+    </resources>
 </document>

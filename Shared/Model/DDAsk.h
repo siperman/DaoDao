@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, DDAskStatus) {
     DDAskBothRate,
 
     DDAskAnswerDisagreeMeet = -5,
+    DDAskAnswerUninterested = -6,
 };
 
 // 约局

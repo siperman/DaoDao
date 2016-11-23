@@ -37,6 +37,8 @@ typedef NS_ENUM(NSUInteger, SYCameraManagerPhotoSource) {
 
 - (void)getAvatarInViewController:(UIViewController *)vc callback:(void (^)(NSArray *))callback;
 
+- (void)getOrSaveAvatarInViewController:(UIViewController *)vc callback:(void (^)(NSArray *))callback;
+
 - (void)getPhotoByPickerWithSupportMultiSelection:(BOOL)canMultiSelect
                                          isAvatar:(BOOL)isAvatar
                                    viewController:(UIViewController *)vc

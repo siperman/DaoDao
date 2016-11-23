@@ -207,6 +207,27 @@
     [choiceSheet showInView:APP_DELEGATE.window];
 }
 
+- (void)getOrSaveAvatarInViewController:(UIViewController *)vc callback:(void (^)(NSArray *))callback
+{
+    IBActionSheet *choiceSheet = [[IBActionSheet alloc] initWithTitle:nil
+                                                             callback:^(IBActionSheet *actionSheet, NSInteger buttonIndex) {
+                                                                 if (buttonIndex == 2) {
+                                                                     callback(nil);
+                                                                 } else {
+                                                                     [self getPhotoWithType:buttonIndex
+                                                                                   isAvatar:YES
+                                                                      supportMultiSelection:NO
+                                                                             viewController:vc
+                                                                                remainCount:0
+                                                                                   callback:callback];
+                                                                 }
+                                                             }
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                               otherButtonTitlesArray:@[@"拍一张", @"从手机相册里选择", @"保存图片"]];
+    [choiceSheet showInView:APP_DELEGATE.window];
+}
+
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
