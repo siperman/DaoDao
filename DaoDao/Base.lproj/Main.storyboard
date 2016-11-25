@@ -666,41 +666,6 @@
                                     <segue destination="sWx-Kb-s7L" kind="embed" identifier="DDUserPageTableViewController" id="QS1-Xt-hmR"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Doo-3e-OXe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5J-gD-ZSq">
-                                        <rect key="frame" x="12" y="34" width="22" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="22" id="3cS-rg-X1N"/>
-                                            <constraint firstAttribute="height" constant="22" id="3p2-Uc-UsJ"/>
-                                        </constraints>
-                                        <state key="normal" image="icon_back"/>
-                                        <connections>
-                                            <action selector="back:" destination="Q2o-57-168" eventType="touchUpInside" id="FF7-Wv-TxG"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJE-Oe-zk2">
-                                        <rect key="frame" x="341" y="34" width="22" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="22" id="kSx-Nl-cIj"/>
-                                            <constraint firstAttribute="height" constant="22" id="ytg-za-Ef4"/>
-                                        </constraints>
-                                        <state key="normal" image="icon_xuanxiang"/>
-                                        <connections>
-                                            <action selector="popMenu:" destination="Q2o-57-168" eventType="touchUpInside" id="Iww-ic-NvL"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="c5J-gD-ZSq" secondAttribute="bottom" constant="8" id="6Xr-7y-OpJ"/>
-                                    <constraint firstItem="c5J-gD-ZSq" firstAttribute="leading" secondItem="Doo-3e-OXe" secondAttribute="leading" constant="12" id="Jp8-c8-r8y"/>
-                                    <constraint firstAttribute="height" constant="64" id="dke-vc-n16"/>
-                                    <constraint firstAttribute="bottom" secondItem="OJE-Oe-zk2" secondAttribute="bottom" constant="8" id="dwO-R5-yfy"/>
-                                    <constraint firstAttribute="trailing" secondItem="OJE-Oe-zk2" secondAttribute="trailing" constant="12" id="lOM-Wv-z9i"/>
-                                </constraints>
-                            </view>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LjZ-mG-os4">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <subviews>
@@ -735,14 +700,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Doo-3e-OXe" secondAttribute="trailing" id="7b8-U6-Ezc"/>
                             <constraint firstItem="0FC-T1-cXD" firstAttribute="leading" secondItem="Uhl-Mj-4nS" secondAttribute="leading" id="KBV-db-JW1"/>
                             <constraint firstItem="LjZ-mG-os4" firstAttribute="leading" secondItem="Uhl-Mj-4nS" secondAttribute="leading" id="WVp-HI-uHc"/>
-                            <constraint firstItem="Doo-3e-OXe" firstAttribute="leading" secondItem="Uhl-Mj-4nS" secondAttribute="leading" id="Z4e-I8-Kxo"/>
                             <constraint firstAttribute="trailing" secondItem="0FC-T1-cXD" secondAttribute="trailing" id="Zlb-6W-CLM"/>
                             <constraint firstItem="VEs-Rt-4L5" firstAttribute="top" secondItem="LjZ-mG-os4" secondAttribute="bottom" id="dNw-Km-6rJ"/>
                             <constraint firstAttribute="trailing" secondItem="LjZ-mG-os4" secondAttribute="trailing" id="ezB-pw-c4Q"/>
-                            <constraint firstItem="Doo-3e-OXe" firstAttribute="top" secondItem="Uhl-Mj-4nS" secondAttribute="top" id="jxW-dN-scq"/>
                             <constraint firstItem="VEs-Rt-4L5" firstAttribute="top" secondItem="0FC-T1-cXD" secondAttribute="bottom" id="kYM-kb-0CY"/>
                             <constraint firstItem="0FC-T1-cXD" firstAttribute="top" secondItem="Uhl-Mj-4nS" secondAttribute="top" constant="-64" id="n4C-7Q-4I2"/>
                         </constraints>
@@ -750,8 +712,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bottomView" destination="LjZ-mG-os4" id="omc-Fp-1z9"/>
-                        <outlet property="btnMenu" destination="OJE-Oe-zk2" id="Exp-ts-59Z"/>
-                        <outlet property="topView" destination="Doo-3e-OXe" id="QeK-PC-jbX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWQ-8x-Ria" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1066,10 +1026,8 @@
         <image name="icon-biaoqian" width="22" height="22"/>
         <image name="icon-pingjia" width="22" height="22"/>
         <image name="icon-xinxi" width="22" height="22"/>
-        <image name="icon_back" width="22" height="22"/>
         <image name="icon_gps" width="22" height="22"/>
         <image name="icon_phone" width="30" height="30"/>
         <image name="icon_touxiang" width="68" height="68"/>
-        <image name="icon_xuanxiang" width="22" height="22"/>
     </resources>
 </document>

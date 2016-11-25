@@ -9,9 +9,7 @@
 #import "DDHomeViewController.h"
 #import "DDChessboardView.h"
 #import "DDPostAskTableViewController.h"
-#import "DDCalendarViewController.h"
 #import "DDMineViewController.h"
-#import "DDMeetTableViewController.h"
 
 @interface DDHomeViewController ()
 
@@ -150,8 +148,6 @@
 {
     [MobClick event:Home_publishDemandBtn_click];
     DDPostAskTableViewController *vc = [DDPostAskTableViewController viewController];
-//    DDCalendarViewController *vc = [[DDCalendarViewController alloc] init];
-//    DDMeetTableViewController *vc = [DDMeetTableViewController viewController];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
