@@ -9,7 +9,7 @@ extern NSString * const kEverLaunched;
 extern NSString * const kReadCertify;
 extern NSString * const kAPPLastAlert;
 extern NSString * const kAPPLastVersion;
-extern NSString * const kAPPDescKey;
+extern NSString * const kAgoLogined;
 
 @interface SYPrefManager : NSObject
 

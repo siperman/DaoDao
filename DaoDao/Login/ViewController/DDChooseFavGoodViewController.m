@@ -57,11 +57,27 @@
     if (self.isChooseFav) {
         self.labTitle.text = @"为了更精准的帮您找到靠谱的人，请至少选择3项";
         self.data = [ChooseImageViewModel parseFromDicts:[DDConfig topic]];
+        for (NSString *str in self.placeholderArray) {
+            for (ChooseImageViewModel *model in self.data) {
+                if ([str isEqualToString:model.name]) {
+                    model.selected = YES;
+                    break;
+                }
+            }
+        }
         self.title = @"感兴趣话题";
         [self.btnNext setTitle:@"开启道道"];
     } else {
         self.labTitle.text = @"为了更精准的帮您找到靠谱的人，请选择1~3项";
         self.data = [ChooseImageViewModel parseFromDicts:[DDConfig expert]];
+        for (NSString *str in self.placeholderArray) {
+            for (ChooseImageViewModel *model in self.data) {
+                if ([str isEqualToString:model.name]) {
+                    model.selected = YES;
+                    break;
+                }
+            }
+        }
         if (self.navigationController.presentingViewController) {
             self.title = @"您是哪方面的专家";
         } else {

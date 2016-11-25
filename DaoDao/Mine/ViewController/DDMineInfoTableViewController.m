@@ -106,15 +106,15 @@
         }
     } else if (section == 3) {
         if (row == 1) { // 擅长领域
-
             DDChooseFavGoodViewController *vc = [DDChooseFavGoodViewController GoodVC];
             vc.delegete = self;
+            vc.placeholderArray = user.expert;
 
             [self.navigationController pushViewController:vc animated:YES];
         } else if (row == 2) { // 感兴趣话题
-
             DDChooseFavGoodViewController *vc = [DDChooseFavGoodViewController FavVC];
             vc.delegete = self;
+            vc.placeholderArray = user.topic;
 
             [self.navigationController pushViewController:vc animated:YES];
         }

@@ -11,7 +11,7 @@ NSString * const kEverLaunched = @"kEverLaunched";
 NSString * const kReadCertify = @"kReadCertify";
 NSString * const kAPPLastAlert = @"kAPPLastAlert";
 NSString * const kAPPLastVersion = @"kAPPLastVersion";
-NSString * const kAPPDescKey = @"kAPPDescKey";
+NSString * const kAgoLogined = @"kAgoLogined";
 
 @implementation SYPrefManager
 

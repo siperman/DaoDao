@@ -68,4 +68,9 @@
     return @{ @"tag" : @"tag",
               @"count" : @"count"};
 }
+
+- (NSString *)tagStr
+{
+    return [NSString stringWithFormat:@"%@  %@", self.tag, self.count];
+}
 @end

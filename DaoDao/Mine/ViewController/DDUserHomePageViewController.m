@@ -12,9 +12,7 @@
 @interface DDUserHomePageViewController ()
 
 @property (weak, nonatomic) DDUserPageTableViewController *containerVC;
-@property (weak, nonatomic) IBOutlet UIButton *btnMenu;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
-@property (weak, nonatomic) IBOutlet UIView *topView;
 
 @property (nonatomic, strong) DDUser *user;
 @end
@@ -32,11 +30,8 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor;
-    self.topView.hidden = YES;
     DDUser *user = [DDUserManager manager].user;
     if ([user.uid isEqualToString:self.userId]) {
-//        [self.containerVC freshWithUser:user];
-        self.btnMenu.hidden = YES;
         self.containerVC.view.hidden = YES;
         [self requestUser];
     } else {
@@ -45,7 +40,6 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:Image(@"icon_xuanxiang") style:UIBarButtonItemStylePlain target:self action:@selector(popMenu:)];
     }
     self.bottomView.hidden = YES;
-//    self.topView.backgroundColor = [[UINavigationBar appearance] barTintColor];
 }
 
 //- (void)viewWillAppear:(BOOL)animated
@@ -113,7 +107,6 @@
 {
     if ([segue.identifier isEqualToString:@"DDUserPageTableViewController"]) {
         self.containerVC = segue.destinationViewController;
-        self.containerVC.parentVC = self;
     }
 }
 

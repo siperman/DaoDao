@@ -53,4 +53,5 @@
 
 @property (nonatomic, copy) NSString *tag;
 @property (nonatomic, strong) NSNumber *count;
+- (NSString *)tagStr;
 @end

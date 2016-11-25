@@ -16,7 +16,4 @@
 // 是否允许登录的信号
 @property (nonatomic, strong, readonly) RACSignal *enableLoginSignal;
 
-@property (nonatomic, strong, readonly) RACCommand *LoginCommand;
-
-
 @end

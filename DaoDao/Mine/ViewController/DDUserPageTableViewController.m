@@ -137,7 +137,6 @@
             make.leading.equalTo(self.tagsView).offset(10);
         }];
 
-        CGFloat topicW = 52;
         CGFloat topicH = 28;
         CGFloat topicX = x;
         NSInteger rowCount = 1;
@@ -185,25 +184,32 @@
     if (rows == 0 && _user) {
         CGFloat x = 10;
         CGFloat padX = 10;
-        CGFloat topicW = 100;
         CGFloat topicH = 27;
-        NSInteger maxRowCount = 3;
+        CGFloat topicX = x;
+        NSInteger rowCount = 1;
+        CGFloat maxW = SCREEN_WIDTH - 24;
         for (NSInteger idx = 0; idx < _user.tags.count; idx++) {
             DDRateTag *tag = _user.tags[idx];
             UIView *view = [self getRate:tag];
+            CGFloat textW = [[tag tagStr] textWidthWithFontsSize:14.0] + 37.0; // 根据文字计算lab宽度
+            if (topicX + textW > maxW) {
+                topicX = x;
+                rowCount++;
+            }
             [self.rateView addSubview:view];
             [view mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(self.rateView).offset((idx/maxRowCount) * 44 + 52);
-                make.leading.equalTo(self.rateView).offset(x + (idx % maxRowCount) *(padX + topicW));
-                make.width.mas_equalTo(topicW);
+                make.top.equalTo(self.rateView).offset((rowCount - 1) * 44 + 52);
+                make.leading.equalTo(self.rateView).offset(topicX);
+                make.width.mas_equalTo(textW);
                 make.height.mas_equalTo(topicH);
             }];
+            topicX += (textW + padX);
         }
 
-        if (_user.tags.count % maxRowCount == 0) {
-            rows = 1 + _user.tags.count / maxRowCount;
+        if (_user.tags.count == 0) {
+            rows = 1;
         } else {
-            rows = 2 + _user.tags.count / maxRowCount;
+            rows = 1 + rowCount;
         }
         self.rateRows = rows;
         // 分割线

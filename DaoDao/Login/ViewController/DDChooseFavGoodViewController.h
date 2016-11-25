@@ -20,7 +20,7 @@
 @property (nonatomic) BOOL isChooseFav;
 @property (nonatomic, weak) id<DDChooseFavGoodViewControllerProtocol> delegete;
 @property (nonatomic, strong) NSString *chooseValues;
-
+@property (nonatomic, strong) NSArray <NSString *>*placeholderArray;
 + (instancetype)FavVC;
 + (instancetype)GoodVC;
 

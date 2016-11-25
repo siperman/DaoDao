@@ -7,6 +7,7 @@
 //
 
 #import "DDMainLoginViewController.h"
+#import "SYPrefManager.h"
 
 @interface DDMainLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *btnRegister;
@@ -22,6 +23,10 @@
 
     [self.btnRegister actionStyle];
     [self.btnLogin actionTransparentStyle];
+    if ([SYPrefManager boolForKey:kAgoLogined]) {
+        [self.btnLogin sendActionsForControlEvents:UIControlEventTouchUpInside];
+        [SYPrefManager setBool:NO forKey:kAgoLogined];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

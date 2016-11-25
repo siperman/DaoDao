@@ -69,7 +69,7 @@
         if (user) {
             _isLogined = YES;
             [[SYCache sharedInstance] saveItem:_user forKey:FILE_NAME];
-
+            [SYPrefManager setBool:YES forKey:kAgoLogined];
             [self updateUser];
         } else {
             _isLogined = NO;
