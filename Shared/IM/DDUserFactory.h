@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class LCCKUser;
 @interface DDUserFactory : NSObject
+
++ (LCCKUser *)getUserById:(NSString *)userId;
++ (void)cacheUser:(LCCKUser *)user;
 
 @end

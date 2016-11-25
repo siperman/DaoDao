@@ -72,7 +72,7 @@
     [self.imgHead sy_setThumbnailImageWithUrl:user.headUrl];
     [self.imgGender setImage:user.genderImage];
 
-    self.labName.text = user.nickName;
+    self.labName.text = user.title;
     self.labGrade.text = MajorGrade(user.major, user.grade);
 
     CGSize size = self.scrollView.frame.size;
@@ -124,6 +124,7 @@
             NSDictionary *info = @{ kOldAskKey : self.ask,
                                     kNewAskKey : ask};
             POST_NOTIFICATION(kUpdateAskInfoNotification, info);
+            [[DDUserManager manager] touchUser];
             [self.navigationController popViewControllerAnimated:YES];
         } else {
             [self.navigationController showRequestNotice:response];

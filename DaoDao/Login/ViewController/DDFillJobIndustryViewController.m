@@ -83,9 +83,15 @@
                                             }];
 
     self.navigationItem.rightBarButtonItem = item;
-
     [self.txtOne becomeFirstResponder];
 }
+
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    [self.txtOne becomeFirstResponder];
+//
+//}
 
 - (void)fillDone
 {

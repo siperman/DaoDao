@@ -25,6 +25,7 @@
 #import "DDConversationListCell.h"
 #import "LCCKInputViewPluginVCard.h"
 #import "DDHomeViewController.h"
+#import "DDUserFactory.h"
 
 #ifdef DEBUG
 static NSString *const LCCKAPPKEY = @"E7glabfvph8e91qthD9wxt7n";
@@ -160,7 +161,8 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
      */
     [LCChatKit setAppId:LCCKAPPID appKey:LCCKAPPKEY];
 
-#warning 注意：setFetchProfilesBlock 方法必须实现，如果不实现，ChatKit将无法显示用户头像、用户昵称。以下方法循环模拟了通过 userIds 同步查询 users 信息的过程，这里需要替换为 App 的 API 同步查询
+
+    // 根据userId取用户信息
     [[LCChatKit sharedInstance] setFetchProfilesBlock:^(NSArray<NSString *> *userIds, LCCKFetchProfilesCompletionHandler completionHandler) {
         if (userIds.count == 0) {
             NSInteger code = 0;
@@ -181,7 +183,7 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         NSMutableArray *locUserIds_ = [NSMutableArray array];
         for (NSString *uid in userIds) {
             // 先本地取
-            LCCKUser *user = [LCCKUser loadFromDiskWithKey:uid];
+            LCCKUser *user = [DDUserFactory getUserById:uid];
             if (user) {
                 [users_ addObject:user];
                 [userIds_ removeObject:uid];
@@ -196,7 +198,7 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
                     NSArray *users = [LCCKUser parseFromDicts:response[kPageKey][kResultKey]];
                     for (LCCKUser *user in users) {
                         // 缓存到本地
-                        [user saveToDiskWithKey:user.userId];
+                        [DDUserFactory cacheUser:user];
                     }
                     [users_ addObjectsFromArray:users];
 
@@ -213,20 +215,6 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
             }];
         } else {
             !completionHandler ?: completionHandler([users_ copy], nil);
-        }
-
-        if (locUserIds_.count > 0) {
-            // 更新本地user
-            NSString *uids = [locUserIds_ componentsJoinedByString:@","];
-            [SYRequestEngine requestUserWithIds:uids callback:^(BOOL success, id response) {
-                if (success) {
-                    NSArray *users = [LCCKUser parseFromDicts:response[kPageKey][kResultKey]];
-                    for (LCCKUser *user in users) {
-                        // 缓存到本地
-                        [user saveToDiskWithKey:user.userId];
-                    }
-                }
-            }];
         }
     }];
 
@@ -343,12 +331,7 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         [self exampleOpenProfileForUser:user userId:userId parentController:parentController];
     }];
 
-    // 自定义Cell菜单
-//    [[LCChatKit sharedInstance] setConversationEditActionBlock:^NSArray *(NSIndexPath *indexPath, NSArray<UITableViewRowAction *> *editActions, AVIMConversation *conversation, LCCKConversationListViewController *controller) {
-//        return [self exampleConversationEditActionAtIndexPath:indexPath conversation:conversation controller:controller];
-//    }];
-
-    //    如果不是TabBar样式，请实现该 Blcok 来设置 Badge 红标。
+    // 设置 Badge 红标。
     [[LCChatKit sharedInstance] setMarkBadgeWithTotalUnreadCountBlock:^(NSInteger totalUnreadCount, UIViewController *controller) {
         [self exampleMarkBadgeWithTotalUnreadCount:totalUnreadCount controller:controller];
     }];
@@ -395,11 +378,9 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         return cell;
     }];
 
+    // 配置消息列表cell
     [[LCCKConversationListService sharedInstance] setConfigureCellBlock:^(UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath, AVIMConversation *conversation) {
-//        DDConversationListCell *cell = (DDConversationListCell *)[tableView cellForRowAtIndexPath:indexPath];
-
         [(DDConversationListCell *)cell configureCell:conversation];
-
     }];
 
     [[LCCKConversationListService sharedInstance] setHeightForRowBlock:^CGFloat(UITableView *tableView, NSIndexPath *indexPath, AVIMConversation *conversation) {
@@ -415,72 +396,6 @@ static NSString *const LCCKAPPID  = @"DqcSj1K2at8yCGhq37IrLvkr-gzGzoHsz";
         }
         [rootViewController presentViewController:viewController animated:YES completion:nil];
     }
-}
-
-- (NSArray *)exampleConversationEditActionAtIndexPath:(NSIndexPath *)indexPath
-                                         conversation:(AVIMConversation *)conversation
-                                           controller:(LCCKConversationListViewController *)controller {
-    // 如果需要自定义其他会话的菜单，在此编辑
-    return [self rightButtonsAtIndexPath:indexPath conversation:conversation controller:controller];
-}
-
-typedef void (^UITableViewRowActionHandler)(UITableViewRowAction *action, NSIndexPath *indexPath);
-
-- (void)markReadStatusAtIndexPath:(NSIndexPath *)indexPath
-                            title:(NSString **)title
-                           handle:(UITableViewRowActionHandler *)handler
-                     conversation:(AVIMConversation *)conversation
-                       controller:(LCCKConversationListViewController *)controller {
-    NSString *conversationId = conversation.conversationId;
-    if (conversation.lcck_unreadCount > 0) {
-        if (*title == nil) {
-            *title = @"标记为已读";
-        }
-        *handler = ^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-            [controller.tableView setEditing:NO animated:YES];
-            [[LCChatKit sharedInstance] updateUnreadCountToZeroWithConversationId:conversationId];
-        };
-    } else {
-        if (*title == nil) {
-            *title = @"标记为未读";
-        }
-        *handler = ^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-            [controller.tableView setEditing:NO animated:YES];
-            [[LCChatKit sharedInstance] increaseUnreadCountWithConversationId:conversationId];
-        };
-    }
-}
-
-- (NSArray *)rightButtonsAtIndexPath:(NSIndexPath *)indexPath
-                        conversation:(AVIMConversation *)conversation
-                          controller:(LCCKConversationListViewController *)controller {
-    NSString *title = nil;
-    UITableViewRowActionHandler handler = nil;
-    [self markReadStatusAtIndexPath:indexPath
-                              title:&title
-                             handle:&handler
-                       conversation:conversation
-                         controller:controller];
-    UITableViewRowAction *actionItemMore = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
-                                                                              title:title
-                                                                            handler:handler];
-    actionItemMore.backgroundColor = [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0];
-    UITableViewRowAction *actionItemDelete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
-                                                                                title:LCCKLocalizedStrings(@"Delete")
-                                                                              handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-                                                                                  [[LCChatKit sharedInstance] deleteRecentConversationWithConversationId:conversation.conversationId];
-                                                                              }];
-
-    UITableViewRowAction *actionItemChangeGroupAvatar = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
-                                                                                           title:@"改群头像"
-                                                                                         handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-                                                                                             [[self class] exampleChangeGroupAvatarURLsForConversationId:conversation.conversationId shouldInsert:NO];
-                                                                                         }];
-    actionItemChangeGroupAvatar.backgroundColor = [UIColor colorWithRed:251/255.f green:186/255.f blue:11/255.f alpha:1.0];
-    if (conversation.lcck_type == LCCKConversationTypeSingle) {
-        return @[ actionItemDelete, actionItemMore ];
-    }
-    return @[ actionItemDelete, actionItemMore, actionItemChangeGroupAvatar];
 }
 
 #pragma -
@@ -615,27 +530,6 @@ void dispatch_async_limit(dispatch_queue_t queue, NSUInteger limitSemaphoreCount
     [conversationViewController presentViewController:navigationViewController animated:YES completion:nil];
 }
 
-+ (void)exampleChangeGroupAvatarURLsForConversationId:(NSString *)conversationId {
-    [self exampleChangeGroupAvatarURLsForConversationId:conversationId shouldInsert:YES];
-}
-
-+ (void)exampleChangeGroupAvatarURLsForConversationId:(NSString *)conversationId shouldInsert:(BOOL)shouldInsert {
-    [self lcck_showMessage:@"正在设置群头像"];
-    [[LCCKConversationService sharedInstance] fecthConversationWithConversationId:conversationId callback:^(AVIMConversation *conversation, NSError *error) {
-        [conversation lcck_setObject:LCCKTestConversationGroupAvatarURLs[arc4random_uniform((int)LCCKTestConversationGroupAvatarURLs.count - 1)] forKey:LCCKConversationGroupAvatarURLKey callback:^(BOOL succeeded, NSError *error) {
-            [self lcck_hideHUD];
-            if (succeeded) {
-                [self lcck_showSuccess:@"设置群头像成功"];
-                if (shouldInsert) {
-                    [[LCCKConversationService sharedInstance] insertRecentConversation:conversation];
-                }
-                [[NSNotificationCenter defaultCenter] postNotificationName:LCCKNotificationConversationListDataSourceUpdated object:self];
-            } else {
-                [self lcck_showError:@"设置群头像失败"];
-            }
-        }];
-    }];
-}
 - (void)examplePreviewImageMessageWithInitialIndex:(NSUInteger)index allVisibleImages:(NSArray *)allVisibleImages allVisibleThumbs:(NSArray *)allVisibleThumbs {
     // Browser
     NSMutableArray *photos = [[NSMutableArray alloc] initWithCapacity:[allVisibleImages count]];

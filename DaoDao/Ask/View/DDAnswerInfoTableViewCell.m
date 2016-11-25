@@ -49,7 +49,7 @@
     [self.imgHead sy_setThumbnailImageWithUrl:user.headUrl];
     [self.imgGender setImage:user.genderImage];
 
-    self.labName.text = user.nickName;
+    self.labName.text = user.title;
     self.labGrade.text = MajorGrade(user.major, user.grade);
     self.labRelation.text = user.relation;
 
@@ -71,10 +71,10 @@
         NSString *timeStr = [NSString stringWithFormat:@"距离见面时间：%@", [SYUtils dateDetailSinceNowFormInterval:ask.answer.meet.time]];
         self.labMeetTime.text = timeStr;
     } else if (status == DDAskBothUnRate ||
-               status == DDAskAnswerRate) {
+               status == DDAskAskerRate) {
         self.labStatus.text = @"等待评价";
         self.labStatus.textColor = SecondColor;
-        [self.btnAction setTitle:@"去评价"];
+        [self.btnAction setTitle:@"评价TA"];
         self.btnChat.hidden = YES;
     } else if (status > 0) {
         self.labStatus.text = @"已完成评价！约见结束！";
@@ -113,8 +113,8 @@
     NSInteger status = _ask.status.integerValue;
 
     if (status == DDAskBothUnRate ||
-        status == DDAskAnswerRate) {
-        // 去评价
+        status == DDAskAskerRate) {
+        // 评价TA
         DDRateViewController *vc = [[DDRateViewController alloc] init];
         vc.ask = self.ask;
         [self.viewController.navigationController pushViewController:vc animated:YES];

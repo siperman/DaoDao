@@ -36,6 +36,9 @@
     if (!self.ask) {
         return 0;
     }
+    if (self.ask.status.integerValue == DDAskAnswerDisagreeMeet) {
+        return 1;
+    }
     return 2;
 }
 
@@ -108,6 +111,6 @@
 - (BOOL)isFinish
 {
     NSInteger status = self.ask.status.integerValue;
-    return status >= DDAskAskerRate;
+    return status >= DDAskAskerRate || status == DDAskAnswerDisagreeMeet;
 }
 @end

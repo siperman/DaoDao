@@ -26,4 +26,7 @@
 + (id)loadFromDiskWithKey:(NSString *)key;
 
 + (void)saveToDisk:(DDUser *)user;
+
++ (instancetype)userTransform:(DDUser *)user;
+
 @end

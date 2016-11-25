@@ -92,11 +92,8 @@
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -64.0) forBarMetrics:UIBarMetricsDefault];   // Just hide the title
     [[UIBarButtonItem appearance] setTintColor:BarTintColor];
 
-    // 按钮
-//    [[UIButton appearance] setBackgroundImage:[UIImage imageWithColor:CCCColor] forState:UIControlStateDisabled];
-
     [[UIPageControl appearance] setPageIndicatorTintColor:TextColor];
-    [[UIPageControl appearance] setCurrentPageIndicatorTintColor:SecondColor];
+    [[UIPageControl appearance] setCurrentPageIndicatorTintColor:MainColor];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 
     [[UITableViewHeaderFooterView appearance] setTintColor:ClearColor];
@@ -105,20 +102,6 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-//    AVInstallation *currentInstallation = [AVInstallation currentInstallation];
-//#if DEBUG && INHOUSE
-//    currentInstallation.deviceProfile = @"aps_soouya_inhouse_pro_beta_leancloud";
-//#elif DEBUG
-//    currentInstallation.deviceProfile = @"aps_soouya_inhouse_dev_leancloud";
-//#elif INHOUSE
-//    currentInstallation.deviceProfile = @"aps_soouya_inhouse_pro_leancloud";
-//#else
-//    currentInstallation.deviceProfile = @"aps_soouya_pro_leancloud";
-//#endif
-//
-//    [currentInstallation setDeviceTokenFromData:deviceToken];
-//    [currentInstallation saveInBackground];
-
     [SYPrefManager setObject:deviceToken forKey:kCurrentDeviceToken];
     [DDChatKitManager invokeThisMethodInDidRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }

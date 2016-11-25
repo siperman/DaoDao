@@ -30,7 +30,7 @@
     _ask = ask;
 
     if ([self isToRate]) {
-        [self.button setTitle:@"去评价"];
+        [self.button setTitle:@"评价TA"];
     } else {
         [self.button setTitle:@"聊一下"];
     }
@@ -39,7 +39,7 @@
 - (BOOL)isToRate
 {
     DDAsk *ask = self.ask;
-    if (ask.isMyAsk) {
+    if (!ask.isMyAsk) {
         return (ask.status.integerValue == DDAskBothUnRate || ask.status.integerValue == DDAskAnswerRate);
     } else {
         return (ask.status.integerValue == DDAskBothUnRate || ask.status.integerValue == DDAskAskerRate);

@@ -41,8 +41,9 @@
         [attrStr setAttributes:@{NSForegroundColorAttributeName : MainColor} range:NSMakeRange(left.length, text.length - left.length - right.length)];
 
         self.labDesc.attributedText = attrStr;
-    } else if (status >= DDAskWaitingSendMeet &&
-               status <= DDAskAnswerRate) {
+    } else if ((status >= DDAskWaitingSendMeet &&
+                status <= DDAskBothUnRate) ||
+               status == DDAskAskerRate) {
         NSString *left = @"";
         NSString *right = @"个响应者正在解决您的需求";
         NSString *text = [NSString stringWithFormat:@"%@%@%@", left, ask.answers, right];
@@ -60,8 +61,9 @@
         status == DDAskWaitingHandOut ||
         status == DDAskWaitingAnswerInterest) {
         return YES;
-    } else if (status >= DDAskWaitingSendMeet &&
-               status <= DDAskAnswerRate) {
+    } else if ((status >= DDAskWaitingSendMeet &&
+                status <= DDAskBothUnRate) ||
+               status == DDAskAskerRate) {
         return YES;
     }
     return NO;

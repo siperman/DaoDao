@@ -46,7 +46,7 @@
     [self.imgHead sy_setThumbnailImageWithUrl:user.headUrl];
     [self.imgGender setImage:user.genderImage];
 
-    self.labName.text = user.nickName;
+    self.labName.text = user.title;
     self.labGrade.text = MajorGrade(user.major, user.grade);
     self.labRelation.text = user.relation;
 

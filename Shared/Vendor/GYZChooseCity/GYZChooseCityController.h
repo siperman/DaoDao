@@ -32,9 +32,13 @@
  */
 @property (nonatomic, strong) NSArray *hotCitys;
 
-
 /*
  *  城市数据，可在Getter方法中重新指定
  */
 @property (nonatomic, strong) NSMutableArray *cityDatas;
+
+/*
+ *  是否隐藏常用城市
+ */
+@property (nonatomic) BOOL hideCommonCitys;
 @end

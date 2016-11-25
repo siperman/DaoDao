@@ -19,8 +19,8 @@ typedef NS_ENUM(NSInteger, DDAskStatus) {
     DDAskWaitingMeet,
 
     DDAskBothUnRate,
-    DDAskAskerRate,
-    DDAskAnswerRate,
+    DDAskAnswerRate, // 约局单方已评, 对应局人做出了评价
+    DDAskAskerRate,  // 应局单方已评, 对约局人做出了评价
     DDAskBothRate,
 
     DDAskAnswerDisagreeMeet = -5,

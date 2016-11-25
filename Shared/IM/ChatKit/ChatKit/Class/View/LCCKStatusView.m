@@ -36,7 +36,7 @@ static CGFloat LCCKHorizontalLittleSpacing = 5;
 }
 
 - (void)setup {
-    self.backgroundColor = [UIColor colorWithRed:255 / 255.0 green:199 / 255.0 blue:199 / 255.0 alpha:1];
+    self.backgroundColor = [UIColor colorFromHexRGB:@"f6634a" alpha:0.9];
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self addSubview:self.statusImageView];
     [self addSubview:self.statusLabel];
@@ -59,7 +59,7 @@ static CGFloat LCCKHorizontalLittleSpacing = 5;
     if (_statusLabel == nil) {
         _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_statusImageView.frame) + LCCKHorizontalLittleSpacing, 0, self.frame.size.width - CGRectGetMaxX(_statusImageView.frame) - LCCKHorizontalSpacing - LCCKHorizontalLittleSpacing, LCCKStatusViewHight)];
         _statusLabel.font = [UIFont systemFontOfSize:15.0];
-        _statusLabel.textColor = [UIColor grayColor];
+        _statusLabel.textColor = [UIColor whiteColor];
         _statusLabel.text = LCCKLocalizedStrings(@"netDisconnected");
     }
     return _statusLabel;

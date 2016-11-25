@@ -41,6 +41,7 @@
 {
     [super viewDidLoad];
     self.title = @"个人信息";
+    self.view.backgroundColor = BackgroundColor;
     [self freshView];
     [self subscribeNotication:kUpdateUserInfoNotification selector:@selector(freshView)];
 }
@@ -100,6 +101,7 @@
         } else { // 企业所在地
             GYZChooseCityController *vc = [[GYZChooseCityController alloc] init];
             [vc setDelegate:self];
+            vc.hideCommonCitys = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
     } else if (section == 3) {

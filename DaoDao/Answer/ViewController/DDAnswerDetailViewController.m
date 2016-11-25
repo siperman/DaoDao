@@ -33,6 +33,11 @@
     [self.tableView registerNib:[DDAskMeetSmallTableViewCell class]];
     [self.tableView registerNib:[DDDemandDescTableViewCell class]];
 
+    if (self.ask.status.integerValue == DDAskWaitingSendMeet) {
+        self.showSmall = NO;
+    } else {
+        self.showSmall = YES;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -100,7 +105,7 @@
             return [DDInvitationInfoTableViewCell class];
         } else if (self.ask.status.integerValue == DDAskWaitingMeet) {
             return [DDMeetNoticeTableViewCell class];
-        } else if (self.ask.status.integerValue >= DDAskAnswerRate) {
+        } else if (self.ask.status.integerValue >= DDAskAskerRate) {
             return [DDAskRateInfoTableViewCell class];
         } else {
             return [DDAskMeetSmallTableViewCell class];

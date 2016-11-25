@@ -40,7 +40,7 @@
     [self.imgHead sy_setThumbnailImageWithUrl:askInfo.user.headUrl];
     [self.imgGender setImage:askInfo.user.genderImage];
 
-    self.labName.text = askInfo.user.nickName;
+    self.labName.text = askInfo.user.title;
     self.labGrade.text = MajorGrade(askInfo.user.major, askInfo.user.grade);
     self.labDemand.text = askInfo.demand;
     self.labRelation.text = askInfo.user.relation;
@@ -62,10 +62,10 @@
             self.labStatus.text = @"待赴约";
         } else if (status == DDAskWaitingMeet) {
             self.labStatus.text = @"待见面";
-        } else if (status == DDAskAskerRate ||
+        } else if (status == DDAskAnswerRate ||
                    status == DDAskBothUnRate) {
             self.labStatus.text = @"待评价";
-        } else if (status == DDAskAnswerRate ||
+        } else if (status == DDAskAskerRate ||
                    status == DDAskBothRate) {
             self.labStatus.text = @"已完成";
         } else if (status == DDAskAnswerUninterested) {

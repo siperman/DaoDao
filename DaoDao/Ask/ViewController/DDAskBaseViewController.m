@@ -67,8 +67,11 @@
                 NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:timeStr];
                 [attrStr setAttributes:@{NSForegroundColorAttributeName : SecondColor} range:NSMakeRange(7, timeStr.length - 7)];
                 self.labHead.attributedText = attrStr;
-            } else if (_ask.status.integerValue >= DDAskAskerRate) {
+            } else if (_ask.status.integerValue == DDAskAnswerRate ||
+                       _ask.status.integerValue == DDAskBothRate) {
                 self.labHead.text = @"已完成评价，约见结束";
+            } else if (_ask.status.integerValue == DDAskAnswerDisagreeMeet) {
+                self.labHead.text = @"对方拒绝赴约，约见结束！";
             } else {
                 hasHead = NO;
                 self.labHead.hidden = YES;
@@ -77,7 +80,8 @@
             if (_ask.status.integerValue == DDAskAnswerDisagreeMeet) {
                 self.labHead.text = @"已失效！您拒绝了赴约对方的邀请";
                 self.labHead.textColor = SecondColor;
-            } else if (_ask.status.integerValue >= DDAskAnswerRate) {
+            } else if (_ask.status.integerValue == DDAskAnswerRate ||
+                       _ask.status.integerValue == DDAskBothRate) {
                 self.labHead.text = @"已完成评价，约见结束";
             } else {
                 hasHead = NO;

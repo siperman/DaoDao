@@ -546,17 +546,6 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
 }
 
 - (void)setupNavigationItemTitleWithConversation:(AVIMConversation *)conversation {
-//    LCCKConversationNavigationTitleView *navigationItemTitle = [[LCCKConversationNavigationTitleView alloc] initWithConversation:conversation navigationController:self.navigationController];
-//    navigationItemTitle.frame = CGRectZero;
-//    //仅修高度,xyw值不变
-//    navigationItemTitle.frame = ({
-//        CGRect frame = navigationItemTitle.frame;
-//        CGFloat containerViewHeight = self.navigationController.navigationBar.frame.size.height;
-//        CGFloat containerViewWidth = self.navigationController.navigationBar.frame.size.width - 130;
-//        frame.size.width = containerViewWidth;
-//        frame.size.height = containerViewHeight;
-//        frame;
-//    });
     self.title = conversation.lcck_title;
 }
 

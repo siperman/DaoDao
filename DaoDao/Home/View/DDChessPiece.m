@@ -63,13 +63,13 @@
         [self addSubview:imgView];
 
         _light1 = [[UIImageView alloc] initWithFrame:rect];
-        _light1.image = Image(@"baizi－light1");
+        _light1.image = Image(@"baizi－light");
         [self addSubview:_light1];
 
-        _light2 = nil;
-//        _light2 = [[UIImageView alloc] initWithFrame:rect];
-//        _light2.image = Image(@"baizi－light2");
-//        [self addSubview:_light2];
+//        _light2 = nil;
+        _light2 = [[UIImageView alloc] initWithFrame:rect];
+        _light2.image = Image(@"baizi－light2");
+        [self addSubview:_light2];
         _lab.textColor = MainColor;
     } else {
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:rect];

@@ -17,6 +17,8 @@
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.noDataLabel];
+        [self setClipsToBounds:YES];
+        [self setSeparatorInset:UIEdgeInsetsMake(0, 600, 0, 0)]; // 把分割线移到屏幕外
     }
     return self;
 }

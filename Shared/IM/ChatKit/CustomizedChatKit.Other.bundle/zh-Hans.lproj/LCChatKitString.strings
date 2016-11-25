@@ -45,7 +45,7 @@
 "Community" = "小区";
 "ConfirmDeletion" = "确认删除吗";
 "call" = "拨打";
-"netDisconnected" = "当前网络不可用，请检查你的网络设置";
+"netDisconnected" = "当前网络不可用，请检查网络设置";
 "connectSucceeded" = "连接成功";
 "connectFailed" = "连接失败";
 "requestForceSingleSignOnAuthorization" = "当前账号已在其它设备登录，请问是否强制登录？强制登录会踢掉当前已经登录的设备。";

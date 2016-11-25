@@ -25,10 +25,21 @@
     [MobClick event:YuejuDtlBtn_click];
 
     [self.tableView registerNib:[DDAnswerInfoTableViewCell class]];
-    if (self.ask.status.integerValue >= DDAskWaitingSendMeet) {
+    if (self.ask.status.integerValue >= DDAskWaitingSendMeet ||
+        self.ask.status.integerValue < 0) {
         [self requestAnswers];
         [self subscribeNotication:kUpdateAskInfoNotification selector:@selector(handleNotification:)];
     }
+
+    if (self.ask.status.integerValue == DDAskPostSuccess ||
+        self.ask.status.integerValue == DDAskWaitingHandOut ||
+        self.ask.status.integerValue == DDAskWaitingAnswerInterest ||
+        self.ask.status.integerValue == -2) {
+        self.showSmall = NO;
+    } else {
+        self.showSmall = YES;
+    }
+
 }
 
 #pragma mark Request

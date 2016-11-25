@@ -65,13 +65,14 @@ static NSString * const SYCachedAskInfoFileName = @"conv_ask";
     NSDictionary *tempAsks = nil;
 
     if (conversationId && ask) {
-        OSSpinLockLock(&_spinlock);
         [self.cachedAsks setObject:ask forKey:conversationId];
+        POST_NOTIFICATION(kUpdateIMAskInfoNotification, nil);
+
+        OSSpinLockLock(&_spinlock);
         tempAsks = [NSDictionary dictionaryWithDictionary:self.cachedAsks];
         OSSpinLockUnlock(&_spinlock);
 
         [[SYCache sharedInstance] saveItem:tempAsks forKey:SYCachedAskInfoFileName];
-        POST_NOTIFICATION(kUpdateIMAskInfoNotification, nil);
     }
 }
 

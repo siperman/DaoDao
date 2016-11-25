@@ -12,6 +12,7 @@
 #import "DDChatKitManager.h"
 #import "LCCKUser.h"
 #import "DDAnswerDetailViewController.h"
+#import "DDUserFactory.h"
 
 @interface DDChessDetailViewController () <DDAskInfoProtocol>
 
@@ -182,8 +183,7 @@
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 
     // 缓存聊天用户信息
-    [LCCKUser saveToDisk:askInfo.answer.user];
-    [LCCKUser saveToDisk:askInfo.user];
+    [DDUserFactory cacheUser:[LCCKUser userTransform:askInfo.user]];
 
     // 去聊天室
     [DDChatKitManager exampleOpenConversationViewControllerWithConversaionId:askInfo.answer.conversionId fromNavigationController:self.navigationController];

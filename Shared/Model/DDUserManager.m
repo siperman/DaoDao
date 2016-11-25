@@ -11,6 +11,7 @@
 #import "SYUtils.h"
 #import "SYPrefManager.h"
 #import "DDChatKitManager.h"
+#import "DDUserFactory.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -112,6 +113,8 @@
     if (!self.userId ||
         ![self.userId isEqualToString:self.user.uid]) {
         self.userId = self.user.uid;
+        // 触发更新IM中user
+        [DDUserFactory getUserById:self.userId];
 
         //刷新未读消息数
         [self.notificationManager refreshAllNotifications];

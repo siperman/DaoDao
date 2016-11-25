@@ -112,12 +112,17 @@
 
 + (void)saveToDisk:(DDUser *)user
 {
+
+}
+
++ (instancetype)userTransform:(DDUser *)user
+{
     NSURL *avatarURL = nil;
     if (user.headUrl) {
         avatarURL = [NSURL URLWithString:PicUrlFactory(user.headUrl)];
     }
     LCCKUser *user_ = [[LCCKUser alloc] initWithUserId:user.uid name:user.title avatarURL:avatarURL clientId:user.uid];
-    [user_ saveToDiskWithKey:user_.userId];
+    return user_;
 }
 
 @end

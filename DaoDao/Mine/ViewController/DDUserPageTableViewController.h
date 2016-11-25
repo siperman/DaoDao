@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDUserHomePageViewController.h"
 
 @interface DDUserPageTableViewController : UITableViewController
+
+@property (nonatomic, weak) DDUserHomePageViewController *parentVC;
 
 - (void)freshWithUser:(DDUser *)user;
 @end

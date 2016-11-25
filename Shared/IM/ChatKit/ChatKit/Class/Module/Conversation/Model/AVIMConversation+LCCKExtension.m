@@ -81,6 +81,13 @@
             peer = peers[0];
         }
         displayName = peer.name ?: peerId;
+        /*
+         *  Important : IM第一次取用户信息，不会命中本地缓存，取会话中额外属性来标示名称(后台建会话时塞的）
+         */
+        if ([peerId isEqualToString:displayName] &&
+            [self.attributes objectForKey:peerId]) {
+            displayName = [self.attributes objectForKey:peerId];
+        }
         if (!peer.name && disablePreviewUserId) {
             NSString *defaultNickNameWhenNil = LCCKLocalizedStrings(@"nickNameIsNil");
             displayName = defaultNickNameWhenNil.length > 0 ? defaultNickNameWhenNil : @"";

@@ -10,6 +10,7 @@
 #import "UIButton+WebCache.h"
 #import "BackView.h"
 #import "SepView.h"
+#import "UINavigationBar+Awesome.h"
 
 @interface DDUserPageTableViewController ()
 
@@ -41,6 +42,21 @@
     self.view.backgroundColor = BackgroundColor;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tableView.delegate = self;
+    [self scrollViewDidScroll:self.tableView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.tableView.delegate = nil;
+    [self.navigationController.navigationBar setShadowImage:nil];
+    [self.navigationController.navigationBar lt_reset];
+}
+
 - (void)freshWithUser:(DDUser *)user
 {
 
@@ -64,6 +80,26 @@
     [self.tableView reloadData];
 }
 
+#define NAVBAR_CHANGE_POINT 10
+
+#pragma mark -UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    UIColor * color = [[UINavigationBar appearance] barTintColor];
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY > NAVBAR_CHANGE_POINT) {
+        //透明度
+        CGFloat alpha = MIN(0.9, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
+        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
+        [self.navigationController.navigationBar setShadowImage:alpha > 0.4 ? nil : [UIImage new]];
+    } else {
+        //完全透明
+        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
+        //去掉nav底部的线
+        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (CGFloat)getTagsHeight
@@ -80,7 +116,7 @@
         }];
 
         CGFloat x = 110;
-        CGFloat padX = 10;
+        CGFloat padX = 6;
         CGFloat tagW = 75;
         for (NSInteger idx = 0; idx < _user.expert.count; idx++) {
             NSString *title = _user.expert[idx];
@@ -92,6 +128,7 @@
             }];
         }
 
+        padX = 10;
         // 感兴趣话题
         UILabel *labTopic = [self getTitle:@"感兴趣话题"];
         [self.tagsView addSubview:labTopic];
@@ -102,29 +139,31 @@
 
         CGFloat topicW = 52;
         CGFloat topicH = 28;
-        NSInteger maxRowCount = 4;
+        CGFloat topicX = x;
+        NSInteger rowCount = 1;
+        CGFloat maxW = SCREEN_WIDTH - 24;
         for (NSInteger idx = 0; idx < _user.topic.count; idx++) {
             NSString *title = _user.topic[idx];
-            UIView *view = [self getTopic:title];
+            UILabel *view = [self getTopic:title];
+            CGFloat textW = [title textWidthWithFontsSize:16.0] + 18.0; // 根据文字计算lab宽度
+            if (topicX + textW > maxW) {
+                topicX = x;
+                rowCount++;
+            }
             [self.tagsView addSubview:view];
             [view mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(labTopic).offset((idx/maxRowCount) * 44);
-                make.leading.equalTo(self.tagsView).offset(x + (idx % maxRowCount) *(padX + topicW));
-                make.width.mas_equalTo(topicW);
+                make.centerY.equalTo(labTopic).offset((rowCount - 1) * 44);
+                make.leading.equalTo(self.tagsView).offset(topicX);
+                make.width.mas_equalTo(textW);
                 make.height.mas_equalTo(topicH);
             }];
+            topicX += (textW + padX);
         }
 
-
-        if (_user.topic.count % maxRowCount == 0) {
-            rows = 2 + _user.topic.count / maxRowCount;
-        } else {
-            rows = 3 + _user.topic.count / maxRowCount;
-        }
-        self.tagRows = rows;
+        self.tagRows = 2 + rowCount;
 
         // 分割线
-        for (NSInteger idx = 1; idx < rows; idx++) {
+        for (NSInteger idx = 1; idx < self.tagRows; idx++) {
             SepView *sepView = [[SepView alloc] init];
             [self.tagsView addSubview:sepView];
             [sepView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -212,7 +251,7 @@
     UILabel *lab = [[UILabel alloc] init];
     lab.textColor = WhiteColor;
     lab.text = title;
-    lab.font = NormalTextFont;
+    lab.font = Font(13);
     lab.textAlignment = NSTextAlignmentCenter;
     [imgView addSubview:lab];
     [lab mas_makeConstraints:^(MASConstraintMaker *make) {

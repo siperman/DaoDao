@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *labAddr;
 @property (nonatomic, strong) DDAsk *ask;
 
+@property (nonatomic, weak) UIButton *btn1;
+@property (nonatomic, weak) UIButton *btn2;
+
 @end
 
 @implementation DDMeetDetailViewController
@@ -81,6 +84,8 @@
             if (weakSelf.callback) {
                 weakSelf.callback(@"好的，收到邀请函，确认赴约。");
                 [weakSelf.navigationController popViewControllerAnimated:YES];
+            } else {
+                [weakSelf freshView];
             }
         } else {
             [self showRequestNotice:response];
@@ -101,11 +106,20 @@
             if (weakSelf.callback) {
                 weakSelf.callback(@"抱歉，暂时无法赴约，请见谅。");
                 [weakSelf.navigationController popViewControllerAnimated:YES];
+            } else {
+                [weakSelf freshView];
             }
         } else {
             [self showRequestNotice:response];
         }
     }];
+}
+
+- (void)freshView
+{
+    [self.btn1 removeFromSuperview];
+    [self.btn2 removeFromSuperview];
+    [self setUpData];
 }
 
 - (void)setUpData
@@ -127,6 +141,7 @@
             make.width.mas_equalTo(SCREEN_WIDTH/2);
             make.height.mas_equalTo(49);
         }];
+        _btn1 = btn1;
 
         UIButton *btn2 = [self getBtnTitle:@"确认赴约" action:@selector(agree)];
         btn2.alpha = 0.9;
@@ -136,6 +151,7 @@
             make.width.mas_equalTo(SCREEN_WIDTH/2);
             make.height.mas_equalTo(49);
         }];
+        _btn2 = btn2;
     } else {
         NSString *text;
         if (_ask.isMyAsk && _ask.status.integerValue == DDAskWaitingAgreeMeet) {

@@ -54,8 +54,9 @@
             status == DDAskWaitingHandOut ||
             status == DDAskWaitingAnswerInterest) {
             imgName = imgNames[0];
-        } else if (status >= DDAskWaitingSendMeet &&
-                   status <= DDAskAnswerRate) {
+        } else if ((status >= DDAskWaitingSendMeet &&
+                    status <= DDAskBothUnRate) ||
+                   status == DDAskAskerRate) {
             imgName = imgNames[1];
         } else if (status == -1) { // 约局已取消
             imgName = imgNames[3];
@@ -77,10 +78,10 @@
             imgName = imgNames[1];
         } else if (status == DDAskWaitingMeet) {
             imgName = imgNames[2];
-        } else if (status == DDAskAskerRate ||
+        } else if (status == DDAskAnswerRate ||
                    status == DDAskBothUnRate) {
             imgName = imgNames[3];
-        } else if (status == DDAskAnswerRate ||
+        } else if (status == DDAskAskerRate ||
                    status == DDAskBothRate) {
             imgName = imgNames[4];
         } else if (status == -5 ||

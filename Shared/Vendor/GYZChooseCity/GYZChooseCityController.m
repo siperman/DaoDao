@@ -37,7 +37,6 @@
 /**
  *  搜索框
  */
-//@property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UISearchController *searchController;
 
 /**
@@ -61,12 +60,6 @@ NSString *const cityCell = @"CityCell";
     [self locationStart];
 
     [self setSearchControllerView];
-//    self.searchController.searchBar.barStyle     = UIBarStyleDefault;
-//    self.searchController.searchBar.translucent  = YES;
-//    [self.searchController.searchBar setImage:Image(@"") forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
-//    [self.searchController.searchBar.layer setBorderWidth:0.5f];
-//    [self.searchController.searchBar.layer setBorderColor:[UIColor colorWithWhite:0.7 alpha:1.0].CGColor];
-
 
     [self.tableView setTableHeaderView:self.searchController.searchBar];
     [self.tableView setSectionIndexBackgroundColor:[UIColor colorWithWhite:1 alpha:0.95]];
@@ -329,7 +322,7 @@ NSString *const cityCell = @"CityCell";
         return [GYZCityGroupCell getCellHeightOfCityArray:self.localCityData];
     }
     else if (indexPath.section == 1) {
-        return [GYZCityGroupCell getCellHeightOfCityArray:self.commonCityData];
+        return self.hideCommonCitys ? CGFLOAT_MIN : [GYZCityGroupCell getCellHeightOfCityArray:self.commonCityData];
     }
     else if (indexPath.section == 2){
         return [GYZCityGroupCell getCellHeightOfCityArray:self.hotCityData];
@@ -509,7 +502,7 @@ NSString *const cityCell = @"CityCell";
              if (self.localCityData.count <= 0) {
                  GYZCity *city = [[GYZCity alloc] init];
                  city.cityName = currCity;
-                 city.shortName = currCity;
+                 city.shortName = [currCity stringByReplacingOccurrencesOfString:@"市" withString:@""];
                  [self.localCityData addObject:city];
                  
                  [self.tableView reloadData];
