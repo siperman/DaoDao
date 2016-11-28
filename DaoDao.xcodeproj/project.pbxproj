@@ -402,6 +402,8 @@
 		2BBB7D901DAA2032005E90A5 /* DDAskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D8F1DAA2032005E90A5 /* DDAskDetailViewController.m */; };
 		2BBB7D981DAA4443005E90A5 /* DDConversationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB7D961DAA4443005E90A5 /* DDConversationListCell.m */; };
 		2BBB7D991DAA4443005E90A5 /* DDConversationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7D971DAA4443005E90A5 /* DDConversationListCell.xib */; };
+		2BBD0E9B1DEBC70A00FE3658 /* DDRadioTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD0E9A1DEBC70A00FE3658 /* DDRadioTitleView.m */; };
+		2BBD0E9E1DEBD85200FE3658 /* GYZLocalCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD0E9D1DEBD85200FE3658 /* GYZLocalCityCell.m */; };
 		2BCDD6911D79597000BADD43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6901D79597000BADD43 /* main.m */; };
 		2BCDD6941D79597000BADD43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6931D79597000BADD43 /* AppDelegate.m */; };
 		2BCDD69A1D79597000BADD43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDD6981D79597000BADD43 /* Main.storyboard */; };
@@ -1230,6 +1232,10 @@
 		2BBB7D951DAA4443005E90A5 /* DDConversationListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDConversationListCell.h; sourceTree = "<group>"; };
 		2BBB7D961DAA4443005E90A5 /* DDConversationListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDConversationListCell.m; sourceTree = "<group>"; };
 		2BBB7D971DAA4443005E90A5 /* DDConversationListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDConversationListCell.xib; sourceTree = "<group>"; };
+		2BBD0E991DEBC70A00FE3658 /* DDRadioTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRadioTitleView.h; sourceTree = "<group>"; };
+		2BBD0E9A1DEBC70A00FE3658 /* DDRadioTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRadioTitleView.m; sourceTree = "<group>"; };
+		2BBD0E9C1DEBD85200FE3658 /* GYZLocalCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZLocalCityCell.h; sourceTree = "<group>"; };
+		2BBD0E9D1DEBD85200FE3658 /* GYZLocalCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZLocalCityCell.m; sourceTree = "<group>"; };
 		2BCDD68C1D79597000BADD43 /* DaoDao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaoDao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BCDD6901D79597000BADD43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2BCDD6921D79597000BADD43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1777,6 +1783,8 @@
 				2BA3F2DC1D911A4A00094E0A /* GYZChooseCityDelegate.h */,
 				2BA3F2DD1D911A4A00094E0A /* GYZCity.h */,
 				2BA3F2DE1D911A4A00094E0A /* GYZCity.m */,
+				2BBD0E9C1DEBD85200FE3658 /* GYZLocalCityCell.h */,
+				2BBD0E9D1DEBD85200FE3658 /* GYZLocalCityCell.m */,
 				2BA3F2DF1D911A4A00094E0A /* GYZCityGroupCell.h */,
 				2BA3F2E01D911A4A00094E0A /* GYZCityGroupCell.m */,
 				2BA3F2E11D911A4A00094E0A /* GYZCityHeaderView.h */,
@@ -1990,6 +1998,8 @@
 				2BA713531DCC3C700072FB42 /* LCCKConversationNavigationTitleView.m */,
 				2BA713541DCC3C700072FB42 /* LCCKMenuItem.h */,
 				2BA713551DCC3C700072FB42 /* LCCKMenuItem.m */,
+				2BBD0E991DEBC70A00FE3658 /* DDRadioTitleView.h */,
+				2BBD0E9A1DEBC70A00FE3658 /* DDRadioTitleView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3598,6 +3608,7 @@
 				2BA713FC1DCC3C700072FB42 /* LCCKChatSystemMessageCell.m in Sources */,
 				2BB3D7491D7D6F8C00FFDC0E /* SYCameraManager.m in Sources */,
 				2BA7142B1DCC3C700072FB42 /* LCCKTapDetectingView.m in Sources */,
+				2BBD0E9E1DEBD85200FE3658 /* GYZLocalCityCell.m in Sources */,
 				2BA713F31DCC3C700072FB42 /* LCCKFacePageView.m in Sources */,
 				2B29FAAE1DD44D0F00AE432F /* DDMeetNoticeTableViewCell.m in Sources */,
 				2BB3D7F51D7D6F8D00FFDC0E /* YIInnerShadowView.m in Sources */,
@@ -3611,6 +3622,7 @@
 				2B1516CE1DDC4A89009CC92E /* DDUserPageTableViewController.m in Sources */,
 				2BB3D7DA1D7D6F8D00FFDC0E /* TOActivityCroppedImageProvider.m in Sources */,
 				2BB3D7D71D7D6F8D00FFDC0E /* SSProcessorInfo.m in Sources */,
+				2BBD0E9B1DEBC70A00FE3658 /* DDRadioTitleView.m in Sources */,
 				2BA713DF1DCC3C700072FB42 /* LCCKTextFullScreenViewController.m in Sources */,
 				2BA3F2E41D911A4A00094E0A /* GYZChooseCityController.m in Sources */,
 				2B311C4F1D7E631D007CE4DD /* SYRequestEngine.m in Sources */,

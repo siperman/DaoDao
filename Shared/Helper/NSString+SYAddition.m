@@ -208,4 +208,23 @@ static NSDateFormatter *dateFormatter = nil;
     return ceil(rect.size.width);
 }
 
+- (NSMutableAttributedString *)attributedStringWithLineSpacing:(CGFloat) spacing
+{
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:spacing];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self length])];
+    return attributedString;
+}
+
+- (NSMutableAttributedString *)attributedStringWithLineSpacing:(CGFloat) spacing Alignment:(NSTextAlignment) alignment
+{
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:spacing];
+    [paragraphStyle setAlignment:alignment];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self length])];
+    return attributedString;
+}
+
 @end

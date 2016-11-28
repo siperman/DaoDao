@@ -19,7 +19,7 @@
 {
     DDAsk *ask = (DDAsk *)data;
 
-    self.labDemand.text = ask.demand;
+    self.labDemand.attributedText = [ask.demand attributedStringWithLineSpacing:6.0];
 
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:ask.answer.meet.time.doubleValue];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -27,8 +27,7 @@
 
     NSString *timeStr = [dateFormatter stringFromDate:date];
     NSString *text = [NSString stringWithFormat:@"时间：%@\n地点：%@ %@", timeStr, ask.answer.meet.city, ask.answer.meet.addr];
-    self.labDesc.text = text;
-
+    self.labDesc.attributedText = [text attributedStringWithLineSpacing:6.0];
 }
 
 @end

@@ -40,5 +40,8 @@
 - (CGFloat)textHeightWithFontSize:(CGFloat) fontSize ViewWidth:(CGFloat) width;
 //根据字体大小计算文本宽度
 - (CGFloat)textWidthWithFontsSize:(CGFloat) fontSize;
+//字符串加行间距
+- (NSMutableAttributedString *)attributedStringWithLineSpacing:(CGFloat) spacing;
+- (NSMutableAttributedString *)attributedStringWithLineSpacing:(CGFloat) spacing Alignment:(NSTextAlignment) alignment;
 
 @end

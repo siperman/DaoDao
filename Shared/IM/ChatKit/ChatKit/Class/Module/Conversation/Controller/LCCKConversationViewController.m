@@ -45,6 +45,7 @@
 #import "DDMeetDetailViewController.h"
 #import "DDAskMeetDetailViewController.h"
 #import "DDAnswerDetailViewController.h"
+#import "DDRadioTitleView.h"
 
 NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationViewControllerErrorDomain";
 
@@ -884,6 +885,8 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
         case kAVIMMessageMediaTypeAudio: {
             NSString *voiceFileName = message.voicePath;//必须带后缀，.mp3；
             [[LCCKAVAudioPlayer sharePlayer] playAudioWithURLString:voiceFileName identifier:message.messageId];
+            [DDRadioTitleView showIn:self.view];
+
         }
             break;
         case kAVIMMessageMediaTypeImage: {

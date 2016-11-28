@@ -57,9 +57,15 @@
     [self.navigationController.navigationBar lt_reset];
 }
 
+- (IBAction)showPic:(UIButton *)sender
+{
+    NSURL *URL = [[NSURL alloc] initWithString:PicUrlFactory(_user.headUrl)];
+
+    [SYUtils glanceImages:@[URL] fromIndex:0 srcImageViews:@[self.btnAvatar.imageView]];
+}
+
 - (void)freshWithUser:(DDUser *)user
 {
-
     if (user.headUrl.length > 0) {
         NSString *thumbnailUrl = [user.headUrl stringByAppendingString:kThumbnailResolution];
         NSURL *URL = [[NSURL alloc] initWithString:PicUrlFactory(thumbnailUrl)];

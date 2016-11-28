@@ -22,12 +22,13 @@
         NSString *left = @"正在努力为您派送邀请，已发送给";
         NSString *right = @"人\n请耐心等待...";
         NSString *text = [NSString stringWithFormat:@"%@%@%@", left, ask.answers, right];
-        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:text];
+        NSMutableAttributedString *attrStr = [text attributedStringWithLineSpacing:6.0 Alignment:NSTextAlignmentCenter];
         [attrStr setAttributes:@{NSForegroundColorAttributeName : SecondColor} range:NSMakeRange(left.length, text.length - left.length - right.length)];
 
         self.label.attributedText = attrStr;
     } else {
-        self.label.text = @"正在努力为您筛选最合适的靠谱人\n请耐心等待...";
+        NSString *text = @"正在努力为您筛选最合适的靠谱人\n请耐心等待...";
+        self.label.attributedText = [text attributedStringWithLineSpacing:6.0 Alignment:NSTextAlignmentCenter];
     }
 }
 

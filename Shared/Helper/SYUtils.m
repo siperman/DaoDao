@@ -93,9 +93,6 @@
 
 + (NSString *)dateDetailSinceNowFormInterval:(NSNumber *)interval
 {
-//    NSCalendar *cal = [NSCalendar currentCalendar];
-//    NSDateComponents *components = [cal components:( kCFCalendarUnitMonth | kCFCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute ) fromDate:[NSDate dateWithTimeIntervalSince1970:interval.doubleValue]];
-
     NSDate *future = [NSDate dateWithTimeIntervalSince1970:interval.doubleValue];
     NSInteger interval_ = [future timeIntervalSinceNow];
 

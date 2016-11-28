@@ -19,7 +19,7 @@
 {
     DDAsk *ask = (DDAsk *)data;
 
-    self.labDemand.text = ask.demand;
+    self.labDemand.attributedText = [ask.demand attributedStringWithLineSpacing:6.0];
 }
 
 @end

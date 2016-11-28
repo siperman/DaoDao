@@ -61,6 +61,7 @@
             for (ChooseImageViewModel *model in self.data) {
                 if ([str isEqualToString:model.name]) {
                     model.selected = YES;
+                    _selectCount ++;
                     break;
                 }
             }

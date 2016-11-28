@@ -35,14 +35,14 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGE-pn-jYX" customClass="SepView">
-                                <rect key="frame" x="10" y="48" width="276" height="6"/>
+                                <rect key="frame" x="10" y="48" width="276" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="6" id="wNt-9A-eaJ"/>
+                                    <constraint firstAttribute="height" constant="1" id="wNt-9A-eaJ"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpx-5f-kg2">
-                                <rect key="frame" x="14" y="72" width="37.5" height="62.5"/>
+                                <rect key="frame" x="14" y="63" width="37.5" height="71.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                             <constraint firstItem="oGE-pn-jYX" firstAttribute="top" secondItem="wir-ai-pIr" secondAttribute="bottom" constant="15" id="a1C-c3-irB"/>
                             <constraint firstAttribute="trailing" secondItem="XkU-VB-OC4" secondAttribute="trailing" constant="10" id="oIn-G1-RIe"/>
                             <constraint firstItem="oGE-pn-jYX" firstAttribute="leading" secondItem="Aj7-nZ-A2t" secondAttribute="leading" constant="10" id="oh2-L4-H9P"/>
-                            <constraint firstItem="Cpx-5f-kg2" firstAttribute="top" secondItem="oGE-pn-jYX" secondAttribute="bottom" constant="18" id="omy-pf-61X"/>
+                            <constraint firstItem="Cpx-5f-kg2" firstAttribute="top" secondItem="oGE-pn-jYX" secondAttribute="bottom" constant="14" id="omy-pf-61X"/>
                             <constraint firstItem="wir-ai-pIr" firstAttribute="leading" secondItem="Aj7-nZ-A2t" secondAttribute="leading" constant="14" id="paF-tX-eBG"/>
                             <constraint firstAttribute="bottom" secondItem="Cpx-5f-kg2" secondAttribute="bottom" constant="14" id="z59-YI-z6i"/>
                         </constraints>

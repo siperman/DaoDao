@@ -400,9 +400,6 @@ NSString *const cityCell = @"CityCell";
             if (chinese.location != NSNotFound || letters.location != NSNotFound || initials.location != NSNotFound) {
                 [self.searchCities addObject:city];
             }
-//            if ([city.cityName containsString:searchText] || [city.pinyin containsString:searchText] || [city.initials containsString:searchText]) {
-//                [self.searchCities addObject:city];
-//            }
         }
     }
     [self.tableView reloadData];

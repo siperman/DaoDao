@@ -881,6 +881,9 @@
                                                         <constraint firstAttribute="width" secondItem="AmP-bf-VHB" secondAttribute="height" multiplier="1:1" id="kBO-in-oHh"/>
                                                     </constraints>
                                                     <state key="normal" image="icon_touxiang"/>
+                                                    <connections>
+                                                        <action selector="showPic:" destination="sWx-Kb-s7L" eventType="touchUpInside" id="te5-T8-1Pm"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_gps" translatesAutoresizingMaskIntoConstraints="NO" id="0hS-87-82v">
                                                     <rect key="frame" x="297" y="181" width="22" height="22"/>

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,13 +16,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="104"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ZI-M7-YMD" customClass="BackSepView">
+                        <rect key="frame" x="12" y="0.0" width="296" height="104.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在努力派送" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NL-35-EDe">
+                        <rect key="frame" x="8" y="18" width="304" height="68.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -29,8 +34,8 @@
                     <constraint firstAttribute="trailing" secondItem="6ZI-M7-YMD" secondAttribute="trailing" constant="12" id="H38-OT-GM7"/>
                     <constraint firstItem="6ZI-M7-YMD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bjB-4T-Q8B"/>
                     <constraint firstAttribute="bottom" secondItem="6ZI-M7-YMD" secondAttribute="bottom" id="dWg-bg-ay4"/>
-                    <constraint firstItem="6NL-35-EDe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="gbR-s4-iPs"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="6NL-35-EDe" secondAttribute="bottom" constant="13" id="jGI-rl-H5X"/>
+                    <constraint firstItem="6NL-35-EDe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="gbR-s4-iPs"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="6NL-35-EDe" secondAttribute="bottom" constant="10" id="jGI-rl-H5X"/>
                     <constraint firstItem="6NL-35-EDe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mmL-df-DcD"/>
                     <constraint firstAttribute="trailingMargin" secondItem="6NL-35-EDe" secondAttribute="trailing" id="nkg-1h-aiw"/>
                     <constraint firstItem="6ZI-M7-YMD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="tSK-7v-x3s"/>

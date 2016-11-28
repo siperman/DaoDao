@@ -104,6 +104,7 @@
     }
     if (conversation.lcck_unreadCount > 0) {
         self.badgeView.badgeText = conversation.lcck_badgeText;
+        self.badgeView.hidden = NO;
         // 未读消息标红
         if (!(conversation.lcck_mentioned || conversation.lcck_draft.length > 0) &&
             (conversation.lcck_lastMessage.mediaType == kAVIMMessageMediaTypeAudio ||
@@ -188,7 +189,7 @@
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.badgeView.badgeText = nil;
-    self.badgeView = nil;
+    self.badgeView.hidden = YES;
     self.messageTextLabel.text = nil;
     self.timestampLabel.text = nil;
     self.nameLabel.text = nil;
