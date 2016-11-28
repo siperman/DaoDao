@@ -24,6 +24,7 @@
              @"createTime" : @"createTime",
              @"user" : @"user",
              @"answer" : @"answer",
+             @"favorites" : @"favorites",
              };
 }
 

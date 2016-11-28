@@ -26,11 +26,7 @@
 
 + (NSNumber *)timeIntervalFromDateString:(NSString *)dateString;
 
-+ (NSString *)timestampFromInterval:(NSNumber *)interval;
-
-+ (NSString *)timestampFromInterval:(NSNumber *)interval shortStyle:(BOOL)shortStyle;
-
-+ (NSString *)IMTimestampFromInterval:(NSNumber *)interval;
++ (NSString *)IMTimestampFromInterval:(NSNumber *)interval shortStyle:(BOOL)shortStyle;
 
 + (NSString *)networkType;
 

@@ -139,6 +139,7 @@ static NSString * const kShowWelcomeNotification               = @"kShowWelcomeN
 static NSString * const kUpdateAskInfoNotification             = @"kUpdateAskInfoNotification"; //更新约局信息
 static NSString * const kUpdateIMAskInfoNotification             = @"kUpdateIMAskInfoNotification"; //更新IM约局信息
 static NSString * const kClickEmptyViewNotification            = @"kClickEmptyViewNotification"; //点击空视图按钮
+static NSString * const DDDateSettingChangedNotification       = @"DDDateSettingChangedNotification"; //时间制式更改
 
 // Cache
 static NSString * const kLastSysNotificationsCacheKey    = @"kLastSysNotificationsCacheKey"; //最后一条系统消息

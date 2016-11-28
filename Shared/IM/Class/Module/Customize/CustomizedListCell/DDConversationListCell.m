@@ -100,7 +100,7 @@
     self.nameLabel.text = conversation.lcck_displayName;
     if (conversation.lcck_lastMessage) {
         self.messageTextLabel.attributedText = [LCCKLastMessageTypeManager attributedStringWithMessage:conversation.lcck_lastMessage conversation:conversation userName:displayName];
-        self.timestampLabel.text = [[NSDate dateWithTimeIntervalSince1970:conversation.lcck_lastMessage.sendTimestamp / 1000] lcck_timeAgoSinceNow];
+        self.timestampLabel.text = [SYUtils IMTimestampFromInterval:@(conversation.lcck_lastMessage.sendTimestamp / 1000) shortStyle:YES];
     }
     if (conversation.lcck_unreadCount > 0) {
         self.badgeView.badgeText = conversation.lcck_badgeText;

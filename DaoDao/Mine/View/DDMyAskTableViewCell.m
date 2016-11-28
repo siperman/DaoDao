@@ -46,7 +46,7 @@
                status == DDAskAskerRate) {
         NSString *left = @"";
         NSString *right = @"个响应者正在解决您的需求";
-        NSString *text = [NSString stringWithFormat:@"%@%@%@", left, ask.answers, right];
+        NSString *text = [NSString stringWithFormat:@"%@%@%@", left, ask.favorites, right];
         NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:text];
         [attrStr setAttributes:@{NSForegroundColorAttributeName : MainColor} range:NSMakeRange(left.length, text.length - left.length - right.length)];
 

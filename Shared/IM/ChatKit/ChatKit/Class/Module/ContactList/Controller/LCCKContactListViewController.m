@@ -99,6 +99,8 @@ static NSString *const LCCKContactListViewControllerIdentifier = @"LCCKContactLi
     _userIds = userIds;
     //TODO:
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataSourceUpdated:) name:LCCKNotificationContactListDataSourceUpdated object:nil];
+    [self.tableView subscribeNotication:DDDateSettingChangedNotification selector:@selector(reloadData)];
+
     __unsafe_unretained typeof(self) weakSelf = self;
     [self lcck_executeAtDealloc:^{
         [[NSNotificationCenter defaultCenter] removeObserver:weakSelf];

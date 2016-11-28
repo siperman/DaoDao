@@ -31,6 +31,7 @@
 #import "KeychainItemWrapper.h"
 #import "NSString+MD5Addition.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "NSDate+DateSetting.h"
 
 @implementation SYUtils
 
@@ -110,73 +111,11 @@
 }
 
 static NSDateFormatter *timestampFormatter = nil;
-+ (NSString *)timestampFromInterval:(NSNumber *)interval
-{
-    return [self timestampFromInterval:interval shortStyle:NO];
-}
 
-+ (NSString *)timestampFromInterval:(NSNumber *)interval shortStyle:(BOOL)shortStyle
++ (NSString *)IMTimestampFromInterval:(NSNumber *)interval shortStyle:(BOOL)shortStyle
 {
     NSString *_timestamp;
-    // Calculate distance time string
-    //
-    
-    time_t now, _createdAt;
-    time(&now);
-    
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *components = [cal components:( NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond ) fromDate:[[NSDate alloc] init]];
-    
-    [components setHour:-[components hour]];
-    [components setMinute:-[components minute]];
-    [components setSecond:-[components second]];
-    NSDate *today = [cal dateByAddingComponents:components toDate:[[NSDate alloc] init] options:0]; //This variable should now be pointing at a date object that is the start of today (midnight);
-    
-    time_t midnightDistance = [[NSDate date] timeIntervalSinceDate:today];
-    
-    _createdAt = [interval longValue];
-    int distance = (int)difftime(now, _createdAt);  // 秒
-    if (distance < 0) distance = 0;
-    
-    if (distance < 60 * 60) {
-        distance = distance / 60;
-        distance = distance > 0 ? distance : 1;
-        _timestamp = [NSString stringWithFormat:@"%d分钟前", distance];
-    }
-    else if (distance < midnightDistance) {
-        distance = distance / 60 / 60;
-        _timestamp = [NSString stringWithFormat:@"%d小时前", distance];
-    }
-    else if (distance < midnightDistance + 60 * 60 * 24) {
-        _timestamp = @"昨天";
-    }
-    else if (distance < midnightDistance + 60 * 60 * 24 * 2) {
-        _timestamp = @"前天";
-    }
-    else {
-        if (timestampFormatter == nil) {
-            timestampFormatter = [[NSDateFormatter alloc] init];
-        }
-        [timestampFormatter setDateFormat:@"yyyy年M月d日"];
-        
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:_createdAt];
-        _timestamp = [timestampFormatter stringFromDate:date];
-        
-        NSInteger year = components.year;
-        if ([_timestamp hasPrefix:[NSString stringWithFormat:@"%@", @(year)]] || shortStyle) {
-            return [_timestamp substringFromIndex:5];
-        }
-    }
-    
-    return _timestamp;
-}
 
-+ (NSString *)IMTimestampFromInterval:(NSNumber *)interval
-{
-    NSString *_timestamp;
-    // Calculate distance time string
-    //
-    
     time_t now, _createdAt;
     time(&now);
     
@@ -193,12 +132,13 @@ static NSDateFormatter *timestampFormatter = nil;
     _createdAt = [interval longValue];
     int distance = (int)difftime(now, _createdAt);  // 秒
     if (distance < 0) distance = 0;
+    NSString *minFormatter = [NSDate isDaySetting24Hours] ? @"H:mm" : @"a h:mm";
     
     if (distance < midnightDistance) {
         if (timestampFormatter == nil) {
             timestampFormatter = [[NSDateFormatter alloc] init];
         }
-        [timestampFormatter setDateFormat:@"今天HH:mm"];
+        [timestampFormatter setDateFormat:minFormatter];
 
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:_createdAt];
         _timestamp = [timestampFormatter stringFromDate:date];
@@ -207,17 +147,25 @@ static NSDateFormatter *timestampFormatter = nil;
         if (timestampFormatter == nil) {
             timestampFormatter = [[NSDateFormatter alloc] init];
         }
-        [timestampFormatter setDateFormat:@"昨天HH:mm"];
+        if (shortStyle) {
+            return @"昨天";
+        } else {
+            [timestampFormatter setDateFormat:[NSString stringWithFormat:@"昨天 %@", minFormatter]];
+        }
 
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:_createdAt];
         _timestamp = [timestampFormatter stringFromDate:date];
     }
-    else if (distance < 31536000) {
+    else if (distance < midnightDistance + 60 * 60 * 24 * 7) {
         if (timestampFormatter == nil) {
             timestampFormatter = [[NSDateFormatter alloc] init];
         }
-        [timestampFormatter setDateFormat:@"MM-dd HH:mm"];
-        
+        if (shortStyle) {
+            [timestampFormatter setDateFormat:@"cccc"];
+        } else {
+            [timestampFormatter setDateFormat:[NSString stringWithFormat:@"cccc %@", minFormatter]];
+        }
+
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:_createdAt];
         _timestamp = [timestampFormatter stringFromDate:date];
     }
@@ -225,8 +173,12 @@ static NSDateFormatter *timestampFormatter = nil;
         if (timestampFormatter == nil) {
             timestampFormatter = [[NSDateFormatter alloc] init];
         }
-        [timestampFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-        
+        if (shortStyle) {
+            [timestampFormatter setDateFormat:@"yy/M/d"];
+        } else {
+            [timestampFormatter setDateFormat:[NSString stringWithFormat:@"yy/M/d %@", minFormatter]];
+        }
+
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:_createdAt];
         _timestamp = [timestampFormatter stringFromDate:date];
     }

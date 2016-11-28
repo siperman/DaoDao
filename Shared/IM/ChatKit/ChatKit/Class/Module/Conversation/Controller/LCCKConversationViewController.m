@@ -234,6 +234,7 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
     !self.viewDidLoadBlock ?: self.viewDidLoadBlock(self);
     // 订阅通知 改变顶部按钮
     [self.view subscribeNotication:kUpdateIMAskInfoNotification selector:@selector(setNeedsUpdateConstraints)];
+    [self.tableView subscribeNotication:DDDateSettingChangedNotification selector:@selector(reloadData)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

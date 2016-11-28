@@ -109,14 +109,7 @@
 }
 
 + (instancetype)systemMessageWithTimestamp:(NSTimeInterval)time {
-    NSDate *timestamp = [NSDate dateWithTimeIntervalSince1970:time / 1000];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM-dd HH:mm"];
-#ifdef LCCKIsDebugging
-    //如果定义了LCCKIsDebugging则执行从这里到#endif的代码
-    [dateFormatter setDateFormat:@"MM-dd HH:mm:ss"];
-#endif
-    NSString *text = [dateFormatter stringFromDate:timestamp];
+    NSString *text = [SYUtils IMTimestampFromInterval:@(time / 1000) shortStyle:NO];
     LCCKMessage *timeMessage = [[LCCKMessage alloc] initWithSystemText:text];
     return timeMessage;
 }

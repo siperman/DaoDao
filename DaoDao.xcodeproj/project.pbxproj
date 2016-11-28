@@ -404,6 +404,7 @@
 		2BBB7D991DAA4443005E90A5 /* DDConversationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7D971DAA4443005E90A5 /* DDConversationListCell.xib */; };
 		2BBD0E9B1DEBC70A00FE3658 /* DDRadioTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD0E9A1DEBC70A00FE3658 /* DDRadioTitleView.m */; };
 		2BBD0E9E1DEBD85200FE3658 /* GYZLocalCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD0E9D1DEBD85200FE3658 /* GYZLocalCityCell.m */; };
+		2BBD0EA11DEC1CFA00FE3658 /* NSDate+DateSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD0EA01DEC1CFA00FE3658 /* NSDate+DateSetting.m */; };
 		2BCDD6911D79597000BADD43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6901D79597000BADD43 /* main.m */; };
 		2BCDD6941D79597000BADD43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6931D79597000BADD43 /* AppDelegate.m */; };
 		2BCDD69A1D79597000BADD43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDD6981D79597000BADD43 /* Main.storyboard */; };
@@ -1236,6 +1237,8 @@
 		2BBD0E9A1DEBC70A00FE3658 /* DDRadioTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRadioTitleView.m; sourceTree = "<group>"; };
 		2BBD0E9C1DEBD85200FE3658 /* GYZLocalCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZLocalCityCell.h; sourceTree = "<group>"; };
 		2BBD0E9D1DEBD85200FE3658 /* GYZLocalCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZLocalCityCell.m; sourceTree = "<group>"; };
+		2BBD0E9F1DEC1CFA00FE3658 /* NSDate+DateSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateSetting.h"; sourceTree = "<group>"; };
+		2BBD0EA01DEC1CFA00FE3658 /* NSDate+DateSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateSetting.m"; sourceTree = "<group>"; };
 		2BCDD68C1D79597000BADD43 /* DaoDao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaoDao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BCDD6901D79597000BADD43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2BCDD6921D79597000BADD43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -3242,6 +3245,8 @@
 				2BB23C8B1DC871D000FC5657 /* MJRefreshHeader+Addtion.m */,
 				2BB23C8D1DC881BB00FC5657 /* MJRefreshFooter+Addtion.h */,
 				2BB23C8E1DC881BB00FC5657 /* MJRefreshFooter+Addtion.m */,
+				2BBD0E9F1DEC1CFA00FE3658 /* NSDate+DateSetting.h */,
+				2BBD0EA01DEC1CFA00FE3658 /* NSDate+DateSetting.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -3927,6 +3932,7 @@
 				2BA713E21DCC3C700072FB42 /* LCCKImageManager.m in Sources */,
 				2BA713D71DCC3C700072FB42 /* LCCKBaseTableViewController.m in Sources */,
 				2BD6AE1B1DC2FB3C00626677 /* DDDemandInfoSmallTableViewCell.m in Sources */,
+				2BBD0EA11DEC1CFA00FE3658 /* NSDate+DateSetting.m in Sources */,
 				2BA714321DCC3C700072FB42 /* Mp3Recorder.m in Sources */,
 				2BEF03741D869F3A005372B6 /* UIView+Addition.m in Sources */,
 				2BA713ED1DCC3C700072FB42 /* LCCKLocationManager.m in Sources */,
