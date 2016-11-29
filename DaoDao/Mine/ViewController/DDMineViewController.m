@@ -51,6 +51,15 @@
     [self subscribeNotication:kUpdateUserInfoNotification selector:@selector(freshView)];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (![SYPrefManager boolForKey:NSStringFromClass([self class])]) {
+        [DDGuide showWithGuideType:DDGuideMine];
+        [SYPrefManager setBool:YES forKey:NSStringFromClass([self class])];
+    }
+}
+
 - (void)freshView
 {
     DDUser *user = [DDUserManager manager].user;
@@ -92,7 +101,7 @@
             debugLog(@"reponse %@", response);
         }];
         [DDUserManager manager].user = nil;
-        [self.navigationController popViewControllerAnimated:NO];
+        [self checkLogin];
 
         [SYUtils showWindowLevelNotice:kLogoutSuccessNotice];
     }];

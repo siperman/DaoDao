@@ -11,6 +11,7 @@
 #import "DDConfig.h"
 #import "ChooseImageViewModel.h"
 #import "UIImage+ImageWithColor.h"
+#import "DDPostAskTableViewController.h"
 
 #import <UINavigationController+FDFullscreenPopGesture.h>
 
@@ -66,6 +67,7 @@
                 }
             }
         }
+
         self.title = @"感兴趣话题";
         [self.btnNext setTitle:@"开启道道"];
     } else {
@@ -75,14 +77,24 @@
             for (ChooseImageViewModel *model in self.data) {
                 if ([str isEqualToString:model.name]) {
                     model.selected = YES;
+                    _selectCount ++;
                     break;
                 }
             }
         }
+
         if (self.navigationController.presentingViewController) {
             self.title = @"您是哪方面的专家";
         } else {
-            self.title = @"选择专家";
+            BOOL isPostAsk = NO;
+            NSArray *vcs = [self.navigationController viewControllers];
+            for (UIViewController *vc in vcs) {
+                if ([vc isKindOfClass:[DDPostAskTableViewController class]]) {
+                    isPostAsk = YES;
+                    break;
+                }
+            }
+            self.title = isPostAsk ? @"选择专家" : @"擅长的领域";
         }
     }
     [self.labTitle setFont:NormalTextFont];

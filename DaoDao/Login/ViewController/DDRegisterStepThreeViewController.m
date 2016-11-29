@@ -12,6 +12,7 @@
 #import "SYCameraManager.h"
 #import "DDWebViewController.h"
 #import "DDWelcome.h"
+#import "SYKeyboardTopBar.h"
 
 @interface DDRegisterStepThreeViewController () <UITextFieldDelegate, DDChooseFavGoodViewControllerProtocol>
 
@@ -119,6 +120,10 @@
         return NO;
     }
 
+    if (textField == self.txtYear) {
+        [[SYKeyboardTopBar simpleKeyboardTopBar] showBar:textField];
+    }
+
 //    if (textField == self.txtYear) {
 //        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 //    }
@@ -160,21 +165,21 @@
                        kGradeKey : _user.grade};
 
         [SYRequestEngine registerNewUserWithParams:params
-                                 avatar:self.btnAvatar.imageView.image
-                               callback:^(BOOL success, id response) {
-                                   debugLog(@"reponse %@", response);
+                                            avatar:(self.btnAddAvatar.hidden ? self.btnAvatar.imageView.image : nil)
+                                          callback:^(BOOL success, id response) {
+                                              debugLog(@"reponse %@", response);
 
-                                   [self.navigationController hideAllHUD];
-                                   if (success) {
-                                       DDUser *user = [DDUser fromDict:response[kObjKey]];
-                                       [DDUserManager manager].user = user;
-                                       [self.navigationController dismissViewControllerAnimated:YES completion:^{
-                                           [DDWelcome show];
-                                       }];
-                                   } else {
-                                       [self.navigationController showRequestNotice:response];
-                                   }
-                               }];
+                                              [self.navigationController hideAllHUD];
+                                              if (success) {
+                                                  DDUser *user = [DDUser fromDict:response[kObjKey]];
+                                                  [DDUserManager manager].user = user;
+                                                  [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                                                      [DDWelcome show];
+                                                  }];
+                                              } else {
+                                                  [self.navigationController showRequestNotice:response];
+                                              }
+                                          }];
     } else {
         self.expert = vc.chooseValues;
 

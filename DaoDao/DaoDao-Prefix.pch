@@ -27,6 +27,8 @@
 #import "SYStoryboardManager.h"
 #import "ChatKitHeaders.h"
 #import "SYCache.h"
+#import "DDGuide.h"
+#import "SYPrefManager.h"
 
 #import <Masonry/Masonry.h>
 #import <MBProgressHUD/MBProgressHUD.h>

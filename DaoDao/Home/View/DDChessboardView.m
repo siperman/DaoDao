@@ -56,11 +56,10 @@ static const NSInteger pageChess = 7;
 }
 
 #pragma mark UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)sender {
 
-    int page = _scrollView.contentOffset.x / 290; //通过滚动的偏移量来判断目前页面所对应的小白点
-
-    _pageControl.currentPage = page;
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    self.pageControl.currentPage = scrollView.contentOffset.x / SCREEN_WIDTH;
 }
 
 - (IBAction)changePage:(UIPageControl *)sender

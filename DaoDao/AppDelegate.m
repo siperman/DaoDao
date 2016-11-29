@@ -14,11 +14,13 @@
 #import "DDChatKitManager.h"
 #import "LCCKBadgeView.h"
 #import "SYUtils.h"
+#import "DDGuidePagesViewController.h"
+#import "DDHomeViewController.h"
 #import <UserNotifications/UserNotifications.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <DDGuidePagesProtocol>
 
 @end
 
@@ -72,7 +74,31 @@
             }
         }];
     }
+
+    // Guide
+    {
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window.backgroundColor = [UIColor whiteColor];
+        [self.window makeKeyAndVisible];
+        /*
+         *  images : 引导图数组
+         */
+        NSArray *images = @[@"guide01", @"guide02", @"guide03"];
+        if ([DDGuidePagesViewController isShow]) {
+            self.window.rootViewController = [DDGuidePagesViewController shareGuideVC];
+            [[DDGuidePagesViewController shareGuideVC] initWithGuideImages:images];
+            [DDGuidePagesViewController shareGuideVC].delegate = self;
+        }else{
+            [self guideDone];
+        }
+    }
     return YES;
+}
+
+- (void)guideDone
+{
+    DDHomeViewController *vc = [[DDHomeViewController alloc] init];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];
 }
 
 - (void)configureAppearance {

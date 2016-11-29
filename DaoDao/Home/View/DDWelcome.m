@@ -63,6 +63,7 @@
                      }
                      completion:^(BOOL finished){
                          [self removeFromSuperview];
+                         [DDGuide showWithGuideType:DDGuideHome];
                      }];
 }
 

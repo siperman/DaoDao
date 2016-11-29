@@ -64,6 +64,15 @@
     self.datePicker.alpha = 0;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (![SYPrefManager boolForKey:NSStringFromClass([self class])]) {
+        [DDGuide showWithGuideType:DDGuideSettingTimeOne];
+        [SYPrefManager setBool:YES forKey:NSStringFromClass([self class])];
+    }
+}
+
 - (void)setUpData
 {
     NSLocale *chinese = [NSLocale localeWithLocaleIdentifier:@"zh-CN"];

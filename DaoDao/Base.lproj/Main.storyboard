@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PHl-8h-Z0k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,25 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
-        <scene sceneID="Ksp-5B-Sd9">
-            <objects>
-                <viewController id="cEY-IG-IEU" customClass="DDHomeViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nyx-QJ-uDQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="deL-Ts-6fc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="U2a-Gl-Z4S">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Se3-ow-Rl6"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rvz-UG-4dC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="967" y="-304"/>
-        </scene>
         <!--Mine Info Table View Controller-->
         <scene sceneID="WB6-cI-oFc">
             <objects>
@@ -629,24 +610,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5R-t3-Au7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1704.8" y="-304.4977511244378"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="qmP-ed-o7F">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PHl-8h-Z0k" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GR4-bG-esL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="cEY-IG-IEU" kind="relationship" relationship="rootViewController" id="XZS-AC-cYN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BNg-jJ-KBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="147" y="-303"/>
         </scene>
         <!--User Home Page View Controller-->
         <scene sceneID="ryu-zw-OL2">

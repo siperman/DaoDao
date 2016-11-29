@@ -248,6 +248,15 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
     [self.chatBar open];
     [self saveCurrentConversationInfoIfExists];
     !self.viewDidAppearBlock ?: self.viewDidAppearBlock(self, animated);
+
+    if (![SYPrefManager boolForKey:NSStringFromClass([self class])]) {
+        DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:self.conversationId];
+        if (ask.status.integerValue == DDAskWaitingSendMeet && ask.isMyAsk) {
+            [DDGuide showWithGuideType:DDGuideIM];
+            [SYPrefManager setBool:YES forKey:NSStringFromClass([self class])];
+        }
+    }
+
 }
 
 - (void)loadDraft {

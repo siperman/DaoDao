@@ -98,6 +98,7 @@
             } else {
                 if (([[responseObject valueForKey:kSuccessKey] integerValue] == 10009)) {
                     // 10009 重新登录
+                    [DDUserManager manager].user = nil;
                     [self popToLogin];
                 }
                 if (callback) {

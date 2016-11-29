@@ -32,6 +32,8 @@
 		2B444B831DAB6E4F009FAA61 /* DDAskChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B444B821DAB6E4F009FAA61 /* DDAskChatManager.m */; };
 		2B49A9AF1D893EF800CD14AB /* UITextField+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B49A9AE1D893EF800CD14AB /* UITextField+Addition.m */; };
 		2B49A9B81D894F0300CD14AB /* UILabel+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B49A9B71D894F0300CD14AB /* UILabel+Addition.m */; };
+		2B565C221DED6267005E0F72 /* DDGuide.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B565C211DED6267005E0F72 /* DDGuide.m */; };
+		2B565C251DED796D005E0F72 /* SYKeyboardTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B565C241DED796D005E0F72 /* SYKeyboardTopBar.m */; };
 		2B6D126A1D98B586003433D0 /* DDChessPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D123D1D98B586003433D0 /* DDChessPiece.m */; };
 		2B6D126B1D98B586003433D0 /* DDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D12401D98B586003433D0 /* DDHomeViewController.m */; };
 		2B6D126C1D98B586003433D0 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D12431D98B586003433D0 /* Login.storyboard */; };
@@ -405,6 +407,7 @@
 		2BBD0E9B1DEBC70A00FE3658 /* DDRadioTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD0E9A1DEBC70A00FE3658 /* DDRadioTitleView.m */; };
 		2BBD0E9E1DEBD85200FE3658 /* GYZLocalCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD0E9D1DEBD85200FE3658 /* GYZLocalCityCell.m */; };
 		2BBD0EA11DEC1CFA00FE3658 /* NSDate+DateSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD0EA01DEC1CFA00FE3658 /* NSDate+DateSetting.m */; };
+		2BBD0EA41DED1F3300FE3658 /* DDGuidePagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD0EA31DED1F3300FE3658 /* DDGuidePagesViewController.m */; };
 		2BCDD6911D79597000BADD43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6901D79597000BADD43 /* main.m */; };
 		2BCDD6941D79597000BADD43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDD6931D79597000BADD43 /* AppDelegate.m */; };
 		2BCDD69A1D79597000BADD43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDD6981D79597000BADD43 /* Main.storyboard */; };
@@ -491,6 +494,10 @@
 		2B49A9AE1D893EF800CD14AB /* UITextField+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Addition.m"; sourceTree = "<group>"; };
 		2B49A9B61D894F0300CD14AB /* UILabel+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Addition.h"; sourceTree = "<group>"; };
 		2B49A9B71D894F0300CD14AB /* UILabel+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Addition.m"; sourceTree = "<group>"; };
+		2B565C201DED6267005E0F72 /* DDGuide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDGuide.h; sourceTree = "<group>"; };
+		2B565C211DED6267005E0F72 /* DDGuide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDGuide.m; sourceTree = "<group>"; };
+		2B565C231DED796D005E0F72 /* SYKeyboardTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYKeyboardTopBar.h; sourceTree = "<group>"; };
+		2B565C241DED796D005E0F72 /* SYKeyboardTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYKeyboardTopBar.m; sourceTree = "<group>"; };
 		2B6D123C1D98B586003433D0 /* DDChessPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChessPiece.h; sourceTree = "<group>"; };
 		2B6D123D1D98B586003433D0 /* DDChessPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChessPiece.m; sourceTree = "<group>"; };
 		2B6D123F1D98B586003433D0 /* DDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHomeViewController.h; sourceTree = "<group>"; };
@@ -1239,6 +1246,8 @@
 		2BBD0E9D1DEBD85200FE3658 /* GYZLocalCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZLocalCityCell.m; sourceTree = "<group>"; };
 		2BBD0E9F1DEC1CFA00FE3658 /* NSDate+DateSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateSetting.h"; sourceTree = "<group>"; };
 		2BBD0EA01DEC1CFA00FE3658 /* NSDate+DateSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateSetting.m"; sourceTree = "<group>"; };
+		2BBD0EA21DED1F3300FE3658 /* DDGuidePagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDGuidePagesViewController.h; sourceTree = "<group>"; };
+		2BBD0EA31DED1F3300FE3658 /* DDGuidePagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDGuidePagesViewController.m; sourceTree = "<group>"; };
 		2BCDD68C1D79597000BADD43 /* DaoDao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaoDao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BCDD6901D79597000BADD43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2BCDD6921D79597000BADD43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1485,6 +1494,8 @@
 				2B144A9B1D9E5AFA00B70B0D /* DDAskInfoTableViewCell.xib */,
 				2BE8351E1DD06A3F0064A5A6 /* DDWelcome.h */,
 				2BE8351F1DD06A3F0064A5A6 /* DDWelcome.m */,
+				2B565C201DED6267005E0F72 /* DDGuide.h */,
+				2B565C211DED6267005E0F72 /* DDGuide.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1496,6 +1507,8 @@
 				2B6D12401D98B586003433D0 /* DDHomeViewController.m */,
 				2BDB10351D9E45C200F2C27C /* DDChessDetailViewController.h */,
 				2BDB10361D9E45C200F2C27C /* DDChessDetailViewController.m */,
+				2BBD0EA21DED1F3300FE3658 /* DDGuidePagesViewController.h */,
+				2BBD0EA31DED1F3300FE3658 /* DDGuidePagesViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3160,6 +3173,8 @@
 		2BB3D7401D7D6F8C00FFDC0E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2B565C231DED796D005E0F72 /* SYKeyboardTopBar.h */,
+				2B565C241DED796D005E0F72 /* SYKeyboardTopBar.m */,
 				2B311C521D7E6A5E007CE4DD /* SepView.h */,
 				2B311C531D7E6A5E007CE4DD /* SepView.m */,
 				2BBB7D7E1DA8CDA3005E90A5 /* BackView.h */,
@@ -3642,6 +3657,7 @@
 				2B75AB5E1D7FFF4E0074119E /* LCCKContactManager.m in Sources */,
 				2BE8351B1DCF79260064A5A6 /* DDRateViewController.m in Sources */,
 				2BB3D7841D7D6F8C00FFDC0E /* UIImage+Asset.m in Sources */,
+				2BBD0EA41DED1F3300FE3658 /* DDGuidePagesViewController.m in Sources */,
 				2BB3D7B51D7D6F8C00FFDC0E /* MBProgressHUD+Add.m in Sources */,
 				2BB3D7851D7D6F8C00FFDC0E /* UIImage+Crop.m in Sources */,
 				2B86A25E1DBDA24B00ED2253 /* DDMeetTableViewController.m in Sources */,
@@ -3747,6 +3763,7 @@
 				2BBB7D981DAA4443005E90A5 /* DDConversationListCell.m in Sources */,
 				2BA713FB1DCC3C700072FB42 /* LCCKChatMessageCell.m in Sources */,
 				2BA713D51DCC3C700072FB42 /* LCCKBaseConversationViewController.m in Sources */,
+				2B565C251DED796D005E0F72 /* SYKeyboardTopBar.m in Sources */,
 				2BB3D74E1D7D6F8C00FFDC0E /* SYScrollViewDelegateWrapper.m in Sources */,
 				2BB3D7801D7D6F8C00FFDC0E /* CTAssetsViewControllerTransition.m in Sources */,
 				2BA7142C1DCC3C700072FB42 /* LCCKZoomingScrollView.m in Sources */,
@@ -3861,6 +3878,7 @@
 				2BB3D7591D7D6F8C00FFDC0E /* UIImageView+WebCache.m in Sources */,
 				2BE835201DD06A3F0064A5A6 /* DDWelcome.m in Sources */,
 				2BB41A241D8153B6000C98F3 /* UIViewController+Analytics.m in Sources */,
+				2B565C221DED6267005E0F72 /* DDGuide.m in Sources */,
 				2BB23C8C1DC871D000FC5657 /* MJRefreshHeader+Addtion.m in Sources */,
 				2BB3D7A51D7D6F8C00FFDC0E /* FSPlaceholderImages.m in Sources */,
 				2BB3D74F1D7D6F8C00FFDC0E /* SYStoryboardManager.m in Sources */,
