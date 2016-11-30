@@ -111,6 +111,6 @@
 - (BOOL)isFinish
 {
     NSInteger status = self.ask.status.integerValue;
-    return status >= DDAskAskerRate;
+    return status >= DDAskAnswerRate;
 }
 @end

@@ -29,7 +29,9 @@
                           @"DDGuideSettingTimeTwo",
                           @"DDGuideMine",
                           @"DDGuideIM"];
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:Image(imgNames[type])];
+    UIImage *image = [Image(imgNames[type]) resizableImageWithCapInsets:UIEdgeInsetsMake(740.0f, 0.0f, 0.0f, 0.0f) resizingMode:UIImageResizingModeStretch];
+
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:image];
     [imgView setSize:self.size];
     [self addSubview:imgView];
     imgView.center = self.center;
