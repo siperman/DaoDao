@@ -22,7 +22,7 @@
 + (NSArray <NSDictionary*>*)job;
 // 领域
 + (NSArray <NSDictionary*>*)industry;
-// 学院界别
+// 学院届别
 + (NSArray <NSDictionary*>*)majorGrade;
 
 + (void)saveConfigDict:(NSDictionary *)dict;

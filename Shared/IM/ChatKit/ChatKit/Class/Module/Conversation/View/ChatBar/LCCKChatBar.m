@@ -46,6 +46,8 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
 @property (nonatomic, assign, getter=shouldAllowTextViewContentOffset) BOOL allowTextViewContentOffset;
 @property (nonatomic, assign, getter=isClosed) BOOL close;
 
+@property (nonatomic, strong) NSTimer *timer; /**< 语音倒计时 */
+
 #pragma mark - MessageInputView Customize UI
 ///=============================================================================
 /// @name MessageInputView Customize UI
@@ -485,6 +487,7 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
 - (void)startRecordVoice {
     [LCCKProgressHUD show];
     self.voiceRecordButton.highlighted = YES;
+    [self timer];
     [self.MP3 startRecord];
 }
 
@@ -492,16 +495,24 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
  *  取消录音
  */
 - (void)cancelRecordVoice {
-    [LCCKProgressHUD dismissWithMessage:@"取消录音"];
-    self.voiceRecordButton.highlighted = NO;
-    [self.MP3 cancelRecord];
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+        [LCCKProgressHUD dismissWithMessage:@"取消录音"];
+        self.voiceRecordButton.highlighted = NO;
+        [self.MP3 cancelRecord];
+    }
 }
 
 /**
  *  录音结束
  */
 - (void)confirmRecordVoice {
-    [self.MP3 stopRecord];
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+        [self.MP3 stopRecord];
+    }
 }
 
 /**
@@ -803,6 +814,20 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
 - (UIViewController *)rootViewController {
     return [[UIApplication sharedApplication] keyWindow].rootViewController;
 }
+
+- (NSTimer *)timer{
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+    }
+    _timer = [NSTimer scheduledTimerWithTimeInterval:60
+                                              target:self
+                                            selector:@selector(confirmRecordVoice)
+                                            userInfo:nil
+                                             repeats:NO];
+    return _timer;
+}
+
 
 #pragma mark -
 #pragma mark - MessageInputView Customize UI Method
