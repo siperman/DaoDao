@@ -111,6 +111,6 @@
 - (BOOL)isFinish
 {
     NSInteger status = self.ask.status.integerValue;
-    return status >= DDAskAskerRate || status == DDAskAnswerDisagreeMeet;
+    return status >= DDAskAskerRate;
 }
 @end

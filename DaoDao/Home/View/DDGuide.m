@@ -23,6 +23,7 @@
 
 - (void)setupWithGuideType:(DDGuideType)type
 {
+    _type = type;
     NSArray *imgNames = @[@"DDGuideHome",
                           @"DDGuideSettingTimeOne",
                           @"DDGuideSettingTimeTwo",
