@@ -3391,7 +3391,7 @@
 				TargetAttributes = {
 					2BCDD68B1D79597000BADD43 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = R54RSMK9W5;
+						DevelopmentTeam = 796C39W9E9;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -4071,7 +4071,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = DaoDao/DaoDao.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R54RSMK9W5;
+				DEVELOPMENT_TEAM = 796C39W9E9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4090,7 +4090,7 @@
 					"$(PROJECT_DIR)/Shared/Vendor/fat-lame/lib",
 					"$(PROJECT_DIR)/Shared/Vendor/UMSocial_Sdk_5.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daotong.DaoDao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daotong.DaoDao.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Test;
@@ -4191,7 +4191,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = DaoDao/DaoDao.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R54RSMK9W5;
+				DEVELOPMENT_TEAM = 796C39W9E9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4205,7 +4205,7 @@
 					"$(PROJECT_DIR)/Shared/Vendor/fat-lame/lib",
 					"$(PROJECT_DIR)/Shared/Vendor/UMSocial_Sdk_5.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daotong.DaoDao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daotong.DaoDao.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -4218,7 +4218,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = DaoDao/DaoDao.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R54RSMK9W5;
+				DEVELOPMENT_TEAM = 796C39W9E9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4232,7 +4232,7 @@
 					"$(PROJECT_DIR)/Shared/Vendor/fat-lame/lib",
 					"$(PROJECT_DIR)/Shared/Vendor/UMSocial_Sdk_5.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daotong.DaoDao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daotong.DaoDao.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
