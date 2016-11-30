@@ -35,14 +35,14 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmU-cZ-0l2" customClass="SepView">
-                                <rect key="frame" x="10" y="42" width="278" height="1"/>
+                                <rect key="frame" x="10" y="41" width="278" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Qdc-ID-mT1"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TL-DS-b0Q">
-                                <rect key="frame" x="14" y="57" width="37.5" height="67"/>
+                                <rect key="frame" x="14" y="56" width="37.5" height="68"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                             <constraint firstItem="6rV-ew-wn3" firstAttribute="top" secondItem="kcF-J4-wws" secondAttribute="top" constant="14" id="V72-0q-QPs"/>
                             <constraint firstItem="7TL-DS-b0Q" firstAttribute="top" secondItem="VmU-cZ-0l2" secondAttribute="bottom" constant="14" id="qRx-Mc-Ct7"/>
                             <constraint firstItem="Lb1-0m-36h" firstAttribute="top" secondItem="kcF-J4-wws" secondAttribute="top" constant="15" id="rXd-4N-Mxp"/>
-                            <constraint firstItem="VmU-cZ-0l2" firstAttribute="top" secondItem="Lb1-0m-36h" secondAttribute="bottom" constant="9" id="raj-s5-Zjm"/>
+                            <constraint firstItem="VmU-cZ-0l2" firstAttribute="top" secondItem="Lb1-0m-36h" secondAttribute="bottom" constant="8" id="raj-s5-Zjm"/>
                             <constraint firstAttribute="bottom" secondItem="7TL-DS-b0Q" secondAttribute="bottom" constant="14" id="tV4-JZ-dPa"/>
                         </constraints>
                     </view>

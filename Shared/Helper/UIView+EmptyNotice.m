@@ -90,6 +90,13 @@ static char kNoticeViewKey;
                 make.top.equalTo(imgNotice.mas_bottom).with.offset(50);
             }];
             [btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
+        } else if (type == SYEmptyNoticeTypeEmptyAsk) {
+            UIImageView *imgText = [[UIImageView alloc] initWithImage:Image(@"text_quesheng")];
+            [noticeView addSubview:imgText];
+            [imgText mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(noticeView);
+                make.top.equalTo(imgNotice.mas_bottom).with.offset(33);
+            }];
         }
 
         noticeView.backgroundColor = BackgroundColor;
