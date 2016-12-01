@@ -72,9 +72,9 @@
 + (CGFloat)cellHeightWithAsk:(DDAsk *)ask
 {
     if ([self showDetailWithAsk:ask]) {
-        return 94.0;
+        return 94.0 + 10.0;
     } else {
-        return 54.0;
+        return 54.0 + 10.0;
     }
 }
 

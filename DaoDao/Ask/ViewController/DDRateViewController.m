@@ -49,12 +49,30 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self layoutScrollView];
+    if ([DDConfig femaleRate] && [DDConfig maleRate]) {
+        [self layoutScrollView];
+    } else {
+        [self requestRateData];
+    }
 }
 
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+- (void)requestRateData
+{
+    [self showLoadingHUD];
+    [SYRequestEngine requestConfigCallback:^(BOOL success, id response) {
+        [self hideAllHUD];
+        if (success) {
+            [DDConfig saveConfigDict:response[kObjKey]];
+            [self layoutScrollView];
+        } else {
+            [self showRequestNotice:response];
+        }
+    }];
 }
 
 - (void)layoutScrollView

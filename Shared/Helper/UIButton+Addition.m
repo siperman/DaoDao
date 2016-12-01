@@ -33,6 +33,7 @@
 
     [self setTitleColor:MainColor forState:UIControlStateNormal];
     [self setTitleColor:TextColor forState:UIControlStateDisabled];
+    [self setBackgroundImage:[UIImage imageWithColor:ColorHex(@"9e9e9e")] forState:UIControlStateHighlighted];
 
     self.layer.borderColor = MainColor.CGColor;
     self.layer.borderWidth = OnePixelHeight;

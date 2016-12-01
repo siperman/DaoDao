@@ -89,7 +89,7 @@
             if ([[DDUserManager manager].user.uid isEqualToString:user.uid]) {
                 self.bottomView.hidden = YES;
             } else {
-                if (user.isMeeting || user.meetTimes.integerValue > 0) {
+                if (user.isMeeting.integerValue > 0 || user.meetTimes.integerValue > 0) {
                     self.bottomView.hidden = NO;
                 } else {
                     self.bottomView.hidden = YES;

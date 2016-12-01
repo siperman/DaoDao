@@ -26,7 +26,7 @@ return; \
 #define MainColor ColorHex(@"3f2622")
 #define SecondColor ColorHex(@"f87127")
 #define TitleColor ColorHex(@"ffdb8f")
-#define ClickColor ColorHex(@"6b4f4a")
+#define ClickColor ColorHex(@"5a3c37")
 #define CCCColor ColorHex(@"cccccc")
 #define TextColor ColorHex(@"9e9e9e")
 #define BackgroundColor ColorHex(@"f2f2f2")
