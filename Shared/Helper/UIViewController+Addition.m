@@ -180,8 +180,24 @@
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);
     dispatch_after(delay, dispatch_get_main_queue(), ^(void){
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        MBProgressHUD *loading = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        loading.mode = MBProgressHUDModeCustomView;
+        loading.customView = [self loadingView];
     });
+}
+
+- (UIView *)loadingView
+{
+    UIImageView *view = [[UIImageView alloc] initWithImage:Image(@"icon_loading")];
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
+    rotationAnimation.duration = 1.5;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = CGFLOAT_MAX;
+
+    [view.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    return view;
 }
 
 - (void)hideAllHUD

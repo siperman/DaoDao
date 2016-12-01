@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Em2-TL-FaQ" customClass="BackView">
-                        <rect key="frame" x="8" y="5" width="304" height="140.5"/>
+                        <rect key="frame" x="8" y="5" width="304" height="130.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Ds-af-uaF">
                                 <rect key="frame" x="14" y="14" width="44" height="44"/>
@@ -65,7 +65,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2k-EM-PIJ">
-                                <rect key="frame" x="14" y="86.5" width="269" height="54"/>
+                                <rect key="frame" x="14" y="76.5" width="269" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="iCp-f0-shV"/>
                                 </constraints>
@@ -100,7 +100,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Em2-TL-FaQ" secondAttribute="trailing" constant="8" id="0sj-JE-4R7"/>
                     <constraint firstItem="Em2-TL-FaQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="3dP-PD-8hU"/>
-                    <constraint firstAttribute="bottom" secondItem="Em2-TL-FaQ" secondAttribute="bottom" constant="-5" id="dHK-y7-mYJ"/>
+                    <constraint firstAttribute="bottom" secondItem="Em2-TL-FaQ" secondAttribute="bottom" constant="5" id="dHK-y7-mYJ"/>
                     <constraint firstItem="Em2-TL-FaQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ydQ-eF-gW4"/>
                 </constraints>
             </tableViewCellContentView>
