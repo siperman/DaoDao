@@ -21,7 +21,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    [self.button sy_round:kCornerRadius];
+    [self.button actionStyle];
 }
 
 - (void)configureCellWithData:(id)data

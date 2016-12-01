@@ -91,6 +91,9 @@
         // 专家
         DDChooseFavGoodViewController *vc = [DDChooseFavGoodViewController GoodVC];
         vc.delegete = self;
+        if (_postAskModel.expert) {
+            vc.placeholderArray = [_postAskModel.expert componentsSeparatedByString:@","];
+        }
 
         [self.navigationController pushViewController:vc animated:YES];
     }

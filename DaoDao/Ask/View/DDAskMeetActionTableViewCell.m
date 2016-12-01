@@ -24,7 +24,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    [self.btnChat sy_round:kCornerRadius];
+    [self.btnChat actionStyle];
     [self.btnCall sy_round:kCornerRadius];
 }
 
