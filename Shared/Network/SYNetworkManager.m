@@ -78,7 +78,8 @@
     {
         // 设置 user-agent
         SystemServices *services = [SystemServices sharedServices];
-        NSString *userAgent = [NSString stringWithFormat:@"DaoDao/%@ (%@; %@)", [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], services.systemDeviceTypeFormatted, services.systemsVersion];
+        NSString *buildID = [NSString stringWithFormat:@"%@ (Build %@)", [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]];
+        NSString *userAgent = [NSString stringWithFormat:@"DaoDao/%@ (%@; %@)", buildID, services.systemDeviceTypeFormatted, services.systemsVersion];
         [manager.requestSerializer setValue:userAgent forHTTPHeaderField:@"User-Agent"];
 
         // 设置请求必带参数

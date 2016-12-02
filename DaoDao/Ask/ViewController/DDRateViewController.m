@@ -173,6 +173,17 @@
                 } else {
                     [str appendFormat:@"%@@%@", name, value];
                 }
+            } else {
+                NSInteger tag = seg.tag - DD_IMPRESS_TAG; // for lab
+                NSDictionary *rateDict = self.viewModel.rateArray[tag];
+                NSString *name = rateDict[kTagsNameKey];
+                NSString *value = @"其他";
+
+                if (str.length > 0) {
+                    [str appendFormat:@",%@@%@", name, value];
+                } else {
+                    [str appendFormat:@"%@@%@", name, value];
+                }
             }
         }
     }

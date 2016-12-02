@@ -27,6 +27,8 @@
         return nil;
     }
 
+    // fix : 本地发送邀请函，头像不可点击
+    [self setValue:clientId forKey:@"clientId"];
     [self lcck_setObject:@"邀请函" forKey:LCCKCustomMessageTypeTitleKey];
     [self lcck_setObject:@"这是一条邀请函消息，当前版本过低无法显示，请尝试升级APP查看" forKey:LCCKCustomMessageDegradeKey];
     [self lcck_setObject:@"有人向您发送了邀请函，请打开APP查看" forKey:LCCKCustomMessageSummaryKey];

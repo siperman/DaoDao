@@ -145,6 +145,7 @@
                                       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDefaultHideNoticeIntervel * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                                           [self.navigationController setViewControllers:vcs animated:YES];
                                       });
+                                      POST_NOTIFICATION(kPostAskSuccessNotification, nil);
                                   } else {
                                       [self.navigationController showRequestNotice:response];
                                   }

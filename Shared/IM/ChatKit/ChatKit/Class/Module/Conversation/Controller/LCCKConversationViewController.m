@@ -350,7 +350,7 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
     vc.ask = ask;
     WeakSelf;
     [vc setCallback:^(){
-        LCCKVCardMessage *vCardMessage = [LCCKVCardMessage vCardMessageWithClientId:[DDUserManager manager].user.uid conversationType:[self getConversationIfExists].lcck_type];
+        LCCKVCardMessage *vCardMessage = [LCCKVCardMessage vCardMessageWithClientId:self.userId conversationType:[self getConversationIfExists].lcck_type];
         [weakSelf sendCustomMessage:vCardMessage progressBlock:^(NSInteger percentDone) {
         } success:^(BOOL succeeded, NSError *error) {
             [weakSelf sendLocalFeedbackTextMessge:@"邀请函发送成功"];

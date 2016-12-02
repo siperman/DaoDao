@@ -82,7 +82,10 @@
 
 + (CGFloat)cellHeightWithAsk:(DDAsk *)ask
 {
-    if (ask.status.integerValue == DDAskAnswerDisagreeMeet) {
+    NSInteger status = ask.status.integerValue;
+    if (status == DDAskAnswerDisagreeMeet ||
+        status == DDAskAskerRate ||
+        status == DDAskBothRate) {
         return 72.0;
     } else {
         return 72.0 + 40.0;

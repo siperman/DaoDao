@@ -465,9 +465,6 @@
                                                         <constraint firstItem="bHm-HZ-Ncb" firstAttribute="centerY" secondItem="etu-7S-YPo" secondAttribute="centerY" id="t8c-Ri-8Ab"/>
                                                         <constraint firstItem="L8H-Ky-PgU" firstAttribute="leading" secondItem="m9V-Ce-oYo" secondAttribute="leading" constant="10" id="tTs-hb-u93"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -565,9 +562,6 @@
                                                         <constraint firstItem="TIf-OF-mk0" firstAttribute="leading" secondItem="6ar-dp-tL0" secondAttribute="trailing" constant="20" id="ltd-Wm-Zk5"/>
                                                         <constraint firstItem="8YJ-5m-huC" firstAttribute="centerY" secondItem="TIf-OF-mk0" secondAttribute="centerY" id="mLB-a8-Kws"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -614,9 +608,6 @@
                                                         <constraint firstAttribute="trailing" secondItem="Zz0-ea-deL" secondAttribute="trailing" constant="25" id="dPd-qR-JD2"/>
                                                         <constraint firstItem="7xw-CK-NfJ" firstAttribute="leading" secondItem="acs-Ga-wis" secondAttribute="leading" constant="10" id="wMV-ge-dqs"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

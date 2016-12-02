@@ -95,7 +95,11 @@
 - (IBAction)logout:(UIButton *)sender
 {
     [MobClick event:Mine_logOutBtn_click];
-    UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"" message:@"退出后不会删除任何数据，下次登录依然可以使用本账号" preferredStyle:UIAlertControllerStyleActionSheet];
+    NSString *buildID = [NSString stringWithFormat:@"%@ (Build %@)", [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]];
+#ifdef RELEASE
+    buildID = @"";
+#endif
+    UIAlertController *vc = [UIAlertController alertControllerWithTitle:buildID message:@"退出后不会删除任何数据，下次登录依然可以使用本账号" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *logout = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [SYRequestEngine userLogout:^(BOOL success, id response) {
             debugLog(@"reponse %@", response);

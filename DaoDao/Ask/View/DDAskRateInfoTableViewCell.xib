@@ -159,6 +159,7 @@
                 <outlet property="impressHeight" destination="q2W-Tq-BEh" id="6RC-9L-HK9"/>
                 <outlet property="impressView" destination="diE-jC-4LB" id="Snt-ra-HI4"/>
                 <outlet property="labHappy" destination="AJg-eX-F4Z" id="mzt-gH-4UE"/>
+                <outlet property="labImpressTitle" destination="U52-oC-OOP" id="tFg-KJ-6gB"/>
                 <outlet property="labUseful" destination="lkR-ce-auF" id="pJC-ZY-mV4"/>
             </connections>
             <point key="canvasLocation" x="61.5" y="188.5"/>

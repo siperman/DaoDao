@@ -80,13 +80,27 @@
             if (_ask.status.integerValue == DDAskAnswerDisagreeMeet) {
                 self.labHead.text = @"已失效！您拒绝了赴约对方的邀请";
                 self.labHead.textColor = SecondColor;
-            } else if (_ask.status.integerValue == DDAskAnswerRate ||
-                       _ask.status.integerValue == DDAskBothRate) {
-                self.labHead.text = @"已完成评价，约见结束";
+//            } else if (_ask.status.integerValue == DDAskAskerRate ||  //应局完成不显示labHead
+//                       _ask.status.integerValue == DDAskBothRate) {
+//                self.labHead.text = @"已完成评价，约见结束";
             } else {
                 hasHead = NO;
                 self.labHead.hidden = YES;
             }
+        }
+    } else {
+        // 注意：后来新增约局详情也有labHead的情况
+        if (_ask.isMyAsk &&
+            _ask.status.integerValue == DDAskBothRate) {
+            [self.view addSubview:self.labHead];
+            [self.labHead mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.leading.trailing.equalTo(self.view);
+                make.top.equalTo(self.view).offset(offsetTop);
+                make.height.mas_equalTo(@50);
+            }];
+
+            self.labHead.text = @"恭喜！本次约局已完成！";
+            hasHead = YES;
         }
     }
     [self.view addSubview:self.tableView];

@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labHappy;
 @property (weak, nonatomic) IBOutlet UILabel *labUseful;
 @property (weak, nonatomic) IBOutlet UIView *impressView;
+@property (weak, nonatomic) IBOutlet UILabel *labImpressTitle;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *impressHeight;
 @end
@@ -50,7 +51,11 @@
     self.labUseful.text = rate.useful.boolValue ? @"有收获" : @"没有收获";
 
     NSArray *impressArray = rate.impress;
-    if (impressArray.count <= 3) {
+    if (impressArray.count == 0) {
+        self.labImpressTitle.hidden = YES;
+        self.impressView.hidden = YES;
+        self.impressHeight.constant = 0.0;
+    } else if (impressArray.count <= 3) {
         self.impressHeight.constant = 47.0;
     } else {
         self.impressHeight.constant = 94.0;

@@ -136,6 +136,7 @@ static NSString * const kNewIMMessageNotification              = @"kNewIMMessage
 static NSString * const kUpdateUnreadCountNotification         = @"kUpdateUnreadCountNotification"; //更新未读消息
 static NSString * const kUpdateUserInfoNotification            = @"kUpdateUserInfoNotification"; //更新用户信息
 static NSString * const kShowWelcomeNotification               = @"kShowWelcomeNotification"; //欢迎界面
+static NSString * const kPostAskSuccessNotification            = @"kPostAskSuccessNotification"; //发布约局成功
 static NSString * const kUpdateAskInfoNotification             = @"kUpdateAskInfoNotification"; //更新约局信息
 static NSString * const kUpdateIMAskInfoNotification             = @"kUpdateIMAskInfoNotification"; //更新IM约局信息
 static NSString * const kClickEmptyViewNotification            = @"kClickEmptyViewNotification"; //点击空视图按钮
