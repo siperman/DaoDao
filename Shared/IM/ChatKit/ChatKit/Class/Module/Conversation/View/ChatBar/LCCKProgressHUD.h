@@ -60,4 +60,21 @@ typedef NS_ENUM(NSUInteger, LCCKProgressState){
  */
 + (void)changeSubTitle:(NSString *)str;
 
+/**
+ *  修改音量图标
+ *
+ *  @param power 音量大小
+ */
++ (void)peakPowerForChannel:(CGFloat)power;
+
+/**
+ *  提示取消录音
+ */
++ (void)pauseRecord;
+
+/**
+ *  提示继续录音
+ */
++ (void)resaueRecord;
+
 @end
