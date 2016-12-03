@@ -13,9 +13,9 @@
 + (MJRefreshNormalHeader *)normalHeader
 {
     MJRefreshNormalHeader *header = [[MJRefreshNormalHeader alloc] init];
-    header.stateLabel.textColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"TableView-PullRefresh-TextColor"];
-    header.lastUpdatedTimeLabel.textColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"TableView-PullRefresh-TextColor"];
-    header.backgroundColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"TableView-PullRefresh-BackgroundColor"];
+    header.stateLabel.textColor = TextColor;
+    header.backgroundColor = ClearColor;
+    header.lastUpdatedTimeLabel.hidden = YES;
     return header;
 }
 
