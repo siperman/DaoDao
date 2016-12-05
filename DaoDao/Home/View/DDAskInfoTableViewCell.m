@@ -30,6 +30,7 @@
     [super awakeFromNib];
     // Initialization code
     [self.bigView shadowStyle];
+    [self.imgHead sy_round];
     [self.labDemand normalTextStyle];
     [self.btnLeft setTitleColor:ColorHex(@"707070")];
 }

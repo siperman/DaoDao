@@ -43,6 +43,7 @@
     [super viewDidLoad];
     self.title = @"我的";
     self.view.backgroundColor = BackgroundColor;
+    [self.btnAvatar sy_round];
     [self.btnLogout actionTransparentStyle];
     NSString *tel = [NSString stringWithFormat:@"客服帮助请点击：%@", kServiceCall];
     [self.btnCall setTitle:tel];

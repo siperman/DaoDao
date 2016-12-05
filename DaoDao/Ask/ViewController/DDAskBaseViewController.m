@@ -90,17 +90,29 @@
         }
     } else {
         // 注意：后来新增约局详情也有labHead的情况
-        if (_ask.isMyAsk &&
-            _ask.status.integerValue == DDAskBothRate) {
-            [self.view addSubview:self.labHead];
-            [self.labHead mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.leading.trailing.equalTo(self.view);
-                make.top.equalTo(self.view).offset(offsetTop);
-                make.height.mas_equalTo(@50);
-            }];
+        if (_ask.isMyAsk) {
+            if (_ask.status.integerValue == DDAskBothRate) {
+                [self.view addSubview:self.labHead];
+                [self.labHead mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.leading.trailing.equalTo(self.view);
+                    make.top.equalTo(self.view).offset(offsetTop);
+                    make.height.mas_equalTo(@50);
+                }];
 
-            self.labHead.text = @"恭喜！本次约局已完成！";
-            hasHead = YES;
+                self.labHead.text = @"恭喜！本次约局已完成！";
+                self.labHead.textColor = SecondColor;
+                hasHead = YES;
+            } else if (_ask.status.integerValue < 0) {
+                [self.view addSubview:self.labHead];
+                [self.labHead mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.leading.trailing.equalTo(self.view);
+                    make.top.equalTo(self.view).offset(offsetTop);
+                    make.height.mas_equalTo(@50);
+                }];
+
+                self.labHead.text = @"您的需求已失效";
+                hasHead = YES;
+            }
         }
     }
     [self.view addSubview:self.tableView];
