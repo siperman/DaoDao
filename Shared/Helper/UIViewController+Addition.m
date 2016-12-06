@@ -181,6 +181,7 @@
     dispatch_after(delay, dispatch_get_main_queue(), ^(void){
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         MBProgressHUD *loading = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        loading.opacity = 0.5f;
         loading.mode = MBProgressHUDModeCustomView;
         loading.customView = [self loadingView];
     });
@@ -224,6 +225,8 @@
     dispatch_after(delay, dispatch_get_main_queue(), ^(void){
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.opacity = 0.5f;
+        hud.labelFont = Font(17);
         hud.labelText = (notice);
         hud.mode = MBProgressHUDModeText;
     });
@@ -249,6 +252,7 @@
     dispatch_after(delay, dispatch_get_main_queue(), ^(void){
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.opacity = 0.5f;
         hud.customView = [[UIImageView alloc] initWithImage:Image(@"Checkmark")];
         hud.mode = MBProgressHUDModeCustomView;
     });

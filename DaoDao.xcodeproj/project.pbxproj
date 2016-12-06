@@ -437,6 +437,9 @@
 		2BEC3AFD1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BEC3AFB1DD3095F009DEDC0 /* DDDemandInfoMeetTableViewCell.xib */; };
 		2BEC3B001DD3243A009DEDC0 /* DDRateViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC3AFF1DD3243A009DEDC0 /* DDRateViewModel.m */; };
 		2BEF03741D869F3A005372B6 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF03731D869F3A005372B6 /* UIView+Addition.m */; };
+		2BF5B35F1DF54D3700C46DE1 /* UINavigationItem+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5B35E1DF54D3700C46DE1 /* UINavigationItem+Addition.m */; };
+		2BF5B36B1DF582BD00C46DE1 /* NSString+DES.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5B36A1DF582BD00C46DE1 /* NSString+DES.m */; };
+		2BF5B36E1DF6685A00C46DE1 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5B36D1DF6685A00C46DE1 /* Base64.m */; };
 		2BF86C7B1D9510A500E06BF8 /* DDCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C791D9510A500E06BF8 /* DDCalendarViewController.m */; };
 		2BF86C801D9511B700E06BF8 /* Shared.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF86C7F1D9511B700E06BF8 /* Shared.storyboard */; };
 		2BF86C891D95179600E06BF8 /* NSCalendar+NSCalendarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF86C831D95179600E06BF8 /* NSCalendar+NSCalendarExtension.m */; };
@@ -1297,6 +1300,12 @@
 		2BEC3AFF1DD3243A009DEDC0 /* DDRateViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRateViewModel.m; sourceTree = "<group>"; };
 		2BEF03721D869F3A005372B6 /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
 		2BEF03731D869F3A005372B6 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
+		2BF5B35D1DF54D3700C46DE1 /* UINavigationItem+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Addition.h"; sourceTree = "<group>"; };
+		2BF5B35E1DF54D3700C46DE1 /* UINavigationItem+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Addition.m"; sourceTree = "<group>"; };
+		2BF5B3691DF582BD00C46DE1 /* NSString+DES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DES.h"; sourceTree = "<group>"; };
+		2BF5B36A1DF582BD00C46DE1 /* NSString+DES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DES.m"; sourceTree = "<group>"; };
+		2BF5B36C1DF6685A00C46DE1 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		2BF5B36D1DF6685A00C46DE1 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		2BF86C781D9510A500E06BF8 /* DDCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCalendarViewController.h; sourceTree = "<group>"; };
 		2BF86C791D9510A500E06BF8 /* DDCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCalendarViewController.m; sourceTree = "<group>"; };
 		2BF86C7F1D9511B700E06BF8 /* Shared.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Shared.storyboard; sourceTree = "<group>"; };
@@ -3262,6 +3271,10 @@
 				2BB23C8E1DC881BB00FC5657 /* MJRefreshFooter+Addtion.m */,
 				2BBD0E9F1DEC1CFA00FE3658 /* NSDate+DateSetting.h */,
 				2BBD0EA01DEC1CFA00FE3658 /* NSDate+DateSetting.m */,
+				2BF5B3691DF582BD00C46DE1 /* NSString+DES.h */,
+				2BF5B36A1DF582BD00C46DE1 /* NSString+DES.m */,
+				2BF5B36C1DF6685A00C46DE1 /* Base64.h */,
+				2BF5B36D1DF6685A00C46DE1 /* Base64.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -3272,6 +3285,8 @@
 				2BB41A211D8153B6000C98F3 /* SYAnalyticsEventIDs.h */,
 				2BB41A221D8153B6000C98F3 /* UIViewController+Analytics.h */,
 				2BB41A231D8153B6000C98F3 /* UIViewController+Analytics.m */,
+				2BF5B35D1DF54D3700C46DE1 /* UINavigationItem+Addition.h */,
+				2BF5B35E1DF54D3700C46DE1 /* UINavigationItem+Addition.m */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
@@ -3760,6 +3775,7 @@
 				2BBB7D831DA8F513005E90A5 /* DDReloadView.m in Sources */,
 				2BA713FA1DCC3C700072FB42 /* LCCKChatLocationMessageCell.m in Sources */,
 				2BB3D7781D7D6F8C00FFDC0E /* CTAssetScrollView.m in Sources */,
+				2BF5B35F1DF54D3700C46DE1 /* UINavigationItem+Addition.m in Sources */,
 				2BBB7D981DAA4443005E90A5 /* DDConversationListCell.m in Sources */,
 				2BA713FB1DCC3C700072FB42 /* LCCKChatMessageCell.m in Sources */,
 				2BA713D51DCC3C700072FB42 /* LCCKBaseConversationViewController.m in Sources */,
@@ -3869,6 +3885,7 @@
 				2BB3D75B1D7D6F8C00FFDC0E /* UINavigationController+DMNavigation.m in Sources */,
 				2BB3D7861D7D6F8C00FFDC0E /* UIImage+TintColor.m in Sources */,
 				2BB3D79E1D7D6F8C00FFDC0E /* FSBasicImage.m in Sources */,
+				2BF5B36B1DF582BD00C46DE1 /* NSString+DES.m in Sources */,
 				2BB3D7501D7D6F8C00FFDC0E /* SYUtils.m in Sources */,
 				2B6D127D1D98B586003433D0 /* RegisterViewModel.m in Sources */,
 				2BB3D7C61D7D6F8C00FFDC0E /* SKTag.m in Sources */,
@@ -3954,6 +3971,7 @@
 				2BA714321DCC3C700072FB42 /* Mp3Recorder.m in Sources */,
 				2BEF03741D869F3A005372B6 /* UIView+Addition.m in Sources */,
 				2BA713ED1DCC3C700072FB42 /* LCCKLocationManager.m in Sources */,
+				2BF5B36E1DF6685A00C46DE1 /* Base64.m in Sources */,
 				2BA713D61DCC3C700072FB42 /* LCCKBaseNavigationController.m in Sources */,
 				2BA713EC1DCC3C700072FB42 /* LCCKLastMessageTypeManager.m in Sources */,
 				2BB3D7561D7D6F8C00FFDC0E /* UICollectionViewCell+Addition.m in Sources */,

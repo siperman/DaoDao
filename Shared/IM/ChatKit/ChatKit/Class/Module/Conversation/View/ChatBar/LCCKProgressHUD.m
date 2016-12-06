@@ -49,7 +49,7 @@
 - (void)show {
     self.seconds = 0;
     self.subTitleLabel.text = @"向上滑动取消";
-//    [self timer];
+    [self timer];
     dispatch_async(dispatch_get_main_queue(), ^{
         if(!self.superview)
             [self.overlayWindow addSubview:self];
@@ -188,7 +188,7 @@
         _subTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 120.0, 130.0, 20.0)];
         _subTitleLabel.text = @"向上滑动取消录音";
         _subTitleLabel.textAlignment = NSTextAlignmentCenter;
-        _subTitleLabel.font = [UIFont boldSystemFontOfSize:12];
+        _subTitleLabel.font = [UIFont boldSystemFontOfSize:13];
         _subTitleLabel.textColor = [UIColor whiteColor];
         _subTitleLabel.clipsToBounds = YES;
         _subTitleLabel.layer.cornerRadius = kCornerRadius;
@@ -199,7 +199,7 @@
 - (UIImageView *)microPhoneImageView
 {
     if (!_microPhoneImageView) {
-        UIImageView *microPhoneImageView = [[UIImageView alloc] initWithFrame:CGRectMake(27.0, 8.0, 50.0, 99.0)];
+        UIImageView *microPhoneImageView = [[UIImageView alloc] initWithFrame:CGRectMake(30.0, 15.0, 50.0, 99.0)];
         microPhoneImageView.image = [UIImage imageNamed:@"RecordingBkg"];
         microPhoneImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
         microPhoneImageView.contentMode = UIViewContentModeScaleToFill;
@@ -211,7 +211,7 @@
 - (UIImageView *)recordingHUDImageView
 {
     if (!_recordingHUDImageView) {
-        UIImageView *recordHUDImageView = [[UIImageView alloc] initWithFrame:CGRectMake(82.0, 34.0, 18.0, 61.0)];
+        UIImageView *recordHUDImageView = [[UIImageView alloc] initWithFrame:CGRectMake(90.0, 38.0, 18.0, 61.0)];
         recordHUDImageView.image = [UIImage imageNamed:@"RecordingSignal001"];
         recordHUDImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
         recordHUDImageView.contentMode = UIViewContentModeScaleToFill;
@@ -223,7 +223,7 @@
 - (UIImageView *)cancelRecordImageView
 {
     if (!_cancelRecordImageView) {
-        UIImageView *cancelRecordImageView = [[UIImageView alloc] initWithFrame:CGRectMake(19.0, 7.0, 100.0, 100.0)];
+        UIImageView *cancelRecordImageView = [[UIImageView alloc] initWithFrame:CGRectMake(25.0, 10.0, 100.0, 100.0)];
         cancelRecordImageView.image = [UIImage imageNamed:@"RecordCancel"];
         cancelRecordImageView.hidden = YES;
         cancelRecordImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
@@ -244,9 +244,9 @@
     static LCCKProgressHUD *sharedView;
     dispatch_once(&once, ^ {
         sharedView = [[LCCKProgressHUD alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
-        sharedView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+        sharedView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
         sharedView.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
-        sharedView.layer.cornerRadius = kCornerRadius;
+        sharedView.layer.cornerRadius = 6;
     });
     return sharedView;
 }
@@ -287,7 +287,7 @@
 }
 
 + (NSTimeInterval)seconds{
-    return [[LCCKProgressHUD sharedView] seconds] / 10;
+    return [[LCCKProgressHUD sharedView] seconds];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "SYNetworkManager.h"
 #import "SystemServices.h"
+#import "NSString+DES.h"
 
 @implementation SYNetworkManager
 
@@ -73,6 +74,16 @@
 
     SYNetworkManager *manager = [self manager];
     NSMutableDictionary *p = [NSMutableDictionary dictionaryWithDictionary:(params ?: @{})];
+    // 全局加密
+    {
+        NSArray *keys = @[@"realName", @"mobilePhone", @"company"];
+        for (NSString *key in keys) {
+            NSString *value = [p valueForKey:key];
+            if (value && [value length] > 0) {
+                [p setValue:[value encrypt] forKey:key];
+            }
+        }
+    }
 
     // 配置请求头部
     {
@@ -84,8 +95,10 @@
 
         // 设置请求必带参数
         [p setValue:[SYUtils unifiedUUID] forKey:@"_uuid"];
+        [p setValue:[NSNumber numberWithLong:[SYUtils currentTimestamp]] forKey:@"_t"];
         [p setValue:[NSString stringWithFormat:@"%@%@", [SYUtils carrierName], [SYUtils networkType]] forKey:@"_net"];
     }
+    p[@"_sign"] = [self md5WithParams:p URL:url];
 
     // 发送请求
     {
@@ -150,6 +163,32 @@
             rootViewController = [(UINavigationController*)rootViewController visibleViewController];
         }
         [rootViewController presentViewController:viewController animated:YES completion:nil];
+    }
+}
+
++ (NSString *)md5WithParams:(NSDictionary *)params URL:(NSString *)url
+{
+    NSString *url_ = [url stringByReplacingOccurrencesOfString:kHostUrl withString:@""];
+    if (!params || params.count == 0) {
+        return [url_ stringFromMD5];
+    } else {
+        NSArray *keys = [params allKeys];
+        NSArray *sortKeys = [keys sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+            return [obj1 compare:obj2];
+        }];
+        NSMutableString *result = [url_ mutableCopy];
+        BOOL baseUrl = [url_ containsString:@"?"];
+        for (NSInteger idx = 0; idx < sortKeys.count; idx++) {
+            NSString *key = sortKeys[idx];
+            id value = params[key];
+            if (idx == 0 && !baseUrl) {
+                [result appendFormat:@"?%@=%@", key, value];
+            } else {
+                [result appendFormat:@"&%@=%@", key, value];
+            }
+        }
+        NSLog(@"排序  ：%@", result);
+        return [result stringFromMD5];
     }
 }
 

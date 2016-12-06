@@ -48,6 +48,25 @@
     return [MTLJSONAdapter arrayTransformerWithModelClass:[DDRateTag class]];
 }
 
++ (NSValueTransformer *)realNameJSONTransformer
+{
+    return [self stringDecryptJSONTransformer];
+}
+
++ (NSValueTransformer *)titleJSONTransformer
+{
+    return [self stringDecryptJSONTransformer];
+}
+
++ (NSValueTransformer *)mobilePhoneJSONTransformer
+{
+    return [self stringDecryptJSONTransformer];
+}
+
++ (NSValueTransformer *)companyJSONTransformer
+{
+    return [self stringDecryptJSONTransformer];
+}
 
 - (NSString *)relation
 {

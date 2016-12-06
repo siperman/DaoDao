@@ -8,6 +8,7 @@
 //
 
 #import "MTLModel+Addition.h"
+#import "NSString+DES.h"
 
 @implementation MTLModel (Addition)
 
@@ -74,6 +75,17 @@
         }
 
         return nil;
+    }];
+}
+
++ (NSValueTransformer *)stringDecryptJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *value, BOOL *success, NSError *__autoreleasing *error) {
+        if (value && value.length > 0) {
+            return [value decrypt];
+        } else {
+            return @"";
+        }
     }];
 }
 
