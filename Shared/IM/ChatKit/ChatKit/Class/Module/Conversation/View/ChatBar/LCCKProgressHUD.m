@@ -48,7 +48,7 @@
 
 - (void)show {
     self.seconds = 0;
-    self.subTitleLabel.text = @"向上滑动取消";
+    self.subTitleLabel.text = kVoiceRecordPauseString;
     [self timer];
     dispatch_async(dispatch_get_main_queue(), ^{
         if(!self.superview)
@@ -186,7 +186,7 @@
 - (UILabel *)subTitleLabel{
     if (!_subTitleLabel) {
         _subTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 120.0, 130.0, 20.0)];
-        _subTitleLabel.text = @"向上滑动取消录音";
+        _subTitleLabel.text = kVoiceRecordPauseString;
         _subTitleLabel.textAlignment = NSTextAlignmentCenter;
         _subTitleLabel.font = [UIFont boldSystemFontOfSize:13];
         _subTitleLabel.textColor = [UIColor whiteColor];
