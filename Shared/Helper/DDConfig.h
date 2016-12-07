@@ -28,5 +28,7 @@
 + (void)saveConfigDict:(NSDictionary *)dict;
 
 + (NSDictionary *)configDict;
+// 请求配置文件失败需要调用
++ (void)configServiceCall;
 
 @end
