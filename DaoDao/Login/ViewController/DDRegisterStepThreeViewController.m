@@ -87,7 +87,7 @@
 #elif TEST
     vc.url = [NSString stringWithFormat:@"http://testadmin.daodaoclub.com/h5/company/announce.html?xx=%@", self.time];
 #else
-    vc.url = [NSString stringWithFormat:@"http://admin.daodaoclub.com/h5/company/announce.html?xx=%@", self.time];
+    vc.url = [NSString stringWithFormat:@"https://admin.daodaoclub.com/h5/company/announce.html?xx=%@", self.time];
 #endif
     [self.navigationController pushViewController:vc animated:YES];
 }

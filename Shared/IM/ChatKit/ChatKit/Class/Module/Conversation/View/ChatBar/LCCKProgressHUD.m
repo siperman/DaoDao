@@ -21,9 +21,12 @@
 @property (nonatomic, strong) UIImageView *cancelRecordImageView;
 @property (nonatomic, strong) UIImageView *recordingHUDImageView;
 @property (nonatomic, strong) UILabel *subTitleLabel;
+@property (nonatomic, strong) UILabel *centerLabel;
 
 @property (nonatomic, strong, readonly) UIWindow *overlayWindow;
 
+@property (nonatomic) BOOL recording;
+@property (nonatomic) BOOL countdowning;
 @end
 
 @implementation LCCKProgressHUD
@@ -38,6 +41,7 @@
 
 - (void)setup{
     [self addSubview:self.subTitleLabel];
+    [self addSubview:self.centerLabel];
 
     [self addSubview:self.microPhoneImageView];
     [self addSubview:self.recordingHUDImageView];
@@ -49,6 +53,10 @@
 - (void)show {
     self.seconds = 0;
     self.subTitleLabel.text = kVoiceRecordPauseString;
+    self.centerLabel.hidden = YES;
+    self.countdowning = NO;
+    [self configRecoding:YES];
+
     [self timer];
     dispatch_async(dispatch_get_main_queue(), ^{
         if(!self.superview)
@@ -62,18 +70,20 @@
 
 - (void)timerAction {
     self.seconds ++ ;
-//    [UIView beginAnimations:nil context:nil];
-//    [UIView setAnimationDuration:0.09];
-//    UIView.AnimationRepeatAutoreverses = YES;
-//    self.edgeImageView.transform = CGAffineTransformMakeRotation(self.angle * (M_PI / 180.0f));
-//    float second = [self.centerLabel.text floatValue];
-//    if (second <= 10.0f) {
-//        self.centerLabel.textColor = [UIColor redColor];
-//    } else {
-//        self.centerLabel.textColor = [UIColor yellowColor];
-//    }
-//    self.centerLabel.text = [NSString stringWithFormat:@"%.1f",second-0.1];
-//    [UIView commitAnimations];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.09];
+    UIView.AnimationRepeatAutoreverses = YES;
+    float second = 60 - self.seconds;
+    if (second <= 9.0f) {
+        _countdowning = YES;
+        self.centerLabel.hidden = !_recording;
+        self.microPhoneImageView.hidden = _countdowning;
+        self.recordingHUDImageView.hidden = _countdowning;
+    } else {
+        self.centerLabel.hidden = YES;
+    }
+    self.centerLabel.text = [NSString stringWithFormat:@"%1.0f",second];
+    [UIView commitAnimations];
 }
 
 - (void)setSubTitle:(NSString *)subTitle {
@@ -93,8 +103,10 @@
 }
 
 - (void)configRecoding:(BOOL)recording {
-    self.microPhoneImageView.hidden = !recording;
-    self.recordingHUDImageView.hidden = !recording;
+    _recording = recording;
+    self.microPhoneImageView.hidden = _countdowning || !recording;
+    self.recordingHUDImageView.hidden = _countdowning || !recording;
+    self.centerLabel.hidden = !_countdowning || !recording;
     self.cancelRecordImageView.hidden = recording;
 }
 
@@ -194,6 +206,19 @@
         _subTitleLabel.layer.cornerRadius = kCornerRadius;
     }
     return _subTitleLabel;
+}
+
+- (UILabel *)centerLabel{
+    if (!_centerLabel) {
+        _centerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20.0, 130.0, 90.0)];
+        _centerLabel.text = @"9";
+        _centerLabel.textAlignment = NSTextAlignmentCenter;
+        _centerLabel.font = [UIFont boldSystemFontOfSize:90];
+        _centerLabel.textColor = [UIColor whiteColor];
+        _centerLabel.backgroundColor = [UIColor clearColor];
+        _centerLabel.hidden = YES;
+    }
+    return _centerLabel;
 }
 
 - (UIImageView *)microPhoneImageView

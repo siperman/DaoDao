@@ -25,6 +25,7 @@
              @"user" : @"user",
              @"answer" : @"answer",
              @"favorites" : @"favorites",
+             @"askStatus" : @"askStatus"
              };
 }
 

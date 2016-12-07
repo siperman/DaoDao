@@ -639,7 +639,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWG-Dn-j6e">
-                                        <rect key="frame" x="307.5" y="9" width="30" height="30"/>
+                                        <rect key="frame" x="333" y="9" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="FdI-6i-u5l"/>
                                             <constraint firstAttribute="height" constant="30" id="OIs-GP-flr"/>
@@ -652,8 +652,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.1843137255" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="PWG-Dn-j6e" firstAttribute="leading" secondItem="rXq-xc-VTe" secondAttribute="trailing" constant="30" id="7rT-jX-Ifa"/>
                                     <constraint firstAttribute="height" constant="49" id="Br0-mw-zMH"/>
+                                    <constraint firstAttribute="trailing" secondItem="PWG-Dn-j6e" secondAttribute="trailing" constant="12" id="C36-AP-Ore"/>
                                     <constraint firstItem="rXq-xc-VTe" firstAttribute="top" secondItem="LjZ-mG-os4" secondAttribute="top" id="Nw0-LJ-3z6"/>
                                     <constraint firstItem="rXq-xc-VTe" firstAttribute="leading" secondItem="LjZ-mG-os4" secondAttribute="leading" constant="12" id="jaP-cc-XNa"/>
                                     <constraint firstAttribute="bottom" secondItem="PWG-Dn-j6e" secondAttribute="bottom" constant="10" id="kT0-2U-u3l"/>

@@ -91,7 +91,7 @@
     } else {
         // 注意：后来新增约局详情也有labHead的情况
         if (_ask.isMyAsk) {
-            if (_ask.status.integerValue == DDAskBothRate) {
+            if (_ask.askStatus.integerValue == DDAskBothRate) {
                 [self.view addSubview:self.labHead];
                 [self.labHead mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.leading.trailing.equalTo(self.view);
@@ -102,7 +102,7 @@
                 self.labHead.text = @"恭喜！本次约局已完成！";
                 self.labHead.textColor = SecondColor;
                 hasHead = YES;
-            } else if (_ask.status.integerValue < 0) {
+            } else if (_ask.askStatus.integerValue < 0) {
                 [self.view addSubview:self.labHead];
                 [self.labHead mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.leading.trailing.equalTo(self.view);
