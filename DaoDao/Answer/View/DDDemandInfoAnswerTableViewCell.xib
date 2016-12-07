@@ -42,7 +42,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TL-DS-b0Q">
-                                <rect key="frame" x="14" y="56" width="37.5" height="68"/>
+                                <rect key="frame" x="14" y="56" width="270" height="68"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -55,6 +55,7 @@
                             <constraint firstItem="VmU-cZ-0l2" firstAttribute="leading" secondItem="kcF-J4-wws" secondAttribute="leading" constant="10" id="4o7-Li-NTI"/>
                             <constraint firstAttribute="trailing" secondItem="VmU-cZ-0l2" secondAttribute="trailing" constant="10" id="9fo-fj-mEr"/>
                             <constraint firstItem="Lb1-0m-36h" firstAttribute="leading" secondItem="kcF-J4-wws" secondAttribute="leading" constant="14" id="R1h-CS-fIL"/>
+                            <constraint firstAttribute="trailing" secondItem="7TL-DS-b0Q" secondAttribute="trailing" constant="14" id="Rfa-XU-93n"/>
                             <constraint firstItem="7TL-DS-b0Q" firstAttribute="leading" secondItem="Lb1-0m-36h" secondAttribute="leading" id="Sz7-R9-Mb8"/>
                             <constraint firstItem="6rV-ew-wn3" firstAttribute="top" secondItem="kcF-J4-wws" secondAttribute="top" constant="14" id="V72-0q-QPs"/>
                             <constraint firstItem="7TL-DS-b0Q" firstAttribute="top" secondItem="VmU-cZ-0l2" secondAttribute="bottom" constant="14" id="qRx-Mc-Ct7"/>

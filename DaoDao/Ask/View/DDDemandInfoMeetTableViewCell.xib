@@ -42,7 +42,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swy-vj-C0o">
-                                <rect key="frame" x="14" y="65" width="31" height="68.5"/>
+                                <rect key="frame" x="14" y="65" width="268" height="68.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -52,6 +52,7 @@
                         <constraints>
                             <constraint firstItem="Jve-ny-c6E" firstAttribute="leading" secondItem="h8L-Bl-mBH" secondAttribute="trailing" constant="20" id="1q8-48-rnj"/>
                             <constraint firstItem="Jve-ny-c6E" firstAttribute="top" secondItem="X06-Pn-SMa" secondAttribute="top" constant="14" id="DiA-Cl-976"/>
+                            <constraint firstAttribute="trailing" secondItem="Swy-vj-C0o" secondAttribute="trailing" constant="14" id="SjH-vG-OGW"/>
                             <constraint firstAttribute="trailing" secondItem="Jve-ny-c6E" secondAttribute="trailing" constant="10" id="Wq5-eo-Zpq"/>
                             <constraint firstItem="zJx-7T-7FM" firstAttribute="top" secondItem="h8L-Bl-mBH" secondAttribute="bottom" constant="8" id="Y20-Sy-bdV"/>
                             <constraint firstItem="zJx-7T-7FM" firstAttribute="leading" secondItem="X06-Pn-SMa" secondAttribute="leading" constant="10" id="fBN-kt-frA"/>
