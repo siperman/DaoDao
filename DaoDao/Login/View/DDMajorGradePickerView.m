@@ -91,8 +91,8 @@
     switch (component) {
         case 0:
             _grades = [[_majorGrades objectAtIndex:row] objectForKey:kValueKey];
-            [self.pickerView selectRow:0 inComponent:1 animated:YES];
             [self.pickerView reloadComponent:1];
+            [self.pickerView selectRow:0 inComponent:1 animated:YES];
 
             self.major = [[_majorGrades objectAtIndex:row] objectForKey:@"name"];
             self.grade = [_grades objectAtIndex:0];

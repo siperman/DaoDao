@@ -12,7 +12,7 @@
 #import "NSString+MD5Addition.h"
 
 #if DEBUG
-NSString * kHostUrl = @"http://devapi.daodaoclub.com/v1";
+NSString * kHostUrl = @"http://devapi.soouya.com/v1";
 #elif TEST
 NSString * kHostUrl = @"http://testapi.daodaoclub.com/v1";
 #else

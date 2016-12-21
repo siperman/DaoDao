@@ -10,6 +10,7 @@
 #import "DDRegisterStepThreeViewController.h"
 #import "NSTimer+Addition.h"
 #import "DDMajorGradePickerView.h"
+#import "DDConfig.h"
 
 @interface DDRegisterStepTwoViewController () <UITextFieldDelegate, DDMajorGradePickerProtocol>
 
@@ -77,11 +78,17 @@
                                                     reduce:^id(NSString *name,NSString *school,NSString *phone,NSString *code){
         return @(name.length && school.length && phone.length && code.length);
     }];
+
+    [self checkConfig];
 }
 
 - (IBAction)next:(UIButton *)sender
 {
     [self.view endEditing:YES];
+    if (self.txtName.text.length > 4) {
+        [self showNotice:@"姓名最多输入4个汉字喔！"];
+        return;
+    }
 
     [self.navigationController showLoadingHUD];
     [SYRequestEngine checkVerifyCode:self.txtPhone.text code:self.txtAuthCode.text callback:^(BOOL success, id response) {
@@ -121,9 +128,23 @@
                                                     [self.navigationController showRequestNotice:response];
                                                 }];
         }
-
     }
+}
 
+- (void)checkConfig
+{
+    if ([DDConfig configDict]) {
+        return;
+    }
+    [self showLoadingHUD];
+    [SYRequestEngine requestConfigCallback:^(BOOL success, id response) {
+        [self hideAllHUD];
+        if (success) {
+            [DDConfig saveConfigDict:response[kObjKey]];
+        } else {
+            [self showNotice:response];
+        }
+    }];
 }
 
 #pragma mark - SMS verify
@@ -187,9 +208,17 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if (textField == self.txtName) {
+        /*
+         * 在iOS9.3.5上，中文联想输入不进入此函数
+         */
         NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        return text.length <= 8;
+        return text.length <= 4 || text.length < textField.text.length;
     }
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     return YES;
 }
 

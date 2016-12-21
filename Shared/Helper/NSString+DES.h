@@ -15,8 +15,4 @@
 - (NSString *)encrypt;
 - (NSString *)decrypt;
 
-//+(NSString *)des:(NSString *)str key:(NSString *)key;
-//
-//+(NSString *)decryptDes:(NSString*)str key:(NSString*)key;
-
 @end

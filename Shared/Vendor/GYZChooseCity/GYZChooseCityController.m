@@ -344,7 +344,6 @@ NSString *const cityCell = @"CityCell";
     GYZCity *city = nil;
     if (self.isSearch) {
         city =  [self.searchCities objectAtIndex:indexPath.row];
-        self.searchController.active = NO;
     }else{
         if (indexPath.section < 3) {
             if (indexPath.section == 0 && self.localCityData.count <= 0) {
@@ -355,7 +354,7 @@ NSString *const cityCell = @"CityCell";
         GYZCityGroup *group = [self.cityDatas objectAtIndex:indexPath.section - 3];
         city =  [group.arrayCitys objectAtIndex:indexPath.row];
     }
-   
+
     [self didSelctedCity:city];
 }
 
@@ -432,6 +431,9 @@ NSString *const cityCell = @"CityCell";
 #pragma mark - Private Methods
 - (void) didSelctedCity:(GYZCity *)city
 {
+    if (self.searchController.active) {
+        self.searchController.active = NO;
+    }
     if (_delegate && [_delegate respondsToSelector:@selector(cityPickerController:didSelectCity:)]) {
         [_delegate cityPickerController:self didSelectCity:city];
     }

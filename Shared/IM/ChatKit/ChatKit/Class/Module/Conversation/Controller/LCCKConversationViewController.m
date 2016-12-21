@@ -46,6 +46,7 @@
 #import "DDAskMeetDetailViewController.h"
 #import "DDAnswerDetailViewController.h"
 #import "DDRadioTitleView.h"
+#import "DDAskChatManager.h"
 
 NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationViewControllerErrorDomain";
 
@@ -747,6 +748,11 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
 - (void)sendWelcomeMessageIfNeeded:(BOOL)isFirstTimeMeet {
     //系统对话
     if (_conversation.members.count == 0) {
+        return;
+    }
+    //约局人不发送欢迎语
+    DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:self.conversationId];
+    if (!ask || ask.isMyAsk) {
         return;
     }
     __block NSString *welcomeMessage;

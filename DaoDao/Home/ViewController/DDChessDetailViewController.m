@@ -184,6 +184,8 @@
 
     // 缓存聊天用户信息
     [DDUserFactory cacheUser:[LCCKUser userTransform:askInfo.user]];
+    // 缓存约局信息
+    [[DDAskChatManager sharedInstance] cacheAsk:askInfo ForConversationId:askInfo.answer.conversionId];
 
     // 去聊天室
     [DDChatKitManager exampleOpenConversationViewControllerWithConversaionId:askInfo.answer.conversionId fromNavigationController:self.navigationController];

@@ -22,6 +22,7 @@
 @property (nonatomic, strong) UIImageView *recordingHUDImageView;
 @property (nonatomic, strong) UILabel *subTitleLabel;
 @property (nonatomic, strong) UILabel *centerLabel;
+@property (nonatomic, strong) UIView *centerBackView;
 
 @property (nonatomic, strong, readonly) UIWindow *overlayWindow;
 
@@ -40,12 +41,13 @@
 }
 
 - (void)setup{
-    [self addSubview:self.subTitleLabel];
-    [self addSubview:self.centerLabel];
+    [self addSubview:self.centerBackView];
+    [self.centerBackView addSubview:self.subTitleLabel];
+    [self.centerBackView addSubview:self.centerLabel];
 
-    [self addSubview:self.microPhoneImageView];
-    [self addSubview:self.recordingHUDImageView];
-    [self addSubview:self.cancelRecordImageView];
+    [self.centerBackView addSubview:self.microPhoneImageView];
+    [self.centerBackView addSubview:self.recordingHUDImageView];
+    [self.centerBackView addSubview:self.cancelRecordImageView];
 }
 
 #pragma mark - Private Methods
@@ -258,6 +260,17 @@
     return _cancelRecordImageView;
 }
 
+- (UIView *)centerBackView
+{
+    if (!_centerBackView) {
+        _centerBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
+        _centerBackView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
+        _centerBackView.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+        _centerBackView.layer.cornerRadius = 6;
+    }
+    return _centerBackView;
+}
+
 - (UIWindow *)overlayWindow {
     return [[UIApplication sharedApplication] keyWindow];
 }
@@ -268,10 +281,8 @@
     static dispatch_once_t once;
     static LCCKProgressHUD *sharedView;
     dispatch_once(&once, ^ {
-        sharedView = [[LCCKProgressHUD alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
-        sharedView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
-        sharedView.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
-        sharedView.layer.cornerRadius = 6;
+        sharedView = [[LCCKProgressHUD alloc] initWithFrame:SCREEN_BOUNDS];
+        sharedView.backgroundColor = ClearColor;
     });
     return sharedView;
 }
