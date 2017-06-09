@@ -45,6 +45,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    [self.avatarImageView sy_round];
 }
 
 - (void)layoutSubviews

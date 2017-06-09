@@ -93,16 +93,19 @@
 {
     UIColor * color = [[UINavigationBar appearance] barTintColor];
     CGFloat offsetY = scrollView.contentOffset.y;
+    UIViewController *parentVC = self.parentViewController;
     if (offsetY > NAVBAR_CHANGE_POINT) {
         //透明度
         CGFloat alpha = MIN(0.9, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
         [self.navigationController.navigationBar setShadowImage:alpha > 0.4 ? nil : [UIImage new]];
+        parentVC.title = @"个人主页";
     } else {
         //完全透明
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
         //去掉nav底部的线
         [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+        parentVC.title = @"";
     }
 }
 

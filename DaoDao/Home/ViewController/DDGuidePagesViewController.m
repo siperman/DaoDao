@@ -40,9 +40,9 @@
         [gui addSubview:({
             self.btnEnter = [UIButton buttonWithType:UIButtonTypeCustom];
             self.btnEnter.frame = CGRectMake(SCREEN_WIDTH * i, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-//            UIImage *backImage = [Image(images[i]) resizableImageWithCapInsets:UIEdgeInsetsMake(20.0f, 0.0f, 20.0f, 0.0f) resizingMode:UIImageResizingModeStretch];
-            [self.btnEnter setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
-            [self.btnEnter setImage:[UIImage imageNamed:images[i]] forState:UIControlStateHighlighted];
+            UIImageView *imgView = [[UIImageView alloc] initWithImage:Image(images[i])];
+            imgView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            [self.btnEnter addSubview:imgView];
             self.btnEnter;
         })];
 

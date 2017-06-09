@@ -184,9 +184,12 @@
 
     // 缓存聊天用户信息
     [DDUserFactory cacheUser:[LCCKUser userTransform:askInfo.user]];
+    // 缓存约局信息
+    [[DDAskChatManager sharedInstance] cacheAsk:askInfo ForConversationId:askInfo.answer.conversionId];
 
     // 去聊天室
     [DDChatKitManager exampleOpenConversationViewControllerWithConversaionId:askInfo.answer.conversionId fromNavigationController:self.navigationController];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)disinterest:(DDAsk *)askInfo
@@ -194,6 +197,7 @@
     NSInteger idx = [self.answerList indexOfObject:askInfo];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 @end

@@ -41,6 +41,7 @@
     [self.btnPost actionStyle];
     [self.label normalTextStyle];
     [@[self.txtAddr, self.txtTime, self.txtCity] makeObjectsPerformSelector:@selector(normalStyle)];
+    self.txtAddr.delegate = self;
 }
 
 - (IBAction)post:(UIButton *)sender
@@ -101,6 +102,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [self.view endEditing:YES];
     return YES;
 }
 

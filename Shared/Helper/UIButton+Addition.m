@@ -14,14 +14,14 @@
 - (void)actionStyle
 {
     self.backgroundColor = MainColor;
-    self.titleLabel.font = Font(18.0);
-    
+//    self.titleLabel.font = Font(18.0);
+
     [self setTitleColor:WhiteColor];
 
     // 设置点击和禁用状态背景色
     [self setBackgroundImage:[UIImage imageWithColor:ClickColor] forState:UIControlStateHighlighted];
     [self setBackgroundImage:[UIImage imageWithColor:CCCColor] forState:UIControlStateDisabled];
-    
+
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = kCornerRadius;
 }
@@ -33,6 +33,7 @@
 
     [self setTitleColor:MainColor forState:UIControlStateNormal];
     [self setTitleColor:TextColor forState:UIControlStateDisabled];
+    [self setBackgroundImage:[UIImage imageWithColor:ColorHex(@"9e9e9e")] forState:UIControlStateHighlighted];
 
     self.layer.borderColor = MainColor.CGColor;
     self.layer.borderWidth = OnePixelHeight;

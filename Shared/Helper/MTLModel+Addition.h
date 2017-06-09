@@ -14,6 +14,8 @@
 
 + (NSArray *)parseFromDicts:(NSArray<NSDictionary *> *)dicts;
 
++ (NSValueTransformer *)stringDecryptJSONTransformer;
+
 + (NSValueTransformer *)stringValueJSONTransformer;
 
 + (NSValueTransformer *)floatToStringJSONTransformer;

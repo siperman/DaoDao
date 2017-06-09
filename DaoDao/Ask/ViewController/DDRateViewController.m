@@ -49,12 +49,30 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self layoutScrollView];
+    if ([DDConfig femaleRate] && [DDConfig maleRate]) {
+        [self layoutScrollView];
+    } else {
+        [self requestRateData];
+    }
 }
 
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+- (void)requestRateData
+{
+    [self showLoadingHUD];
+    [SYRequestEngine requestConfigCallback:^(BOOL success, id response) {
+        [self hideAllHUD];
+        if (success) {
+            [DDConfig saveConfigDict:response[kObjKey]];
+            [self layoutScrollView];
+        } else {
+            [self showRequestNotice:response];
+        }
+    }];
 }
 
 - (void)layoutScrollView
@@ -149,6 +167,17 @@
                 NSDictionary *rateDict = self.viewModel.rateArray[tag];
                 NSString *name = rateDict[kTagsNameKey];
                 NSString *value = rateDict[kTagsValueKey][idx];
+
+                if (str.length > 0) {
+                    [str appendFormat:@",%@@%@", name, value];
+                } else {
+                    [str appendFormat:@"%@@%@", name, value];
+                }
+            } else {
+                NSInteger tag = seg.tag - DD_IMPRESS_TAG; // for lab
+                NSDictionary *rateDict = self.viewModel.rateArray[tag];
+                NSString *name = rateDict[kTagsNameKey];
+                NSString *value = @"其他";
 
                 if (str.length > 0) {
                     [str appendFormat:@",%@@%@", name, value];

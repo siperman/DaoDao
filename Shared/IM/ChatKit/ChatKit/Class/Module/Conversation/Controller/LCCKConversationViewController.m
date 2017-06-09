@@ -46,6 +46,7 @@
 #import "DDAskMeetDetailViewController.h"
 #import "DDAnswerDetailViewController.h"
 #import "DDRadioTitleView.h"
+#import "DDAskChatManager.h"
 
 NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationViewControllerErrorDomain";
 
@@ -350,7 +351,7 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
     vc.ask = ask;
     WeakSelf;
     [vc setCallback:^(){
-        LCCKVCardMessage *vCardMessage = [LCCKVCardMessage vCardMessageWithClientId:[DDUserManager manager].user.uid conversationType:[self getConversationIfExists].lcck_type];
+        LCCKVCardMessage *vCardMessage = [LCCKVCardMessage vCardMessageWithClientId:self.userId conversationType:[self getConversationIfExists].lcck_type];
         [weakSelf sendCustomMessage:vCardMessage progressBlock:^(NSInteger percentDone) {
         } success:^(BOOL succeeded, NSError *error) {
             [weakSelf sendLocalFeedbackTextMessge:@"邀请函发送成功"];
@@ -747,6 +748,11 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
 - (void)sendWelcomeMessageIfNeeded:(BOOL)isFirstTimeMeet {
     //系统对话
     if (_conversation.members.count == 0) {
+        return;
+    }
+    //约局人不发送欢迎语
+    DDAsk *ask = [[DDAskChatManager sharedInstance] getCachedProfileIfExists:self.conversationId];
+    if (!ask || ask.isMyAsk) {
         return;
     }
     __block NSString *welcomeMessage;

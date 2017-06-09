@@ -333,7 +333,10 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
     [LCCKProgressHUD changeSubTitle:@"正在转换..."];
 }
 
-
+- (void)peakPowerForChannel:(CGFloat)power
+{
+    [LCCKProgressHUD peakPowerForChannel:power];
+}
 
 #pragma mark - LCCKChatFaceViewDelegate
 
@@ -519,14 +522,14 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
  *  更新录音显示状态,手指向上滑动后提示松开取消录音
  */
 - (void)updateCancelRecordVoice {
-    [LCCKProgressHUD changeSubTitle:@"松开取消录音"];
+    [LCCKProgressHUD resaueRecord];
 }
 
 /**
  *  更新录音状态,手指重新滑动到范围内,提示向上取消录音
  */
 - (void)updateContinueRecordVoice {
-    [LCCKProgressHUD changeSubTitle:@"向上滑动取消录音"];
+    [LCCKProgressHUD pauseRecord];
 }
 
 - (void)setShowType:(LCCKFunctionViewShowType)showType {

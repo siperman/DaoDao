@@ -12,6 +12,7 @@
 - (void)failRecord;
 - (void)beginConvert;
 - (void)endConvertWithMP3FileName:(NSString *)fileName;
+- (void)peakPowerForChannel:(CGFloat)power;
 @end
 
 @interface Mp3Recorder : NSObject

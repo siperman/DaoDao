@@ -42,6 +42,7 @@
     };
 
     [self subscribeNotication:kClickEmptyViewNotification selector:@selector(postAsk)];
+    [self.tableView.mj_header subscribeNotication:kPostAskSuccessNotification selector:@selector(beginRefreshing)];
 }
 
 - (void)postAsk

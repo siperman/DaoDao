@@ -10,6 +10,7 @@
 #import "DDChessboardView.h"
 #import "DDPostAskTableViewController.h"
 #import "DDMineViewController.h"
+#import "UIImage+ImageWithColor.h"
 
 @interface DDHomeViewController ()
 
@@ -169,7 +170,8 @@
         [_btnPost.layer setBorderColor:ColorHex(@"dadada").CGColor];
         [_btnPost.layer setBorderWidth:OnePixelHeight];
         [_btnPost setTitle:@"发需求"];
-        [_btnPost setTitleColor:MainColor];
+        [_btnPost setTitleColor:MainColor forState:UIControlStateNormal];
+        [_btnPost setTitleColor:TextColor forState:UIControlStateHighlighted];
         _btnPost.backgroundColor = ColorHex(@"ebebeb");
         _btnPost.titleLabel.font = BigTextFont;
 

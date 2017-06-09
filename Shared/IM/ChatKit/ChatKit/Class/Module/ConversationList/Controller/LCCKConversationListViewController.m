@@ -41,18 +41,11 @@
     self.tableView.delegate = self.conversationListViewModel;
     self.tableView.dataSource = self.conversationListViewModel;
     __weak __typeof(self) weakSelf = self;
-    self.tableView.mj_header = ({
-        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            // 进入刷新状态后会自动调用这个 block
-            [weakSelf.conversationListViewModel refresh];
-            // 设置颜色
-        }];
-        header.stateLabel.textColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"TableView-PullRefresh-TextColor"];
-        header.lastUpdatedTimeLabel.textColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"TableView-PullRefresh-TextColor"];
-        header.backgroundColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"TableView-PullRefresh-BackgroundColor"];
-        header;
-    });
-    self.tableView.backgroundColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"TableView-BackgroundColor"];
+    self.tableView.mj_header = [MJRefreshHeader normalHeader];
+    self.tableView.mj_header.refreshingBlock = ^{
+        [weakSelf.conversationListViewModel refresh];
+    };
+    self.tableView.backgroundColor = BackgroundColor;
     [self.tableView.mj_header beginRefreshing];
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     !self.viewDidLoadBlock ?: self.viewDidLoadBlock(self);

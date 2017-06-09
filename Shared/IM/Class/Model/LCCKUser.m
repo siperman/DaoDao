@@ -35,6 +35,11 @@
     return [self URLJSONTransformer];
 }
 
++ (NSValueTransformer *)nameJSONTransformer
+{
+    return [self stringDecryptJSONTransformer];
+}
+
 - (instancetype)initWithUserId:(NSString *)userId name:(NSString *)name avatarURL:(NSURL *)avatarURL clientId:(NSString *)clientId {
     self = [super init];
     if (!self) {

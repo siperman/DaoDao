@@ -32,6 +32,7 @@ static char overlayKey;
         [self insertSubview:self.overlay atIndex:0];
     }
     self.overlay.backgroundColor = backgroundColor;
+    [self sendSubviewToBack:self.overlay];
 }
 
 - (void)lt_setTranslationY:(CGFloat)translationY

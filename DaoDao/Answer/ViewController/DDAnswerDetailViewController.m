@@ -33,7 +33,8 @@
     [self.tableView registerNib:[DDAskMeetSmallTableViewCell class]];
     [self.tableView registerNib:[DDDemandDescTableViewCell class]];
 
-    if (self.ask.status.integerValue == DDAskWaitingSendMeet) {
+    if (self.ask.status.integerValue == DDAskWaitingSendMeet ||
+        self.ask.status.integerValue < 0) {
         self.showSmall = NO;
     } else {
         self.showSmall = YES;

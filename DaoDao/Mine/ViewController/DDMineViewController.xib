@@ -63,12 +63,6 @@
                         <constraint firstAttribute="width" constant="68" id="WbF-vk-BTV"/>
                     </constraints>
                     <state key="normal" image="icon_touxiang"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <integer key="value" value="34"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="goMineInfo:" destination="-1" eventType="touchUpInside" id="1Xg-y2-dsK"/>
                     </connections>

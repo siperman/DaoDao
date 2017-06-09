@@ -18,6 +18,8 @@
 @interface Mp3Recorder()<AVAudioRecorderDelegate>
 @property (nonatomic, strong) AVAudioSession *session;
 @property (nonatomic, strong) AVAudioRecorder *recorder;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic) NSTimeInterval currentTimeInterval;
 @end
 
 @implementation Mp3Recorder
@@ -30,6 +32,17 @@
         _delegate = delegate;
     }
     return self;
+}
+
+- (void)resetTimer {
+    if (!_timer)
+        return;
+
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+    }
+
 }
 
 - (void)setRecorder
@@ -74,15 +87,19 @@
 {
     [self setSesstion];
     [self setRecorder];
-    [_recorder record];
+    if ([_recorder record]) {
+        [self resetTimer];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateMeters) userInfo:nil repeats:YES];
+    }
 }
 
 
 - (void)stopRecord
 {
     double cTime = _recorder.currentTime;
+    [self resetTimer];
     [_recorder stop];
-    
+
     if (cTime > 1) {
         [self audio_PCMtoMP3];
     } else {
@@ -97,6 +114,7 @@
 
 - (void)cancelRecord
 {
+    [self resetTimer];
     [_recorder stop];
     [_recorder deleteRecording];
 }
@@ -176,6 +194,29 @@
     }
     
     
+}
+
+- (void)updateMeters {
+    if (!_recorder)
+        return;
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [_recorder updateMeters];
+
+        self.currentTimeInterval = _recorder.currentTime;
+
+
+        float peakPower = [_recorder averagePowerForChannel:0];
+        double ALPHA = 0.015;
+        double power = pow(10, (ALPHA * peakPower));
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 更新扬声器
+            if ([self.delegate respondsToSelector:@selector(peakPowerForChannel:)]) {
+                [self.delegate peakPowerForChannel:power];
+            }
+        });
+    });
 }
 
 #pragma mark - Path Utils

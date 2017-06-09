@@ -71,6 +71,8 @@
         [SYRequestEngine requestConfigCallback:^(BOOL success, id response) {
             if (success) {
                 [DDConfig saveConfigDict:response[kObjKey]];
+            } else {
+                [DDConfig configServiceCall];
             }
         }];
     }

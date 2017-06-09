@@ -97,7 +97,8 @@
         if (self.ask.status.integerValue == DDAskWaitingAgreeMeet ||
             self.ask.status.integerValue == DDAskWaitingMeet) {
             return [DDAskMeetActionTableViewCell class];
-        } else if (self.ask.status.integerValue >= DDAskAskerRate) {
+        } else if (self.ask.status.integerValue == DDAskAnswerRate ||
+                   self.ask.status.integerValue == DDAskBothRate) {
             return [DDAskRateInfoTableViewCell class];
         } else {
             // 只有一个按钮的cell
@@ -110,7 +111,7 @@
 
 - (BOOL)isFinish
 {
-    NSInteger status = self.ask.status.integerValue;
-    return status >= DDAskAskerRate || status == DDAskAnswerDisagreeMeet;
+    return (self.ask.status.integerValue == DDAskAnswerRate ||
+            self.ask.status.integerValue == DDAskBothRate);
 }
 @end

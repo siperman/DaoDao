@@ -48,6 +48,7 @@
     self.postAskModel = [[DDPostAskViewModel alloc] init];
     self.time_ = [SYUtils currentTimestamp];
 //    RAC(self.btnPost, enabled) = self.postAskModel.enablePostSignal;
+    [self setBackButtonSelector:@selector(back)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -56,6 +57,25 @@
     [self.view endEditing:YES];
 }
 #pragma mark Action
+
+- (void)back
+{
+    if (_postAskModel.demand.length > 0 ||
+        _postAskModel.industry.length > 0 ||
+        _postAskModel.job.length > 0 ||
+        _postAskModel.expert.length > 0) {
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"确定要放弃已编辑需求信息吗？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *logout = [UIAlertAction actionWithTitle:@"放弃编辑" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"继续编辑" style:UIAlertActionStyleCancel handler:nil];
+        [vc addAction:logout];
+        [vc addAction:cancel];
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 
 - (IBAction)clickPush:(UIButton *)sender
 {
@@ -91,6 +111,9 @@
         // 专家
         DDChooseFavGoodViewController *vc = [DDChooseFavGoodViewController GoodVC];
         vc.delegete = self;
+        if (_postAskModel.expert) {
+            vc.placeholderArray = [_postAskModel.expert componentsSeparatedByString:@","];
+        }
 
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -122,6 +145,7 @@
                                       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDefaultHideNoticeIntervel * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                                           [self.navigationController setViewControllers:vcs animated:YES];
                                       });
+                                      POST_NOTIFICATION(kPostAskSuccessNotification, nil);
                                   } else {
                                       [self.navigationController showRequestNotice:response];
                                   }

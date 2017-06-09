@@ -64,6 +64,14 @@ NSString *kServiceCall = @""; //服务电话
     }
 }
 
++ (void)configServiceCall
+{
+    NSDictionary *dict = [self configDict];
+    if (dict[@"customerServiceNumber"]) {
+        kServiceCall = [dict[@"customerServiceNumber"] copy];
+    }
+}
+
 + (NSDictionary *)configDict
 {
     return [[SYCache sharedInstance] itemForKey:kSysConfigFileName];

@@ -13,9 +13,19 @@
 + (MJRefreshNormalHeader *)normalHeader
 {
     MJRefreshNormalHeader *header = [[MJRefreshNormalHeader alloc] init];
-    header.stateLabel.textColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"TableView-PullRefresh-TextColor"];
-    header.lastUpdatedTimeLabel.textColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"TableView-PullRefresh-TextColor"];
-    header.backgroundColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"TableView-PullRefresh-BackgroundColor"];
+    header.stateLabel.textColor = TextColor;
+    header.backgroundColor = ClearColor;
+    header.lastUpdatedTimeLabel.hidden = YES;
+    [header setTitle:@"轻轻下拉，即刻刷新" forState:MJRefreshStateIdle];
+    [header setTitle:@"该放手了，我要刷新了..." forState:MJRefreshStatePulling];
+    [header setTitle:@"努力刷新中..." forState:MJRefreshStateRefreshing];
+    if (header.arrowView) {
+        [header.arrowView removeFromSuperview];
+        UIImageView *imgView = [[UIImageView alloc] initWithImage:Image(@"icon_jiantouXia")];
+        [header setValue:imgView forKey:@"arrowView"];
+        [header addSubview:imgView];
+    }
+
     return header;
 }
 

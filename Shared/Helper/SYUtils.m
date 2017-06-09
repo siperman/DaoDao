@@ -120,8 +120,10 @@ static NSDateFormatter *timestampFormatter = nil;
     time(&now);
     
     NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *components = [cal components:( NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond ) fromDate:[[NSDate alloc] init]];
+    NSDateComponents *components = [cal components:( NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond ) fromDate:[[NSDate alloc] init]];
+    NSInteger day = components.day;
 
+    [components setDay:0];
     [components setHour:-[components hour]];
     [components setMinute:-[components minute]];
     [components setSecond:-[components second]];
@@ -156,7 +158,7 @@ static NSDateFormatter *timestampFormatter = nil;
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:_createdAt];
         _timestamp = [timestampFormatter stringFromDate:date];
     }
-    else if (distance < midnightDistance + 60 * 60 * 24 * 7) {
+    else if (distance < midnightDistance + 60 * 60 * 24 * 7 && day >= distance / (60 * 60 * 24)) {
         if (timestampFormatter == nil) {
             timestampFormatter = [[NSDateFormatter alloc] init];
         }
@@ -756,6 +758,8 @@ static UIColor *bbbbbbColor = nil;
 {
     [MBProgressHUD hideAllHUDsForView:APP_DELEGATE.window animated:YES];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:APP_DELEGATE.window animated:YES];
+    hud.opacity = 0.5f;
+    hud.labelFont = Font(17);
     hud.labelText = notice;
     hud.mode = MBProgressHUDModeText;
     
